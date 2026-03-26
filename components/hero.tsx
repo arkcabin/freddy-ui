@@ -1,42 +1,139 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Github, SquareCode } from "lucide-react";
+import Link from "next/link";
+import { SITE_NAME } from "@/config/site";
+import { GridPattern } from "./sheard";
 
 export function Hero() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="relative z-10 cpx space-y-6 py-20 text-center lg:py-32">
+    <div className="relative isolate flex flex-col items-center justify-center pt-24 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 -z-10 h-full w-full">
+        <GridPattern className="opacity-[0.03]" />
+      </div>
+
+      {/* Background Glow */}
+      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-white/20 to-white/5 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+      </div>
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="mx-auto flex max-w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 mx-auto max-w-4xl px-6 text-center"
       >
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50 opacity-75"></span>
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
-        </span>
-        <span className="font-mono text-[10px] font-bold tracking-widest text-white/70 uppercase">
-          New Blocks Added Weekly
-        </span>
+        <motion.div
+          variants={itemVariants}
+          className="mx-auto mb-8 flex max-w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+          </span>
+          <span className="font-mono text-[10px] font-bold tracking-widest text-white/70 uppercase">
+            New Blocks Added Weekly
+          </span>
+        </motion.div>
+
+        <motion.h1
+          variants={itemVariants}
+          className="relative font-heading text-5xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
+        >
+          Beautifully Crafted <br />
+          <span className="text-gradient">Shadcn UI Blocks</span>
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
+        >
+          {SITE_NAME} is a premium collection of production-ready components. 
+          Build your next SaaS landing page with high-fidelity, high-contrast UI blocks 
+          designed for modern developers.
+        </motion.p>
+
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+        >
+          <Button asChild size="lg" className="h-12 rounded-xl px-8 text-sm font-semibold transition-all hover:scale-105 active:scale-95">
+            <Link href="#blocks">
+              Browse Blocks
+              <ArrowRight className="ml-2 size-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="h-12 rounded-xl border-white/10 bg-white/5 px-8 text-sm font-semibold backdrop-blur-md transition-all hover:bg-white/10 hover:scale-105 active:scale-95">
+            <Link href="https://github.com/arkcabin/freddy-ui" target="_blank">
+              <Github className="mr-2 size-4" />
+              Star on GitHub
+            </Link>
+          </Button>
+        </motion.div>
+
+        {/* Floating Mockup Preview */}
+        <motion.div
+          variants={itemVariants}
+          className="relative mt-20"
+        >
+          <div className="absolute inset-0 -z-10 bg-linear-to-b from-white/10 to-transparent blur-2xl font-mono"></div>
+          <div className="mx-auto max-w-5xl rounded-2xl border border-white/10 bg-black/50 p-2 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20">
+            <div className="flex items-center justify-between rounded-t-xl bg-white/5 px-4 py-2 border-b border-white/5">
+              <div className="flex gap-1.5">
+                <div className="size-2.5 rounded-full bg-white/10"></div>
+                <div className="size-2.5 rounded-full bg-white/10"></div>
+                <div className="size-2.5 rounded-full bg-white/10"></div>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] font-mono text-white/30">
+                <SquareCode className="size-3" />
+                <span>Components.tsx</span>
+              </div>
+            </div>
+            <div className="h-48 sm:h-64 lg:h-80 overflow-hidden bg-dot-white/[0.05] relative">
+              <div className="absolute inset-0 flex items-center justify-center p-8">
+                <div className="max-w-md w-full space-y-4 opacity-50">
+                   <div className="h-8 w-3/4 rounded-lg bg-white/10 animate-pulse"></div>
+                   <div className="h-4 w-full rounded-lg bg-white/5 animate-pulse"></div>
+                   <div className="h-4 w-5/6 rounded-lg bg-white/5 animate-pulse"></div>
+                   <div className="flex gap-4">
+                     <div className="h-10 w-24 rounded-lg bg-white/10 animate-pulse"></div>
+                     <div className="h-10 w-24 rounded-lg bg-white/10 animate-pulse"></div>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-        className="font-heading text-5xl font-bold tracking-tight text-gradient sm:text-7xl"
-      >
-        Beautiful Shadcn <br /> UI Blocks
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-        className="mx-auto max-w-2xl text-lg text-muted-foreground"
-      >
-        A premium collection of beautifully crafted, production-ready blocks for your next modern web application. Built with Shadcn UI and Tailwind CSS.
-      </motion.p>
+      {/* Background Decorative Beam */}
+      <div className="beam-effect opacity-50" />
     </div>
   );
 }

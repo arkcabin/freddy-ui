@@ -200,6 +200,39 @@
     background-size: 32px 32px;
   }
 
+  .hero-glow {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 25%,
+      transparent 50%
+    );
+  }
+
+  .beam-effect {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+    animation: beam 3s ease-in-out infinite;
+  }
+
+  @keyframes beam {
+    0%, 100% {
+      opacity: 0.2;
+      height: 20%;
+      top: 0;
+    }
+    50% {
+      opacity: 0.5;
+      height: 60%;
+      top: 20%;
+    }
+  }
+
   @keyframes marquee {
     from {
       transform: translateX(0);

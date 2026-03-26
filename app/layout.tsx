@@ -1,32 +1,30 @@
 import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { RootProviders } from "@/components/providers";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
-
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   canonicalUrl: "/",
 });
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none bg-background font-sans text-foreground antialiased`}
       >
-        <RootProviders
-          themeProps={{
-            attribute: "class",
-            defaultTheme: "dark",
-            disableTransitionOnChange: true,
-          }}
+        <NextThemesProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
         >
           {children}
-        </RootProviders>
+        </NextThemesProvider>
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS as string} />
       </body>
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS as string} />
     </html>
   );
 }

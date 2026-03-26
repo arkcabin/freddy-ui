@@ -17,16 +17,6 @@ export function SiteHeader() {
           <span className="sr-only">{SITE_NAME}</span>
         </Link>
         <div className="flex items-center gap-2">
-          <Button asChild size="sm" variant="dashed">
-            <Link
-              className="px-2 py-1 text-sm hover:bg-accent"
-              href="https://pro.freddy.com"
-              target="_blank"
-            >
-              Pro
-            </Link>
-          </Button>
-          <div className="h-6 border-r border-dashed" />
           <Button asChild size="icon-sm" variant="dashed">
             <Link
               aria-label="x/twitter"

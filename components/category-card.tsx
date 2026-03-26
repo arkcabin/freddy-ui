@@ -21,10 +21,16 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
         href={`/${id}`}
       >
         {isNew && (
-          <div className="absolute top-2 left-2 z-20">
-            <span className="rounded-sm bg-white px-1.5 py-0.5 font-mono text-[8px] font-bold text-black uppercase tracking-wider">
-              New
-            </span>
+          <div className="absolute -top-px -right-px z-20">
+            <div className="flex items-center gap-1.5 rounded-bl-xl border-b border-l border-white/20 bg-white/10 px-2.5 py-1 backdrop-blur-md transition-colors group-hover:bg-white/15">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50 opacity-75"></span>
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+              </span>
+              <span className="font-mono text-[9px] font-bold tracking-widest text-white uppercase">
+                New
+              </span>
+            </div>
           </div>
         )}
 

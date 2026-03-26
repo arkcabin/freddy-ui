@@ -32,6 +32,7 @@ export const LogoIcon = ({ className }: LogoProps) => {
       alt="Freddy UI Icon"
       width={65}
       height={65}
+      priority
       style={{
         width: "auto",
         height: "auto",
@@ -64,6 +65,7 @@ export const Logo = ({ className }: LogoProps) => {
       alt="Freddy UI Logo"
       width={35}
       height={35}
+      priority
       style={{
         width: "auto",
         height: "auto",
