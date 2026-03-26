@@ -2,7 +2,7 @@
 
 import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, SquareCode } from "lucide-react";
+import { ArrowRight, ChevronRight, Github, SquareCode } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME } from "@/config/site";
 import { GridPattern } from "./sheard";
@@ -51,48 +51,44 @@ export function Hero() {
       >
         <motion.div
           variants={itemVariants}
-          className="mx-auto mb-8 flex max-w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md"
+          className="mx-auto mb-8 flex max-w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium backdrop-blur-md"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
-          </span>
-          <span className="font-mono text-[10px] font-bold tracking-widest text-white/70 uppercase">
-            New Blocks Added Weekly
-          </span>
+          <span className="text-white/40">Introducing v1</span>
+          <span className="h-3 w-px bg-white/10" />
+          <Link href="/changelog" className="flex items-center gap-1 text-white/70 transition-colors hover:text-white">
+            View Changelog
+            <ChevronRight className="size-3" />
+          </Link>
         </motion.div>
 
         <motion.h1
           variants={itemVariants}
-          className="relative font-heading text-5xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          className="relative font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
-          Beautifully Crafted <br />
-          <span className="text-gradient">Shadcn UI Blocks</span>
+          Beautiful ✨ <span className="font-extrabold text-white">shadcn/ui</span> Blocks <br />
+          for the <span className="font-extrabold text-white text-glow">Modern Developer.</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base"
         >
-          {SITE_NAME} is a premium collection of production-ready components. 
-          Build your next SaaS landing page with high-fidelity, high-contrast UI blocks 
-          designed for modern developers.
+          Save hours of design time with clean, ready-to-use shadcn blocks <br className="hidden sm:block" />
+          that just work — modern, responsive, and built for speed.
         </motion.p>
 
         <motion.div
           variants={itemVariants}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Button asChild size="lg" className="h-12 rounded-xl px-8 text-sm font-semibold transition-all hover:scale-105 active:scale-95">
+          <Button asChild size="lg" variant="outline" className="h-10 rounded-xl border-white/5 bg-white/2 px-6 text-xs font-medium backdrop-blur-md transition-all hover:bg-white/5">
             <Link href="#blocks">
-              Browse Blocks
-              <ArrowRight className="ml-2 size-4" />
+              Explore
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="h-12 rounded-xl border-white/10 bg-white/5 px-8 text-sm font-semibold backdrop-blur-md transition-all hover:bg-white/10 hover:scale-105 active:scale-95">
-            <Link href="https://github.com/arkcabin/freddy-ui" target="_blank">
-              <Github className="mr-2 size-4" />
-              Star on GitHub
+          <Button asChild size="lg" className="h-10 rounded-full bg-white px-6 text-xs font-bold text-black transition-colors hover:bg-white/90">
+            <Link href="/get-access">
+              Get full Access
             </Link>
           </Button>
         </motion.div>
