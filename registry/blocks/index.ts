@@ -531,6 +531,57 @@ export const blocks: RegistryItem[] = [
     categories: ["auth"],
   },
   {
+    name: "auth-10",
+    type: "registry:block",
+    description: "Premium split sign-up with 2x2 grid OAuth and marketing benefits panel.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/10/signup-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-11",
+    type: "registry:block",
+    description: "Multi-input OTP/Magic Link verification form.",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/auth/11/otp-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-12",
+    type: "registry:block",
+    description: "Three-step onboarding flow with vertical progress tracking.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/12/onboarding-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
     name: "header-1",
     type: "registry:block",
     description:

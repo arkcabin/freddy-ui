@@ -684,6 +684,77 @@
       "tier": "free"
     },
     {
+      "name": "auth-10",
+      "description": "Premium split sign-up with 2x2 grid OAuth and marketing benefits panel.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/10/signup-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-11",
+      "description": "Multi-input OTP/Magic Link verification form.",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/11/otp-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-12",
+      "description": "Three-step onboarding flow with vertical progress tracking.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/12/onboarding-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "header-1",
       "description": "Responsive sticky header with scroll blur effect, animated mobile menu, and adaptive navigation links.",
       "registryDependencies": [
