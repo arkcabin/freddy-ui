@@ -13,7 +13,7 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
       transition={{ type: "spring", stiffness: 260, damping: 20, delay: index * 0.05 }}
     >
       <Link
-        href={`/${id}`}
+        href={`/blocks/${id}`}
         className={cn(
           "group relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card/30 text-center backdrop-blur-sm transition-all hover:border-border/80 hover:bg-card/50 hover:shadow-xl dark:shadow-black/20"
         )}

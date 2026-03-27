@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const date = new Date().toISOString();
   const cats = getAllCategories();
   const catRoutes = cats.map((cat) => ({
-    url: `${SITE_HOME_URL}/${cat.id}`,
+    url: `${SITE_HOME_URL}/blocks/${cat.id}`,
     lastModified: date,
   }));
   const blockRoutes = blocks.map((item) => ({
