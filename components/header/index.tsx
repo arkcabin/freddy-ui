@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GithubIcon, XIcon } from "@/components/icons";
-import { LogoIcon } from "@/components/logo";
+import { Logo, LogoIcon } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { MY_HANDLE, SITE_NAME } from "@/config/site";
@@ -13,7 +13,7 @@ export function SiteHeader() {
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
           href="/"
         >
-          <LogoIcon className="size-6" />
+          <Logo />
           <span className="sr-only">{SITE_NAME}</span>
         </Link>
         <div className="flex items-center gap-2">

@@ -24,19 +24,15 @@ export const LogoIcon = ({ className }: LogoProps) => {
   const currentTheme = theme === "system" ? systemTheme : theme;
   const src = currentTheme === "dark" 
     ? "/logo/freddy-logo-icon-light.png" 
-    : "/logo/freddy-logo-dark.png";
+    : "/logo/freddy-logo-icon-dark.png";
 
   return (
     <Image
       src={src}
       alt="Freddy UI Icon"
-      width={65}
-      height={65}
+      width={250}
+      height={250}
       priority
-      style={{
-        width: "auto",
-        height: "auto",
-      }}
       className={cn("size-6 object-contain", className)}
     />
   );
@@ -57,19 +53,15 @@ export const Logo = ({ className }: LogoProps) => {
   const currentTheme = theme === "system" ? systemTheme : theme;
   const src = currentTheme === "dark" 
     ? "/logo/freddy-logo-light.png" 
-    : "/logo/freddy-logo-icon-dark.png";
+    : "/logo/freddy-logo-dark.png";
 
   return (
     <Image
       src={src}
       alt="Freddy UI Logo"
-      width={35}
-      height={35}
+      width={344}
+      height={106}
       priority
-      style={{
-        width: "auto",
-        height: "auto",
-      }}
       className={cn("h-6 w-auto object-contain", className)}
     />
   );

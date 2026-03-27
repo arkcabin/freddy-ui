@@ -76,15 +76,7 @@ const firstRow = tweets.slice(0, 5);
 const secondRow = tweets.slice(5);
 
 export const Tweets = () => (
-  <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-20">
-    <div className="mb-12 space-y-2 text-center">
-      <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        Loved by the community
-      </h2>
-      <p className="text-muted-foreground">
-        Join thousands of developers building with {SITE_NAME}.
-      </p>
-    </div>
+  <div className="relative flex w-full flex-col items-center justify-center overflow-hidden pb-20">
 
     <div className="flex flex-col gap-y-6">
       <Marquee className="[--duration:40s]">

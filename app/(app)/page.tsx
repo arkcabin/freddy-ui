@@ -1,8 +1,10 @@
 import { GridPattern, BorderSeparator } from "@/components/sheard";
 import { Tweets } from "@/components/tweets";
 import { Hero } from "@/components/hero";
+import { Features } from "@/components/features";
 import { CategoryCard } from "@/components/category-card";
-import { getAllCategories } from "@/lib/utils/blocks-data";
+import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
+import { SectionHeader } from "@/components/section-header";
 
 export default function Page() {
   const categories = getAllCategories();
@@ -20,6 +22,7 @@ export default function Page() {
       {/* Hero Section */}
       <Hero />
 
+      <Features totalBlocks={getTotalBlocksCount()} />
       <BorderSeparator className="opacity-50" />
 
       {/* Categories Grid */}
@@ -40,9 +43,11 @@ export default function Page() {
 
       {/* Social Proof / Tweets */}
       <div className="relative z-10 py-16 lg:py-24">
-        <div className="cpx mb-12 text-center">
-          <h2 className="font-heading text-3xl font-bold text-white">Loved by Developers</h2>
-          <p className="mt-2 text-muted-foreground">What people are saying about Freddy.</p>
+        <div className="cpx">
+          <SectionHeader 
+            title="Wall of Love" 
+            subtitle="Hear from our community about their hands-on experience and feedback."
+          />
         </div>
         <Tweets />
       </div>

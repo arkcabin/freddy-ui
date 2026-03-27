@@ -1,6 +1,6 @@
 import { ChevronLeftIcon } from "lucide-react";
 import type React from "react";
-import { Logo } from "@/components/logo";
+import { LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 // https://magicui.design/docs/components/particles
 import { Particles } from "@/components/ui/particles";
@@ -23,7 +23,7 @@ export function AuthPage() {
         </Button>
 
         <div className="mx-auto space-y-4 sm:w-sm">
-          <Logo className="h-6" />
+          <LogoIcon className="size-6" />
           <div className="flex flex-col space-y-1">
             <h1 className="font-bold text-2xl tracking-wide">
               Sign In or Join Now!

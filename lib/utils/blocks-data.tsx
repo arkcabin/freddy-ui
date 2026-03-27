@@ -41,3 +41,7 @@ export function findBlockByName(name: string) {
 export function importBlockIndex(category: string, blockNumber: string) {
   return () => import(`@/${BLOCKS_DIR}/${category}/${blockNumber}/page`);
 }
+
+export function getTotalBlocksCount(): number {
+  return blocks.length;
+}
