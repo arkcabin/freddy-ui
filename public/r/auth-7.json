@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth-7",
+  "description": "A check email status block with illustrative icon.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/auth/7/check-email-block.tsx",
+      "content": "\"use client\";\n\nimport { InboxIcon, ArrowRight, ExternalLink } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Plus } from \"@/components/plus\";\nimport React from \"react\";\n\nexport function CheckEmailBlock() {\n  return (\n    <div className=\"relative w-full max-w-md bg-background p-8 rounded-2xl border shadow-lg overflow-hidden group\">\n      <Plus className=\"-top-px -left-px\" />\n      <Plus className=\"-top-px -right-px rotate-90\" />\n      <Plus className=\"-bottom-px -left-px -rotate-90\" />\n      <Plus className=\"-bottom-px -right-px rotate-180\" />\n\n      <div className=\"flex flex-col items-center gap-6 text-center\">\n        <div className=\"relative\">\n          <div className=\"size-16 rounded-2xl bg-primary/5 flex items-center justify-center rotate-3 transition-transform group-hover:rotate-6\">\n            <InboxIcon className=\"size-8 text-primary/60\" />\n          </div>\n          <div className=\"absolute -top-1 -right-1 size-4 bg-primary rounded-full border-2 border-background animate-pulse\" />\n        </div>\n\n        <div className=\"space-y-2\">\n          <h2 className=\"text-2xl font-bold tracking-tight\">Check your Email</h2>\n          <p className=\"text-sm text-muted-foreground\">\n            We&apos;ve sent a password reset link to <br />\n            <span className=\"font-semibold text-foreground\">john@example.com</span>\n          </p>\n        </div>\n\n        <div className=\"w-full space-y-3\">\n          <Button \n            className=\"w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm\" \n            type=\"button\"\n          >\n            Open Email Client\n            <ExternalLink className=\"size-4 ml-2 opacity-50\" />\n          </Button>\n          \n          <p className=\"text-xs text-muted-foreground\">\n            Didn&apos;t receive the email? <br />\n            <button className=\"text-primary hover:underline font-medium mt-1\">Click to resend</button>\n          </p>\n        </div>\n\n        <a \n          href=\"#\" \n          className=\"flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors font-medium\"\n        >\n          Back to Sign In\n          <ArrowRight className=\"size-3\" />\n        </a>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/logo.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { useTheme } from \"next-themes\";\nimport { useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface LogoProps {\n  className?: string;\n}\n\nexport const LogoIcon = ({ className }: LogoProps) => {\n  const { theme, systemTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return <span className={cn(\"size-6 animate-pulse bg-muted rounded-full inline-block\", className)} />;\n  }\n\n  const currentTheme = theme === \"system\" ? systemTheme : theme;\n  const src = currentTheme === \"dark\" \n    ? \"/logo/freddy-logo-icon-light.png\" \n    : \"/logo/freddy-logo-icon-dark.png\";\n\n  return (\n    <Image\n      src={src}\n      alt=\"Freddy UI Icon\"\n      width={250}\n      height={250}\n      priority\n      className={cn(\"size-6 object-contain\", className)}\n    />\n  );\n};\n\nexport const Logo = ({ className }: LogoProps) => {\n  const { theme, systemTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return <span className={cn(\"h-6 w-24 animate-pulse bg-muted rounded inline-block\", className)} />;\n  }\n\n  const currentTheme = theme === \"system\" ? systemTheme : theme;\n  const src = currentTheme === \"dark\" \n    ? \"/logo/freddy-logo-light.png\" \n    : \"/logo/freddy-logo-dark.png\";\n\n  return (\n    <Image\n      src={src}\n      alt=\"Freddy UI Logo\"\n      width={344}\n      height={106}\n      priority\n      className={cn(\"h-6 w-auto object-contain\", className)}\n    />\n  );\n};\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "auth"
+  ],
+  "type": "registry:block"
+}
