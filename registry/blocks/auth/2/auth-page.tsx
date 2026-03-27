@@ -39,9 +39,9 @@ export function AuthPage() {
           aria-hidden
           className="-z-10 absolute inset-0 isolate opacity-60 contain-strict"
         >
-          <div className="-translate-y-87.5 absolute top-0 right-0 h-320 w-140 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,--theme(--color-foreground/.06)_0,hsla(0,0%,55%,.02)_50%,--theme(--color-foreground/.01)_80%)]" />
-          <div className="absolute top-0 right-0 h-320 w-60 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)] [translate:5%_-50%]" />
-          <div className="-translate-y-87.5 absolute top-0 right-0 h-320 w-60 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)]" />
+          <div className="-translate-y-87.5 absolute top-0 right-0 h-320 w-140 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,theme(colors.foreground/6%)_0,hsla(0,0%,55%,.02)_50%,theme(colors.foreground/1%)_80%)]" />
+          <div className="absolute top-0 right-0 h-320 w-60 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,theme(colors.foreground/4%)_0,theme(colors.foreground/1%)_80%,transparent_100%)] [translate:5%_-50%]" />
+          <div className="-translate-y-87.5 absolute top-0 right-0 h-320 w-60 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,theme(colors.foreground/4%)_0,theme(colors.foreground/1%)_80%,transparent_100%)]" />
         </div>
         <Button asChild className="absolute top-7 left-5" variant="ghost">
           <a href="#">

@@ -27,7 +27,7 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
         aria-hidden="true"
         className={cn(
           "absolute inset-0 size-full bg-muted/50 dark:bg-muted/20",
-          "bg-[radial-gradient(color-mix(in_oklab,--theme(--color-foreground/.4)30%,transparent)_1px,transparent_1px)]",
+          "bg-[radial-gradient(theme(colors.foreground/12%)_1px,transparent_1px)]",
           "bg-[size:24px_24px]"
         )}
       />

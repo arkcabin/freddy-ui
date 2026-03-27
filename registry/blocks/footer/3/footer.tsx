@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)]">
+    <footer className="border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(colors.white/8%),transparent)]">
       <div className="relative mx-auto max-w-5xl px-4">
         <div className="relative grid grid-cols-1 border-x md:grid-cols-4 md:divide-x">
           <div>
