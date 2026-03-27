@@ -8,11 +8,11 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ title, subtitle, className }: SectionHeaderProps) {
   return (
-    <div className={cn("mb-12 text-left", className)}>
-      <h2 className="font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+    <div className={cn("sticky top-14 z-20 -mx-4 mb-8 bg-background/80 px-4 py-4 text-left backdrop-blur-md", className)}>
+      <h2 className="font-heading text-xl font-bold tracking-tight text-foreground sm:text-2xl">
         {title}
       </h2>
-      <p className="mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+      <p className="mt-2 max-w-xl text-xs sm:text-sm text-muted-foreground leading-relaxed">
         {subtitle}
       </p>
     </div>

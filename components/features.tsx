@@ -28,7 +28,7 @@ const itemVariants: Variants = {
 export function Features({ totalBlocks }: { totalBlocks: number }) {
 
   return (
-    <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <div className="relative z-10">
       <motion.div
         variants={containerVariants}
         initial="hidden"

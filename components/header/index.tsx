@@ -7,7 +7,7 @@ import { MY_HANDLE, SITE_NAME } from "@/config/site";
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-dashed bg-card dark:bg-card/50">
+    <header className="sticky top-0 z-50 w-full border-b border-dashed bg-card/80 backdrop-blur-md dark:bg-card/50">
       <div className="cpx container flex h-14 items-center justify-between py-2">
         <Link
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
