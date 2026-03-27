@@ -25,3 +25,11 @@ export type Category = {
   blocksCount: number;
   isNew: boolean;
 };
+
+export interface TweetData {
+  id: string;
+  name: string;
+  handle: string;
+  content: string;
+  avatar: string;
+}

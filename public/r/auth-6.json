@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth-6",
+  "description": "A clean forgot password form with instructions.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/auth/6/forgot-password-form.tsx",
+      "content": "\"use client\";\n\nimport { MailIcon, ArrowLeft } from \"lucide-react\";\nimport { LogoIcon } from \"@/components/logo\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Plus } from \"@/components/plus\";\nimport React from \"react\";\n\nexport function ForgotPasswordForm() {\n  return (\n    <div className=\"relative w-full max-w-md bg-background p-8 rounded-2xl border shadow-lg overflow-hidden group\">\n      <Plus className=\"-top-px -left-px\" />\n      <Plus className=\"-top-px -right-px rotate-90\" />\n      <Plus className=\"-bottom-px -left-px -rotate-90\" />\n      <Plus className=\"-bottom-px -right-px rotate-180\" />\n\n      <div className=\"flex flex-col items-center gap-4 mb-8\">\n        <div className=\"size-12 rounded-full bg-primary/5 flex items-center justify-center mb-2\">\n          <MailIcon className=\"size-6 text-primary/60\" />\n        </div>\n        <div className=\"text-center\">\n          <h2 className=\"text-2xl font-bold tracking-tight\">Forgot Password?</h2>\n          <p className=\"text-sm text-muted-foreground max-w-[280px]\">No worries, we&apos;ll send you reset instructions via email.</p>\n        </div>\n      </div>\n\n      <form className=\"space-y-4\" onSubmit={(e) => e.preventDefault()}>\n        <div className=\"grid gap-2 text-start\">\n          <Label htmlFor=\"email\">Email Address</Label>\n          <Input \n            id=\"email\" \n            type=\"email\" \n            placeholder=\"name@example.com\" \n            className=\"h-10\" \n          />\n        </div>\n\n        <Button \n          className=\"w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-2\" \n          type=\"submit\"\n        >\n          Send Reset Link\n        </Button>\n\n        <a \n          href=\"#\" \n          className=\"flex items-center justify-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors mt-6 font-medium\"\n        >\n          <ArrowLeft className=\"size-3\" />\n          Back to Sign In\n        </a>\n      </form>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/logo.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { useTheme } from \"next-themes\";\nimport { useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface LogoProps {\n  className?: string;\n}\n\nexport const LogoIcon = ({ className }: LogoProps) => {\n  const { theme, systemTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return <span className={cn(\"size-6 animate-pulse bg-muted rounded-full inline-block\", className)} />;\n  }\n\n  const currentTheme = theme === \"system\" ? systemTheme : theme;\n  const src = currentTheme === \"dark\" \n    ? \"/logo/freddy-logo-icon-light.png\" \n    : \"/logo/freddy-logo-icon-dark.png\";\n\n  return (\n    <Image\n      src={src}\n      alt=\"Freddy UI Icon\"\n      width={250}\n      height={250}\n      priority\n      className={cn(\"size-6 object-contain\", className)}\n    />\n  );\n};\n\nexport const Logo = ({ className }: LogoProps) => {\n  const { theme, systemTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return <span className={cn(\"h-6 w-24 animate-pulse bg-muted rounded inline-block\", className)} />;\n  }\n\n  const currentTheme = theme === \"system\" ? systemTheme : theme;\n  const src = currentTheme === \"dark\" \n    ? \"/logo/freddy-logo-light.png\" \n    : \"/logo/freddy-logo-dark.png\";\n\n  return (\n    <Image\n      src={src}\n      alt=\"Freddy UI Logo\"\n      width={344}\n      height={106}\n      priority\n      className={cn(\"h-6 w-auto object-contain\", className)}\n    />\n  );\n};\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "auth"
+  ],
+  "type": "registry:block"
+}

@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,13 @@ type BlockPreviewProps = {
 
 export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
   const { isDesktop } = useMediaQuery();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const showResize = mounted && isDesktop;
 
   return (
     <div className={cn("relative", previewMode === "code" && "hidden")}>
@@ -34,7 +41,7 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
           {children}
         </Panel>
 
-        {isDesktop && (
+        {showResize && (
           <>
             <PanelResizeHandle className="relative w-2">
               <div className="absolute inset-0 m-auto h-20 w-1 rounded-full bg-foreground/20 transition-[height,background] hover:h-24 hover:bg-foreground/30" />

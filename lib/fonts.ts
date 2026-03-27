@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Geist, Geist_Mono, Syne } from "next/font/google";
 
 export const fontSans = Geist({
   variable: "--font-geist-sans",
@@ -10,7 +10,8 @@ export const fontMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const fontHeading = Outfit({
+export const fontHeading = Syne({
   subsets: ["latin"],
   variable: "--font-heading",
+  weight: ["700", "800"],
 });

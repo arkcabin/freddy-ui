@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { createPortal } from "react-dom";
-import { Logo } from "@/components/logo";
+import { LogoIcon } from "@/components/logo";
 import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useScroll } from "@/hooks/use-scroll";
@@ -40,13 +40,13 @@ export function Header() {
   return (
     <header
       className={cn("sticky top-0 z-50 w-full border-transparent border-b", {
-        "border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50":
+        "border-border bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50":
           scrolled,
       })}
     >
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
         <div className="rounded-md p-2 hover:bg-accent">
-          <Logo className="h-4" />
+          <LogoIcon className="size-6" />
         </div>
         <div className="hidden items-center gap-2 md:flex">
           {links.map((link, i) => (
@@ -111,7 +111,7 @@ function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
   return createPortal(
     <div
       className={cn(
-        "bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50",
+        "bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50",
         "fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y md:hidden"
       )}
       id="mobile-menu"

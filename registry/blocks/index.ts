@@ -412,6 +412,125 @@ export const blocks: RegistryItem[] = [
     categories: ["form"],
   },
   {
+    name: "auth-3",
+    type: "registry:block",
+    description: "Premium login form with high-contrast design, social login, and branded elements.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/3/login-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-4",
+    type: "registry:block",
+    description: "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/4/signup-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-5",
+    type: "registry:block",
+    description: "A premium reset password form with branded ornaments.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/5/reset-password-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-6",
+    type: "registry:block",
+    description: "A clean forgot password form with instructions.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/6/forgot-password-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-7",
+    type: "registry:block",
+    description: "A check email status block with illustrative icon.",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/auth/7/check-email-block.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-8",
+    type: "registry:block",
+    description: "A minimalist, floating login form variant.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/8/minimal-login-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
+    name: "auth-9",
+    type: "registry:block",
+    description: "A compact, modern signup form variant.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/9/compact-signup-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+  },
+  {
     name: "header-1",
     type: "registry:block",
     description:

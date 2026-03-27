@@ -3,7 +3,7 @@ import { capitalize, unslugify } from "@/lib/utils";
 import type { Block, Category } from "@/types";
 
 export const BLOCKS_DIR = "registry/blocks";
-const newCategories = ["logo-cloud", "form"];
+const newCategories = ["auth"];
 
 export function getAllCategories(): Category[] {
   const categoryMap = new Map<string, number>();
@@ -40,4 +40,8 @@ export function findBlockByName(name: string) {
 
 export function importBlockIndex(category: string, blockNumber: string) {
   return () => import(`@/${BLOCKS_DIR}/${category}/${blockNumber}/page`);
+}
+
+export function getTotalBlocksCount(): number {
+  return blocks.length;
 }

@@ -25,13 +25,11 @@ function getDimensions() {
 }
 
 export function useMediaQuery() {
-  const [device, setDevice] = useState<"mobile" | "tablet" | "desktop" | null>(
-    getDevice()
-  );
+  const [device, setDevice] = useState<"mobile" | "tablet" | "desktop" | null>(null);
   const [dimensions, setDimensions] = useState<{
     width: number;
     height: number;
-  } | null>(getDimensions());
+  } | null>(null);
 
   useEffect(() => {
     const checkDevice = () => {
