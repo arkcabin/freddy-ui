@@ -51,11 +51,9 @@ export function CategorySkeleton({ id, className }: CategorySkeletonProps) {
         );
       case "cta":
         return (
-          <div className="flex h-full w-full items-center justify-center p-4">
-            <div className="flex gap-2">
-              <div className="h-6 w-16 rounded-md bg-muted/40" />
-              <div className="h-6 w-16 rounded-md bg-muted/40" />
-            </div>
+          <div className="flex gap-2.5">
+            <div className="h-3.5 w-12 rounded-full bg-muted/40" />
+            <div className="h-3.5 w-12 rounded-full bg-muted/40" />
           </div>
         );
       case "testimonials":

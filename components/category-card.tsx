@@ -9,15 +9,15 @@ import { CategorySkeleton } from "./category-skeleton";
 
 export function CategoryCard({ id, name, blocksCount, isNew, index }: Category & { index: number }) {
   // Determine precise layout based on the reference image
-  const layout = ["auth", "faqs", "contact", "integrations"].includes(id) 
-    ? "split" 
-    : ["feature", "pricing", "testimonials", "footer", "logo-cloud", "image-gallery"].includes(id) 
-    ? "stack" 
-    : id === "cta" 
-    ? "cta" 
-    : id === "header" 
-    ? "header" 
-    : "center";
+  const layout = ["auth", "faqs", "contact", "integrations"].includes(id)
+    ? "split"
+    : ["feature", "pricing", "testimonials", "footer", "logo-cloud", "image-gallery"].includes(id)
+      ? "stack"
+      : id === "cta"
+        ? "cta"
+        : id === "header"
+          ? "header"
+          : "center";
 
   return (
     <motion.div
@@ -108,14 +108,17 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
 
         {layout === "cta" && (
           <>
-            <div className="flex w-[40%] items-center justify-center border-r border-border/50 p-4 font-heading text-[10px] font-medium text-muted-foreground/80">
-               {blocksCount} blocks
-            </div>
+
             <div className="flex flex-1 flex-col items-center justify-center gap-2 p-4">
-               <p className="font-heading text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                {name}
-              </p>
-              <CategorySkeleton id={id} />
+              <div>
+                <p className="font-heading text-xl font-bold text-foreground transition-colors group-hover:text-primary">
+                  {name}
+                </p>
+                <p className="text-[10px] font-medium text-muted-foreground/80">
+                  {blocksCount} blocks
+                </p>
+              </div>
+              <CategorySkeleton id={id} className="h-auto w-auto" />
             </div>
           </>
         )}
@@ -123,7 +126,7 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
         {layout === "header" && (
           <>
             <div className="relative flex-1 bg-muted/5 transition-colors group-hover:bg-muted/10">
-               <CategorySkeleton id={id} />
+              <CategorySkeleton id={id} />
             </div>
             <div className="p-4 pt-2 text-center">
               <p className="text-[10px] font-medium text-muted-foreground/80">
