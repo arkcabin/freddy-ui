@@ -8,6 +8,7 @@ type IframeRendererProps = {
   ariaLabel?: string;
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
   className?: string;
+  onLoad?: () => void;
 };
 
 export function IframeRenderer({
@@ -16,6 +17,7 @@ export function IframeRenderer({
   ariaLabel,
   iframeRef,
   className,
+  onLoad,
 }: IframeRendererProps) {
   return (
     <iframe
@@ -25,6 +27,7 @@ export function IframeRenderer({
       id={name}
       key={`${name}-iframe`}
       loading={"lazy"}
+      onLoad={onLoad}
       ref={iframeRef}
       sandbox="allow-scripts allow-same-origin"
       src={src}

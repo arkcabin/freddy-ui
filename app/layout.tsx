@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider } from "@/components/theme-provider";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { constructMetadata } from "@/lib/metadata";
 
@@ -16,14 +16,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         suppressHydrationWarning
         className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none bg-background font-sans text-foreground antialiased`}
       >
-        <NextThemesProvider
+        {process.env.GOOGLE_ANALYTICS && (
+          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
+        )}
+        <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
         >
           {children}
-        </NextThemesProvider>
-        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS as string} />
+        </ThemeProvider>
       </body>
     </html>
   );

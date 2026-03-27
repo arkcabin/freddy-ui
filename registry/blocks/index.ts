@@ -412,6 +412,40 @@ export const blocks: RegistryItem[] = [
     categories: ["form"],
   },
   {
+    name: "form-4",
+    type: "registry:block",
+    description: "Premium login form with high-contrast design, social login, and branded elements.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/form/4/login-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["form"],
+  },
+  {
+    name: "form-5",
+    type: "registry:block",
+    description: "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/form/5/signup-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["form"],
+  },
+  {
     name: "header-1",
     type: "registry:block",
     description:

@@ -518,6 +518,54 @@
       "tier": "free"
     },
     {
+      "name": "form-4",
+      "description": "Premium login form with high-contrast design, social login, and branded elements.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/form/4/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "form"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "form-5",
+      "description": "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/form/5/signup-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "form"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "header-1",
       "description": "Responsive sticky header with scroll blur effect, animated mobile menu, and adaptive navigation links.",
       "registryDependencies": [

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { CodeView } from "@/components/block/code-view";
+import { cn } from "@/lib/utils";
 import { BorderSeparator } from "@/components/sheard";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
 import type { Block, PreviewMode } from "@/types";
@@ -22,6 +23,7 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const [previewMode, setPreviewMode] = React.useState<PreviewMode>("preview");
   const iframeContainerRef = React.useRef<HTMLDivElement>(null);
   const [registryUrl, setRegistryUrl] = React.useState<string>("");
+  const [isLoaded, setIsLoaded] = React.useState(false);
 
   const { name, files, height } = block;
   const previewLink = `/view/${name}`;
@@ -74,17 +76,27 @@ export function BlockBox({ block }: BlockPreviewProps) {
 
       {/* Preview */}
       <BlockPreview previewMode={previewMode}>
-        <div className="relative h-full bg-background" ref={iframeContainerRef}>
-          {shouldLoadIframe ? (
+        <div className="relative h-full bg-background overflow-hidden" ref={iframeContainerRef}>
+          {shouldLoadIframe && (
             <IframeRenderer
               ariaLabel={`${name}-block-preview`}
               iframeRef={iframeRef}
               name={name}
               src={previewLink}
+              onLoad={() => setIsLoaded(true)}
+              className={cn(
+                "transition-opacity duration-500 ease-in-out",
+                isLoaded ? "opacity-100" : "opacity-0"
+              )}
             />
-          ) : (
-            <BlockLoader />
           )}
+          
+          <div className={cn(
+            "absolute inset-0 flex items-center justify-center bg-background transition-opacity duration-300 pointer-events-none",
+            isLoaded ? "opacity-0" : "opacity-100"
+          )}>
+            <BlockLoader />
+          </div>
         </div>
       </BlockPreview>
 
