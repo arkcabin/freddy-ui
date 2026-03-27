@@ -4,7 +4,8 @@ import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronRight, Github, SquareCode } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME } from "@/config/site";
+import { SITE_NAME, SITE_VERSION } from "@/config/site";
+import { LogoIcon } from "@/components/logo";
 import { GridPattern } from "./sheard";
 
 export function Hero() {
@@ -47,15 +48,20 @@ export function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto max-w-4xl px-6 text-center"
+        className="relative z-10 mx-auto max-w-5xl px-6 text-center"
       >
         <motion.div
           variants={itemVariants}
-          className="mx-auto mb-8 flex max-w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium backdrop-blur-md"
+          className="mx-auto mb-8 flex max-w-fit items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1.5 pl-3 pr-4 text-[11px] font-medium backdrop-blur-md"
         >
-          <span className="text-white/40">Introducing v1</span>
+          <div className="flex items-center gap-2">
+            <LogoIcon className="size-3.5" />
+            <span className="text-white font-semibold">{SITE_NAME}</span>
+          </div>
+          <span className="h-3 w-px bg-white/20" />
+          <span className="text-white/80">Introducing V-{SITE_VERSION}</span>
           <span className="h-3 w-px bg-white/10" />
-          <Link href="/changelog" className="flex items-center gap-1 text-white/70 transition-colors hover:text-white">
+          <Link href="/changelog" className="flex items-center gap-1 text-white/50 transition-colors hover:text-white">
             View Changelog
             <ChevronRight className="size-3" />
           </Link>
@@ -63,15 +69,15 @@ export function Hero() {
 
         <motion.h1
           variants={itemVariants}
-          className="relative font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+          className="relative font-heading text-4xl font-bold tracking-tighter text-white sm:text-6xl lg:text-7xl"
         >
-          Beautiful ✨ <span className="font-extrabold text-white">shadcn/ui</span> Blocks <br />
-          for the <span className="font-extrabold text-white text-glow">Modern Developer.</span>
+          Beautiful ✨ <span className="font-extrabold">shadcn/ui</span> Blocks <br />
+          for the <span className="font-extrabold text-glow">Modern Developer.</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base"
+          className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/50 sm:text-lg"
         >
           Save hours of design time with clean, ready-to-use shadcn blocks <br className="hidden sm:block" />
           that just work — modern, responsive, and built for speed.
@@ -79,14 +85,14 @@ export function Hero() {
 
         <motion.div
           variants={itemVariants}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
         >
-          <Button asChild size="lg" variant="outline" className="h-10 rounded-xl border-white/5 bg-white/2 px-6 text-xs font-medium backdrop-blur-md transition-all hover:bg-white/5">
+          <Button asChild size="lg" variant="outline" className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-sm font-medium backdrop-blur-md transition-all hover:bg-white/10 focus:ring-2 focus:ring-white/20">
             <Link href="#blocks">
               Explore
             </Link>
           </Button>
-          <Button asChild size="lg" className="h-10 rounded-full bg-white px-6 text-xs font-bold text-black transition-colors hover:bg-white/90">
+          <Button asChild size="lg" className="h-12 rounded-full bg-white px-8 text-sm font-bold text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all hover:bg-white/90 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] focus:ring-2 focus:ring-white">
             <Link href="/get-access">
               Get full Access
             </Link>
