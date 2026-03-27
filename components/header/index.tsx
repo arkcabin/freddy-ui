@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GithubIcon, XIcon } from "@/components/icons";
-import { Logo, LogoIcon } from "@/components/logo";
+import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { MY_HANDLE, SITE_NAME } from "@/config/site";
