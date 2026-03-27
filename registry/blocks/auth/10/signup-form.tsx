@@ -15,33 +15,39 @@ export function SignupForm() {
   return (
     <div className="grid min-h-screen w-full lg:grid-cols-2">
       {/* Left Side: Marketing/Benefits Panel */}
-      <div className="relative hidden flex-col justify-between bg-zinc-950 p-10 text-white lg:flex">
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
-          <div className="absolute -top-1/4 -left-1/4 h-full w-full rounded-full bg-blue-500/20 blur-[120px]" />
-          <div className="absolute -bottom-1/4 -right-1/4 h-full w-full rounded-full bg-purple-500/20 blur-[120px]" />
+      <div className="relative hidden flex-col justify-between bg-zinc-950 p-12 text-white lg:flex border-r border-white/5">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute -top-1/4 -left-1/4 h-full w-full rounded-full bg-blue-500/10 blur-[160px] animate-pulse" />
+          <div className="absolute -bottom-1/4 -right-1/4 h-full w-full rounded-full bg-purple-500/10 blur-[160px] animate-pulse [animation-delay:2s]" />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150" />
         </div>
 
         <div className="relative z-10">
-          <LogoIcon className="size-8 invert dark:invert-0" />
-          <div className="mt-20 space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
+          <div className="flex items-center gap-2">
+            <LogoIcon className="size-6 invert dark:invert-0" />
+            <span className="font-bold text-lg tracking-tight">Freddy UI</span>
+          </div>
+          
+          <div className="mt-24 space-y-8">
+            <h1 className="text-5xl font-bold tracking-tightest leading-[1.1] xl:text-6xl">
               Elevate your <br />
-              <span className="text-blue-400">development</span> workflow.
+              <span className="text-blue-400">development</span> <br />
+              workflow.
             </h1>
-            <p className="max-w-md text-lg text-zinc-400">
+            <p className="max-w-md text-lg text-zinc-400 font-medium">
               Join 10,000+ developers building faster with our premium shadcn/ui blocks.
             </p>
 
-            <ul className="space-y-4 pt-10">
+            <ul className="space-y-5 pt-12">
               {[
                 "Access to 100+ premium blocks",
                 "Weekly updates & new components",
                 "Advanced animation primitives",
                 "Component-level accessibility",
               ].map((benefit) => (
-                <li key={benefit} className="flex items-center gap-3 text-sm text-zinc-300">
-                  <div className="flex size-5 items-center justify-center rounded-full bg-blue-500/10 text-blue-400">
-                    <CheckIcon className="size-3" />
+                <li key={benefit} className="flex items-center gap-4 text-sm font-medium text-zinc-300">
+                  <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
+                    <CheckIcon className="size-3" strokeWidth={3} />
                   </div>
                   {benefit}
                 </li>
@@ -50,122 +56,114 @@ export function SignupForm() {
           </div>
         </div>
 
-        <div className="relative z-10 border-t border-zinc-800 pt-8">
-          <blockquote className="space-y-2">
-            <p className="text-sm italic text-zinc-400">
+        <div className="relative z-10 border-t border-white/10 pt-10">
+          <blockquote className="space-y-4">
+            <p className="text-base font-medium leading-relaxed text-zinc-300 italic">
               "The best component library I've used. It saved us months of work on our latest SaaS project."
             </p>
-            <footer className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              — Sarah Chen, CTO at TechFlow
+            <footer className="flex items-center gap-3">
+              <div className="size-8 rounded-full bg-zinc-800 border border-zinc-700" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-white">Sarah Chen</p>
+                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-semibold mt-0.5">CTO at TechFlow</p>
+              </div>
             </footer>
           </blockquote>
         </div>
       </div>
 
       {/* Right Side: Form */}
-      <div className="flex items-center justify-center bg-background p-4 md:p-8">
-        <div className="mx-auto flex w-full max-w-[400px] flex-col justify-center space-y-8">
-          <div className="flex flex-col space-y-2 text-center lg:text-left">
+      <div className="flex items-center justify-center bg-background p-6 md:p-12 lg:p-24">
+        <div className="w-full max-w-[420px] space-y-10">
+          <div className="flex flex-col space-y-3 text-center lg:text-left">
             <LogoIcon className="mx-auto size-8 lg:mx-0 lg:hidden" />
-            <h2 className="text-3xl font-bold tracking-tight">Create your account</h2>
-            <p className="text-sm text-muted-foreground">
-              Sign up to get started with Freddy UI.
+            <h2 className="text-4xl font-bold tracking-tightest">Create account</h2>
+            <p className="text-base text-muted-foreground font-medium">
+              Join the future of UI development.
             </p>
           </div>
 
           {/* Social Grid (Tailark Style 2x2) */}
-          <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-11 font-medium transition-all hover:bg-muted" type="button">
-              <GoogleIcon className="mr-2 size-4" />
-              Google
-            </Button>
-            <Button variant="outline" className="h-11 font-medium transition-all hover:bg-muted" type="button">
-              <GithubIcon className="mr-2 size-4" />
-              GitHub
-            </Button>
-            <Button variant="outline" className="h-11 font-medium transition-all hover:bg-muted" type="button">
-              <AppleIcon className="mr-2 size-4" />
-              Apple
-            </Button>
-            <Button variant="outline" className="h-11 font-medium transition-all hover:bg-muted" type="button">
-              <DiscordIcon className="mr-2 size-4" />
-              Discord
-            </Button>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { label: "Google", icon: GoogleIcon },
+              { label: "GitHub", icon: GithubIcon },
+              { label: "Apple", icon: AppleIcon },
+              { label: "Discord", icon: DiscordIcon }
+            ].map((social) => (
+              <Button 
+                key={social.label}
+                variant="outline" 
+                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 font-bold text-xs uppercase tracking-widest transition-all hover:bg-background hover:border-zinc-300 hover:shadow-sm dark:bg-zinc-900/50 dark:border-zinc-800 dark:hover:border-zinc-700" 
+                type="button"
+              >
+                <social.icon className="mr-2.5 size-4" />
+                {social.label}
+              </Button>
+            ))}
           </div>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
+              <span className="w-full border-t border-zinc-100 dark:border-zinc-800" />
             </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+            <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-[0.2em]">
+              <span className="bg-background px-4 text-muted-foreground/60">Or email signup</span>
             </div>
           </div>
 
-          <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid gap-1.5">
-              <Label htmlFor="full-name">Full Name</Label>
+          <form className="grid gap-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid gap-2.5">
+              <Label htmlFor="full-name" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Full Name</Label>
               <Input
                 id="full-name"
                 placeholder="John Doe"
-                type="text"
-                autoCapitalize="words"
-                autoComplete="name"
-                autoCorrect="off"
-                className="h-11"
+                className="h-12 px-4 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
               />
             </div>
-            <div className="grid gap-1.5">
-              <Label htmlFor="email">Email</Label>
+            <div className="grid gap-2.5">
+              <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Email Address</Label>
               <Input
                 id="email"
                 placeholder="name@example.com"
-                type="email"
-                autoCapitalize="none"
-                autoComplete="email"
-                autoCorrect="off"
-                className="h-11"
+                className="h-12 px-4 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
               />
             </div>
-            <div className="grid gap-1.5">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
-              </div>
+            <div className="grid gap-2.5">
+              <Label htmlFor="password" title="password" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Password</Label>
               <div className="relative">
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Create a password"
-                  autoComplete="new-password"
-                  className="h-11 pr-10"
+                  className="h-12 pl-4 pr-12 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/60 hover:text-foreground transition-colors"
                 >
                   <EyeIcon className="size-4" />
                 </button>
               </div>
             </div>
-            <Button className="mt-2 h-11 text-base font-semibold" size="lg">
-              Create Account
+            <Button className="mt-4 h-12 rounded-xl text-sm font-bold tracking-tight shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]" size="lg">
+              Get Started Free
             </Button>
           </form>
 
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm font-medium text-muted-foreground">
             Already have an account?{" "}
-            <a href="#" className="font-semibold text-primary hover:underline">
+            <a href="#" className="font-bold text-primary hover:underline underline-offset-4 transition-all">
               Sign In
             </a>
           </p>
 
-          <footer className="text-center text-xs text-muted-foreground/60 leading-relaxed">
-            By clicking "Create Account", you agree to our{" "}
-            <a href="#" className="underline underline-offset-4 hover:text-primary">Terms of Service</a>{" "}
+          <footer className="text-center text-[10px] font-medium text-muted-foreground/50 leading-relaxed px-6">
+            By signing up, you agree to our{" "}
+            <a href="#" className="underline-offset-4 hover:text-primary hover:underline">Terms of Service</a>{" "}
             and{" "}
-            <a href="#" className="underline underline-offset-4 hover:text-primary">Privacy Policy</a>.
+            <a href="#" className="underline-offset-4 hover:text-primary hover:underline">Privacy Policy</a>.
           </footer>
         </div>
       </div>
