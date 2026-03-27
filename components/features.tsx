@@ -45,15 +45,15 @@ export function Features({ totalBlocks }: { totalBlocks: number }) {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative rounded-2xl border border-white/10 bg-white/2 p-6 transition-colors hover:bg-white/5"
+              className="group relative rounded-2xl border border-border bg-muted/20 p-6 transition-colors hover:bg-muted/40"
             >
-              <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/70 transition-colors group-hover:text-white">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-muted/30 text-muted-foreground transition-colors group-hover:text-primary">
                 <feature.icon className="size-5" />
               </div>
-              <h3 className="font-heading text-sm font-bold text-white">
+              <h3 className="font-heading text-sm font-bold text-foreground">
                 {title}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-white/40">
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 {feature.description}
               </p>
             </motion.div>

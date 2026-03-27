@@ -17,17 +17,17 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
       }}
     >
       <Link
-        className="group relative flex aspect-video flex-col items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/3 p-6 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/6 hover:shadow-[0_0_20px_rgba(255,255,255,0.02)]"
+        className="group relative flex aspect-video flex-col items-center justify-center overflow-hidden rounded-xl border border-border bg-muted/20 p-6 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-muted/40 hover:shadow-lg"
         href={`/${id}`}
       >
         {isNew && (
           <div className="absolute -top-px -right-px z-20">
-            <div className="flex items-center gap-1.5 rounded-bl-xl border-b border-l border-white/20 bg-white/10 px-2.5 py-1 backdrop-blur-md transition-colors group-hover:bg-white/15">
+            <div className="flex items-center gap-1.5 rounded-bl-xl border-b border-l border-border bg-muted/50 px-2.5 py-1 backdrop-blur-md transition-colors group-hover:bg-muted/80">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50 opacity-75"></span>
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/50 opacity-75"></span>
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary"></span>
               </span>
-              <span className="font-mono text-[9px] font-bold tracking-widest text-white uppercase">
+              <span className="font-mono text-[9px] font-bold tracking-widest text-foreground uppercase">
                 New
               </span>
             </div>
@@ -35,7 +35,7 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
         )}
 
         <div className="flex flex-col items-center gap-1">
-          <p className="font-heading text-xl font-semibold text-white group-hover:text-white/90 transition-colors">
+          <p className="font-heading text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
             {name}
           </p>
           <p className="text-sm text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">
@@ -44,7 +44,7 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
         </div>
 
         {/* Subtle glow effect on hover */}
-        <div className="absolute inset-0 -z-10 translate-y-full bg-linear-to-t from-white/5 to-transparent transition-transform duration-500 group-hover:translate-y-0" />
+        <div className="absolute inset-0 -z-10 translate-y-full bg-linear-to-t from-primary/5 to-transparent transition-transform duration-500 group-hover:translate-y-0" />
       </Link>
     </motion.div>
   );

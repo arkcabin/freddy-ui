@@ -70,7 +70,7 @@ export function GridPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-transparent stroke-gray-400/30",
+        "pointer-events-none absolute inset-0 h-full w-full fill-transparent stroke-border/30",
         className
       )}
       {...props}
@@ -104,7 +104,7 @@ export function GlassCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-md dark:border-white/5 dark:bg-card/30",
+        "glass-card p-6 rounded-xl",
         className
       )}
       {...props}

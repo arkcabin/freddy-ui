@@ -20,7 +20,7 @@ export function SiteFooter() {
           </Link>
           <span className="mx-2 text-border">|</span>
           <Link
-            className="font-bold text-foreground transition-colors hover:text-foreground/80 underline decoration-white/20 underline-offset-4"
+            className="font-bold text-foreground transition-colors hover:text-foreground/80 underline decoration-border underline-offset-4"
             href="https://arkcabin.com/contact"
             target="_blank"
             rel="noreferrer"

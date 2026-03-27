@@ -13,7 +13,7 @@ export default function Page() {
     <div className="relative min-h-screen overflow-hidden">
       {/* Background Grid Pattern */}
       <GridPattern
-        className="opacity-20 mask-[radial-gradient(100%_100%_at_top_right,white,transparent)]"
+        className="opacity-20 mask-[radial-gradient(100%_100%_at_top_right,var(--foreground),transparent)]"
         width={40}
         height={40}
         strokeDasharray="2 2"
@@ -31,7 +31,7 @@ export default function Page() {
           {categories.map((category, index) => (
             <CategoryCard key={category.id} index={index} {...category} />
           ))}
-          <div className="group relative flex aspect-video flex-col items-center justify-center rounded-xl border border-dashed border-white/10 bg-white/2 p-6 transition-colors hover:bg-white/4">
+          <div className="group relative flex aspect-video flex-col items-center justify-center rounded-xl border border-dashed border-border bg-muted/20 p-6 transition-colors hover:bg-muted/40">
             <p className="font-heading text-lg font-semibold text-muted-foreground/50">
               Coming Soon
             </p>

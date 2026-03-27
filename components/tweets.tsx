@@ -134,21 +134,21 @@ function Marquee({
 
 function DummyTweet({ name, handle, content, avatar }: TweetData) {
   return (
-    <div className="relative w-72 cursor-default overflow-hidden rounded-xl border border-white/10 bg-white/3 p-3 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/5">
+    <div className="relative w-72 cursor-default overflow-hidden rounded-xl border border-border bg-muted/20 p-3 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-muted/40">
       <div className="flex flex-row items-center gap-2">
         <img
-          className="size-8 rounded-full border border-white/10 bg-white/5"
+          className="size-8 rounded-full border border-border bg-muted/30"
           alt={name}
           src={avatar}
         />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-bold text-white leading-tight">
+          <figcaption className="text-sm font-bold text-foreground leading-tight">
             {name}
           </figcaption>
           <p className="text-[10px] text-muted-foreground">{handle}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-xs leading-relaxed text-white/80">
+      <blockquote className="mt-2 text-xs leading-relaxed text-muted-foreground">
         {content}
       </blockquote>
     </div>

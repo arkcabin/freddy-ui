@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: PageProps<"/[cat]">) {
         >
           <ArrowLeft className="inline-block size-3" /> Back to Home
         </Link>
-        <h1 className="font-bold font-heading text-3xl sm:text-4xl md:text-nowrap">
+        <h1 className="font-bold font-heading text-3xl sm:text-4xl md:text-nowrap text-foreground">
           Explore {catagoryName} Blocks
         </h1>
         <p className="text-muted-foreground text-sm">
