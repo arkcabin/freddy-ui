@@ -3,7 +3,7 @@
 import React from "react";
 import { CodeView } from "@/components/block/code-view";
 import { cn } from "@/lib/utils";
-import { BorderSeparator } from "@/components/sheard";
+import { BorderSeparator } from "@/components/shared";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
 import type { Block, PreviewMode } from "@/types";
 import { BlockLoader } from "./block-loader";

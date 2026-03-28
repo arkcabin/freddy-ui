@@ -167,7 +167,7 @@ export const blocks: FreddyRegistryItem[] = [
         type: "registry:component",
       },
       {
-        path: "blocks/hero/2/sheard.tsx",
+        path: "blocks/hero/2/shared.tsx",
         type: "registry:component",
       },
     ],

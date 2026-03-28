@@ -1,6 +1,6 @@
 import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
 import { CategoryCard } from "@/components/category-card";
-import { DashedLines } from "@/components/sheard";
+import { DashedLines } from "@/components/shared";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({

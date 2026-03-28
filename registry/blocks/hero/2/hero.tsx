@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_VERSION } from "@/config/site";
 import { LogoIcon } from "@/components/logo";
-import { GridPattern } from "./sheard";
+import { GridPattern } from "@/components/shared";
 import { FeaturedIcons } from "./featured-icons";
 
 export function Hero2() {

@@ -1,6 +1,6 @@
 import { Home } from "lucide-react";
 import Link from "next/link";
-import { BorderSeparator } from "@/components/sheard";
+import { BorderSeparator } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import {
   Empty,

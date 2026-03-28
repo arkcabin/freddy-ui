@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BlockBox } from "@/components/block";
-import { DashedLines } from "@/components/sheard";
+import { DashedLines } from "@/components/shared";
 import { constructMetadata } from "@/lib/metadata";
 import { capitalize, unslugify } from "@/lib/utils";
 import { getAllCategories, getBlocksByCategory } from "@/lib/utils/blocks-data";

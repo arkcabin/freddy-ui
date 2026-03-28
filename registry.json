@@ -222,7 +222,7 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/blocks/hero/2/sheard.tsx",
+          "path": "registry/blocks/hero/2/shared.tsx",
           "type": "registry:component"
         }
       ],
