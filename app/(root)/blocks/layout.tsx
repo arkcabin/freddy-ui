@@ -1,5 +1,5 @@
 import { SiteFooter } from "@/components/footer";
-import { SiteHeader } from "@/components/header";
+import { SiteHeader } from "@/components/header/header-1";
 import { cn } from "@/lib/utils";
 
 export default function AppLayout({ children }: LayoutProps<"/">) {
