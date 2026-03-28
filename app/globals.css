@@ -209,6 +209,10 @@
     @apply backdrop-blur-xl;
   }
 
+  .text-glow {
+    text-shadow: 0 0 15px var(--glow-color), 0 0 5px var(--glow-color);
+  }
+
   .neon-glow {
     box-shadow: 0 0 20px var(--glow-color);
   }

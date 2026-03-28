@@ -200,6 +200,44 @@
       "tier": "free"
     },
     {
+      "name": "hero-2",
+      "description": "Modern Hero with grid pattern and featured icons.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/hero/2/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/featured-icons.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/sheard.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": false,
+        "createdAt": "2026-03-28"
+      },
+      "categories": [
+        "hero"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "contact-1",
       "description": "Elegant contact page with office info, email, phone, and social links.",
       "files": [

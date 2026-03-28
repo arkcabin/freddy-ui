@@ -148,6 +148,38 @@ export const blocks: FreddyRegistryItem[] = [
     },
   },
   {
+    name: "hero-2",
+    type: "registry:block",
+    description: "Modern Hero with grid pattern and featured icons.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/hero/2/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/featured-icons.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/sheard.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: false,
+      createdAt: "2026-03-28",
+    },
+  },
+  {
     name: "contact-1",
     type: "registry:block",
     description:
