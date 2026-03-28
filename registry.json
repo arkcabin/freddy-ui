@@ -73,6 +73,31 @@
       "tier": "free"
     },
     {
+      "name": "announcement-1",
+      "description": "Animated announcement bar with call-to-action and close button.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/announcement/1/announcement.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "40px",
+        "pinnedUntil": "2026-04-15T00:00:00Z"
+      },
+      "categories": [
+        "announcement"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "contact-1",
       "description": "Elegant contact page with office info, email, phone, and social links.",
       "files": [

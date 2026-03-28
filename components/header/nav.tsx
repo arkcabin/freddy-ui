@@ -29,6 +29,7 @@ import {
   Star,
   ChevronRight,
   ArrowRight,
+  Megaphone,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +38,8 @@ const categories = getAllCategories();
 function getCategoryIcon(id: string, className?: string) {
   const iconClass = cn("size-5", className);
   switch (id) {
+    case "announcement":
+      return <Megaphone className={iconClass} />;
     case "auth":
       return <Lock className={iconClass} />;
     case "contact":

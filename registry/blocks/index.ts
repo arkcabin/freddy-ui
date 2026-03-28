@@ -48,6 +48,24 @@ export const blocks: RegistryItem[] = [
     categories: ["auth"],
   },
   {
+    name: "announcement-1",
+    type: "registry:block",
+    description: "Animated announcement bar with call-to-action and close button.",
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/1/announcement.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement"],
+    meta: {
+      height: "40px",
+      pinnedUntil: "2026-04-15T00:00:00Z",
+    },
+  },
+  {
     name: "contact-1",
     type: "registry:block",
     description:

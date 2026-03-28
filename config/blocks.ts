@@ -69,6 +69,29 @@ export const blocks: Block[] = [
     ]
   },
   {
+    "name": "announcement-1",
+    "category": "announcement",
+    "height": "40px",
+    "pinnedUntil": "2026-04-15T00:00:00Z",
+    "description": "Animated announcement bar with call-to-action and close button.",
+    "tier": "free",
+    "block_number": "1",
+    "files": [
+      {
+        "type": "page",
+        "name": "page.tsx",
+        "code": "import { Announcement } from \"@/components/announcement\";\nimport { DemoLayout } from \"@/components/demo-layout\";\n\nexport default function Page() {\n  return (\n    <div className=\"relative min-h-screen bg-background\">\n      <Announcement />\n      <div className=\"container mx-auto px-4 py-12\">\n        <DemoLayout />\n      </div>\n    </div>\n  );\n}",
+        "lang": "tsx"
+      },
+      {
+        "type": "component",
+        "name": "announcement.tsx",
+        "code": "\"use client\";\n\nimport * as React from \"react\";\nimport { X, ArrowRight } from \"lucide-react\";\nimport { motion, AnimatePresence } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\n\nexport const Announcement = () => {\n  const [isVisible, setIsVisible] = React.useState(true);\n\n  const handleClose = React.useCallback(() => {\n    setIsVisible(false);\n  }, []);\n\n  const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {\n    if (e.key === \"Enter\" || e.key === \" \") {\n      handleClose();\n    }\n  }, [handleClose]);\n\n  if (!isVisible) return null;\n\n  return (\n    <AnimatePresence>\n      {isVisible && (\n        <motion.div\n          initial={{ height: 0, opacity: 0 }}\n          animate={{ height: \"auto\", opacity: 1 }}\n          exit={{ height: 0, opacity: 0 }}\n          transition={{ duration: 0.3, ease: \"easeInOut\" }}\n          className=\"relative w-full overflow-hidden border-b border-border bg-foreground text-background\"\n        >\n          <div className=\"container mx-auto flex h-10 items-center justify-between px-4 sm:px-6\">\n            <div className=\"flex flex-1 items-center justify-center gap-x-3 text-center text-[13px] font-medium leading-none tracking-tight\">\n              <span className=\"hidden sm:inline-flex items-center rounded-full bg-background/20 px-2 py-0.5 text-[10px] uppercase tracking-wider text-background ring-1 ring-inset ring-background/30\">\n                New\n              </span>\n              <p className=\"flex items-center gap-1.5 opacity-90 transition-opacity hover:opacity-100\">\n                <span>Unlock premium components with Freddy UI Pro.</span>\n                <a\n                  href=\"#\"\n                  className=\"group inline-flex items-center font-bold text-primary-foreground hover:underline\"\n                >\n                  Get Started\n                  <ArrowRight className=\"ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5\" />\n                </a>\n              </p>\n            </div>\n            \n            <button\n              type=\"button\"\n              onClick={handleClose}\n              onKeyDown={handleKeyDown}\n              className=\"ml-auto inline-flex items-center justify-center rounded-md p-1 opacity-50 transition-all hover:bg-background/10 hover:opacity-100 focus:outline-hidden\"\n              aria-label=\"Close announcement\"\n            >\n              <X className=\"h-3.5 w-3.5\" />\n            </button>\n          </div>\n\n          {/* Decorative gradient blur */}\n          <div className=\"absolute top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 bg-radial from-background/20 to-transparent\" />\n        </motion.div>\n      )}\n    </AnimatePresence>\n  );\n}",
+        "lang": "tsx"
+      }
+    ]
+  },
+  {
     "name": "contact-1",
     "category": "contact",
     "height": "100vh",

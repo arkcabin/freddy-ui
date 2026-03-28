@@ -6,7 +6,7 @@ export const BLOCKS_DIR = "registry/blocks";
 export function getAllCategories(): Category[] {
   const categoryMap = new Map<string, number>();
   // New Category assign here
-  const newCategories = new Set<string>(["auth", "header"]);
+  const newCategories = new Set<string>(["auth", "header", "announcement"]);
   const now = Date.now();
 
   for (const block of blocks) {
