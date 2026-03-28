@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement-2",
+  "description": "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/announcement/2/marquee-header.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { \n  ChevronDown, \n  ArrowRight, \n  Sparkles, \n  Layout, \n  ShieldCheck, \n  Globe \n} from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport { Logo } from \"@/components/logo\";\n\nconst MARQUEE_ITEMS = [\n  { icon: Sparkles, text: \"Freddy UI Pro is now available with 50+ premium blocks\" },\n  { icon: Layout, text: \"New 'Announcement' category just dropped! Check it out\" },\n  { icon: ShieldCheck, text: \"Built with Shadcn UI, Tailwind CSS and Framer Motion\" },\n  { icon: Globe, text: \"Trusted by 5,000+ developers worldwide\" },\n];\n\nexport const MarqueeHeader = () => {\n  return (\n    <header className=\"w-full border-b border-border bg-background\">\n      {/* Marquee Bar */}\n      <div className=\"relative flex h-9 items-center overflow-hidden border-b border-border bg-muted/30\">\n        <div className=\"flex animate-marquee whitespace-nowrap py-2 [--duration:40s] [--gap:2rem]\">\n          {[...Array(4)].map((_, i) => (\n            <div key={i} className=\"flex shrink-0 items-center gap-8 px-4\">\n              {MARQUEE_ITEMS.map((item, idx) => (\n                <div key={idx} className=\"flex items-center gap-2 text-[12px] font-medium text-muted-foreground transition-colors hover:text-foreground\">\n                  <item.icon className=\"h-3.5 w-3.5 text-primary/60\" />\n                  <span>{item.text}</span>\n                  <ArrowRight className=\"h-3 w-3 opacity-30 group-hover:block hidden\" />\n                </div>\n              ))}\n            </div>\n          ))}\n        </div>\n        \n        {/* Fades for smooth entry/exit */}\n        <div className=\"pointer-events-none absolute inset-y-0 left-0 w-20 bg-linear-to-r from-background to-transparent z-10\" />\n        <div className=\"pointer-events-none absolute inset-y-0 right-0 w-20 bg-linear-to-l from-background to-transparent z-10\" />\n      </div>\n\n      {/* Main Navigation */}\n      <nav className=\"container flex h-16 items-center justify-between px-4 sm:px-6\">\n        {/* Logo */}\n        <div className=\"flex items-center gap-2 shrink-0\">\n          <Logo className=\"h-7\" />\n        </div>\n\n        {/* Centered Desktop Menu */}\n        <div className=\"hidden items-center gap-8 md:flex\">\n          <MenuLink label=\"Components\" hasDropdown />\n          <MenuLink label=\"Blocks\" hasDropdown />\n          <MenuLink label=\"Showcase\" />\n          <MenuLink label=\"Templates\" hasDropdown />\n          <MenuLink label=\"Docs\" />\n        </div>\n\n        {/* Right Actions */}\n        <div className=\"flex items-center gap-4 shrink-0\">\n          <button \n            type=\"button\"\n            className=\"hidden text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:block\"\n          >\n            Log In\n          </button>\n          <Button \n            className=\"h-10 rounded-xl px-6 font-bold shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]\"\n          >\n            Get Freddy UI\n          </Button>\n        </div>\n      </nav>\n    </header>\n  );\n};\n\ninterface MenuLinkProps {\n  label: string;\n  hasDropdown?: boolean;\n}\n\nconst MenuLink = ({ label, hasDropdown }: MenuLinkProps) => {\n  return (\n    <button\n      type=\"button\"\n      className=\"group flex items-center gap-1 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground\"\n    >\n      {label}\n      {hasDropdown && (\n        <ChevronDown className=\"h-4 w-4 transition-transform group-hover:rotate-180\" />\n      )}\n    </button>\n  );\n};\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "isPinned": true,
+    "createdAt": "2024-03-28",
+    "pinnedUntil": "2024-04-15T00:00:00Z"
+  },
+  "categories": [
+    "announcement"
+  ],
+  "type": "registry:block"
+}

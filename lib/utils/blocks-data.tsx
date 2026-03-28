@@ -5,28 +5,43 @@ import type { Block, Category } from "@/types";
 export const BLOCKS_DIR = "registry/blocks";
 export function getAllCategories(): Category[] {
   const categoryMap = new Map<string, number>();
-  // New Category assign here
-  const newCategories = new Set<string>(["auth", "header", "announcement"]);
+  const newCategories = new Set<string>();
   const now = Date.now();
+  const thirtyDaysAgo = now - 30 * 24 * 60 * 60 * 1000;
 
   for (const block of blocks) {
     const cat = block.category;
     categoryMap.set(cat, (categoryMap.get(cat) ?? 0) + 1);
 
-    if (block.pinnedUntil && new Date(block.pinnedUntil).getTime() > now) {
+    // Smart "New" Category Logic:
+    // 1. Manually pinned
+    // 2. Temporally pinned (until date)
+    // 3. Recently created (last 30 days)
+    const isBlockPinned = block.isPinned === true;
+    const isTemporallyPinned = block.pinnedUntil && new Date(block.pinnedUntil).getTime() > now;
+    const isRecent = block.createdAt && new Date(block.createdAt).getTime() > thirtyDaysAgo;
+
+    if (isBlockPinned || isTemporallyPinned || isRecent) {
       newCategories.add(cat);
     }
   }
 
-  const sortedEntries = Array.from(categoryMap.entries())
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .sort(
-      (a, b) =>
-        Number(newCategories.has(b[0])) -
-        Number(newCategories.has(a[0]))
-    );
+  // Sort blocks within categories (Smart Sorting)
+  blocks.sort((a, b) => {
+    // 1. Priority to pinned items
+    const aPinned = (a.isPinned === true) || (a.pinnedUntil && new Date(a.pinnedUntil).getTime() > now);
+    const bPinned = (b.isPinned === true) || (b.pinnedUntil && new Date(b.pinnedUntil).getTime() > now);
 
-  return sortedEntries.map(([id, count]) => ({
+    if (aPinned !== bPinned) return aPinned ? -1 : 1;
+
+    // 2. Then by creation date (newest first)
+    const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+
+    return bDate - aDate;
+  });
+
+  return Array.from(categoryMap.entries()).map(([id, count]) => ({
     id,
     name: capitalize(unslugify(id)) as string,
     isNew: newCategories.has(id),

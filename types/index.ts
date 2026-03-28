@@ -17,6 +17,8 @@ export type Block = {
   files: BlockFile[];
   height: string;
   tier?: "free" | "pro";
+  isPinned?: boolean;
+  createdAt?: string;
   pinnedUntil?: string;
 };
 

@@ -22,7 +22,10 @@
     }
   ],
   "meta": {
-    "height": "70vh"
+    "height": "400px",
+    "isPinned": true,
+    "createdAt": "2024-03-25",
+    "pinnedUntil": "2024-04-15T00:00:00Z"
   },
   "categories": [
     "header"

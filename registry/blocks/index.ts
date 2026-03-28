@@ -61,8 +61,28 @@ export const blocks: RegistryItem[] = [
     ],
     categories: ["announcement"],
     meta: {
-      height: "40px",
-      pinnedUntil: "2026-04-15T00:00:00Z",
+      isPinned: true,
+      createdAt: "2024-03-27",
+      pinnedUntil: "2026-08-15T00:00:00Z",
+    },
+  },
+  {
+    name: "announcement-2",
+    type: "registry:block",
+    description: "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/2/marquee-header.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement","header"],
+    meta: {
+      isPinned: true,
+      createdAt: "2024-03-28",
+      pinnedUntil: "2026-08-15T00:00:00Z",
     },
   },
   {
@@ -551,21 +571,20 @@ export const blocks: RegistryItem[] = [
   {
     name: "auth-10",
     type: "registry:block",
-    description: "Premium split sign-up with 2x2 grid OAuth and marketing benefits panel.",
+    description: "Modern split layout sign-up form with social authentication options.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
         path: "blocks/auth/10/signup-form.tsx",
         type: "registry:component",
       },
-      {
-        path: "@/components/logo.tsx",
-        type: "registry:component",
-      },
     ],
     categories: ["auth"],
     meta: {
-      pinnedUntil: "2026-04-15T00:00:00Z",
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-25",
+      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {
@@ -578,34 +597,32 @@ export const blocks: RegistryItem[] = [
         path: "blocks/auth/11/otp-form.tsx",
         type: "registry:component",
       },
-      {
-        path: "@/components/logo.tsx",
-        type: "registry:component",
-      },
     ],
     categories: ["auth"],
     meta: {
-      pinnedUntil: "2026-04-15T00:00:00Z",
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-26",
+      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {
     name: "auth-12",
     type: "registry:block",
-    description: "Three-step onboarding flow with vertical progress tracking.",
+    description: "Multi-step split layout onboarding form.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
         path: "blocks/auth/12/onboarding-form.tsx",
         type: "registry:component",
       },
-      {
-        path: "@/components/logo.tsx",
-        type: "registry:component",
-      },
     ],
     categories: ["auth"],
     meta: {
-      pinnedUntil: "2026-04-15T00:00:00Z",
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-27",
+      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {
@@ -714,7 +731,10 @@ export const blocks: RegistryItem[] = [
     ],
     categories: ["header"],
     meta: {
-      height: "70vh",
+      height: "400px",
+      isPinned: true,
+      createdAt: "2024-03-25",
+      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {

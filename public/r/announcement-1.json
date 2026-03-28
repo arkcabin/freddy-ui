@@ -16,8 +16,9 @@
     }
   ],
   "meta": {
-    "height": "40px",
-    "pinnedUntil": "2026-04-15T00:00:00Z"
+    "isPinned": true,
+    "createdAt": "2024-03-27",
+    "pinnedUntil": "2024-04-15T00:00:00Z"
   },
   "categories": [
     "announcement"

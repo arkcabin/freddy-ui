@@ -1,10 +1,10 @@
-import { Announcement } from "./announcement";
+import { MarqueeHeader } from "./marquee-header";
 import { DemoLayout } from "@/components/demo-layout";
 
 export default function Page() {
   return (
     <>
-      <Announcement />
+      <MarqueeHeader />
       <DemoLayout />
     </>
   );
