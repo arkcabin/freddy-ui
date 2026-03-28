@@ -855,6 +855,63 @@
       "tier": "free"
     },
     {
+      "name": "header-4",
+      "description": "Premium mega menu header with card-style items, vibrant gradients, and smooth motion animations.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header/4/header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-scroll.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "meta": {
+        "height": "70vh"
+      },
+      "categories": [
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "header-5",
+      "description": "Premium header with a 'Blocks' registry modal featuring a dual-panel layout and category grid.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header/5/header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-scroll.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "meta": {
+        "height": "80vh"
+      },
+      "categories": [
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "image-gallery-1",
       "description": "Masonry-style responsive gallery using random images with dynamic aspect ratios.",
       "dependencies": [

@@ -669,6 +669,50 @@ export const blocks: RegistryItem[] = [
     },
   },
   {
+    name: "header-4",
+    type: "registry:block",
+    description:
+      "Premium mega menu header with card-style items, vibrant gradients, and smooth motion animations.",
+    dependencies: ["motion"],
+    registryDependencies: ["button", "navigation-menu"],
+    files: [
+      {
+        path: "blocks/header/4/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/hooks/use-scroll.ts",
+        type: "registry:hook",
+      },
+    ],
+    categories: ["header"],
+    meta: {
+      height: "70vh",
+    },
+  },
+  {
+    name: "header-5",
+    type: "registry:block",
+    description:
+      "Premium header with a 'Blocks' registry modal featuring a dual-panel layout and category grid.",
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/header/5/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/hooks/use-scroll.ts",
+        type: "registry:hook",
+      },
+    ],
+    categories: ["header"],
+    meta: {
+      height: "80vh",
+    },
+  },
+  {
     name: "image-gallery-1",
     type: "registry:block",
     description:
