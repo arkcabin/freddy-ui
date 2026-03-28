@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { ArrowUpRight, Asterisk } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

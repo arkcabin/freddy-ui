@@ -34,10 +34,10 @@ export function AiWorkHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 flex h-12 items-center justify-between px-4",
+        "sticky top-0 z-50 flex h-16 items-center justify-between px-4 md:px-6 transition-all duration-300",
         activeScrolled
           ? "bg-transparent"
-          : "bg-background bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.08),transparent)]",
+          : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.08),transparent)]",
         !activeFullWidth && "rounded-t-2xl"
       )}
     >
@@ -57,7 +57,7 @@ export function AiWorkHeader({
               key={item}
               variant="ghost"
               size="sm"
-              className="rounded-full px-4 text-[13px] font-medium transition-all hover:bg-white/5"
+              className="rounded-full px-5 h-9 text-[14px] font-medium transition-all hover:bg-white/5"
             >
               {item}
             </Button>
@@ -68,7 +68,7 @@ export function AiWorkHeader({
         <div className="flex items-center gap-4">
           <Button
             variant="secondary"
-            className="rounded-full font-bold transition-all hover:scale-105 active:scale-95 px-6"
+            className="h-10 rounded-full font-bold transition-all hover:scale-105 active:scale-95 px-6 text-[14px]"
           >
             Request a Demo
           </Button>

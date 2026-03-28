@@ -111,37 +111,37 @@ export const blocks: FreddyRegistryItem[] = [
     },
   },
   {
-    name: "announcement-4",
+    name: "hero-1",
     type: "registry:block",
-    description: "Ultra-dark, minimalist AI-Work style header with pill navigation and status bar.",
+    description: "Freddy style by Arkcabin.",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "badge", "card", "avatar"],
     files: [
       {
-        path: "blocks/announcement/4/page.tsx",
+        path: "blocks/hero/1/page.tsx",
         type: "registry:component",
       },
       {
-        path: "blocks/announcement/4/announcement.tsx",
+        path: "blocks/hero/1/announcement.tsx",
         type: "registry:component",
       },
       {
-        path: "blocks/announcement/4/header.tsx",
+        path: "blocks/hero/1/header.tsx",
         type: "registry:component",
       },
       {
-        path: "blocks/announcement/4/hero.tsx",
+        path: "blocks/hero/1/hero.tsx",
         type: "registry:component",
       },
       {
-        path: "blocks/announcement/4/wrapper.tsx",
+        path: "blocks/hero/1/wrapper.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["announcement", "header"],
+    categories: ["hero", "header"],
     tier: "pro",
     meta: {
-      height: "80vh",
+      height: "100vh",
       isPinned: true,
       createdAt: "2026-03-28",
       activeForDays: 120,
