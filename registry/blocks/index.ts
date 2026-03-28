@@ -88,7 +88,7 @@ export const blocks: FreddyRegistryItem[] = [
             height: "50vh",
 
       isPinned: true,
-      createdAt: "2024-03-28",
+      createdAt: "2026-03-28",
     },
   },
   {
@@ -107,7 +107,44 @@ export const blocks: FreddyRegistryItem[] = [
     meta: {
       height: "50vh",
       isPinned: true,
-      createdAt: "2024-03-29",
+      createdAt: "2026-03-28",
+    },
+  },
+  {
+    name: "announcement-4",
+    type: "registry:block",
+    description: "Ultra-dark, minimalist AI-Work style header with pill navigation and status bar.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/4/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/announcement/4/announcement.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/announcement/4/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/announcement/4/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/announcement/4/wrapper.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement", "header"],
+    tier: "pro",
+    meta: {
+      height: "80vh",
+      isPinned: true,
+      createdAt: "2026-03-28",
+      activeForDays: 120,
     },
   },
   {
