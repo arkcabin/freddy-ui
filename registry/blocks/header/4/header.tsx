@@ -83,7 +83,7 @@ export function Header() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    className="w-[840px] p-8 grid grid-cols-[1fr_1.2fr] gap-8 bg-background border rounded-2xl shadow-2xl overflow-hidden"
+                    className="w-[calc(100vw-2rem)] md:w-[840px] p-6 md:p-8 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 md:gap-8 bg-background border rounded-2xl shadow-2xl overflow-y-auto max-h-[calc(100vh-6rem)]"
                   >
                     <div className="space-y-8">
                       <div>
@@ -123,16 +123,16 @@ export function Header() {
                     </div>
                     
                     {/* Footer */}
-                    <div className="col-span-2 mt-4 pt-6 border-t border-border/50 flex items-center justify-between">
+                    <div className="md:col-span-2 mt-4 pt-6 border-t border-border/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <p className="text-sm text-muted-foreground">
                         Interested?{" "}
                         <a href="#" className="font-bold text-foreground hover:text-primary transition-colors">
                           Schedule a demo
                         </a>
                       </p>
-                      <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
                          <a href="#" className="hover:text-foreground transition-colors">Documentation</a>
-                         <span className="size-1 rounded-full bg-border" />
+                         <span className="size-1 rounded-full bg-border hidden md:block" />
                          <a href="#" className="hover:text-foreground transition-colors">API Reference</a>
                       </div>
                     </div>
@@ -145,7 +145,7 @@ export function Header() {
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="md:translate-y-2">
-                  <div className="w-80 p-4">
+                  <div className="w-[calc(100vw-2rem)] md:w-80 p-4">
                     <ul className="grid gap-3">
                       {serviceLinks.map((link, idx) => (
                         <ListItem key={idx} {...link}>
@@ -162,7 +162,7 @@ export function Header() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="md:left-auto md:right-0 md:translate-y-2">
-                  <div className="w-80 p-4">
+                  <div className="w-[calc(100vw-2rem)] md:w-80 p-4">
                     <ul className="grid gap-3">
                       {resourceLinks.map((link, idx) => (
                         <ListItem key={idx} {...link}>
