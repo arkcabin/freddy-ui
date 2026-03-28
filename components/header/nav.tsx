@@ -149,9 +149,17 @@ export function SiteNav() {
                           </div>
                         </div>
                         <div className="flex flex-col min-w-0">
-                          <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight mb-0.5">
-                            {cat.name}
-                          </span>
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                              {cat.name}
+                            </span>
+                            {cat.isNew && (
+                              <div className="flex items-center gap-1.5">
+                                <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse shrink-0" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-primary leading-none">New</span>
+                              </div>
+                            )}
+                          </div>
                           <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/40 leading-none group-hover:text-primary/50 transition-colors">
                             {cat.blocksCount} Blocks
                           </span>

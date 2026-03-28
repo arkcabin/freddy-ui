@@ -546,6 +546,9 @@ export const blocks: RegistryItem[] = [
       },
     ],
     categories: ["auth"],
+    meta: {
+      pinnedUntil: "2026-04-15T00:00:00Z",
+    },
   },
   {
     name: "auth-11",
@@ -563,6 +566,9 @@ export const blocks: RegistryItem[] = [
       },
     ],
     categories: ["auth"],
+    meta: {
+      pinnedUntil: "2026-04-15T00:00:00Z",
+    },
   },
   {
     name: "auth-12",
@@ -580,6 +586,9 @@ export const blocks: RegistryItem[] = [
       },
     ],
     categories: ["auth"],
+    meta: {
+      pinnedUntil: "2026-04-15T00:00:00Z",
+    },
   },
   {
     name: "header-1",
@@ -710,6 +719,7 @@ export const blocks: RegistryItem[] = [
     categories: ["header"],
     meta: {
       height: "80vh",
+      pinnedUntil: "2026-04-15T00:00:00Z",
     },
   },
   {

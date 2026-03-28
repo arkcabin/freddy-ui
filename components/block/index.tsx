@@ -15,6 +15,8 @@ import { OpenInV0Button } from "./open-in-v0";
 import { RefreshButton } from "./refresh-button";
 import { TogglePreviewMode } from "./toggle-preview-mode";
 
+import { Badge } from "@/components/ui/badge";
+
 type BlockPreviewProps = {
   block: Block;
 };
@@ -25,8 +27,13 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const [registryUrl, setRegistryUrl] = React.useState<string>("");
   const [isLoaded, setIsLoaded] = React.useState(false);
 
-  const { name, files, height } = block;
+  const { name, files, height, pinnedUntil } = block;
   const previewLink = `/view/${name}`;
+
+  const isPinned = React.useMemo(() => {
+    if (!pinnedUntil) return false;
+    return new Date(pinnedUntil).getTime() > Date.now();
+  }, [pinnedUntil]);
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
@@ -57,6 +64,11 @@ export function BlockBox({ block }: BlockPreviewProps) {
             previewMode={previewMode}
             setPreviewMode={setPreviewMode}
           />
+          {isPinned && (
+            <Badge variant="secondary" className="h-5 px-1.5 text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 animate-pulse">
+              New
+            </Badge>
+          )}
           <div className="h-5 border-r border-dashed" />
           <RefreshButton
             handleRefresh={onRefreshIframe}

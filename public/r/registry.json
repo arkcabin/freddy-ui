@@ -701,6 +701,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "pinnedUntil": "2026-04-15T00:00:00Z"
+      },
       "categories": [
         "auth"
       ],
@@ -724,6 +727,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "pinnedUntil": "2026-04-15T00:00:00Z"
+      },
       "categories": [
         "auth"
       ],
@@ -748,6 +754,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "pinnedUntil": "2026-04-15T00:00:00Z"
+      },
       "categories": [
         "auth"
       ],
@@ -903,7 +912,8 @@
         }
       ],
       "meta": {
-        "height": "80vh"
+        "height": "80vh",
+        "pinnedUntil": "2026-04-15T00:00:00Z"
       },
       "categories": [
         "header"

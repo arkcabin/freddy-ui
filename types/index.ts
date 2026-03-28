@@ -17,6 +17,7 @@ export type Block = {
   files: BlockFile[];
   height: string;
   tier?: "free" | "pro";
+  pinnedUntil?: string;
 };
 
 export type Category = {
