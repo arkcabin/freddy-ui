@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { AiWorkHeader } from "./header/header-2";
+import { MainHeader } from "./header/header-2";
 
 /**
  * AI-Work Content Wrapper
@@ -38,13 +38,13 @@ export function HomePageWrapper({
 
   return (
     <div className={cn(
-      "relative z-20 bg-background transition-all duration-300 shadow-[0_-20px_80px_rgba(0,0,0,0.1)]",
+      "relative z-20 bg-background transition-all duration-300",
       activeFullWidth
         ? "mx-0 rounded-none border-none"
-        : "mx-2 rounded-t-2xl border-t border-l border-r border-border/50"
+        : "mx-2 rounded-t-2xl"
     )}>
       {React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === AiWorkHeader) {
+        if (React.isValidElement(child) && child.type === MainHeader) {
           // Pass states only after mounting to prevent mismatch
           return React.cloneElement(child as React.ReactElement<any>, {
             isScrolled: mounted ? isScrolled : false,

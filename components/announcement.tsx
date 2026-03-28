@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
  * AI-Work Announcement Bar
  * Precision-engineered thin bar for top-level alerts.
  */
-export function AiWorkAnnouncement({
+export function AnnouncementBar({
   isVisible,
   onClose
 }: {

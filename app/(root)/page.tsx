@@ -4,16 +4,17 @@ import { GridPattern, BorderSeparator } from "@/components/shared";
 import { Tweets } from "@/components/tweets";
 import { Hero } from "@/components/hero";
 import { Features } from "@/components/features";
+import { Showcase } from "@/components/showcase";
 import { CategoryCard } from "@/components/category-card";
 import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
 import { SectionHeader } from "@/components/section-header";
 import { cn } from "@/lib/utils";
-import { AiWorkAnnouncement } from "@/components/announcement";
+import { AnnouncementBar } from "@/components/announcement";
 import { HomePageWrapper } from "@/components/wrapper";
 import { useState } from "react";
-import { AiWorkHeader } from "@/components/header/header-2";
-import { AiWorkHero } from "@/registry/blocks/hero/1/hero";
+import { MainHeader } from "@/components/header/header-2";
 import { SiteFooter } from "@/components/footer";
+import { SectionGrid } from "@/components/section-grid";
 
 export default function Page() {
   const categories = getAllCategories();
@@ -24,31 +25,29 @@ export default function Page() {
     <main >
 
       <div className="bg-accent">
-
         {/* 1. Announcement Bar */}
-        <AiWorkAnnouncement
+        <AnnouncementBar
           isVisible={isAnnouncementVisible}
           onClose={() => setIsAnnouncementVisible(false)}
         />
 
         <HomePageWrapper isAnnouncementVisible={isAnnouncementVisible}>
-
-          {/* 3. Navigation Header */}
-          <AiWorkHeader isScrolled={false} isFullWidth={false} />
+          {/* Navigation Header - Wrapped in SectionGrid for alignment, markers disabled */}
+          <SectionGrid 
+            showTopMarkers={false} 
+            showBottomMarkers={false}
+            className="border-none bg-transparent"
+            containerClassName="py-0"
+          >
+            <MainHeader isScrolled={false} isFullWidth={false} />
+          </SectionGrid>
 
           {/* 4. Hero Landing Section */}
-          <AiWorkHero />
-
+          <Hero />
         </HomePageWrapper>
       </div>
 
-      <div
-        className={cn(
-          "container relative grow",
-          "before:-inset-y-20 before:-left-px before:absolute before:z-1 before:border-border before:border-dashed xl:before:border-l",
-          "after:-inset-y-20 after:-right-px after:absolute after:z-1 after:border-border after:border-dashed xl:after:border-r"
-        )}
-      >
+      <div className="relative grow">
         <div className="relative min-h-screen overflow-hidden">
           {/* Background Grid Pattern */}
           <GridPattern
@@ -58,22 +57,16 @@ export default function Page() {
             strokeDasharray="2 2"
           />
 
-          {/* Hero Section */}
-          {/* <Hero /> */}
-
-          {/* Features Section */}
-          <BorderSeparator className="opacity-50" />
-          <div className="relative z-10 cpx py-16 lg:py-24">
-            <SectionHeader
-              title="Essential Core Patterns"
-              subtitle="Expertly designed components and reusable solutions to accelerate your professional workflow."
-            />
-            <Features totalBlocks={getTotalBlocksCount()} />
-          </div>
+          {/* Showcase Section */}
+          <Showcase />
 
           {/* Categories Grid Section */}
-          <BorderSeparator className="opacity-50" />
-          <div className="relative z-10 cpx py-16 lg:py-24">
+          <SectionGrid
+            markerType="plus"
+            showTopMarkers={false}
+            showBottomMarkers={true}
+            className="py-16 lg:py-24"
+          >
             <SectionHeader
               title="Browse Premium Blocks"
               subtitle="Explore our library of 13+ categories and find the perfect beautifully crafted blocks for your project."
@@ -107,23 +100,22 @@ export default function Page() {
                 </svg>
               </Link>
             </div>
-          </div>
-
-          <BorderSeparator className="opacity-50" />
+          </SectionGrid>
 
           {/* Social Proof / Tweets */}
-          <div className="relative z-10 py-16 lg:py-24">
-            <div className="cpx">
-              <SectionHeader
-                title="Wall of Love"
-                subtitle="Hear from our community about their hands-on experience and feedback."
-              />
-            </div>
+          <SectionGrid
+            markerType="plus"
+            showTopMarkers={false}
+            showBottomMarkers={true}
+            className="py-16 lg:py-24 border-b border-dashed border-border/20"
+          >
+            <SectionHeader
+              title="Wall of Love"
+              subtitle="Hear from our community about their hands-on experience and feedback."
+            />
             <Tweets />
-          </div>
+          </SectionGrid>
         </div>
-        <SiteFooter />
-
       </div>
     </main>
 

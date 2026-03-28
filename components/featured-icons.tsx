@@ -36,18 +36,18 @@ export function FeaturedIcons({ className }: { className?: string }) {
         <div
           key={i}
           className={cn(
-            "relative flex items-center justify-center border border-border shadow-xl transition-all duration-300",
+            "relative flex items-center justify-center border border-white/40 dark:border-white/10 transition-all duration-500",
             item.isCenter
-              ? "size-24 sm:size-28 z-20 shadow-black/30 dark:shadow-white/20 rounded-[32px] bg-foreground text-background"
-              : "size-16 sm:size-20 rounded-[20px] bg-card text-muted-foreground"
+              ? "size-24 sm:size-28 z-20 rounded-[32px] bg-foreground text-background shadow-[0_12px_44px_rgba(0,0,0,0.18),0_4px_12px_rgba(0,0,0,0.12),inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_22px_70px_rgba(255,255,255,0.08),scale(1.1)]"
+              : "size-16 sm:size-20 rounded-[20px] bg-white/90 dark:bg-card/90 text-muted-foreground backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,1)]"
           )}
           style={{
             zIndex: item.zIndex,
-            transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? 'scale(0.9)' : ''}`
+            transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? 'scale(1.05)' : 'scale(1)'}`
           }}
         >
           <item.icon
-            className={cn(item.isCenter ? "size-8 sm:size-10" : "size-5 sm:size-6")}
+            className={cn(item.isCenter ? "size-8 sm:size-10 text-white" : "size-5 sm:size-6")}
             strokeWidth={item.isCenter ? 2.5 : 2}
           />
         </div>

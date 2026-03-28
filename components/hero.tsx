@@ -1,69 +1,113 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME, SITE_VERSION } from "@/config/site";
+import { SITE_VERSION } from "@/config/site";
 import { LogoIcon } from "@/components/logo";
-import { GridPattern } from "@/components/shared";
+import { ShadcnIcon } from "@/components/icons";
 import { FeaturedIcons } from "./featured-icons";
+import { SectionGrid } from "./section-grid";
+import { motion } from "motion/react";
 
+/**
+ * Hero component for the Freddy UI landing page.
+ * Uses the SectionGrid HOC for the "Boxed" architectural layout.
+ */
 export function Hero() {
-
   return (
-    <div className="relative isolate flex flex-col items-center justify-center pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 -z-10 h-full w-full">
-        <GridPattern className="opacity-10" />
+    <SectionGrid
+      markerType="plus"
+      markerOffset="top-32"
+      className="bg-background min-h-[calc(100vh-3rem)] flex flex-col"
+      containerClassName="flex flex-1 flex-col justify-center py-20 md:py-32"
+    >
+      {/* Subtle background glow */}
+      <div className="absolute inset-0 z-[-1] pointer-events-none">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.1)_0%,transparent_50%)]" />
       </div>
 
-      {/* Background Glow */}
-      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-primary/20 to-primary/5 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        <div className="mx-auto mb-8 flex max-w-fit items-center gap-3 rounded-full border border-border bg-muted/50 py-1.5 pl-3 pr-4 text-[11px] font-medium backdrop-blur-md">
-          <div className="flex items-center gap-2">
-            <LogoIcon className="size-3.5" />
-            <span className="text-foreground font-semibold">{SITE_NAME}</span>
-          </div>
-          <span className="h-3 w-px bg-border" />
-          <span className="text-muted-foreground">Introducing V-{SITE_VERSION}</span>
-          <span className="h-3 w-px bg-border" />
-          <Link href="/changelog" className="flex items-center gap-1 text-muted-foreground/50 transition-colors hover:text-foreground">
-            View Changelog
-            <ChevronRight className="size-3" />
+      {/* Content wrapper */}
+      <div className="relative z-10 px-6 md:px-10">
+        {/* Badge */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground/80 backdrop-blur-md"
+        >
+          <LogoIcon className="size-3 opacity-60" />
+          <span>Introducing V-{SITE_VERSION}</span>
+          <span className="h-2 w-px bg-border/50 mx-1" />
+          <Link
+            href="/changelog"
+            className="transition-colors hover:text-foreground"
+          >
+            Changelog
           </Link>
-        </div>
+        </motion.div>
 
-        <h1 className="relative font-heading text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl">
-          Beautiful ✨ <span className="font-extrabold text-primary">shadcn/ui</span> Blocks <br />
-          for the <span className="font-extrabold text-glow">Modern Developer.</span>
-        </h1>
+        {/* Headline */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-6 max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-none tracking-tightest text-foreground"
+        >
+          Beautiful <ShadcnIcon className="inline size-[0.9em] translate-y-[-0.05em] mr-1" /> <span className="text-muted-foreground/40 font-medium">shadcn/ui</span> Blocks <br />
+          for <span className="italic font-semibold text-primary">Busy & Smart devs.</span>
+        </motion.h1>
 
-        <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Save hours of design time with clean, ready-to-use shadcn blocks <br className="hidden sm:block" />
+        {/* Description */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mb-10 max-w-2xl text-[16px] leading-[1.6] text-muted-foreground/70 font-medium tracking-tight"
+        >
+          Save hours of design time with clean, ready-to-use shadcn blocks
           that just work — modern, responsive, and built for speed.
-        </p>
+          Focus on your product, not on building every section from scratch.
+        </motion.p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="sm" variant="secondary" className="h-9 min-w-[140px] rounded-full px-6 text-xs font-bold shadow-md transition-all active:scale-95">
-            <Link href="/blocks">
-              Explore
-            </Link>
+        {/* CTAs */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex flex-wrap items-center gap-3"
+        >
+          <Button
+            size="hero"
+            rounded="full"
+            className="shadow-lg shadow-primary/5 transition-all hover:opacity-90 active:scale-95"
+          >
+            Explore
+            <ArrowRight className="ml-2 h-3.5 w-3.5" />
           </Button>
-          <Button asChild size="sm" className="h-9 min-w-[140px] rounded-full bg-foreground px-6 text-xs font-bold text-background shadow-md transition-all hover:opacity-90 active:scale-95">
-            <Link href="/get-access">
-              Get full Access
-            </Link>
+          <Button
+            variant="ghost"
+            size="hero"
+            rounded="full"
+            className="text-muted-foreground/60 hover:text-foreground transition-all"
+          >
+            Get full Access
           </Button>
-        </div>
+        </motion.div>
+
+        {/* Trust line */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-8 text-[12px] text-muted-foreground/60"
+        >
+          Trusted by IT teams at Figma, Linear, and 40+ companies.
+        </motion.p>
       </div>
-      <FeaturedIcons />
 
-      {/* Background Decorative Beam */}
-      <div className="beam-effect opacity-50" />
-    </div>
+      <FeaturedIcons />
+    </SectionGrid>
   );
 }

@@ -15,7 +15,6 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
       >
         {children}
       </main>
-      <SiteFooter />
     </div>
   );
 }

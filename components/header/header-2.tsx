@@ -11,7 +11,7 @@ import { Logo } from "@/components/logo";
  * AI-Work Header
  * Sticky, minimalist navigation with glassmorphism and theme toggle.
  */
-export function AiWorkHeader({
+export function MainHeader({
     isScrolled,
     isFullWidth
 }: {
