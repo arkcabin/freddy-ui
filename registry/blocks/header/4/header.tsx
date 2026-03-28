@@ -144,7 +144,7 @@ export function Header() {
                 <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors">
                   Services
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="md:translate-y-2">
                   <div className="w-80 p-4">
                     <ul className="grid gap-3">
                       {serviceLinks.map((link, idx) => (
@@ -161,7 +161,7 @@ export function Header() {
                 <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors">
                   Resources
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="md:left-auto md:right-0 md:translate-y-2">
                   <div className="w-80 p-4">
                     <ul className="grid gap-3">
                       {resourceLinks.map((link, idx) => (

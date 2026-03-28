@@ -11,6 +11,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { getAllCategories } from "@/lib/utils/blocks-data";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   AlertTriangle,
   Cloud,
@@ -25,49 +27,51 @@ import {
   MessageSquare,
   MousePointer2,
   Star,
+  ChevronRight,
+  ArrowRight,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const categories = getAllCategories();
 
-function getCategoryIcon(id: string) {
+function getCategoryIcon(id: string, className?: string) {
+  const iconClass = cn("size-5", className);
   switch (id) {
     case "auth":
-      return <Lock className="size-4" />;
+      return <Lock className={iconClass} />;
     case "contact":
-      return <Mail className="size-4" />;
+      return <Mail className={iconClass} />;
     case "cta":
-      return <MousePointer2 className="size-4" />;
+      return <MousePointer2 className={iconClass} />;
     case "faqs":
-      return <HelpCircle className="size-4" />;
+      return <HelpCircle className={iconClass} />;
     case "feature":
-      return <Star className="size-4" />;
+      return <Star className={iconClass} />;
     case "footer":
-      return <Layout className="size-4" />;
+      return <Layout className={iconClass} />;
     case "form":
-      return <FileText className="size-4" />;
+      return <FileText className={iconClass} />;
     case "header":
-      return <Menu className="size-4" />;
+      return <Menu className={iconClass} />;
     case "image-gallery":
-      return <ImageIcon className="size-4" />;
+      return <ImageIcon className={iconClass} />;
     case "logo-cloud":
-      return <Cloud className="size-4" />;
+      return <Cloud className={iconClass} />;
     case "not-found":
-      return <AlertTriangle className="size-4" />;
+      return <AlertTriangle className={iconClass} />;
     case "pricing":
-      return <CreditCard className="size-4" />;
+      return <CreditCard className={iconClass} />;
     case "testimonials":
-      return <MessageSquare className="size-4" />;
+      return <MessageSquare className={iconClass} />;
     default:
-      return <Layout className="size-4" />;
+      return <Layout className={iconClass} />;
   }
 }
 
-
-
 export function SiteNav() {
   return (
-    <NavigationMenu 
-      className="hidden md:flex" 
+    <NavigationMenu
+      className="hidden md:flex"
       viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
     >
       <NavigationMenuList>
@@ -79,76 +83,80 @@ export function SiteNav() {
             Blocks
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="flex w-[850px] overflow-hidden rounded-xl border border-border/50 bg-card/90 text-card-foreground shadow-2xl backdrop-blur-xl">
+            <div className="flex w-[800px] overflow-hidden rounded-2xl border border-border/50 bg-card/95 text-card-foreground shadow-2xl backdrop-blur-xl">
               {/* Left Highlight Section */}
-              <div className="flex w-1/3 flex-col justify-between bg-muted/30 p-8 border-r border-border/40">
+              <div className="flex w-[270px] shrink-0 flex-col justify-between bg-muted/40 p-6 border-r border-border/40">
                 <div>
-                  <div className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary mb-4">
-                    Registry
-                  </div>
-                  <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                  <Badge variant="secondary" className="mb-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border-none bg-secondary/80 text-secondary-foreground shadow-sm">
+                    Blocks
+                  </Badge>
+                  <h3 className="text-xl font-bold tracking-tight text-foreground">
                     Modern Blocks
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    A curated collection of high-fidelity components built with Tailwind CSS and Radix UI. Perfectly crafted for your next big idea.
+                  <p className="mt-2 text-[12.5px] text-muted-foreground/60 leading-relaxed font-normal max-w-[200px]">
+                    Elite UI components, meticulously crafted for modern web experiences.
                   </p>
                 </div>
-                
-                <div className="mt-auto space-y-4">
-                  <div className="group relative overflow-hidden rounded-xl border bg-background/50 p-4 shadow-sm transition-all hover:shadow-md">
-                    <div className="absolute -right-2 -top-2 h-12 w-12 rounded-full bg-primary/5 blur-2xl transition-all group-hover:bg-primary/10" />
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary shadow-inner">
-                        <Star className="h-6 w-6" />
+
+                <div className="mt-8 space-y-3">
+                  <div className="group relative overflow-hidden rounded-xl border border-border/40 bg-background/50 p-3 shadow-sm transition-all hover:shadow-md">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-foreground shadow-inner">
+                        <Star className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-muted-foreground/70">
                           FLASH UPDATE
                         </p>
                         <p className="text-sm font-bold">New Auth Blocks</p>
                       </div>
                     </div>
                   </div>
-                  
-                  <Link
-                    href="/blocks"
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    Explore Library
-                    <MousePointer2 className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
+
+                  <Button asChild variant="default" className="w-full rounded-xl h-11 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99] group/btn">
+                    <Link href="/blocks">
+                      Explore Library
+                      <MousePointer2 className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
+                    </Link>
+                  </Button>
                 </div>
               </div>
 
-              {/* Main Categories Grid - 3 Columns with Single-Row Items */}
-              <div className="w-2/3 p-8">
-                <div className="mb-6 flex items-center justify-between px-1">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/50">
-                    Component Categories
+              {/* Main Categories Grid - 2 Columns with Side-by-Side Items */}
+              <div className="flex-1 p-6">
+                <div className="mb-4 flex items-center justify-between px-1">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
+                    Components
                   </span>
-                  <Link 
-                    href="/blocks" 
-                    className="text-xs font-bold text-primary hover:text-primary/80 transition-colors"
+                  <Link
+                    href="/blocks"
+                    className="group flex items-center gap-1 text-[11px] font-bold text-primary hover:underline transition-all"
                   >
-                    View counts
+                    View all
+                    <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
-                <div className="grid grid-cols-3 gap-2">
-                  {categories.map((cat) => (
+                <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+                  {categories.slice(0, 10).map((cat) => (
                     <NavigationMenuLink asChild key={cat.id}>
                       <Link
                         href={`/blocks/${cat.id}`}
-                        className="group flex items-center gap-3 rounded-lg p-2 transition-all hover:bg-muted/50 hover:shadow-sm border border-transparent hover:border-border/20"
+                        className="group flex flex-row items-center gap-3.5 p-3 rounded-xl transition-all duration-300 hover:bg-muted/50"
                       >
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-secondary/40 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">
-                          {getCategoryIcon(cat.id)}
+                        <div className="flex size-11 grow-0 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-background/5 transition-all group-hover:border-primary/50 group-hover:bg-primary/10 group-hover:shadow-inner">
+                          <div className="transition-transform group-hover:scale-110 duration-300 text-muted-foreground group-hover:text-primary">
+                            {getCategoryIcon(cat.id, "size-5")}
+                          </div>
                         </div>
-                        <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground truncate transition-colors flex-1">
-                          {cat.name}
-                        </span>
-                        <span className="text-[10px] font-mono text-muted-foreground/30 transition-colors group-hover:text-muted-foreground/50 shrink-0">
-                          {cat.blocksCount}
-                        </span>
+                        <div className="flex flex-col min-w-0">
+                          <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight mb-0.5">
+                            {cat.name}
+                          </span>
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/40 leading-none group-hover:text-primary/50 transition-colors">
+                            {cat.blocksCount} Blocks
+                          </span>
+                        </div>
+                        <ChevronRight className="size-3.5 text-muted-foreground/30 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-auto shrink-0" />
                       </Link>
                     </NavigationMenuLink>
                   ))}
