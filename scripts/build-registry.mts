@@ -15,7 +15,6 @@ async function buildBlocksData() {
         name: item.name,
         category: cat,
         height: item.meta?.height || "100vh",
-        pinnedUntil: (item.meta as any)?.pinnedUntil || null,
         description: item.description ?? "",
         tier: (item as any).tier ?? "free",
         block_number: item.name.split("-").pop(),

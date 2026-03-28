@@ -88,9 +88,9 @@
         }
       ],
       "meta": {
+        "height": "50vh",
         "isPinned": true,
-        "createdAt": "2024-03-27",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-27"
       },
       "categories": [
         "announcement"
@@ -114,12 +114,40 @@
         }
       ],
       "meta": {
+        "height": "50vh",
         "isPinned": true,
-        "createdAt": "2024-03-28",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-28"
       },
       "categories": [
-        "announcement"
+        "announcement",
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "announcement-3",
+      "description": "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/announcement/3/daytona-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2024-03-29"
+      },
+      "categories": [
+        "announcement",
+        "header"
       ],
       "type": "registry:block",
       "tier": "free"
@@ -752,8 +780,7 @@
       "meta": {
         "height": "800px",
         "isPinned": true,
-        "createdAt": "2024-03-25",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-27"
       },
       "categories": [
         "auth"
@@ -777,8 +804,7 @@
       "meta": {
         "height": "800px",
         "isPinned": true,
-        "createdAt": "2024-03-26",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-26"
       },
       "categories": [
         "auth"
@@ -803,8 +829,7 @@
       "meta": {
         "height": "800px",
         "isPinned": true,
-        "createdAt": "2024-03-27",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-27"
       },
       "categories": [
         "auth"
@@ -837,7 +862,9 @@
         }
       ],
       "meta": {
-        "height": "50vh"
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2024-03-28"
       },
       "categories": [
         "header"
@@ -935,8 +962,7 @@
       "meta": {
         "height": "400px",
         "isPinned": true,
-        "createdAt": "2024-03-25",
-        "pinnedUntil": "2024-04-15T00:00:00Z"
+        "createdAt": "2024-03-25"
       },
       "categories": [
         "header"

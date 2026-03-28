@@ -18,8 +18,8 @@ export type Block = {
   height: string;
   tier?: "free" | "pro";
   isPinned?: boolean;
+  activeForDays?: number;
   createdAt?: string;
-  pinnedUntil?: string;
 };
 
 export type Category = {

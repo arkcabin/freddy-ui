@@ -1,11 +1,15 @@
 import type { RegistryItem } from "shadcn/schema";
 
-/**
- * Freddy UI Blocks Registry
- * To mark a block as Pro, add `tier: "pro"` to its object.
- * By default, all blocks are "free".
- */
-export const blocks: RegistryItem[] = [
+// Extend RegistryItem to support 'tier' and custom metadata
+type FreddyRegistryItem = RegistryItem & { 
+  tier?: "free" | "pro";
+  meta?: RegistryItem["meta"] & {
+    activeForDays?: number;
+    createdAt?: string;
+  };
+};
+
+export const blocks: FreddyRegistryItem[] = [
   {
     name: "auth-1",
     type: "registry:block",
@@ -61,9 +65,10 @@ export const blocks: RegistryItem[] = [
     ],
     categories: ["announcement"],
     meta: {
+            height: "50vh",
+
       isPinned: true,
       createdAt: "2024-03-27",
-      pinnedUntil: "2026-08-15T00:00:00Z",
     },
   },
   {
@@ -80,9 +85,29 @@ export const blocks: RegistryItem[] = [
     ],
     categories: ["announcement","header"],
     meta: {
+            height: "50vh",
+
       isPinned: true,
       createdAt: "2024-03-28",
-      pinnedUntil: "2026-08-15T00:00:00Z",
+    },
+  },
+  {
+    name: "announcement-3",
+    type: "registry:block",
+    description: "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/3/daytona-header.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement", "header"],
+    meta: {
+      height: "50vh",
+      isPinned: true,
+      createdAt: "2024-03-29",
     },
   },
   {
@@ -583,8 +608,7 @@ export const blocks: RegistryItem[] = [
     meta: {
       height: "800px",
       isPinned: true,
-      createdAt: "2024-03-25",
-      pinnedUntil: "2024-04-15T00:00:00Z",
+      createdAt: "2024-03-27",
     },
   },
   {
@@ -603,7 +627,6 @@ export const blocks: RegistryItem[] = [
       height: "800px",
       isPinned: true,
       createdAt: "2024-03-26",
-      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {
@@ -622,7 +645,6 @@ export const blocks: RegistryItem[] = [
       height: "800px",
       isPinned: true,
       createdAt: "2024-03-27",
-      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {
@@ -652,6 +674,8 @@ export const blocks: RegistryItem[] = [
     categories: ["header"],
     meta: {
       height: "50vh",
+      isPinned: true,
+      createdAt: "2024-03-28",
     },
   },
   {
@@ -734,7 +758,6 @@ export const blocks: RegistryItem[] = [
       height: "400px",
       isPinned: true,
       createdAt: "2024-03-25",
-      pinnedUntil: "2024-04-15T00:00:00Z",
     },
   },
   {

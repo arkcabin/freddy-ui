@@ -16,8 +16,7 @@
   "meta": {
     "height": "800px",
     "isPinned": true,
-    "createdAt": "2024-03-26",
-    "pinnedUntil": "2024-04-15T00:00:00Z"
+    "createdAt": "2024-03-26"
   },
   "categories": [
     "auth"
