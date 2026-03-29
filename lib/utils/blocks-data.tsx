@@ -16,10 +16,12 @@ export function getAllCategories(): Category[] {
     // 1. Manually pinned (isPinned: true)
     // 2. Recently created (based on activeForDays, default 90)
     const isBlockPinned = block.isPinned === true;
-    
+
     // Per-block highlight duration (default 90 days)
     const activeDays = block.activeForDays ?? 90;
-    const createdAtTime = block.createdAt ? new Date(block.createdAt).getTime() : 0;
+    const createdAtTime = block.createdAt
+      ? new Date(block.createdAt).getTime()
+      : 0;
     const expirationTime = createdAtTime + activeDays * 24 * 60 * 60 * 1000;
     const isRecent = createdAtTime > 0 && now < expirationTime;
 
@@ -33,11 +35,15 @@ export function getAllCategories(): Category[] {
     // 1. Priority to pinned/recently active items
     const aActiveDays = a.activeForDays ?? 90;
     const bActiveDays = b.activeForDays ?? 90;
-    const aExpiration = (a.createdAt ? new Date(a.createdAt).getTime() : 0) + aActiveDays * 24 * 60 * 60 * 1000;
-    const bExpiration = (b.createdAt ? new Date(b.createdAt).getTime() : 0) + bActiveDays * 24 * 60 * 60 * 1000;
+    const aExpiration =
+      (a.createdAt ? new Date(a.createdAt).getTime() : 0) +
+      aActiveDays * 24 * 60 * 60 * 1000;
+    const bExpiration =
+      (b.createdAt ? new Date(b.createdAt).getTime() : 0) +
+      bActiveDays * 24 * 60 * 60 * 1000;
 
-    const aPinned = (a.isPinned === true) || (now < aExpiration);
-    const bPinned = (b.isPinned === true) || (now < bExpiration);
+    const aPinned = a.isPinned === true || now < aExpiration;
+    const bPinned = b.isPinned === true || now < bExpiration;
 
     if (aPinned !== bPinned) return aPinned ? -1 : 1;
 
@@ -64,11 +70,15 @@ export function getBlocksByCategory(category: string): Block[] {
       // 1. Priority to pinned/recently active items
       const aActiveDays = a.activeForDays ?? 90;
       const bActiveDays = b.activeForDays ?? 90;
-      const aExpiration = (a.createdAt ? new Date(a.createdAt).getTime() : 0) + aActiveDays * 24 * 60 * 60 * 1000;
-      const bExpiration = (b.createdAt ? new Date(b.createdAt).getTime() : 0) + bActiveDays * 24 * 60 * 60 * 1000;
+      const aExpiration =
+        (a.createdAt ? new Date(a.createdAt).getTime() : 0) +
+        aActiveDays * 24 * 60 * 60 * 1000;
+      const bExpiration =
+        (b.createdAt ? new Date(b.createdAt).getTime() : 0) +
+        bActiveDays * 24 * 60 * 60 * 1000;
 
-      const aPinned = (a.isPinned === true) || (now < aExpiration);
-      const bPinned = (b.isPinned === true) || (now < bExpiration);
+      const aPinned = a.isPinned === true || now < aExpiration;
+      const bPinned = b.isPinned === true || now < bExpiration;
 
       if (aPinned !== bPinned) return aPinned ? -1 : 1;
 

@@ -13,7 +13,7 @@ import { Logo } from "@/components/logo";
  */
 export function AiWorkHeader({
   isScrolled,
-  isFullWidth
+  isFullWidth,
 }: {
   isScrolled: boolean;
   isFullWidth: boolean;

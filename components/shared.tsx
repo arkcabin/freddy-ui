@@ -102,13 +102,7 @@ export function GlassCard({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div
-      className={cn(
-        "glass-card p-6 rounded-xl",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("glass-card p-6 rounded-xl", className)} {...props}>
       {children}
     </div>
   );

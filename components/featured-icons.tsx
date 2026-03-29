@@ -11,7 +11,7 @@ import {
   Sparkles,
   Layers,
   Cpu,
-  Fingerprint
+  Fingerprint,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,21 +31,30 @@ const icons = [
 
 export function FeaturedIcons({ className }: { className?: string }) {
   return (
-    <div className={cn("mt-32 mb-24 flex items-center justify-center gap-2 sm:gap-4 lg:gap-6", className)}>
+    <div
+      className={cn(
+        "mt-32 mb-24 flex items-center justify-center gap-2 sm:gap-4 lg:gap-6",
+        className
+      )}
+    >
       {icons.map((item, i) => (
         <div
           key={i}
           className={cn(
             "relative flex items-center justify-center transition-all duration-500",
-            item.isCenter ? "feature-card-active size-24 sm:size-28 z-20 rounded-[32px]" : "feature-card size-16 sm:size-20 rounded-[20px] text-muted-foreground"
+            item.isCenter
+              ? "feature-card-active size-24 sm:size-28 z-20 rounded-[32px]"
+              : "feature-card size-16 sm:size-20 rounded-[20px] text-muted-foreground"
           )}
           style={{
             zIndex: item.zIndex,
-            transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? 'scale(1.05)' : 'scale(1)'}`
+            transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? "scale(1.05)" : "scale(1)"}`,
           }}
         >
           <item.icon
-            className={cn(item.isCenter ? "size-8 sm:size-10" : "size-5 sm:size-6")}
+            className={cn(
+              item.isCenter ? "size-8 sm:size-10" : "size-5 sm:size-6"
+            )}
             strokeWidth={item.isCenter ? 2.5 : 2}
           />
         </div>

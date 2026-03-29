@@ -10,7 +10,10 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   const origError = console.error;
   console.error = (...args: any[]) => {
-    if (typeof args[0] === "string" && args[0].includes("Encountered a script tag")) {
+    if (
+      typeof args[0] === "string" &&
+      args[0].includes("Encountered a script tag")
+    ) {
       return;
     }
     origError.apply(console, args);
@@ -22,13 +25,13 @@ export function ThemeProvider({
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
   return (
-    <NextThemesProvider 
-      attribute="class" 
-      defaultTheme="dark" 
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="dark"
       enableSystem={false}
       {...props}
     >
       {children}
     </NextThemesProvider>
-  )
+  );
 }

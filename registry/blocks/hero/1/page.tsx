@@ -12,7 +12,8 @@ import { DemoLayout } from "@/components/demo-layout";
  * Composed high-fidelity landing experience with cinematic scroll effects.
  */
 export default function AiWorkPage() {
-  const [isAnnouncementVisible, setIsAnnouncementVisible] = React.useState(true);
+  const [isAnnouncementVisible, setIsAnnouncementVisible] =
+    React.useState(true);
 
   return (
     <div className="w-full bg-accent text-foreground selection:bg-background selection:text-background font-sans">
@@ -24,7 +25,6 @@ export default function AiWorkPage() {
 
       {/* 2. Master Content Wrapper (Handles Cinematic Layering) */}
       <AiWorkWrapper isAnnouncementVisible={isAnnouncementVisible}>
-
         {/* 3. Navigation Header */}
         <AiWorkHeader isScrolled={false} isFullWidth={false} />
 
@@ -34,7 +34,6 @@ export default function AiWorkPage() {
         {/* Additional sections can be modularly added here */}
 
         <DemoLayout />
-
       </AiWorkWrapper>
     </div>
   );

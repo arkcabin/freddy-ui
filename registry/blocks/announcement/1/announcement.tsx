@@ -13,11 +13,14 @@ export const Announcement = () => {
     setIsVisible(false);
   }, []);
 
-  const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      handleClose();
-    }
-  }, [handleClose]);
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        handleClose();
+      }
+    },
+    [handleClose]
+  );
 
   if (!isVisible) return null;
 
@@ -47,7 +50,7 @@ export const Announcement = () => {
                 </a>
               </p>
             </div>
-            
+
             <button
               type="button"
               onClick={handleClose}
@@ -65,4 +68,4 @@ export const Announcement = () => {
       )}
     </AnimatePresence>
   );
-}
+};

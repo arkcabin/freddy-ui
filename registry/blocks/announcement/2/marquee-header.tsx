@@ -1,15 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { 
-  ChevronDown, 
-  ArrowRight, 
-  Sparkles, 
-  Layout, 
-  ShieldCheck, 
+import {
+  ChevronDown,
+  ArrowRight,
+  Sparkles,
+  Layout,
+  ShieldCheck,
   Globe,
   Menu,
-  X
+  X,
 } from "lucide-react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
@@ -18,9 +18,18 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 
 const MARQUEE_ITEMS = [
-  { icon: Sparkles, text: "Freddy UI Pro is now available with 50+ premium blocks" },
-  { icon: Layout, text: "New 'Announcement' category just dropped! Check it out" },
-  { icon: ShieldCheck, text: "Built with Shadcn UI, Tailwind CSS and Framer Motion" },
+  {
+    icon: Sparkles,
+    text: "Freddy UI Pro is now available with 50+ premium blocks",
+  },
+  {
+    icon: Layout,
+    text: "New 'Announcement' category just dropped! Check it out",
+  },
+  {
+    icon: ShieldCheck,
+    text: "Built with Shadcn UI, Tailwind CSS and Framer Motion",
+  },
   { icon: Globe, text: "Trusted by 5,000+ developers worldwide" },
 ];
 
@@ -56,7 +65,10 @@ export const MarqueeHeader = () => {
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex shrink-0 items-center gap-8 px-4">
               {MARQUEE_ITEMS.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-[12px] font-medium text-muted-foreground transition-colors hover:text-foreground">
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 text-[12px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
                   <item.icon className="h-3.5 w-3.5 text-primary/60" />
                   <span>{item.text}</span>
                   <ArrowRight className="h-3 w-3 opacity-30 group-hover:block hidden" />
@@ -65,7 +77,7 @@ export const MarqueeHeader = () => {
             </div>
           ))}
         </div>
-        
+
         {/* Fades for smooth entry/exit */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-linear-to-r from-background to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-linear-to-l from-background to-transparent z-10" />
@@ -81,21 +93,23 @@ export const MarqueeHeader = () => {
         {/* Centered Desktop Menu */}
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
-            <MenuLink key={link.label} label={link.label} hasDropdown={link.hasDropdown} />
+            <MenuLink
+              key={link.label}
+              label={link.label}
+              hasDropdown={link.hasDropdown}
+            />
           ))}
         </div>
 
         {/* Right Actions */}
         <div className="flex items-center gap-3 shrink-0">
-          <button 
+          <button
             type="button"
             className="hidden text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground md:block"
           >
             Log In
           </button>
-          <Button 
-            className="hidden h-10 rounded-xl px-6 font-bold shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] md:flex"
-          >
+          <Button className="hidden h-10 rounded-xl px-6 font-bold shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] md:flex">
             Get Freddy UI
           </Button>
 
@@ -106,46 +120,57 @@ export const MarqueeHeader = () => {
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-muted/30 text-foreground md:hidden"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu Portal */}
-      {mounted && isMobileMenuOpen && createPortal(
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-0 top-[calc(64px+36px)] z-40 bg-background/98 backdrop-blur-xl md:hidden"
-          >
-            <div className="container flex flex-col gap-6 p-6">
-              <div className="flex flex-col gap-4">
-                {NAV_LINKS.map((link) => (
-                  <button
-                    key={link.label}
-                    type="button"
-                    className="flex items-center justify-between text-lg font-semibold text-foreground"
+      {mounted &&
+        isMobileMenuOpen &&
+        createPortal(
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="fixed inset-0 top-[calc(64px+36px)] z-40 bg-background/98 backdrop-blur-xl md:hidden"
+            >
+              <div className="container flex flex-col gap-6 p-6">
+                <div className="flex flex-col gap-4">
+                  {NAV_LINKS.map((link) => (
+                    <button
+                      key={link.label}
+                      type="button"
+                      className="flex items-center justify-between text-lg font-semibold text-foreground"
+                    >
+                      {link.label}
+                      {link.hasDropdown && (
+                        <ChevronDown className="h-5 w-5 opacity-50" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-col gap-3 border-t border-border pt-8">
+                  <Button
+                    variant="outline"
+                    className="h-12 w-full rounded-xl text-lg font-bold"
                   >
-                    {link.label}
-                    {link.hasDropdown && <ChevronDown className="h-5 w-5 opacity-50" />}
-                  </button>
-                ))}
+                    Log In
+                  </Button>
+                  <Button className="h-12 w-full rounded-xl text-lg font-bold">
+                    Get Freddy UI
+                  </Button>
+                </div>
               </div>
-              <div className="mt-8 flex flex-col gap-3 border-t border-border pt-8">
-                <Button variant="outline" className="h-12 w-full rounded-xl text-lg font-bold">
-                  Log In
-                </Button>
-                <Button className="h-12 w-full rounded-xl text-lg font-bold">
-                  Get Freddy UI
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>,
-        document.body
-      )}
+            </motion.div>
+          </AnimatePresence>,
+          document.body
+        )}
     </header>
   );
 };

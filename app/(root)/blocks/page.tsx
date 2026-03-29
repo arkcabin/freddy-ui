@@ -5,7 +5,8 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "Browse All Blocks",
-  description: "Explore 13+ categories of beautifully crafted Shadcn/UI blocks — ready to copy, customize, and ship.",
+  description:
+    "Explore 13+ categories of beautifully crafted Shadcn/UI blocks — ready to copy, customize, and ship.",
   canonicalUrl: "/blocks",
 });
 
@@ -35,7 +36,7 @@ export default function BlocksPage() {
           Browse All Blocks
         </h1>
         <p className="text-muted-foreground text-lg font-medium leading-relaxed max-w-xl">
-          Explore {categories.length} categories and {totalBlocks}+ premium 
+          Explore {categories.length} categories and {totalBlocks}+ premium
           components. Ready to copy, customize, and ship.
         </p>
       </div>

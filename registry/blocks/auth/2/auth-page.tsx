@@ -14,7 +14,6 @@ import { FloatingPaths } from "./floating-paths";
 export function AuthPage() {
   return (
     <main className="relative md:h-screen md:overflow-hidden lg:grid lg:grid-cols-2">
-
       {/* Left panel — testimonial sidebar */}
       <div className="relative hidden h-full flex-col border-r bg-secondary p-10 lg:flex dark:bg-secondary/20">
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background" />
@@ -49,7 +48,6 @@ export function AuthPage() {
         </div>
 
         <div className="mx-auto w-full max-w-sm space-y-6">
-
           {/* Logo + heading */}
           <div className="space-y-3">
             <LogoIcon className="size-8" />
@@ -65,15 +63,30 @@ export function AuthPage() {
 
           {/* OAuth buttons */}
           <div className="space-y-2.5">
-            <Button className="w-full gap-2.5 transition-all hover:shadow-md" size="lg" type="button" variant="outline">
+            <Button
+              className="w-full gap-2.5 transition-all hover:shadow-md"
+              size="lg"
+              type="button"
+              variant="outline"
+            >
               <GoogleIcon className="size-4 shrink-0" />
               Continue with Google
             </Button>
-            <Button className="w-full gap-2.5 transition-all hover:shadow-md" size="lg" type="button" variant="outline">
+            <Button
+              className="w-full gap-2.5 transition-all hover:shadow-md"
+              size="lg"
+              type="button"
+              variant="outline"
+            >
               <AppleIcon className="size-4 shrink-0" />
               Continue with Apple
             </Button>
-            <Button className="w-full gap-2.5 transition-all hover:shadow-md" size="lg" type="button" variant="outline">
+            <Button
+              className="w-full gap-2.5 transition-all hover:shadow-md"
+              size="lg"
+              type="button"
+              variant="outline"
+            >
               <GithubIcon className="size-4 shrink-0" />
               Continue with GitHub
             </Button>
@@ -82,7 +95,9 @@ export function AuthPage() {
           {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="h-px flex-1 bg-border" />
-            <span className="text-[11px] font-medium tracking-wider text-muted-foreground/60 uppercase">or</span>
+            <span className="text-[11px] font-medium tracking-wider text-muted-foreground/60 uppercase">
+              or
+            </span>
             <div className="h-px flex-1 bg-border" />
           </div>
 
@@ -108,11 +123,17 @@ export function AuthPage() {
           {/* Terms */}
           <p className="text-center text-[11px] leading-relaxed text-muted-foreground/70">
             By continuing, you agree to our{" "}
-            <a className="underline underline-offset-4 transition-colors hover:text-foreground" href="#">
+            <a
+              className="underline underline-offset-4 transition-colors hover:text-foreground"
+              href="#"
+            >
               Terms of Service
             </a>{" "}
             and{" "}
-            <a className="underline underline-offset-4 transition-colors hover:text-foreground" href="#">
+            <a
+              className="underline underline-offset-4 transition-colors hover:text-foreground"
+              href="#"
+            >
               Privacy Policy
             </a>
             .
@@ -132,7 +153,10 @@ const GoogleIcon = (props: React.ComponentProps<"svg">) => (
   </svg>
 );
 
-function AppleIcon({ fill = "currentColor", ...props }: React.ComponentProps<"svg">) {
+function AppleIcon({
+  fill = "currentColor",
+  ...props
+}: React.ComponentProps<"svg">) {
   return (
     <svg fill={fill} viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <title>Apple</title>
@@ -145,7 +169,12 @@ function AppleIcon({ fill = "currentColor", ...props }: React.ComponentProps<"sv
 }
 
 const GithubIcon = (props: React.ComponentProps<"svg">) => (
-  <svg fill="currentColor" viewBox="0 0 1024 1024" aria-hidden="true" {...props}>
+  <svg
+    fill="currentColor"
+    viewBox="0 0 1024 1024"
+    aria-hidden="true"
+    {...props}
+  >
     <title>GitHub</title>
     <path
       clipRule="evenodd"

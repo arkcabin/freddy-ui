@@ -21,31 +21,35 @@ export function ForgotPasswordForm() {
           <MailIcon className="size-6 text-primary/60" />
         </div>
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Forgot Password?</h2>
-          <p className="text-sm text-muted-foreground max-w-[280px]">No worries, we&apos;ll send you reset instructions via email.</p>
+          <h2 className="text-2xl font-bold tracking-tight">
+            Forgot Password?
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-[280px]">
+            No worries, we&apos;ll send you reset instructions via email.
+          </p>
         </div>
       </div>
 
       <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
         <div className="grid gap-2 text-start">
           <Label htmlFor="email">Email Address</Label>
-          <Input 
-            id="email" 
-            type="email" 
-            placeholder="name@example.com" 
-            className="h-10" 
+          <Input
+            id="email"
+            type="email"
+            placeholder="name@example.com"
+            className="h-10"
           />
         </div>
 
-        <Button 
-          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-2" 
+        <Button
+          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-2"
           type="submit"
         >
           Send Reset Link
         </Button>
 
-        <a 
-          href="#" 
+        <a
+          href="#"
           className="flex items-center justify-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors mt-6 font-medium"
         >
           <ArrowLeft className="size-3" />

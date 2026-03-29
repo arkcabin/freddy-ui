@@ -33,7 +33,9 @@ export async function generateMetadata({ params }: PageProps<"/blocks/[cat]">) {
   });
 }
 
-export default async function CategoryPage({ params }: PageProps<"/blocks/[cat]">) {
+export default async function CategoryPage({
+  params,
+}: PageProps<"/blocks/[cat]">) {
   const { cat } = await params;
 
   const categoryBlocks = getBlocksByCategory(cat);

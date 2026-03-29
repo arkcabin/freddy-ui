@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { GridPattern, BorderSeparator } from "@/components/shared";
 import { Tweets } from "@/components/tweets";
@@ -59,7 +59,7 @@ export default function Page() {
                 showTopMarkers={true}
                 showBottomMarkers={true}
                 showDoubleBorders={true}
-                className="py-16 lg:py-24"
+                className="pb-16 lg:pb-24"
               >
                 <SectionHeader
                   title="Browse Premium Blocks"
@@ -68,7 +68,11 @@ export default function Page() {
                 <div className="relative">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {categories.slice(0, 12).map((category, index) => (
-                      <CategoryCard key={category.id} index={index} {...category} />
+                      <CategoryCard
+                        key={category.id}
+                        index={index}
+                        {...category}
+                      />
                     ))}
                   </div>
 
@@ -90,7 +94,11 @@ export default function Page() {
                       stroke="currentColor"
                       strokeWidth={2.5}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
                     </svg>
                   </Link>
                 </div>
@@ -102,7 +110,7 @@ export default function Page() {
                 showTopMarkers={true}
                 showBottomMarkers={true}
                 showDoubleBorders={true}
-                className="py-16 lg:py-24"
+                className="pb-16 lg:pb-24"
               >
                 <SectionHeader
                   title="Wall of Love"

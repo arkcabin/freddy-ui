@@ -95,14 +95,18 @@ export function SiteNav() {
               {/* Left Highlight Section */}
               <div className="flex w-[270px] shrink-0 flex-col justify-between bg-muted/40 p-6 border-r border-border/40">
                 <div>
-                  <Badge variant="secondary" className="mb-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border-none bg-secondary/80 text-secondary-foreground shadow-sm">
+                  <Badge
+                    variant="secondary"
+                    className="mb-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border-none bg-secondary/80 text-secondary-foreground shadow-sm"
+                  >
                     Blocks
                   </Badge>
                   <h3 className="text-xl font-bold tracking-tight text-foreground">
                     Modern Blocks
                   </h3>
                   <p className="mt-2 text-[12.5px] text-muted-foreground/60 leading-relaxed font-normal max-w-[200px]">
-                    Elite UI components, meticulously crafted for modern web experiences.
+                    Elite UI components, meticulously crafted for modern web
+                    experiences.
                   </p>
                 </div>
 
@@ -121,7 +125,11 @@ export function SiteNav() {
                     </div>
                   </div>
 
-                  <Button asChild variant="default" className="w-full rounded-xl h-11 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99] group/btn">
+                  <Button
+                    asChild
+                    variant="default"
+                    className="w-full rounded-xl h-11 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99] group/btn"
+                  >
                     <Link href="/blocks">
                       Explore Library
                       <MousePointer2 className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
@@ -164,7 +172,9 @@ export function SiteNav() {
                             {cat.isNew && (
                               <div className="flex items-center gap-1.5">
                                 <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse shrink-0" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-primary leading-none">New</span>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-primary leading-none">
+                                  New
+                                </span>
                               </div>
                             )}
                           </div>

@@ -10,7 +10,7 @@ import { AiWorkHeader } from "./header";
  */
 export function AiWorkWrapper({
   children,
-  isAnnouncementVisible
+  isAnnouncementVisible,
 }: {
   children: React.ReactNode;
   isAnnouncementVisible: boolean;
@@ -37,18 +37,20 @@ export function AiWorkWrapper({
   const activeFullWidth = mounted ? isFullWidth : false;
 
   return (
-    <div className={cn(
-      "relative z-20 bg-background transition-all duration-300 shadow-[0_-20px_80px_rgba(0,0,0,0.1)]",
-      activeFullWidth
-        ? "mx-0 rounded-none border-none"
-        : "mx-2 rounded-t-2xl border-t border-l border-r border-border/50"
-    )}>
+    <div
+      className={cn(
+        "relative z-20 bg-background transition-all duration-300 shadow-[0_-20px_80px_rgba(0,0,0,0.1)]",
+        activeFullWidth
+          ? "mx-0 rounded-none border-none"
+          : "mx-2 rounded-t-2xl border-t border-l border-r border-border/50"
+      )}
+    >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === AiWorkHeader) {
           // Pass states only after mounting to prevent mismatch
           return React.cloneElement(child as React.ReactElement<any>, {
             isScrolled: mounted ? isScrolled : false,
-            isFullWidth: activeFullWidth
+            isFullWidth: activeFullWidth,
           });
         }
         return child;

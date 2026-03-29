@@ -17,33 +17,35 @@ export function CompactSignupForm() {
       <div className="mb-8">
         <LogoIcon className="size-6 mb-4" />
         <h2 className="text-2xl font-bold tracking-tight">Join Freddy</h2>
-        <p className="text-sm text-muted-foreground">Start building beautiful interfaces today.</p>
+        <p className="text-sm text-muted-foreground">
+          Start building beautiful interfaces today.
+        </p>
       </div>
 
       <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
         <div className="grid gap-3">
           <div className="grid gap-1.5">
             <Label htmlFor="signup-email-compact">Email</Label>
-            <Input 
-              id="signup-email-compact" 
-              type="email" 
-              placeholder="you@example.com" 
-              className="h-11 rounded-xl" 
+            <Input
+              id="signup-email-compact"
+              type="email"
+              placeholder="you@example.com"
+              className="h-11 rounded-xl"
             />
           </div>
           <div className="grid gap-1.5">
             <Label htmlFor="signup-password-compact">Secure Password</Label>
-            <Input 
-              id="signup-password-compact" 
-              type="password" 
-              placeholder="••••••••" 
-              className="h-11 rounded-xl" 
+            <Input
+              id="signup-password-compact"
+              type="password"
+              placeholder="••••••••"
+              className="h-11 rounded-xl"
             />
           </div>
         </div>
 
-        <Button 
-          className="w-full h-11 rounded-xl font-semibold transition-all active:scale-[0.98] shadow-md mt-2" 
+        <Button
+          className="w-full h-11 rounded-xl font-semibold transition-all active:scale-[0.98] shadow-md mt-2"
           type="submit"
         >
           Create Account
@@ -55,7 +57,10 @@ export function CompactSignupForm() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground pt-4 border-t border-dashed mt-4">
-          Already a member? <a href="#" className="text-primary hover:underline font-bold">Sign In</a>
+          Already a member?{" "}
+          <a href="#" className="text-primary hover:underline font-bold">
+            Sign In
+          </a>
         </p>
       </form>
     </div>

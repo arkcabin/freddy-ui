@@ -28,15 +28,19 @@ export function SignupForm() {
       <div className="flex flex-col items-center gap-4 mb-8">
         <LogoIcon className="size-8" />
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Create an Account</h2>
-          <p className="text-sm text-muted-foreground">Welcome! Create an account to get started</p>
+          <h2 className="text-2xl font-bold tracking-tight">
+            Create an Account
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Welcome! Create an account to get started
+          </p>
         </div>
       </div>
 
       <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-        <Button 
-          variant="outline" 
-          className="w-full h-11 transition-all hover:bg-muted font-medium" 
+        <Button
+          variant="outline"
+          className="w-full h-11 transition-all hover:bg-muted font-medium"
           type="button"
         >
           <GoogleIcon className="size-4 mr-2" />
@@ -48,7 +52,9 @@ export function SignupForm() {
             <span className="w-full border-t border-muted-foreground/20" />
           </div>
           <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-wider">
-            <span className="bg-background px-2 text-muted-foreground">OR CONTINUE WITH</span>
+            <span className="bg-background px-2 text-muted-foreground">
+              OR CONTINUE WITH
+            </span>
           </div>
         </div>
 
@@ -56,44 +62,44 @@ export function SignupForm() {
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2 text-start">
               <Label htmlFor="first-name">First Name</Label>
-              <Input 
-                id="first-name" 
-                type="text" 
-                placeholder="John" 
-                className="h-10" 
+              <Input
+                id="first-name"
+                type="text"
+                placeholder="John"
+                className="h-10"
               />
             </div>
             <div className="grid gap-2 text-start">
               <Label htmlFor="last-name">Last Name</Label>
-              <Input 
-                id="last-name" 
-                type="text" 
-                placeholder="Doe" 
-                className="h-10" 
+              <Input
+                id="last-name"
+                type="text"
+                placeholder="Doe"
+                className="h-10"
               />
             </div>
           </div>
           <div className="grid gap-2 text-start">
             <Label htmlFor="email">Email</Label>
-            <Input 
-              id="email" 
-              type="email" 
-              placeholder="Enter your email" 
-              className="h-10" 
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              className="h-10"
             />
           </div>
           <div className="grid gap-2 text-start">
             <Label htmlFor="password">Password</Label>
             <div className="relative">
-              <Input 
-                id="password" 
-                type="password" 
-                placeholder="Enter your password" 
-                className="h-10 pr-10" 
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                className="h-10 pr-10"
               />
-              <button 
-                type="button" 
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors" 
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 title="Toggle password visibility"
               >
                 <EyeIcon className="size-4" />
@@ -102,15 +108,18 @@ export function SignupForm() {
           </div>
         </div>
 
-        <Button 
-          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm" 
+        <Button
+          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm"
           type="submit"
         >
           Continue
         </Button>
 
         <p className="text-center text-xs text-muted-foreground mt-6">
-          Have an account? <a href="#" className="text-primary hover:underline font-medium">Sign In</a>
+          Have an account?{" "}
+          <a href="#" className="text-primary hover:underline font-medium">
+            Sign In
+          </a>
         </p>
       </form>
     </div>

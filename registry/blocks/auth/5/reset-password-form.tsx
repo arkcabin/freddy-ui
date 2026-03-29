@@ -20,7 +20,9 @@ export function ResetPasswordForm() {
         <LogoIcon className="size-8" />
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight">Reset Password</h2>
-          <p className="text-sm text-muted-foreground">Please enter your new password below</p>
+          <p className="text-sm text-muted-foreground">
+            Please enter your new password below
+          </p>
         </div>
       </div>
 
@@ -29,15 +31,15 @@ export function ResetPasswordForm() {
           <div className="grid gap-2 text-start">
             <Label htmlFor="new-password">New Password</Label>
             <div className="relative">
-              <Input 
-                id="new-password" 
-                type="password" 
-                placeholder="••••••••" 
-                className="h-10 pr-10" 
+              <Input
+                id="new-password"
+                type="password"
+                placeholder="••••••••"
+                className="h-10 pr-10"
               />
-              <button 
-                type="button" 
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors" 
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 title="Toggle password visibility"
               >
                 <EyeIcon className="size-4" />
@@ -47,15 +49,15 @@ export function ResetPasswordForm() {
           <div className="grid gap-2 text-start">
             <Label htmlFor="confirm-password">Confirm Password</Label>
             <div className="relative">
-              <Input 
-                id="confirm-password" 
-                type="password" 
-                placeholder="••••••••" 
-                className="h-10 pr-10" 
+              <Input
+                id="confirm-password"
+                type="password"
+                placeholder="••••••••"
+                className="h-10 pr-10"
               />
-              <button 
-                type="button" 
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors" 
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 title="Toggle password visibility"
               >
                 <EyeIcon className="size-4" />
@@ -64,15 +66,18 @@ export function ResetPasswordForm() {
           </div>
         </div>
 
-        <Button 
-          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-4" 
+        <Button
+          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-4"
           type="submit"
         >
           Reset Password
         </Button>
 
         <p className="text-center text-xs text-muted-foreground mt-6">
-          Suddenly remembered? <a href="#" className="text-primary hover:underline font-medium">Back to Sign In</a>
+          Suddenly remembered?{" "}
+          <a href="#" className="text-primary hover:underline font-medium">
+            Back to Sign In
+          </a>
         </p>
       </form>
     </div>

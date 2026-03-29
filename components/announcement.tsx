@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
  */
 export function AnnouncementBar({
   isVisible,
-  onClose
+  onClose,
 }: {
   isVisible: boolean;
   onClose: () => void;

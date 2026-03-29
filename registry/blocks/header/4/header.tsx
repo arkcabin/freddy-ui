@@ -50,9 +50,14 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center gap-8">
-          <a href="/" className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors">
+          <a
+            href="/"
+            className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors"
+          >
             <LogoIcon className="size-7 transition-transform group-hover:scale-110" />
-            <span className="font-bold text-xl tracking-tight hidden sm:inline-block">Freddy</span>
+            <span className="font-bold text-xl tracking-tight hidden sm:inline-block">
+              Freddy
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -121,19 +126,32 @@ export function Header() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Footer */}
                     <div className="md:col-span-2 mt-4 pt-6 border-t border-border/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <p className="text-sm text-muted-foreground">
                         Interested?{" "}
-                        <a href="#" className="font-bold text-foreground hover:text-primary transition-colors">
+                        <a
+                          href="#"
+                          className="font-bold text-foreground hover:text-primary transition-colors"
+                        >
                           Schedule a demo
                         </a>
                       </p>
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
-                         <a href="#" className="hover:text-foreground transition-colors">Documentation</a>
-                         <span className="size-1 rounded-full bg-border hidden md:block" />
-                         <a href="#" className="hover:text-foreground transition-colors">API Reference</a>
+                        <a
+                          href="#"
+                          className="hover:text-foreground transition-colors"
+                        >
+                          Documentation
+                        </a>
+                        <span className="size-1 rounded-full bg-border hidden md:block" />
+                        <a
+                          href="#"
+                          className="hover:text-foreground transition-colors"
+                        >
+                          API Reference
+                        </a>
                       </div>
                     </div>
                   </motion.div>
@@ -180,17 +198,32 @@ export function Header() {
         {/* Actions */}
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 mr-2">
-            <Button variant="ghost" size="icon" className="rounded-full" type="button" aria-label="Search">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+              type="button"
+              aria-label="Search"
+            >
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="rounded-full" type="button" aria-label="GitHub">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+              type="button"
+              aria-label="GitHub"
+            >
               <Github className="h-5 w-5" />
             </Button>
           </div>
-          <Button className="rounded-full px-6 font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all" type="button">
+          <Button
+            className="rounded-full px-6 font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all"
+            type="button"
+          >
             Get in touch
           </Button>
-          
+
           {/* Mobile menu toggle */}
           <Button
             variant="ghost"
@@ -201,7 +234,11 @@ export function Header() {
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <MenuToggleIcon className="size-6" open={isMobileMenuOpen} duration={300} />
+            <MenuToggleIcon
+              className="size-6"
+              open={isMobileMenuOpen}
+              duration={300}
+            />
           </Button>
         </div>
       </div>
@@ -217,28 +254,48 @@ export function Header() {
           >
             <div className="container px-4 py-8 space-y-6">
               <nav className="flex flex-col gap-4">
-                <a href="#" className="text-lg font-medium px-2 py-1">Home</a>
-                <a href="#" className="text-lg font-medium px-2 py-1">Pricing</a>
+                <a href="#" className="text-lg font-medium px-2 py-1">
+                  Home
+                </a>
+                <a href="#" className="text-lg font-medium px-2 py-1">
+                  Pricing
+                </a>
                 <div className="space-y-4">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground px-2">Products</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground px-2">
+                    Products
+                  </h4>
                   <div className="grid gap-2">
-                    {[...basicAssets, ...strategyAssets, ...tradeAssets].map((asset, i) => (
-                      <a key={i} href="#" className="flex items-center gap-3 p-3 hover:bg-accent rounded-xl transition-colors">
-                         <div className={cn(
-                          "flex size-10 items-center justify-center rounded-lg shadow-sm shrink-0",
-                          asset.gradient
-                        )}>
-                          <asset.icon className={cn("size-5", asset.iconColor)} />
-                        </div>
-                        <span className="font-medium">{asset.title}</span>
-                      </a>
-                    ))}
+                    {[...basicAssets, ...strategyAssets, ...tradeAssets].map(
+                      (asset, i) => (
+                        <a
+                          key={i}
+                          href="#"
+                          className="flex items-center gap-3 p-3 hover:bg-accent rounded-xl transition-colors"
+                        >
+                          <div
+                            className={cn(
+                              "flex size-10 items-center justify-center rounded-lg shadow-sm shrink-0",
+                              asset.gradient
+                            )}
+                          >
+                            <asset.icon
+                              className={cn("size-5", asset.iconColor)}
+                            />
+                          </div>
+                          <span className="font-medium">{asset.title}</span>
+                        </a>
+                      )
+                    )}
                   </div>
                 </div>
               </nav>
               <div className="pt-4 border-t flex flex-col gap-3">
-                <Button variant="outline" className="w-full rounded-2xl h-12">Search</Button>
-                <Button className="w-full rounded-2xl h-12">Get in touch</Button>
+                <Button variant="outline" className="w-full rounded-2xl h-12">
+                  Search
+                </Button>
+                <Button className="w-full rounded-2xl h-12">
+                  Get in touch
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -258,14 +315,14 @@ interface Asset {
   ghostIcon?: boolean;
 }
 
-function MenuCard({ 
-  title, 
-  description, 
-  icon: Icon, 
-  gradient, 
-  iconColor, 
+function MenuCard({
+  title,
+  description,
+  icon: Icon,
+  gradient,
+  iconColor,
   largeIcon = false,
-  ghostIcon = false 
+  ghostIcon = false,
 }: Asset) {
   return (
     <a
@@ -307,7 +364,13 @@ interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
   title: string;
 }
 
-function ListItem({ title, children, href, className, ...props }: ListItemProps) {
+function ListItem({
+  title,
+  children,
+  href,
+  className,
+  ...props
+}: ListItemProps) {
   return (
     <li>
       <NavigationMenuLink asChild>

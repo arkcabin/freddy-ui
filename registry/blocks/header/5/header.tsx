@@ -40,7 +40,12 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <div className={cn("relative w-full", isMobileMenuOpen && "h-screen overflow-hidden")}>
+    <div
+      className={cn(
+        "relative w-full",
+        isMobileMenuOpen && "h-screen overflow-hidden"
+      )}
+    >
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -54,7 +59,11 @@ export function Header() {
       </AnimatePresence>
 
       <motion.header
-        animate={isMobileMenuOpen ? { scale: 0.95, y: 10, borderRadius: "2rem" } : { scale: 1, y: 0, borderRadius: "0" }}
+        animate={
+          isMobileMenuOpen
+            ? { scale: 0.95, y: 10, borderRadius: "2rem" }
+            : { scale: 1, y: 0, borderRadius: "0" }
+        }
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300",
@@ -66,9 +75,14 @@ export function Header() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo */}
           <div className="flex items-center gap-8">
-            <a href="/" className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors">
+            <a
+              href="/"
+              className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors"
+            >
               <LogoIcon className="size-7 transition-transform group-hover:scale-110" />
-              <span className="font-bold text-lg hidden sm:inline-block tracking-tight">Freddy</span>
+              <span className="font-bold text-lg hidden sm:inline-block tracking-tight">
+                Freddy
+              </span>
             </a>
 
             {/* Desktop Navigation */}
@@ -87,9 +101,13 @@ export function Header() {
                             Registry
                           </div>
                           <div className="space-y-4">
-                            <h2 className="text-3xl font-bold tracking-tight">Modern Blocks</h2>
+                            <h2 className="text-3xl font-bold tracking-tight">
+                              Modern Blocks
+                            </h2>
                             <p className="text-muted-foreground leading-relaxed text-sm">
-                              A curated collection of high-fidelity components built with Tailwind CSS and Radix UI. Perfectly crafted for your next big idea.
+                              A curated collection of high-fidelity components
+                              built with Tailwind CSS and Radix UI. Perfectly
+                              crafted for your next big idea.
                             </p>
                           </div>
                         </div>
@@ -101,16 +119,27 @@ export function Header() {
                             </div>
                             <div className="flex items-center gap-3 mb-1">
                               <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                                <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
+                                <Sparkles
+                                  className="h-4 w-4 text-primary"
+                                  aria-hidden="true"
+                                />
                               </div>
-                              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Flash Update</span>
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                                Flash Update
+                              </span>
                             </div>
                             <p className="text-sm font-bold">New Auth Blocks</p>
                           </div>
 
-                          <Button className="w-full rounded-2xl h-12 gap-2 text-sm font-semibold group/btn" type="button">
+                          <Button
+                            className="w-full rounded-2xl h-12 gap-2 text-sm font-semibold group/btn"
+                            type="button"
+                          >
                             Explore Library
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />
+                            <ArrowRight
+                              className="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                              aria-hidden="true"
+                            />
                           </Button>
                         </div>
                       </div>
@@ -118,9 +147,16 @@ export function Header() {
                       {/* Main Content */}
                       <div className="flex-1 p-8 md:p-10">
                         <div className="flex items-center justify-between mb-8">
-                          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Component Categories</h3>
+                          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                            Component Categories
+                          </h3>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs font-medium text-muted-foreground" id="view-counts-label">View counts</span>
+                            <span
+                              className="text-xs font-medium text-muted-foreground"
+                              id="view-counts-label"
+                            >
+                              View counts
+                            </span>
                             <button
                               type="button"
                               role="switch"
@@ -141,13 +177,20 @@ export function Header() {
                               className="group/item flex flex-col items-center gap-4 transition-all hover:-translate-y-1.5"
                             >
                               <div className="size-14 rounded-2xl bg-muted/40 backdrop-blur-sm border shadow-sm flex items-center justify-center text-muted-foreground group-hover/item:text-primary group-hover/item:bg-primary/5 group-hover/item:border-primary/20 transition-all duration-300 relative overflow-hidden">
-                                <cat.icon className="h-6 w-6 relative z-10" aria-hidden="true" />
+                                <cat.icon
+                                  className="h-6 w-6 relative z-10"
+                                  aria-hidden="true"
+                                />
                                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity" />
                                 <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity" />
                               </div>
                               <div className="text-center">
-                                <p className="text-sm font-bold text-foreground mb-0.5 group-hover/item:text-primary transition-colors">{cat.name}</p>
-                                <p className="text-[10px] font-medium text-muted-foreground tracking-wide">{cat.count} blocks</p>
+                                <p className="text-sm font-bold text-foreground mb-0.5 group-hover/item:text-primary transition-colors">
+                                  {cat.name}
+                                </p>
+                                <p className="text-[10px] font-medium text-muted-foreground tracking-wide">
+                                  {cat.count} blocks
+                                </p>
                               </div>
                             </a>
                           ))}
@@ -157,10 +200,20 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="#" className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors">Components</NavigationMenuLink>
+                  <NavigationMenuLink
+                    href="#"
+                    className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors"
+                  >
+                    Components
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="#" className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors">Pricing</NavigationMenuLink>
+                  <NavigationMenuLink
+                    href="#"
+                    className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors"
+                  >
+                    Pricing
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -169,15 +222,27 @@ export function Header() {
           {/* Right Side */}
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-3">
-              <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-foreground" type="button">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full text-muted-foreground hover:text-foreground"
+                type="button"
+              >
                 <Github className="h-5 w-5" aria-hidden="true" />
               </Button>
               <div className="h-4 w-px bg-border mx-2" />
-              <Button variant="outline" className="rounded-full px-4 h-9 text-xs font-semibold" type="button">
+              <Button
+                variant="outline"
+                className="rounded-full px-4 h-9 text-xs font-semibold"
+                type="button"
+              >
                 Sign In
               </Button>
             </div>
-            <Button className="rounded-full px-5 h-9 text-xs font-semibold shadow-lg shadow-primary/20" type="button">
+            <Button
+              className="rounded-full px-5 h-9 text-xs font-semibold shadow-lg shadow-primary/20"
+              type="button"
+            >
               Get Started
             </Button>
 
@@ -189,7 +254,11 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               type="button"
             >
-              <MenuToggleIcon open={isMobileMenuOpen} className="size-5" duration={300} />
+              <MenuToggleIcon
+                open={isMobileMenuOpen}
+                className="size-5"
+                duration={300}
+              />
             </Button>
           </div>
         </div>
@@ -208,29 +277,59 @@ export function Header() {
             <div className="p-6 space-y-8">
               <div className="flex items-center justify-between">
                 <LogoIcon className="size-8" />
-                <Button variant="ghost" size="icon" className="rounded-full" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   <X className="size-6" />
                 </Button>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 px-2">Navigation</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 px-2">
+                    Navigation
+                  </h4>
                   <div className="grid gap-1">
-                    <a href="#" className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors">Home</a>
-                    <a href="#" className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors">Components</a>
-                    <a href="#" className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors">Pricing</a>
+                    <a
+                      href="#"
+                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
+                    >
+                      Home
+                    </a>
+                    <a
+                      href="#"
+                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
+                    >
+                      Components
+                    </a>
+                    <a
+                      href="#"
+                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
+                    >
+                      Pricing
+                    </a>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-4 px-2">
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Blocks Registry</h4>
-                    <span className="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-tighter">13 categories</span>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      Blocks Registry
+                    </h4>
+                    <span className="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-tighter">
+                      13 categories
+                    </span>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {categories.map((cat) => (
-                      <a key={cat.name} href="#" className="flex flex-col gap-2 p-4 rounded-2xl bg-muted/40 border hover:bg-muted transition-colors group/m-item">
+                      <a
+                        key={cat.name}
+                        href="#"
+                        className="flex flex-col gap-2 p-4 rounded-2xl bg-muted/40 border hover:bg-muted transition-colors group/m-item"
+                      >
                         <cat.icon className="size-5 text-muted-foreground group-hover/m-item:text-primary transition-colors" />
                         <span className="text-sm font-bold">{cat.name}</span>
                       </a>
@@ -240,8 +339,15 @@ export function Header() {
               </div>
 
               <div className="pt-6 border-t space-y-3">
-                <Button variant="outline" className="w-full rounded-2xl h-12 text-sm font-bold">Sign In</Button>
-                <Button className="w-full rounded-2xl h-12 text-sm font-bold shadow-lg shadow-primary/20">Get Started</Button>
+                <Button
+                  variant="outline"
+                  className="w-full rounded-2xl h-12 text-sm font-bold"
+                >
+                  Sign In
+                </Button>
+                <Button className="w-full rounded-2xl h-12 text-sm font-bold shadow-lg shadow-primary/20">
+                  Get Started
+                </Button>
               </div>
             </div>
           </motion.div>

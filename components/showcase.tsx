@@ -9,7 +9,7 @@ import { SectionHeader } from "./section-header";
 import { SectionGrid } from "./section-grid";
 
 /**
- * Showcase component that displays "Real Content" blocks in an 
+ * Showcase component that displays "Real Content" blocks in an
  * absolute/overlapping staggered layout.
  * Uses SectionGrid for architectural consistency.
  */
@@ -21,7 +21,7 @@ export function Showcase() {
       showBottomMarkers={true}
       showDoubleBorders={true}
       markerOffset="top-0"
-      className="py-16 lg:py-24"
+      className="pb-16 lg:pb-24"
       containerClassName="mt-8"
     >
       <SectionHeader
@@ -50,23 +50,41 @@ export function Showcase() {
               <LogoIcon className="size-10" />
             </div>
             <h3 className="text-xl font-bold text-center mb-2">Welcome Back</h3>
-            <p className="text-muted-foreground text-sm text-center mb-6">Enter your credentials to access your dashboard</p>
+            <p className="text-muted-foreground text-sm text-center mb-6">
+              Enter your credentials to access your dashboard
+            </p>
             <div className="space-y-4">
               <div className="space-y-1.5 text-left">
-                <div className="text-xs font-semibold text-muted-foreground">Email Address</div>
-                <div className="px-4 py-2 rounded-lg bg-muted/50 border border-border text-xs text-muted-foreground/60">name@company.com</div>
+                <div className="text-xs font-semibold text-muted-foreground">
+                  Email Address
+                </div>
+                <div className="px-4 py-2 rounded-lg bg-muted/50 border border-border text-xs text-muted-foreground/60">
+                  name@company.com
+                </div>
               </div>
               <div className="space-y-1.5 text-left">
-                <div className="text-xs font-semibold text-muted-foreground">Password</div>
-                <div className="px-4 py-2 rounded-lg bg-muted/50 border border-border text-xs text-muted-foreground/60">••••••••••••</div>
+                <div className="text-xs font-semibold text-muted-foreground">
+                  Password
+                </div>
+                <div className="px-4 py-2 rounded-lg bg-muted/50 border border-border text-xs text-muted-foreground/60">
+                  ••••••••••••
+                </div>
               </div>
-              <Button className="w-full rounded-full" size="sm">Continue with Email</Button>
+              <Button className="w-full rounded-full" size="sm">
+                Continue with Email
+              </Button>
               <div className="flex items-center gap-2 py-2">
                 <div className="h-px flex-1 bg-border" />
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">or</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
+                  or
+                </span>
                 <div className="h-px flex-1 bg-border" />
               </div>
-              <Button variant="outline" className="w-full rounded-full" size="sm">
+              <Button
+                variant="outline"
+                className="w-full rounded-full"
+                size="sm"
+              >
                 Sign in with Google
               </Button>
             </div>
@@ -83,23 +101,46 @@ export function Showcase() {
         >
           <div className="bg-card/85 rounded-xl p-6 border border-primary/20">
             <div className="flex items-center justify-between mb-4">
-              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">Most Popular</span>
-              <span className="bg-primary/20 p-1.5 rounded-lg"><Zap className="size-4 text-primary" /></span>
+              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                Most Popular
+              </span>
+              <span className="bg-primary/20 p-1.5 rounded-lg">
+                <Zap className="size-4 text-primary" />
+              </span>
             </div>
             <div className="mb-4">
               <span className="text-3xl font-bold font-heading">$49</span>
-              <span className="text-muted-foreground text-xs ml-1">/ month</span>
+              <span className="text-muted-foreground text-xs ml-1">
+                / month
+              </span>
             </div>
-            <p className="text-xs text-muted-foreground mb-4 font-medium">For scaling teams needing advanced IT automations.</p>
+            <p className="text-xs text-muted-foreground mb-4 font-medium">
+              For scaling teams needing advanced IT automations.
+            </p>
             <ul className="space-y-2 mb-6">
-              {[1, 2, 3].map(i => (
-                <li key={i} className="flex items-center gap-2 text-[11px] text-foreground/80">
+              {[1, 2, 3].map((i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-2 text-[11px] text-foreground/80"
+                >
                   <Check className="size-3 text-primary" strokeWidth={3} />
-                  <span>Advanced {i === 1 ? 'Rule Engine' : i === 2 ? 'API Access' : '24/7 Support'}</span>
+                  <span>
+                    Advanced{" "}
+                    {i === 1
+                      ? "Rule Engine"
+                      : i === 2
+                        ? "API Access"
+                        : "24/7 Support"}
+                  </span>
                 </li>
               ))}
             </ul>
-            <Button variant="outline" className="w-full rounded-full h-8 text-xs font-bold border-primary/30 hover:bg-primary/5">Upgrade Now</Button>
+            <Button
+              variant="outline"
+              className="w-full rounded-full h-8 text-xs font-bold border-primary/30 hover:bg-primary/5"
+            >
+              Upgrade Now
+            </Button>
           </div>
         </motion.div>
 
@@ -116,7 +157,9 @@ export function Showcase() {
               <Shield className="size-4 text-green-500" />
             </div>
             <div>
-              <div className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">System Health</div>
+              <div className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">
+                System Health
+              </div>
               <div className="text-sm font-bold">Secure and Stable</div>
             </div>
           </div>
@@ -130,13 +173,18 @@ export function Showcase() {
             </div>
             <div className="pt-2 border-t border-border flex items-center justify-between">
               <div className="flex -space-x-2">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="size-5 rounded-full bg-muted border border-background flex items-center justify-center overflow-hidden">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="size-5 rounded-full bg-muted border border-background flex items-center justify-center overflow-hidden"
+                  >
                     <User className="size-2.5 text-muted-foreground" />
                   </div>
                 ))}
               </div>
-              <div className="text-[9px] text-muted-foreground font-medium">+12 active admins</div>
+              <div className="text-[9px] text-muted-foreground font-medium">
+                +12 active admins
+              </div>
             </div>
           </div>
         </motion.div>
@@ -151,8 +199,12 @@ export function Showcase() {
         >
           <Mail className="size-5" />
           <div className="pr-2 leading-none">
-            <div className="text-[10px] font-bold uppercase tracking-tightest">New Ticket</div>
-            <div className="text-[12px] opacity-80 mt-0.5 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]">Critical: Server 5 latency</div>
+            <div className="text-[10px] font-bold uppercase tracking-tightest">
+              New Ticket
+            </div>
+            <div className="text-[12px] opacity-80 mt-0.5 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]">
+              Critical: Server 5 latency
+            </div>
           </div>
         </motion.div>
 
@@ -167,19 +219,27 @@ export function Showcase() {
   );
 }
 
-function FloatingIcon({ delay, x, y }: { delay: number; x: string; y: string }) {
+function FloatingIcon({
+  delay,
+  x,
+  y,
+}: {
+  delay: number;
+  x: string;
+  y: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 0 }}
       animate={{
         opacity: [0, 0.4, 0],
-        y: [0, -40, 0]
+        y: [0, -40, 0],
       }}
       transition={{
         duration: 4,
         delay,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut",
       }}
       style={{ left: x, top: y }}
       className="absolute size-2 rounded-full bg-primary"

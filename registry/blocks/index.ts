@@ -1,7 +1,7 @@
 import type { RegistryItem } from "shadcn/schema";
 
 // Extend RegistryItem to support 'tier' and custom metadata
-type FreddyRegistryItem = RegistryItem & { 
+type FreddyRegistryItem = RegistryItem & {
   tier?: "free" | "pro";
   meta?: RegistryItem["meta"] & {
     activeForDays?: number;
@@ -54,7 +54,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "announcement-1",
     type: "registry:block",
-    description: "Animated announcement bar with call-to-action and close button.",
+    description:
+      "Animated announcement bar with call-to-action and close button.",
     dependencies: ["motion"],
     registryDependencies: ["button"],
     files: [
@@ -65,7 +66,7 @@ export const blocks: FreddyRegistryItem[] = [
     ],
     categories: ["announcement"],
     meta: {
-            height: "50vh",
+      height: "50vh",
 
       isPinned: true,
       createdAt: "2024-03-27",
@@ -74,7 +75,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "announcement-2",
     type: "registry:block",
-    description: "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
+    description:
+      "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
     dependencies: ["lucide-react"],
     registryDependencies: ["button"],
     files: [
@@ -83,9 +85,9 @@ export const blocks: FreddyRegistryItem[] = [
         type: "registry:component",
       },
     ],
-    categories: ["announcement","header"],
+    categories: ["announcement", "header"],
     meta: {
-            height: "50vh",
+      height: "50vh",
 
       isPinned: true,
       createdAt: "2026-03-28",
@@ -94,7 +96,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "announcement-3",
     type: "registry:block",
-    description: "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
+    description:
+      "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
     dependencies: ["lucide-react"],
     registryDependencies: ["button"],
     files: [
@@ -546,7 +549,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "auth-3",
     type: "registry:block",
-    description: "Premium login form with high-contrast design, social login, and branded elements.",
+    description:
+      "Premium login form with high-contrast design, social login, and branded elements.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
@@ -563,7 +567,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "auth-4",
     type: "registry:block",
-    description: "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
+    description:
+      "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
@@ -665,7 +670,8 @@ export const blocks: FreddyRegistryItem[] = [
   {
     name: "auth-10",
     type: "registry:block",
-    description: "Modern split layout sign-up form with social authentication options.",
+    description:
+      "Modern split layout sign-up form with social authentication options.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {

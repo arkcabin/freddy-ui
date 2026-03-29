@@ -9,12 +9,23 @@ import { cn } from "@/lib/utils";
  * CategoryCard for the blocks registry browsing.
  * Reverted to standard rounded style as requested.
  */
-export function CategoryCard({ id, name, blocksCount, isNew, index }: Category & { index: number }) {
+export function CategoryCard({
+  id,
+  name,
+  blocksCount,
+  isNew,
+  index,
+}: Category & { index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20, delay: index * 0.05 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        delay: index * 0.05,
+      }}
     >
       <Link
         href={`/blocks/${id}`}
@@ -29,7 +40,9 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/50 opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
               </span>
-              <span className="font-mono text-[9px] font-bold tracking-widest text-foreground uppercase">New</span>
+              <span className="font-mono text-[9px] font-bold tracking-widest text-foreground uppercase">
+                New
+              </span>
             </div>
           </div>
         )}

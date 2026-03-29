@@ -22,14 +22,16 @@ export function Hero() {
       markerType="plus"
       markerOffset="top-0"
       showDoubleBorders={true}
+      allowOverflow={true}
+      zIndex="z-[55]"
       className="bg-background min-h-[calc(100vh-3rem)] flex flex-col pt-12"
       containerClassName="flex flex-1 flex-col justify-center py-20 md:py-32"
       aria-label="Hero Section"
     >
       {/* Neutral High-Contrast Grid with Pro Mask */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <GridPattern 
-          className="opacity-15 mask-[radial-gradient(ellipse_at_center,white,transparent_80%)]" 
+        <GridPattern
+          className="opacity-15 mask-[radial-gradient(ellipse_at_center,white,transparent_80%)]"
           strokeDasharray="4 4"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--foreground),0.02)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_60%)]" />
@@ -53,7 +55,7 @@ export function Hero() {
           >
             {/* Premium Left-to-Right Fill */}
             <span className="absolute inset-0 bg-foreground scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-            
+
             {/* Inverted Content Layer */}
             <span className="relative z-10 flex items-center gap-1.5 mix-blend-difference text-white">
               Changelog
@@ -69,8 +71,16 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-4 max-w-4xl text-4xl font-extrabold leading-[1.1] tracking-tightest text-foreground sm:text-6xl lg:text-7xl"
         >
-          Beautiful <ShadcnIcon className="inline size-[0.9em] translate-y-[-0.05em] mr-1" /> <span className="text-muted-foreground/40 font-medium">shadcn/ui</span> Blocks <br />
-          for <span className="italic font-semibold text-primary/90">Busy & Smart devs.</span>
+          Beautiful{" "}
+          <ShadcnIcon className="inline size-[0.9em] translate-y-[-0.05em] mr-1" />{" "}
+          <span className="text-muted-foreground/40 font-medium">
+            shadcn/ui
+          </span>{" "}
+          Blocks <br />
+          for{" "}
+          <span className="italic font-semibold text-primary/90">
+            Busy & Smart devs.
+          </span>
         </motion.h1>
 
         {/* Advanced Word-Stagger Description */}
@@ -84,25 +94,27 @@ export function Hero() {
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.04,
-                  delayChildren: 0.4
-                }
-              }
+                  delayChildren: 0.4,
+                },
+              },
             }}
             className="text-base leading-relaxed text-muted-foreground/60 font-medium tracking-tight text-balance sm:text-lg"
           >
-            {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today.".split(" ").map((word, i) => (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
-                  visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                }}
-                transition={{ duration: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
-                className="inline-block mr-[0.25em] last:mr-0"
-              >
-                {word}
-              </motion.span>
-            ))}
+            {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
+              .split(" ")
+              .map((word, i) => (
+                <motion.span
+                  key={i}
+                  variants={{
+                    hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+                    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                  }}
+                  transition={{ duration: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+                  className="inline-block mr-[0.25em] last:mr-0"
+                >
+                  {word}
+                </motion.span>
+              ))}
           </motion.p>
         </div>
 

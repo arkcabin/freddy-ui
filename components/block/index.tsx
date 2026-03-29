@@ -65,7 +65,10 @@ export function BlockBox({ block }: BlockPreviewProps) {
             setPreviewMode={setPreviewMode}
           />
           {isPinned && (
-            <Badge variant="secondary" className="h-5 px-1.5 text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 animate-pulse">
+            <Badge
+              variant="secondary"
+              className="h-5 px-1.5 text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 animate-pulse"
+            >
               New
             </Badge>
           )}
@@ -88,7 +91,10 @@ export function BlockBox({ block }: BlockPreviewProps) {
 
       {/* Preview */}
       <BlockPreview previewMode={previewMode}>
-        <div className="relative h-full bg-background overflow-hidden" ref={iframeContainerRef}>
+        <div
+          className="relative h-full bg-background overflow-hidden"
+          ref={iframeContainerRef}
+        >
           {shouldLoadIframe && (
             <IframeRenderer
               ariaLabel={`${name}-block-preview`}
@@ -102,11 +108,13 @@ export function BlockBox({ block }: BlockPreviewProps) {
               )}
             />
           )}
-          
-          <div className={cn(
-            "absolute inset-0 flex items-center justify-center bg-background transition-opacity duration-300 pointer-events-none",
-            isLoaded ? "opacity-0" : "opacity-100"
-          )}>
+
+          <div
+            className={cn(
+              "absolute inset-0 flex items-center justify-center bg-background transition-opacity duration-300 pointer-events-none",
+              isLoaded ? "opacity-0" : "opacity-100"
+            )}
+          >
             <BlockLoader />
           </div>
         </div>

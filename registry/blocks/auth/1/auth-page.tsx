@@ -17,7 +17,6 @@ export function AuthPage() {
       {/* Centered auth card */}
       <div className="relative flex min-h-screen items-center justify-center px-4 py-20">
         <div className="w-full max-w-sm rounded-2xl border border-border/50 bg-background/60 p-8 shadow-2xl shadow-black/10 backdrop-blur-xl">
-
           {/* Logo + heading */}
           <div className="mb-8 space-y-3">
             <LogoIcon className="size-8" />
@@ -101,7 +100,12 @@ const GoogleIcon = (props: React.ComponentProps<"svg">) => (
 );
 
 const GithubIcon = (props: React.ComponentProps<"svg">) => (
-  <svg fill="currentColor" viewBox="0 0 1024 1024" aria-hidden="true" {...props}>
+  <svg
+    fill="currentColor"
+    viewBox="0 0 1024 1024"
+    aria-hidden="true"
+    {...props}
+  >
     <title>GitHub</title>
     <path
       clipRule="evenodd"

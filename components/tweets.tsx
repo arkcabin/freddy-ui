@@ -77,7 +77,6 @@ const secondRow = tweets.slice(5);
 
 export const Tweets = () => (
   <div className="relative flex w-full flex-col items-center justify-center overflow-hidden pb-20">
-
     <div className="flex flex-col gap-y-6">
       <Marquee className="[--duration:40s]">
         {firstRow.map((tweet) => (
@@ -118,10 +117,13 @@ function Marquee({
       )}
     >
       <div
-        className={cn("flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row", {
-          "animate-marquee-reverse": reverse,
-          "group-hover:paused": pauseOnHover,
-        })}
+        className={cn(
+          "flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row",
+          {
+            "animate-marquee-reverse": reverse,
+            "group-hover:paused": pauseOnHover,
+          }
+        )}
       >
         {children}
         {children}

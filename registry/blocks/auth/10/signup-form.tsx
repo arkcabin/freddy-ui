@@ -27,7 +27,7 @@ export function SignupForm() {
             <LogoIcon className="size-6 invert dark:invert-0" />
             <span className="font-bold text-lg tracking-tight">Freddy UI</span>
           </div>
-          
+
           <div className="mt-24 space-y-8">
             <h1 className="text-5xl font-bold tracking-tightest leading-[1.1] xl:text-6xl">
               Elevate your <br />
@@ -35,7 +35,8 @@ export function SignupForm() {
               workflow.
             </h1>
             <p className="max-w-md text-lg text-zinc-400 font-medium">
-              Join 10,000+ developers building faster with our premium shadcn/ui blocks.
+              Join 10,000+ developers building faster with our premium shadcn/ui
+              blocks.
             </p>
 
             <ul className="space-y-5 pt-12">
@@ -45,7 +46,10 @@ export function SignupForm() {
                 "Advanced animation primitives",
                 "Component-level accessibility",
               ].map((benefit) => (
-                <li key={benefit} className="flex items-center gap-4 text-sm font-medium text-zinc-300">
+                <li
+                  key={benefit}
+                  className="flex items-center gap-4 text-sm font-medium text-zinc-300"
+                >
                   <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
                     <CheckIcon className="size-3" strokeWidth={3} />
                   </div>
@@ -59,13 +63,18 @@ export function SignupForm() {
         <div className="relative z-10 border-t border-white/10 pt-10">
           <blockquote className="space-y-4">
             <p className="text-base font-medium leading-relaxed text-zinc-300 italic">
-              "The best component library I've used. It saved us months of work on our latest SaaS project."
+              "The best component library I've used. It saved us months of work
+              on our latest SaaS project."
             </p>
             <footer className="flex items-center gap-3">
               <div className="size-8 rounded-full bg-zinc-800 border border-zinc-700" />
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-white">Sarah Chen</p>
-                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-semibold mt-0.5">CTO at TechFlow</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-white">
+                  Sarah Chen
+                </p>
+                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-semibold mt-0.5">
+                  CTO at TechFlow
+                </p>
               </div>
             </footer>
           </blockquote>
@@ -77,7 +86,9 @@ export function SignupForm() {
         <div className="w-full max-w-[420px] space-y-10">
           <div className="flex flex-col space-y-3 text-center lg:text-left">
             <LogoIcon className="mx-auto size-8 lg:mx-0 lg:hidden" />
-            <h2 className="text-4xl font-bold tracking-tightest">Create account</h2>
+            <h2 className="text-4xl font-bold tracking-tightest">
+              Create account
+            </h2>
             <p className="text-base text-muted-foreground font-medium">
               Join the future of UI development.
             </p>
@@ -89,12 +100,12 @@ export function SignupForm() {
               { label: "Google", icon: GoogleIcon },
               { label: "GitHub", icon: GithubIcon },
               { label: "Apple", icon: AppleIcon },
-              { label: "Discord", icon: DiscordIcon }
+              { label: "Discord", icon: DiscordIcon },
             ].map((social) => (
-              <Button 
+              <Button
                 key={social.label}
-                variant="outline" 
-                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 font-bold text-xs uppercase tracking-widest transition-all hover:bg-background hover:border-zinc-300 hover:shadow-sm dark:bg-zinc-900/50 dark:border-zinc-800 dark:hover:border-zinc-700" 
+                variant="outline"
+                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 font-bold text-xs uppercase tracking-widest transition-all hover:bg-background hover:border-zinc-300 hover:shadow-sm dark:bg-zinc-900/50 dark:border-zinc-800 dark:hover:border-zinc-700"
                 type="button"
               >
                 <social.icon className="mr-2.5 size-4" />
@@ -108,13 +119,20 @@ export function SignupForm() {
               <span className="w-full border-t border-zinc-100 dark:border-zinc-800" />
             </div>
             <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-[0.2em]">
-              <span className="bg-background px-4 text-muted-foreground/60">Or email signup</span>
+              <span className="bg-background px-4 text-muted-foreground/60">
+                Or email signup
+              </span>
             </div>
           </div>
 
           <form className="grid gap-6" onSubmit={(e) => e.preventDefault()}>
             <div className="grid gap-2.5">
-              <Label htmlFor="full-name" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Full Name</Label>
+              <Label
+                htmlFor="full-name"
+                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
+              >
+                Full Name
+              </Label>
               <Input
                 id="full-name"
                 placeholder="John Doe"
@@ -122,7 +140,12 @@ export function SignupForm() {
               />
             </div>
             <div className="grid gap-2.5">
-              <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Email Address</Label>
+              <Label
+                htmlFor="email"
+                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
+              >
+                Email Address
+              </Label>
               <Input
                 id="email"
                 placeholder="name@example.com"
@@ -130,7 +153,13 @@ export function SignupForm() {
               />
             </div>
             <div className="grid gap-2.5">
-              <Label htmlFor="password" title="password" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1">Password</Label>
+              <Label
+                htmlFor="password"
+                title="password"
+                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
+              >
+                Password
+              </Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -147,23 +176,40 @@ export function SignupForm() {
                 </button>
               </div>
             </div>
-            <Button className="mt-4 h-12 rounded-xl text-sm font-bold tracking-tight shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]" size="lg">
+            <Button
+              className="mt-4 h-12 rounded-xl text-sm font-bold tracking-tight shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              size="lg"
+            >
               Get Started Free
             </Button>
           </form>
 
           <p className="text-center text-sm font-medium text-muted-foreground">
             Already have an account?{" "}
-            <a href="#" className="font-bold text-primary hover:underline underline-offset-4 transition-all">
+            <a
+              href="#"
+              className="font-bold text-primary hover:underline underline-offset-4 transition-all"
+            >
               Sign In
             </a>
           </p>
 
           <footer className="text-center text-[10px] font-medium text-muted-foreground/50 leading-relaxed px-6">
             By signing up, you agree to our{" "}
-            <a href="#" className="underline-offset-4 hover:text-primary hover:underline">Terms of Service</a>{" "}
+            <a
+              href="#"
+              className="underline-offset-4 hover:text-primary hover:underline"
+            >
+              Terms of Service
+            </a>{" "}
             and{" "}
-            <a href="#" className="underline-offset-4 hover:text-primary hover:underline">Privacy Policy</a>.
+            <a
+              href="#"
+              className="underline-offset-4 hover:text-primary hover:underline"
+            >
+              Privacy Policy
+            </a>
+            .
           </footer>
         </div>
       </div>

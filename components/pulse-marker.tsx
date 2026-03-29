@@ -25,7 +25,7 @@ export function PulseMarker({ className }: { className?: string }) {
         }}
         className="absolute inset-x-0 inset-y-0 rounded-full bg-primary/30 blur-md pointer-events-none"
       />
-      
+
       {/* Primary Icon with subtle scale pulse */}
       <motion.div
         animate={{

@@ -26,7 +26,6 @@ const itemVariants: Variants = {
 };
 
 export function Features({ totalBlocks }: { totalBlocks: number }) {
-
   return (
     <div className="relative z-10">
       <motion.div

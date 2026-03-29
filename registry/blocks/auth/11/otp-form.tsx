@@ -26,7 +26,10 @@ export function OtpForm() {
     }
   };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
@@ -44,12 +47,16 @@ export function OtpForm() {
               <span className="size-1.5 rounded-full bg-white animate-pulse" />
             </div>
           </div>
-          
+
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tightest sm:text-5xl">Verify email</h1>
+            <h1 className="text-4xl font-bold tracking-tightest sm:text-5xl">
+              Verify email
+            </h1>
             <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-sm mx-auto">
               We've sent a 6-digit verification code to
-              <span className="block font-bold text-foreground mt-1">v***k@example.com</span>
+              <span className="block font-bold text-foreground mt-1">
+                v***k@example.com
+              </span>
             </p>
           </div>
         </div>
@@ -75,7 +82,10 @@ export function OtpForm() {
           </div>
 
           <div className="space-y-4">
-            <Button className="w-full h-14 rounded-2xl font-bold text-base shadow-2xl shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99]" size="lg">
+            <Button
+              className="w-full h-14 rounded-2xl font-bold text-base shadow-2xl shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99]"
+              size="lg"
+            >
               Verify Account
             </Button>
 
