@@ -5,6 +5,10 @@ import { motion } from "motion/react";
 import type { Category } from "@/types";
 import { cn } from "@/lib/utils";
 
+/**
+ * CategoryCard for the blocks registry browsing.
+ * Reverted to standard rounded style as requested.
+ */
 export function CategoryCard({ id, name, blocksCount, isNew, index }: Category & { index: number }) {
   return (
     <motion.div
@@ -31,9 +35,9 @@ export function CategoryCard({ id, name, blocksCount, isNew, index }: Category &
         )}
 
         <div className="space-y-1 p-6">
-          <p className="font-heading text-lg font-bold text-foreground transition-colors group-hover:text-primary leading-tight">
+          <h3 className="font-heading text-lg font-bold text-foreground transition-colors group-hover:text-primary leading-tight">
             {name}
-          </p>
+          </h3>
           <p className="text-[10px] font-medium text-muted-foreground/80">
             {blocksCount} blocks
           </p>

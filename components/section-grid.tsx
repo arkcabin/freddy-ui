@@ -2,7 +2,8 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Plus } from "./plus";
+import { PulseMarker } from "./pulse-marker";
+import { motion } from "motion/react";
 
 interface SectionGridProps {
   children: React.ReactNode;
@@ -15,6 +16,25 @@ interface SectionGridProps {
   allowOverflow?: boolean;
   showDoubleBorders?: boolean;
   doubleBorderGap?: string;
+}
+
+function LightBeam({ delay = 0 }: { delay?: number }) {
+  return (
+    <motion.div
+      initial={{ top: "-20%", opacity: 0 }}
+      animate={{ 
+        top: ["-20%", "120%"],
+        opacity: [0, 0.8, 0]
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "linear",
+        delay: delay
+      }}
+      className="absolute -left-px w-[2px] h-[150px] bg-linear-to-b from-transparent via-primary/50 to-transparent z-40 pointer-events-none"
+    />
+  );
 }
 
 /**
@@ -81,6 +101,14 @@ export function SectionGrid({
         <div className={cn(
           "relative h-full mx-auto w-full max-w-6xl border-l border-r border-dashed border-border/80"
         )}>
+          {/* Vertical Light Beams */}
+          <div className="absolute inset-y-0 left-0">
+             <LightBeam />
+          </div>
+          <div className="absolute inset-y-0 right-0">
+             <LightBeam delay={2} />
+          </div>
+
           {/* Vertical Double Borders (Left & Right) */}
           {showDoubleBorders && (
             <>
@@ -103,8 +131,8 @@ export function SectionGrid({
           {/* Top Markers (Boxed) */}
           {showTopMarkers && markerType === "plus" && (
             <div className={cn("absolute left-0 right-0", markerOffset)}>
-              <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
-              <Plus className="absolute -right-[7px] -top-[7px] text-zinc-500" />
+              <PulseMarker />
+              <PulseMarker className="left-auto -right-[7px]" />
 
               {showDoubleBorders && (
                 <>
@@ -113,14 +141,14 @@ export function SectionGrid({
                     className="absolute z-50"
                     style={{ left: `-${doubleBorderGap}`, top: doubleBorderGap }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
                   {/* Top-Outer Corner Right: Outer-Outer Intersection */}
                   <div
                     className="absolute z-50"
                     style={{ right: `-${doubleBorderGap}`, top: doubleBorderGap }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
 
                   {/* Top-Outer Corner Left: Outer-Vertical / Inner-Horizontal Intersection */}
@@ -128,14 +156,14 @@ export function SectionGrid({
                     className="absolute z-50"
                     style={{ left: `-${doubleBorderGap}`, top: "0px" }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
                   {/* Top-Outer Corner Right: Outer-Vertical / Inner-Horizontal Intersection */}
                   <div
                     className="absolute z-50"
                     style={{ right: `-${doubleBorderGap}`, top: "0px" }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
 
                   {/* Top-Outer Corner Left: Inner-Vertical / Outer-Horizontal Intersection */}
@@ -143,14 +171,14 @@ export function SectionGrid({
                     className="absolute z-50"
                     style={{ left: "0px", top: doubleBorderGap }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
                   {/* Top-Outer Corner Right: Inner-Vertical / Outer-Horizontal Intersection */}
                   <div
                     className="absolute z-50"
                     style={{ right: "0px", top: doubleBorderGap }}
                   >
-                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                    <PulseMarker />
                   </div>
                 </>
               )}
@@ -169,8 +197,8 @@ export function SectionGrid({
             <div className="absolute left-0 right-0 bottom-0">
               {markerType === "plus" ? (
                 <>
-                  <Plus className="absolute -left-[7px] -bottom-[7px] top-auto text-zinc-500" />
-                  <Plus className="absolute -right-[7px] -bottom-[7px] top-auto text-zinc-500" />
+                  <PulseMarker className="top-auto -bottom-[7px]" />
+                  <PulseMarker className="left-auto top-auto -right-[7px] -bottom-[7px]" />
 
                   {showDoubleBorders && (
                     <>
@@ -179,14 +207,14 @@ export function SectionGrid({
                         className="absolute z-50"
                         style={{ left: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
                       {/* Bottom-Outer Right Corner: Outer-Outer Intersection */}
                       <div
                         className="absolute z-50"
                         style={{ right: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
 
                       {/* Bottom-Outer Left Corner: Outer-Vertical / Inner-Horizontal Intersection */}
@@ -194,14 +222,14 @@ export function SectionGrid({
                         className="absolute z-50"
                         style={{ left: `-${doubleBorderGap}`, bottom: "0px" }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
                       {/* Bottom-Outer Right Corner: Outer-Vertical / Inner-Horizontal Intersection */}
                       <div
                         className="absolute z-50"
                         style={{ right: `-${doubleBorderGap}`, bottom: "0px" }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
 
                       {/* Bottom-Outer Left Corner: Inner-Vertical / Outer-Horizontal Intersection */}
@@ -209,14 +237,14 @@ export function SectionGrid({
                         className="absolute z-50"
                         style={{ left: "0px", bottom: `-${doubleBorderGap}` }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
                       {/* Bottom-Outer Right Corner: Inner-Vertical / Outer-Horizontal Intersection */}
                       <div
                         className="absolute z-50"
                         style={{ right: "0px", bottom: `-${doubleBorderGap}` }}
                       >
-                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                        <PulseMarker />
                       </div>
                     </>
                   )}

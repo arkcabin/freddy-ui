@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { constructMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/json-ld";
 
 export const metadata = constructMetadata({
   canonicalUrl: "/",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          <JsonLd />
           {children}
         </ThemeProvider>
       </body>

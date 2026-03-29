@@ -1,11 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { SITE_VERSION } from "@/config/site";
 import { LogoIcon } from "@/components/logo";
 import { ShadcnIcon } from "@/components/icons";
+import { GridPattern } from "@/components/shared";
 import { FeaturedIcons } from "./featured-icons";
 import { SectionGrid } from "./section-grid";
 import { motion } from "motion/react";
@@ -13,6 +14,7 @@ import { motion } from "motion/react";
 /**
  * Hero component for the Freddy UI landing page.
  * Uses the SectionGrid HOC for the "Boxed" architectural layout.
+ * Reverted to standard centered layout as requested.
  */
 export function Hero() {
   return (
@@ -22,10 +24,15 @@ export function Hero() {
       showDoubleBorders={true}
       className="bg-background min-h-[calc(100vh-3rem)] flex flex-col pt-12"
       containerClassName="flex flex-1 flex-col justify-center py-20 md:py-32"
+      aria-label="Hero Section"
     >
-      {/* Subtle background glow - positioned below content and grid */}
+      {/* Neutral High-Contrast Grid with Pro Mask */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.1)_0%,transparent_50%)]" />
+        <GridPattern 
+          className="opacity-15 mask-[radial-gradient(ellipse_at_center,white,transparent_80%)]" 
+          strokeDasharray="4 4"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--foreground),0.02)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_60%)]" />
       </div>
 
       {/* Content wrapper */}
@@ -35,16 +42,23 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-10 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground/80 backdrop-blur-md"
+          className="mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground/80 backdrop-blur-md"
         >
           <LogoIcon className="size-3 opacity-60" />
           <span>Introducing V-{SITE_VERSION}</span>
           <span className="h-2 w-px bg-border/50 mx-1" />
           <Link
             href="/changelog"
-            className="transition-colors hover:text-foreground"
+            className="group relative flex items-center gap-1.5 px-2 py-0.5 rounded-sm overflow-hidden"
           >
-            Changelog
+            {/* Premium Left-to-Right Fill */}
+            <span className="absolute inset-0 bg-foreground scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
+            
+            {/* Inverted Content Layer */}
+            <span className="relative z-10 flex items-center gap-1.5 mix-blend-difference text-white">
+              Changelog
+              <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
+            </span>
           </Link>
         </motion.div>
 
@@ -53,23 +67,44 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-6 max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-none tracking-tightest text-foreground"
+          className="mb-4 max-w-4xl text-4xl font-extrabold leading-[1.1] tracking-tightest text-foreground sm:text-6xl lg:text-7xl"
         >
           Beautiful <ShadcnIcon className="inline size-[0.9em] translate-y-[-0.05em] mr-1" /> <span className="text-muted-foreground/40 font-medium">shadcn/ui</span> Blocks <br />
-          for <span className="italic font-semibold text-primary">Busy & Smart devs.</span>
+          for <span className="italic font-semibold text-primary/90">Busy & Smart devs.</span>
         </motion.h1>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-10 max-w-2xl text-[16px] leading-[1.6] text-muted-foreground/70 font-medium tracking-tight"
-        >
-          Save hours of design time with clean, ready-to-use shadcn blocks
-          that just work — modern, responsive, and built for speed.
-          Focus on your product, not on building every section from scratch.
-        </motion.p>
+        {/* Advanced Word-Stagger Description */}
+        <div className="mb-10 max-w-2xl overflow-hidden">
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.04,
+                  delayChildren: 0.4
+                }
+              }
+            }}
+            className="text-base leading-relaxed text-muted-foreground/60 font-medium tracking-tight text-balance sm:text-lg"
+          >
+            {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today.".split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+                  visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                }}
+                transition={{ duration: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+                className="inline-block mr-[0.25em] last:mr-0"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.p>
+        </div>
 
         {/* CTAs */}
         <motion.div
@@ -95,16 +130,6 @@ export function Hero() {
             Get full Access
           </Button>
         </motion.div>
-
-        {/* Trust line */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-8 text-[12px] text-muted-foreground/60"
-        >
-          Trusted by IT teams at Figma, Linear, and 40+ companies.
-        </motion.p>
       </div>
 
       <FeaturedIcons />

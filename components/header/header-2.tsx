@@ -54,60 +54,60 @@ export function MainHeader({
                         {/* Vertical Dual (Left/Right) */}
                         <div className="absolute inset-y-0 -left-[40px] border-l border-dashed border-border pointer-events-none" />
                         <div className="absolute inset-y-0 -right-[40px] border-r border-dashed border-border pointer-events-none" />
-                        
+
                         {/* Horizontal Dual (Bottom) */}
                         <div className="absolute -bottom-[40px] left-0 right-0 border-b border-dashed border-border pointer-events-none" />
                         {/* Extended Horizontal (Full Width) for that expansive look */}
                         <div className="absolute -bottom-[40px] -left-[100vw] -right-[100vw] border-b border-dashed border-border/20 pointer-events-none" />
 
                         {/* Plus Markers at intersections */}
-                        
+
                         {/* 1. Outer-Outer Intersections */}
                         <div className="absolute -left-[40px] -bottom-[40px] pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
                         <div className="absolute -right-[40px] -bottom-[40px] pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
 
                         {/* 2. Inner-Inner Intersections */}
                         <div className="absolute left-0 -bottom-px pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
                         <div className="absolute right-0 -bottom-px pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
 
                         {/* 3. Outer-Vertical / Inner-Horizontal Intersections */}
                         <div className="absolute -left-[40px] -bottom-px pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
                         <div className="absolute -right-[40px] -bottom-px pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
 
                         {/* 4. Inner-Vertical / Outer-Horizontal Intersections */}
                         <div className="absolute left-0 -bottom-[40px] pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
                         <div className="absolute right-0 -bottom-[40px] pointer-events-none z-50">
-                             <div className="relative">
+                            <div className="relative">
                                 <PlusIcon className="absolute size-3.5 -left-[7px] -top-[7px] text-zinc-500" strokeWidth={1} />
-                             </div>
+                            </div>
                         </div>
                     </>
                 )}
@@ -135,12 +135,7 @@ export function MainHeader({
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <Button
-                            variant="secondary"
-                            className="h-10 rounded-full font-bold transition-all hover:scale-105 active:scale-95 px-6 text-[14px]"
-                        >
-                            Request a Demo
-                        </Button>
+
                         <Button
                             variant="ghost"
                             size="icon"

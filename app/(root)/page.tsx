@@ -16,14 +16,16 @@ import { MainHeader } from "@/components/header/header-2";
 import { SiteFooter } from "@/components/footer";
 import { SectionGrid } from "@/components/section-grid";
 
+/**
+ * Page component for the Freddy UI homepage.
+ * Reverted to standard layout while preserving the dynamic SectionGrid animations.
+ */
 export default function Page() {
   const categories = getAllCategories();
   const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(true);
 
   return (
-
-    <main >
-
+    <main>
       <div className="bg-accent">
         {/* 1. Announcement Bar */}
         <AnnouncementBar
@@ -32,10 +34,10 @@ export default function Page() {
         />
 
         <HomePageWrapper isAnnouncementVisible={isAnnouncementVisible}>
-          {/* Navigation Header - Integrated grid support internally for stickiness */}
+          {/* Navigation Header */}
           <MainHeader isFullWidth={false} />
 
-          {/* 4. Hero Landing Section */}
+          {/* 2. Hero Landing Section */}
           <Hero />
 
           <div className="relative grow">
@@ -113,6 +115,5 @@ export default function Page() {
         </HomePageWrapper>
       </div>
     </main>
-
   );
 }

@@ -71,38 +71,23 @@ function getCategoryIcon(id: string, className?: string) {
   }
 }
 
-export function SiteNav({
-  items = [
-    // { name: "Platform", href: "/blocks" },
-  ]
-}: {
-  items?: { name: string; href?: string }[];
-}) {
+const NAV_LINKS = [
+  { name: "Docs", href: "/docs" },
+  { name: "Changelog", href: "/changelog" },
+  { name: "Pricing", href: "/pricing" },
+];
+
+export function SiteNav() {
   return (
     <NavigationMenu
       className="flex"
       viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
+      aria-label="Main Navigation"
     >
       <NavigationMenuList className="gap-1 flex-row">
-        {items.map((item) => (
-          <NavigationMenuItem key={item.name}>
-            <NavigationMenuLink asChild>
-              <Link href={item.href || "#"}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="rounded-full px-5 h-9 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10"
-                >
-                  {item.name}
-                </Button>
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-
-        {/* Blocks dropdown */}
+        {/* 1. Blocks dropdown */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground data-[state=open]:bg-transparent data-[state=open]:text-foreground rounded-full px-5 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10">
+          <NavigationMenuTrigger className="bg-transparent text-muted-foreground shadow-none hover:text-foreground data-[state=open]:bg-transparent data-[state=open]:text-foreground rounded-full px-5 h-9 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10">
             Blocks
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -196,6 +181,22 @@ export function SiteNav({
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* Regular Links */}
+        {NAV_LINKS.map((item) => (
+          <NavigationMenuItem key={item.name}>
+            <NavigationMenuLink asChild>
+              <Link href={item.href || "#"}>
+                <Button
+                  variant="default"
+                  className="bg-transparent text-muted-foreground shadow-none hover:text-foreground hover:bg-white/5 active:bg-white/10 rounded-full px-5 h-9 text-[14px] font-bold transition-all"
+                >
+                  {item.name}
+                </Button>
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
       <NavigationMenuIndicator />
     </NavigationMenu>

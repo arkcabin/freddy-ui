@@ -31,7 +31,7 @@ const icons = [
 
 export function FeaturedIcons({ className }: { className?: string }) {
   return (
-    <div className={cn("mt-16 mb-24 flex items-center justify-center gap-2 sm:gap-4 lg:gap-6", className)}>
+    <div className={cn("mt-32 mb-24 flex items-center justify-center gap-2 sm:gap-4 lg:gap-6", className)}>
       {icons.map((item, i) => (
         <div
           key={i}
