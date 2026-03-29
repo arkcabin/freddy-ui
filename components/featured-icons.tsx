@@ -44,13 +44,14 @@ export function FeaturedIcons({ className }: { className?: string }) {
         className
       )}
     >
-      {icons.map((item) => (
+      {icons.map((item, index) => (
         <div
           className={cn(
             "relative flex items-center justify-center transition-all duration-500",
             item.isCenter
               ? "feature-card-active z-20 size-24 rounded-[32px] sm:size-28"
-              : "feature-card size-16 rounded-[20px] text-muted-foreground sm:size-20"
+              : "feature-card size-16 rounded-[20px] text-muted-foreground sm:size-20",
+            index % 2 !== 0 && "hidden sm:flex"
           )}
           key={item.id}
           style={{
