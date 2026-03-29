@@ -105,50 +105,50 @@ export function SectionGrid({
             <div className={cn("absolute left-0 right-0", markerOffset)}>
               <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
               <Plus className="absolute -right-[7px] -top-[7px] text-zinc-500" />
-              
+
               {showDoubleBorders && (
                 <>
                   {/* Top-Outer Corner Left: Outer-Outer Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { left: `-${doubleBorderGap}`, top: doubleBorderGap } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ left: `-${doubleBorderGap}`, top: doubleBorderGap }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
                   {/* Top-Outer Corner Right: Outer-Outer Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { right: `-${doubleBorderGap}`, top: doubleBorderGap } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ right: `-${doubleBorderGap}`, top: doubleBorderGap }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
 
                   {/* Top-Outer Corner Left: Outer-Vertical / Inner-Horizontal Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { left: `-${doubleBorderGap}`, top: "0px" } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ left: `-${doubleBorderGap}`, top: "0px" }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
                   {/* Top-Outer Corner Right: Outer-Vertical / Inner-Horizontal Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { right: `-${doubleBorderGap}`, top: "0px" } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ right: `-${doubleBorderGap}`, top: "0px" }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
 
                   {/* Top-Outer Corner Left: Inner-Vertical / Outer-Horizontal Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { left: "0px", top: doubleBorderGap } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ left: "0px", top: doubleBorderGap }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
                   {/* Top-Outer Corner Right: Inner-Vertical / Outer-Horizontal Intersection */}
-                  <div 
-                    className="absolute z-50" 
-                    style={!isTailwindGap ? { right: "0px", top: doubleBorderGap } : {}}
+                  <div
+                    className="absolute z-50"
+                    style={{ right: "0px", top: doubleBorderGap }}
                   >
                     <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                   </div>
@@ -175,46 +175,46 @@ export function SectionGrid({
                   {showDoubleBorders && (
                     <>
                       {/* Bottom-Outer Left Corner: Outer-Outer Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { left: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ left: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
                       {/* Bottom-Outer Right Corner: Outer-Outer Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { right: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ right: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
 
                       {/* Bottom-Outer Left Corner: Outer-Vertical / Inner-Horizontal Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { left: `-${doubleBorderGap}`, bottom: "0px" } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ left: `-${doubleBorderGap}`, bottom: "0px" }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
                       {/* Bottom-Outer Right Corner: Outer-Vertical / Inner-Horizontal Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { right: `-${doubleBorderGap}`, bottom: "0px" } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ right: `-${doubleBorderGap}`, bottom: "0px" }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
 
                       {/* Bottom-Outer Left Corner: Inner-Vertical / Outer-Horizontal Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { left: "0px", bottom: `-${doubleBorderGap}` } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ left: "0px", bottom: `-${doubleBorderGap}` }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
                       {/* Bottom-Outer Right Corner: Inner-Vertical / Outer-Horizontal Intersection */}
-                      <div 
-                        className="absolute z-50" 
-                        style={!isTailwindGap ? { right: "0px", bottom: `-${doubleBorderGap}` } : {}}
+                      <div
+                        className="absolute z-50"
+                        style={{ right: "0px", bottom: `-${doubleBorderGap}` }}
                       >
                         <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
                       </div>
