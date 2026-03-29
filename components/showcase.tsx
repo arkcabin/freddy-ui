@@ -17,9 +17,10 @@ export function Showcase() {
   return (
     <SectionGrid
       markerType="plus"
-      showTopMarkers={false}
+      showTopMarkers={true}
       showBottomMarkers={true}
-      markerOffset="top-4"
+      showDoubleBorders={true}
+      markerOffset="top-0"
       className="py-16 lg:py-24"
       containerClassName="mt-8"
     >

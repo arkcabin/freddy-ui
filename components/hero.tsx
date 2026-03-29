@@ -18,20 +18,20 @@ export function Hero() {
   return (
     <SectionGrid
       markerType="plus"
-      markerOffset="top-32"
-      className="bg-background min-h-[calc(100vh-3rem)] flex flex-col"
+      markerOffset="top-0"
+      showDoubleBorders={true}
+      className="bg-background min-h-[calc(100vh-3rem)] flex flex-col pt-12"
       containerClassName="flex flex-1 flex-col justify-center py-20 md:py-32"
     >
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 z-[-1] pointer-events-none">
-        <div className="absolute inset-0 bg-background" />
+      {/* Subtle background glow - positioned below content and grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.1)_0%,transparent_50%)]" />
       </div>
 
       {/* Content wrapper */}
       <div className="relative z-10 px-6 md:px-10">
         {/* Badge */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -49,7 +49,7 @@ export function Hero() {
         </motion.div>
 
         {/* Headline */}
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -60,7 +60,7 @@ export function Hero() {
         </motion.h1>
 
         {/* Description */}
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -72,7 +72,7 @@ export function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -97,7 +97,7 @@ export function Hero() {
         </motion.div>
 
         {/* Trust line */}
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}

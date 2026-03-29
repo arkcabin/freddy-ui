@@ -41,7 +41,7 @@ export function HomePageWrapper({
       "relative z-20 bg-background transition-all duration-300",
       activeFullWidth
         ? "mx-0 rounded-none border-none"
-        : "mx-2 rounded-t-2xl"
+        : "mx-2 rounded-t-2xl border-t border-dashed border-border/20"
     )}>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === MainHeader) {

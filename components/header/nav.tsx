@@ -71,18 +71,38 @@ function getCategoryIcon(id: string, className?: string) {
   }
 }
 
-export function SiteNav() {
+export function SiteNav({
+  items = [
+    // { name: "Platform", href: "/blocks" },
+  ]
+}: {
+  items?: { name: string; href?: string }[];
+}) {
   return (
     <NavigationMenu
-      className="hidden md:flex"
+      className="flex"
       viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
     >
-      <NavigationMenuList>
-
+      <NavigationMenuList className="gap-1 flex-row">
+        {items.map((item) => (
+          <NavigationMenuItem key={item.name}>
+            <NavigationMenuLink asChild>
+              <Link href={item.href || "#"}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="rounded-full px-5 h-9 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10"
+                >
+                  {item.name}
+                </Button>
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
 
         {/* Blocks dropdown */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:bg-transparent hover:text-foreground data-[state=open]:bg-transparent data-[state=open]:text-foreground">
+          <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground data-[state=open]:bg-transparent data-[state=open]:text-foreground rounded-full px-5 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10">
             Blocks
           </NavigationMenuTrigger>
           <NavigationMenuContent>

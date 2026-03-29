@@ -86,6 +86,11 @@
   --glass-bg: rgba(255, 255, 255, 0.4);
   --grid-color: rgba(0, 0, 0, 0.05);
   --beam-color: rgba(0, 0, 0, 0.1);
+
+  /* Featured Cards */
+  --featured-card-bg: rgba(255, 255, 255, 0.9);
+  --featured-card-border: rgba(0, 0, 0, 0.08);
+  --featured-card-inner-glow: rgba(255, 255, 255, 1);
 }
 
 .dark {
@@ -128,6 +133,11 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --grid-color: rgba(255, 255, 255, 0.03);
   --beam-color: rgba(255, 255, 255, 0.15);
+
+  /* Featured Cards (Premium Dark) */
+  --featured-card-bg: oklch(0.2 0 0 / 80%);
+  --featured-card-border: oklch(1 0 0 / 15%);
+  --featured-card-inner-glow: oklch(1 0 0 / 8%);
 }
 
 @layer base {
@@ -215,6 +225,33 @@
 
   .neon-glow {
     box-shadow: 0 0 20px var(--glow-color);
+  }
+
+  .feature-card {
+    background-color: var(--featured-card-bg);
+    border: 1px solid var(--featured-card-border);
+    box-shadow: 
+      0 8px 30px rgba(0, 0, 0, 0.06), 
+      0 2px 8px rgba(0, 0, 0, 0.04), 
+      inset 0 1px 2px var(--featured-card-inner-glow);
+    @apply backdrop-blur-md transition-all duration-500 overflow-hidden;
+  }
+
+  .feature-card-active {
+    background-color: var(--foreground);
+    color: var(--background);
+    border: 1px solid var(--foreground);
+    box-shadow: 
+      0 22px 70px rgba(0, 0, 0, 0.15),
+      0 10px 30px rgba(0, 0, 0, 0.1),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .feature-card-active {
+    box-shadow: 
+      0 22px 70px rgba(255, 255, 255, 0.08),
+      0 10px 30px rgba(255, 255, 255, 0.04),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
 
   .grid-background {

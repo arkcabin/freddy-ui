@@ -12,6 +12,9 @@ interface SectionGridProps {
   markerOffset?: string;
   className?: string;
   containerClassName?: string;
+  allowOverflow?: boolean;
+  showDoubleBorders?: boolean;
+  doubleBorderGap?: string;
 }
 
 /**
@@ -27,45 +30,204 @@ export function SectionGrid({
   markerOffset = "top-32",
   className,
   containerClassName,
+  allowOverflow = false,
+  showDoubleBorders = false,
+  doubleBorderGap = "40px",
 }: SectionGridProps) {
+  const isTailwindGap = doubleBorderGap.startsWith("h-") || doubleBorderGap.startsWith("top-") || doubleBorderGap.startsWith("mt-");
+
   return (
-    <section className={cn("relative z-20 overflow-hidden bg-background", className)}>
-      {/* Boxed Grid Layer (Vertical Borders Only) */}
-      <div className="absolute inset-x-0 inset-y-0 z-0 overflow-hidden pointer-events-none">
-        {/* Using standard border opacity to match the main site layout perfectly */}
-        <div className="relative h-full mx-auto w-full max-w-6xl border-l border-r border-dashed border-border">
-          {/* Top Markers */}
-          {showTopMarkers && (
+    <section className={cn(
+      "relative z-20 bg-background",
+      !allowOverflow && "overflow-hidden",
+      className
+    )}>
+      {/* Boxed Grid Layer (Vertical & Horizontal Borders) - Elevated to z-30 to ensure overlay visibility */}
+      <div className="absolute inset-x-0 inset-y-0 z-30 pointer-events-none">
+
+        {/* Full-width marker lines (outside boxed container) */}
+        {showTopMarkers && (
+          <>
+            <div className={cn("absolute left-0 right-0 border-t border-dashed border-border/80", markerOffset)} />
+            {showDoubleBorders && (
+              <div
+                className={cn(
+                  "absolute left-0 right-0 border-t border-dashed border-border",
+                  markerOffset,
+                  isTailwindGap ? doubleBorderGap : ""
+                )}
+                style={!isTailwindGap ? { transform: `translateY(${doubleBorderGap})` } : {}}
+              />
+            )}
+          </>
+        )}
+
+        {showBottomMarkers && (
+          <>
+            <div className="absolute bottom-0 left-0 right-0 border-t border-dashed border-border/80" />
+            {showDoubleBorders && (
+              <div
+                className={cn(
+                  "absolute left-0 right-0 border-t border-dashed border-border",
+                  isTailwindGap ? `-${doubleBorderGap}` : ""
+                )}
+                style={!isTailwindGap ? { bottom: `-${doubleBorderGap}` } : {}}
+              />
+            )}
+          </>
+        )}
+
+        {/* Main boxed container with vertical borders and markers */}
+        <div className={cn(
+          "relative h-full mx-auto w-full max-w-6xl border-l border-r border-dashed border-border/80"
+        )}>
+          {/* Vertical Double Borders (Left & Right) */}
+          {showDoubleBorders && (
             <>
-              {markerType === "plus" ? (
-                <>
-                  <Plus className={cn("absolute -left-[7.5px] text-border/60", markerOffset)} />
-                  <Plus className={cn("absolute -right-[7.5px] text-border/60", markerOffset)} />
-                </>
-              ) : (
-                <>
-                  <div className={cn("absolute -left-[2.5px] size-[5px] rounded-full bg-border/60", markerOffset)} />
-                  <div className={cn("absolute -right-[2.5px] size-[5px] rounded-full bg-border/60", markerOffset)} />
-                </>
-              )}
+              <div
+                className={cn(
+                  "absolute inset-y-0 border-l border-dashed border-border",
+                  isTailwindGap ? `-${doubleBorderGap.replace('h-', 'w-')}` : ""
+                )}
+                style={!isTailwindGap ? { left: `-${doubleBorderGap}` } : {}}
+              />
+              <div
+                className={cn(
+                  "absolute inset-y-0 border-r border-dashed border-border",
+                  isTailwindGap ? `-${doubleBorderGap.replace('h-', 'w-')}` : ""
+                )}
+                style={!isTailwindGap ? { right: `-${doubleBorderGap}` } : {}}
+              />
             </>
           )}
+          {/* Top Markers (Boxed) */}
+          {showTopMarkers && markerType === "plus" && (
+            <div className={cn("absolute left-0 right-0", markerOffset)}>
+              <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+              <Plus className="absolute -right-[7px] -top-[7px] text-zinc-500" />
+              
+              {showDoubleBorders && (
+                <>
+                  {/* Top-Outer Corner Left: Outer-Outer Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { left: `-${doubleBorderGap}`, top: doubleBorderGap } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
+                  {/* Top-Outer Corner Right: Outer-Outer Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { right: `-${doubleBorderGap}`, top: doubleBorderGap } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
 
-          {/* Bottom Markers - Positioned exactly at the section transition point */}
+                  {/* Top-Outer Corner Left: Outer-Vertical / Inner-Horizontal Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { left: `-${doubleBorderGap}`, top: "0px" } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
+                  {/* Top-Outer Corner Right: Outer-Vertical / Inner-Horizontal Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { right: `-${doubleBorderGap}`, top: "0px" } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
+
+                  {/* Top-Outer Corner Left: Inner-Vertical / Outer-Horizontal Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { left: "0px", top: doubleBorderGap } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
+                  {/* Top-Outer Corner Right: Inner-Vertical / Outer-Horizontal Intersection */}
+                  <div 
+                    className="absolute z-50" 
+                    style={!isTailwindGap ? { right: "0px", top: doubleBorderGap } : {}}
+                  >
+                    <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
+          {showTopMarkers && markerType === "dot" && (
+            <div className={cn("absolute left-0 right-0", markerOffset)}>
+              <div className="absolute -left-[2.5px] -top-[2.5px] size-[5px] rounded-full bg-border/60" />
+              <div className="absolute -right-[2.5px] -top-[2.5px] size-[5px] rounded-full bg-border/60" />
+            </div>
+          )}
+
+          {/* Bottom Markers (Boxed) */}
           {showBottomMarkers && (
-            <>
+            <div className="absolute left-0 right-0 bottom-0">
               {markerType === "plus" ? (
                 <>
-                  <Plus className="absolute -left-[7.5px] bottom-0 text-border/60" />
-                  <Plus className="absolute -right-[7.5px] bottom-0 text-border/60" />
+                  <Plus className="absolute -left-[7px] -bottom-[7px] top-auto text-zinc-500" />
+                  <Plus className="absolute -right-[7px] -bottom-[7px] top-auto text-zinc-500" />
+
+                  {showDoubleBorders && (
+                    <>
+                      {/* Bottom-Outer Left Corner: Outer-Outer Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { left: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+                      {/* Bottom-Outer Right Corner: Outer-Outer Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { right: `-${doubleBorderGap}`, bottom: `-${doubleBorderGap}` } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+
+                      {/* Bottom-Outer Left Corner: Outer-Vertical / Inner-Horizontal Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { left: `-${doubleBorderGap}`, bottom: "0px" } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+                      {/* Bottom-Outer Right Corner: Outer-Vertical / Inner-Horizontal Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { right: `-${doubleBorderGap}`, bottom: "0px" } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+
+                      {/* Bottom-Outer Left Corner: Inner-Vertical / Outer-Horizontal Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { left: "0px", bottom: `-${doubleBorderGap}` } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+                      {/* Bottom-Outer Right Corner: Inner-Vertical / Outer-Horizontal Intersection */}
+                      <div 
+                        className="absolute z-50" 
+                        style={!isTailwindGap ? { right: "0px", bottom: `-${doubleBorderGap}` } : {}}
+                      >
+                        <Plus className="absolute -left-[7px] -top-[7px] text-zinc-500" />
+                      </div>
+                    </>
+                  )}
                 </>
               ) : (
                 <>
-                  <div className="absolute -left-[2.5px] bottom-0 size-[5px] rounded-full bg-border/60" />
-                  <div className="absolute -right-[2.5px] bottom-0 size-[5px] rounded-full bg-border/60" />
+                  <div className="absolute -left-[2.5px] -bottom-[2.5px] size-[5px] rounded-full bg-zinc-500" />
+                  <div className="absolute -right-[2.5px] -bottom-[2.5px] size-[5px] rounded-full bg-zinc-500" />
                 </>
               )}
-            </>
+            </div>
           )}
         </div>
       </div>
