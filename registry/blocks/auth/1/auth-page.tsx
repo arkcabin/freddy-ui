@@ -21,10 +21,10 @@ export function AuthPage() {
           <div className="mb-8 space-y-3">
             <LogoIcon className="size-8" />
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              <h1 className="font-bold text-2xl text-foreground tracking-tight">
                 Welcome back
               </h1>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-1 text-muted-foreground text-sm">
                 Sign in to your account or create a new one.
               </p>
             </div>
@@ -55,7 +55,7 @@ export function AuthPage() {
           {/* Divider */}
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-border" />
-            <span className="text-[11px] font-medium tracking-wider text-muted-foreground/60 uppercase">
+            <span className="font-medium text-[11px] text-muted-foreground/60 uppercase tracking-wider">
               or
             </span>
             <div className="h-px flex-1 bg-border" />
@@ -67,7 +67,7 @@ export function AuthPage() {
           </Button>
 
           {/* Terms */}
-          <p className="mt-6 text-center text-[11px] leading-relaxed text-muted-foreground/70">
+          <p className="mt-6 text-center text-[11px] text-muted-foreground/70 leading-relaxed">
             By continuing, you agree to our{" "}
             <a
               className="underline underline-offset-4 transition-colors hover:text-foreground"
@@ -91,7 +91,7 @@ export function AuthPage() {
 }
 
 const GoogleIcon = (props: React.ComponentProps<"svg">) => (
-  <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" {...props}>
+  <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24" {...props}>
     <title>Google</title>
     <g>
       <path d="M12.479,14.265v-3.279h11.049c0.108,0.571,0.164,1.247,0.164,1.979c0,2.46-0.672,5.502-2.84,7.669   C18.744,22.829,16.051,24,12.483,24C5.869,24,0.308,18.613,0.308,12S5.869,0,12.483,0c3.659,0,6.265,1.436,8.223,3.307L18.392,5.62   c-1.404-1.317-3.307-2.341-5.913-2.341C7.65,3.279,3.873,7.171,3.873,12s3.777,8.721,8.606,8.721c3.132,0,4.916-1.258,6.059-2.401   c0.927-0.927,1.537-2.251,1.777-4.059L12.479,14.265z" />
@@ -101,9 +101,9 @@ const GoogleIcon = (props: React.ComponentProps<"svg">) => (
 
 const GithubIcon = (props: React.ComponentProps<"svg">) => (
   <svg
+    aria-hidden="true"
     fill="currentColor"
     viewBox="0 0 1024 1024"
-    aria-hidden="true"
     {...props}
   >
     <title>GitHub</title>

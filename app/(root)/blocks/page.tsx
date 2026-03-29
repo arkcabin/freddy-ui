@@ -1,7 +1,7 @@
-import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
 import { CategoryCard } from "@/components/category-card";
 import { DashedLines } from "@/components/shared";
 import { constructMetadata } from "@/lib/metadata";
+import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
 
 export const metadata = constructMetadata({
   title: "Browse All Blocks",
@@ -17,25 +17,25 @@ export default function BlocksPage() {
   return (
     <div className="relative">
       {/* Background Ambience */}
-      <div className="absolute inset-x-0 -top-24 -z-10 flex justify-center overflow-hidden pointer-events-none">
+      <div className="-top-24 -z-10 pointer-events-none absolute inset-x-0 flex justify-center overflow-hidden">
         <div className="w-[80rem] flex-none justify-end">
-          <div className="w-[80rem] flex-none bg-[radial-gradient(35%_50%_at_50%_50%,theme(colors.primary/5%),transparent)] h-[40rem]" />
+          <div className="h-[40rem] w-[80rem] flex-none bg-[radial-gradient(35%_50%_at_50%_50%,theme(colors.primary/5%),transparent)]" />
         </div>
       </div>
 
       {/* Page header — matches [cat]/page.tsx style */}
       <div className="cpx max-w-2xl space-y-4 pt-12 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-bold uppercase tracking-widest text-primary">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1 font-bold text-[10px] text-primary uppercase tracking-widest">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
           New Blocks Added
         </div>
-        <h1 className="font-bold font-heading text-4xl sm:text-5xl text-foreground tracking-tightest leading-none">
+        <h1 className="font-bold font-heading text-4xl text-foreground leading-none tracking-tightest sm:text-5xl">
           Browse All Blocks
         </h1>
-        <p className="text-muted-foreground text-lg font-medium leading-relaxed max-w-xl">
+        <p className="max-w-xl font-medium text-lg text-muted-foreground leading-relaxed">
           Explore {categories.length} categories and {totalBlocks}+ premium
           components. Ready to copy, customize, and ship.
         </p>
@@ -44,10 +44,10 @@ export default function BlocksPage() {
       <DashedLines className="h-8 [mask-image:linear-gradient(to_bottom,transparent,var(--background),var(--background))]" />
 
       {/* Category grid */}
-      <div className="cpx pb-24 border-t border-zinc-100 dark:border-zinc-800">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
+      <div className="cpx border-zinc-100 border-t pb-24 dark:border-zinc-800">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {categories.map((category, index) => (
-            <CategoryCard key={category.id} index={index} {...category} />
+            <CategoryCard index={index} key={category.id} {...category} />
           ))}
         </div>
       </div>

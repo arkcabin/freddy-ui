@@ -27,37 +27,35 @@ export const TestimonialsColumn = (props: {
         repeatType: "loop",
       }}
     >
-      {[
-        ...new Array(2).fill(0).map((_, index) => (
-          <React.Fragment key={`column-${index}`}>
-            {props.testimonials.map(({ text, image, name, role }) => (
-              <div
-                className="w-full max-w-xs rounded-3xl border bg-card p-8 shadow-lg dark:bg-card/20 dark:shadow-foreground/10"
-                key={name}
-              >
-                <div>{text}</div>
-                <div className="mt-5 flex items-center gap-2">
-                  <img
-                    alt={name}
-                    className="h-10 w-10 rounded-full"
-                    height={40}
-                    src={image}
-                    width={40}
-                  />
-                  <div className="flex flex-col">
-                    <div className="font-medium leading-5 tracking-tight">
-                      {name}
-                    </div>
-                    <div className="leading-5 tracking-tight opacity-60">
-                      {role}
-                    </div>
+      {[0, 1].map((index) => (
+        <React.Fragment key={`column-${index}`}>
+          {props.testimonials.map(({ text, image, name, role }) => (
+            <div
+              className="w-full max-w-xs rounded-3xl border bg-card p-8 shadow-lg dark:bg-card/20 dark:shadow-foreground/10"
+              key={name}
+            >
+              <div>{text}</div>
+              <div className="mt-5 flex items-center gap-2">
+                <img
+                  alt={name}
+                  className="h-10 w-10 rounded-full"
+                  height={40}
+                  src={image}
+                  width={40}
+                />
+                <div className="flex flex-col">
+                  <div className="font-medium leading-5 tracking-tight">
+                    {name}
+                  </div>
+                  <div className="leading-5 tracking-tight opacity-60">
+                    {role}
                   </div>
                 </div>
               </div>
-            ))}
-          </React.Fragment>
-        )),
-      ]}
+            </div>
+          ))}
+        </React.Fragment>
+      ))}
     </motion.div>
   </div>
 );

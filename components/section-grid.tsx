@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import { motion } from "motion/react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import { PulseMarker } from "./pulse-marker";
-import { motion } from "motion/react";
 
-interface SectionGridProps {
+type SectionGridProps = {
   children: React.ReactNode;
   showTopMarkers?: boolean;
   showBottomMarkers?: boolean;
@@ -17,25 +17,38 @@ interface SectionGridProps {
   showDoubleBorders?: boolean;
   doubleBorderGap?: string;
   zIndex?: string;
-}
+};
 
 function LightBeam({ delay = 0 }: { delay?: number }) {
   return (
     <motion.div
-      initial={{ top: "-20%", opacity: 0 }}
       animate={{
         top: ["-20%", "120%"],
         opacity: [0, 0.8, 0],
       }}
+      className="-left-px pointer-events-none absolute z-40 h-[150px] w-[2px] bg-linear-to-b from-transparent via-primary/50 to-transparent"
+      initial={{ top: "-20%", opacity: 0 }}
       transition={{
         duration: 5,
-        repeat: Infinity,
+        repeat: Number.POSITIVE_INFINITY,
         ease: "linear",
-        delay: delay,
+        delay,
       }}
-      className="absolute -left-px w-[2px] h-[150px] bg-linear-to-b from-transparent via-primary/50 to-transparent z-40 pointer-events-none"
     />
   );
+}
+
+function getPaddingFromOffset(offset: string): string {
+  switch (offset) {
+    case "top-32":
+      return "pt-48";
+    case "top-20":
+      return "pt-32";
+    case "top-0":
+      return "pt-20";
+    default:
+      return offset.replace("top-", "pt-");
+  }
 }
 
 /**
@@ -46,7 +59,6 @@ function LightBeam({ delay = 0 }: { delay?: number }) {
 export function SectionGrid({
   children,
   showTopMarkers = true,
-  showBottomMarkers = true,
   markerType = "plus",
   markerOffset = "top-32",
   className,
@@ -55,7 +67,7 @@ export function SectionGrid({
   showDoubleBorders = false,
   doubleBorderGap = "40px",
   zIndex = "z-20",
-}: SectionGridProps) {
+}: Omit<SectionGridProps, "showBottomMarkers">) {
   const isTailwindGap =
     doubleBorderGap.startsWith("h-") ||
     doubleBorderGap.startsWith("top-") ||
@@ -66,32 +78,32 @@ export function SectionGrid({
       className={cn(
         "relative bg-background",
         zIndex,
-        !allowOverflow ? "overflow-hidden" : "overflow-visible",
+        allowOverflow ? "overflow-visible" : "overflow-hidden",
         className
       )}
     >
       {/* Boxed Grid Layer (Vertical & Horizontal Borders) - Elevated to z-[60] to ensure priority over masks / sticky header (z-50) */}
-      <div className="absolute inset-x-0 inset-y-0 z-[60] pointer-events-none">
+      <div className="pointer-events-none absolute inset-x-0 inset-y-0 z-[60]">
         {/* Full-width marker lines (outside boxed container) */}
         {showTopMarkers && (
           <>
             <div
               className={cn(
-                "absolute left-0 right-0 border-t border-dashed border-border",
+                "absolute right-0 left-0 border-border border-t border-dashed",
                 markerOffset
               )}
             />
             {showDoubleBorders && (
               <div
                 className={cn(
-                  "absolute left-0 right-0 border-t border-dashed border-border",
+                  "absolute right-0 left-0 border-border border-t border-dashed",
                   markerOffset,
                   isTailwindGap ? doubleBorderGap : ""
                 )}
                 style={
-                  !isTailwindGap
-                    ? { transform: `translateY(${doubleBorderGap})` }
-                    : {}
+                  isTailwindGap
+                    ? {}
+                    : { transform: `translateY(${doubleBorderGap})` }
                 }
               />
             )}
@@ -101,7 +113,7 @@ export function SectionGrid({
         {/* Main boxed container with vertical borders and markers */}
         <div
           className={cn(
-            "relative h-full mx-auto w-full max-w-6xl border-l border-r border-dashed border-border"
+            "relative mx-auto h-full w-full max-w-6xl border-border border-r border-l border-dashed"
           )}
         >
           {/* Vertical Light Beams */}
@@ -117,24 +129,24 @@ export function SectionGrid({
             <>
               <div
                 className={cn(
-                  "absolute inset-y-0 border-l border-dashed border-border",
+                  "absolute inset-y-0 border-border border-l border-dashed",
                   isTailwindGap ? `-${doubleBorderGap.replace("h-", "w-")}` : ""
                 )}
-                style={!isTailwindGap ? { left: `-${doubleBorderGap}` } : {}}
+                style={isTailwindGap ? {} : { left: `-${doubleBorderGap}` }}
               />
               <div
                 className={cn(
-                  "absolute inset-y-0 border-r border-dashed border-border",
+                  "absolute inset-y-0 border-border border-r border-dashed",
                   isTailwindGap ? `-${doubleBorderGap.replace("h-", "w-")}` : ""
                 )}
-                style={!isTailwindGap ? { right: `-${doubleBorderGap}` } : {}}
+                style={isTailwindGap ? {} : { right: `-${doubleBorderGap}` }}
               />
             </>
           )}
           {showTopMarkers && markerType === "plus" && (
-            <div className={cn("absolute left-0 right-0", markerOffset)}>
+            <div className={cn("absolute right-0 left-0", markerOffset)}>
               <PulseMarker />
-              <PulseMarker className="left-auto -right-[7px]" />
+              <PulseMarker className="-right-[7px] left-auto" />
 
               {showDoubleBorders && (
                 <>
@@ -194,9 +206,9 @@ export function SectionGrid({
           )}
 
           {showTopMarkers && markerType === "dot" && (
-            <div className={cn("absolute left-0 right-0", markerOffset)}>
-              <div className="absolute -left-[2.5px] -top-[2.5px] size-[5px] rounded-full bg-border/60" />
-              <div className="absolute -right-[2.5px] -top-[2.5px] size-[5px] rounded-full bg-border/60" />
+            <div className={cn("absolute right-0 left-0", markerOffset)}>
+              <div className="-left-[2.5px] -top-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
+              <div className="-right-[2.5px] -top-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
             </div>
           )}
         </div>
@@ -206,14 +218,7 @@ export function SectionGrid({
       <div
         className={cn(
           "relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10",
-          showTopMarkers &&
-            (markerOffset === "top-32"
-              ? "pt-48"
-              : markerOffset === "top-20"
-                ? "pt-32"
-                : markerOffset === "top-0"
-                  ? "pt-20"
-                  : markerOffset.replace("top-", "pt-")),
+          showTopMarkers && getPaddingFromOffset(markerOffset),
           containerClassName
         )}
       >

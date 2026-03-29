@@ -55,7 +55,7 @@ export default async function CategoryPage({
         >
           <ArrowLeft className="inline-block size-3" /> All Blocks
         </Link>
-        <h1 className="font-bold font-heading text-3xl sm:text-4xl md:text-nowrap text-foreground">
+        <h1 className="font-bold font-heading text-3xl text-foreground sm:text-4xl md:text-nowrap">
           Explore {categoryName} Blocks
         </h1>
         <p className="text-muted-foreground text-sm">

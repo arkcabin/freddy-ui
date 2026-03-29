@@ -5,19 +5,18 @@ import { LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
 
 export function CompactSignupForm() {
   return (
-    <div className="w-full max-w-sm bg-background p-6 rounded-3xl border shadow-2xl relative">
-      <div className="absolute -top-3 -right-3 size-12 rounded-2xl bg-primary flex items-center justify-center shadow-lg -rotate-12 group-hover:rotate-0 transition-transform">
+    <div className="relative w-full max-w-sm rounded-3xl border bg-background p-6 shadow-2xl">
+      <div className="-top-3 -right-3 -rotate-12 absolute flex size-12 items-center justify-center rounded-2xl bg-primary shadow-lg transition-transform group-hover:rotate-0">
         <CheckIcon className="size-6 text-primary-foreground" />
       </div>
 
       <div className="mb-8">
-        <LogoIcon className="size-6 mb-4" />
-        <h2 className="text-2xl font-bold tracking-tight">Join Freddy</h2>
-        <p className="text-sm text-muted-foreground">
+        <LogoIcon className="mb-4 size-6" />
+        <h2 className="font-bold text-2xl tracking-tight">Join Freddy</h2>
+        <p className="text-muted-foreground text-sm">
           Start building beautiful interfaces today.
         </p>
       </div>
@@ -27,38 +26,38 @@ export function CompactSignupForm() {
           <div className="grid gap-1.5">
             <Label htmlFor="signup-email-compact">Email</Label>
             <Input
-              id="signup-email-compact"
-              type="email"
-              placeholder="you@example.com"
               className="h-11 rounded-xl"
+              id="signup-email-compact"
+              placeholder="you@example.com"
+              type="email"
             />
           </div>
           <div className="grid gap-1.5">
             <Label htmlFor="signup-password-compact">Secure Password</Label>
             <Input
-              id="signup-password-compact"
-              type="password"
-              placeholder="••••••••"
               className="h-11 rounded-xl"
+              id="signup-password-compact"
+              placeholder="••••••••"
+              type="password"
             />
           </div>
         </div>
 
         <Button
-          className="w-full h-11 rounded-xl font-semibold transition-all active:scale-[0.98] shadow-md mt-2"
+          className="mt-2 h-11 w-full rounded-xl font-semibold shadow-md transition-all active:scale-[0.98]"
           type="submit"
         >
           Create Account
         </Button>
 
-        <div className="flex items-center gap-2 text-[10px] text-muted-foreground/60 px-1 mt-4">
+        <div className="mt-4 flex items-center gap-2 px-1 text-[10px] text-muted-foreground/60">
           <div className="size-1 rounded-full bg-primary" />
           <p>By creating an account, you agree to our Terms of Service.</p>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground pt-4 border-t border-dashed mt-4">
+        <p className="mt-4 border-t border-dashed pt-4 text-center text-muted-foreground text-xs">
           Already a member?{" "}
-          <a href="#" className="text-primary hover:underline font-bold">
+          <a className="font-bold text-primary hover:underline" href="#">
             Sign In
           </a>
         </p>

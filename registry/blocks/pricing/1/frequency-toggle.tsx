@@ -30,6 +30,7 @@ export function FrequencyToggle({
           className="relative px-4 py-1 text-sm capitalize"
           key={freq}
           onClick={() => setFrequency(freq)}
+          type="button"
         >
           <span className="relative z-10">{freq}</span>
           {frequency === freq && (

@@ -1,25 +1,21 @@
 "use client";
 import {
+  Building2,
   CalendarDays,
-  ChevronDown,
   ChevronRight,
+  Gem,
   Github,
   LayoutGrid,
-  Menu,
-  Moon,
-  Search,
-  Sun,
-  X,
-  TrendingUp,
   LineChart,
-  Wallet,
-  Building2,
-  Gem,
   RefreshCw,
-  Trophy,
+  Search,
+  TrendingUp,
+  Wallet,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import React from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { LogoIcon } from "@/components/logo";
+import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -29,10 +25,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
-import { LogoIcon } from "@/components/logo";
-import { MenuToggleIcon } from "@/components/menu-toggle-icon";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const scrolled = useScroll(20);
@@ -51,11 +45,11 @@ export function Header() {
         {/* Logo */}
         <div className="flex items-center gap-8">
           <a
+            className="group flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-accent"
             href="/"
-            className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors"
           >
             <LogoIcon className="size-7 transition-transform group-hover:scale-110" />
-            <span className="font-bold text-xl tracking-tight hidden sm:inline-block">
+            <span className="hidden font-bold text-xl tracking-tight sm:inline-block">
               Freddy
             </span>
           </a>
@@ -65,39 +59,39 @@ export function Header() {
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
                 <a
+                  className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 font-medium text-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                   href="#"
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   Home
                 </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <a
+                  className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 font-medium text-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                   href="#"
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   Pricing
                 </a>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors">
+                <NavigationMenuTrigger className="h-9 bg-transparent px-4 font-medium text-sm transition-colors hover:bg-accent">
                   Products
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="md:left-1/2 md:-translate-x-1/2 md:translate-y-2">
+                <NavigationMenuContent className="md:-translate-x-1/2 md:left-1/2 md:translate-y-2">
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    className="w-[calc(100vw-2rem)] md:w-[840px] p-6 md:p-8 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 md:gap-8 bg-background border rounded-2xl shadow-2xl overflow-y-auto max-h-[calc(100vh-6rem)]"
+                    className="grid max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] grid-cols-1 gap-6 overflow-y-auto rounded-2xl border bg-background p-6 shadow-2xl md:w-[840px] md:grid-cols-[1fr_1.2fr] md:gap-8 md:p-8"
+                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
                   >
                     <div className="space-y-8">
                       <div>
-                        <h3 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-6">
+                        <h3 className="mb-6 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
                           Basic Asset
                         </h3>
                         <div className="grid gap-2">
-                          {basicAssets.map((asset, idx) => (
-                            <MenuCard key={idx} {...asset} />
+                          {basicAssets.map((asset, _idx) => (
+                            <MenuCard key={asset.title} {...asset} />
                           ))}
                         </div>
                       </div>
@@ -105,50 +99,50 @@ export function Header() {
 
                     <div className="space-y-8">
                       <div>
-                        <h3 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-6">
+                        <h3 className="mb-6 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
                           Assets with a ready-made strategy
                         </h3>
                         <div className="grid gap-2">
-                          {strategyAssets.map((asset, idx) => (
-                            <MenuCard key={idx} {...asset} largeIcon />
+                          {strategyAssets.map((asset, _idx) => (
+                            <MenuCard key={asset.title} {...asset} largeIcon />
                           ))}
                         </div>
                       </div>
 
                       <div>
-                        <h3 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-6 border-t pt-8">
+                        <h3 className="mb-6 border-t pt-8 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
                           Trade
                         </h3>
                         <div className="grid gap-2">
-                          {tradeAssets.map((asset, idx) => (
-                            <MenuCard key={idx} {...asset} ghostIcon />
+                          {tradeAssets.map((asset, _idx) => (
+                            <MenuCard key={asset.title} {...asset} ghostIcon />
                           ))}
                         </div>
                       </div>
                     </div>
 
                     {/* Footer */}
-                    <div className="md:col-span-2 mt-4 pt-6 border-t border-border/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                      <p className="text-sm text-muted-foreground">
+                    <div className="mt-4 flex flex-col items-start justify-between gap-4 border-border/50 border-t pt-6 md:col-span-2 md:flex-row md:items-center">
+                      <p className="text-muted-foreground text-sm">
                         Interested?{" "}
                         <a
+                          className="font-bold text-foreground transition-colors hover:text-primary"
                           href="#"
-                          className="font-bold text-foreground hover:text-primary transition-colors"
                         >
                           Schedule a demo
                         </a>
                       </p>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-medium text-muted-foreground text-xs">
                         <a
+                          className="transition-colors hover:text-foreground"
                           href="#"
-                          className="hover:text-foreground transition-colors"
                         >
                           Documentation
                         </a>
-                        <span className="size-1 rounded-full bg-border hidden md:block" />
+                        <span className="hidden size-1 rounded-full bg-border md:block" />
                         <a
+                          className="transition-colors hover:text-foreground"
                           href="#"
-                          className="hover:text-foreground transition-colors"
                         >
                           API Reference
                         </a>
@@ -159,14 +153,14 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors">
+                <NavigationMenuTrigger className="h-9 bg-transparent px-4 font-medium text-sm transition-colors hover:bg-accent">
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="md:translate-y-2">
-                  <div className="w-[calc(100vw-2rem)] md:w-80 p-4">
+                  <div className="w-[calc(100vw-2rem)] p-4 md:w-80">
                     <ul className="grid gap-3">
-                      {serviceLinks.map((link, idx) => (
-                        <ListItem key={idx} {...link}>
+                      {serviceLinks.map((link, _idx) => (
+                        <ListItem key={link.title} {...link}>
                           {link.description}
                         </ListItem>
                       ))}
@@ -176,14 +170,14 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors">
+                <NavigationMenuTrigger className="h-9 bg-transparent px-4 font-medium text-sm transition-colors hover:bg-accent">
                   Resources
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="md:left-auto md:right-0 md:translate-y-2">
-                  <div className="w-[calc(100vw-2rem)] md:w-80 p-4">
+                <NavigationMenuContent className="md:right-0 md:left-auto md:translate-y-2">
+                  <div className="w-[calc(100vw-2rem)] p-4 md:w-80">
                     <ul className="grid gap-3">
-                      {resourceLinks.map((link, idx) => (
-                        <ListItem key={idx} {...link}>
+                      {resourceLinks.map((link, _idx) => (
+                        <ListItem key={link.title} {...link}>
                           {link.description}
                         </ListItem>
                       ))}
@@ -197,28 +191,28 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 mr-2">
+          <div className="mr-2 hidden items-center gap-2 sm:flex">
             <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              type="button"
               aria-label="Search"
+              className="rounded-full"
+              size="icon"
+              type="button"
+              variant="ghost"
             >
               <Search className="h-5 w-5" />
             </Button>
             <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              type="button"
               aria-label="GitHub"
+              className="rounded-full"
+              size="icon"
+              type="button"
+              variant="ghost"
             >
               <Github className="h-5 w-5" />
             </Button>
           </div>
           <Button
-            className="rounded-full px-6 font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all"
+            className="rounded-full px-6 font-semibold shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30 hover:shadow-xl active:scale-95"
             type="button"
           >
             Get in touch
@@ -226,18 +220,18 @@ export function Header() {
 
           {/* Mobile menu toggle */}
           <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden rounded-full"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            type="button"
-            aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
+            aria-label="Toggle menu"
+            className="rounded-full md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            size="icon"
+            type="button"
+            variant="ghost"
           >
             <MenuToggleIcon
               className="size-6"
-              open={isMobileMenuOpen}
               duration={300}
+              open={isMobileMenuOpen}
             />
           </Button>
         </div>
@@ -247,34 +241,34 @@ export function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
+            className="overflow-hidden border-b bg-background md:hidden"
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b bg-background overflow-hidden"
+            initial={{ opacity: 0, height: 0 }}
           >
-            <div className="container px-4 py-8 space-y-6">
+            <div className="container space-y-6 px-4 py-8">
               <nav className="flex flex-col gap-4">
-                <a href="#" className="text-lg font-medium px-2 py-1">
+                <a className="px-2 py-1 font-medium text-lg" href="#">
                   Home
                 </a>
-                <a href="#" className="text-lg font-medium px-2 py-1">
+                <a className="px-2 py-1 font-medium text-lg" href="#">
                   Pricing
                 </a>
                 <div className="space-y-4">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground px-2">
+                  <h4 className="px-2 font-bold text-muted-foreground text-xs uppercase tracking-widest">
                     Products
                   </h4>
                   <div className="grid gap-2">
                     {[...basicAssets, ...strategyAssets, ...tradeAssets].map(
-                      (asset, i) => (
+                      (asset, _i) => (
                         <a
-                          key={i}
+                          className="flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-accent"
                           href="#"
-                          className="flex items-center gap-3 p-3 hover:bg-accent rounded-xl transition-colors"
+                          key={asset.title}
                         >
                           <div
                             className={cn(
-                              "flex size-10 items-center justify-center rounded-lg shadow-sm shrink-0",
+                              "flex size-10 shrink-0 items-center justify-center rounded-lg shadow-sm",
                               asset.gradient
                             )}
                           >
@@ -289,11 +283,11 @@ export function Header() {
                   </div>
                 </div>
               </nav>
-              <div className="pt-4 border-t flex flex-col gap-3">
-                <Button variant="outline" className="w-full rounded-2xl h-12">
+              <div className="flex flex-col gap-3 border-t pt-4">
+                <Button className="h-12 w-full rounded-2xl" variant="outline">
                   Search
                 </Button>
-                <Button className="w-full rounded-2xl h-12">
+                <Button className="h-12 w-full rounded-2xl">
                   Get in touch
                 </Button>
               </div>
@@ -305,7 +299,7 @@ export function Header() {
   );
 }
 
-interface Asset {
+type Asset = {
   title: string;
   description: string;
   icon: React.ElementType;
@@ -313,7 +307,7 @@ interface Asset {
   iconColor: string;
   largeIcon?: boolean;
   ghostIcon?: boolean;
-}
+};
 
 function MenuCard({
   title,
@@ -326,39 +320,39 @@ function MenuCard({
 }: Asset) {
   return (
     <a
-      href="#"
       className={cn(
-        "group flex items-center gap-4 p-3 rounded-2xl transition-all duration-300",
+        "group flex items-center gap-4 rounded-2xl p-3 transition-all duration-300",
         "hover:bg-accent/50 hover:shadow-sm"
       )}
+      href="#"
     >
       <div
         className={cn(
-          "flex items-center justify-center rounded-xl transition-transform group-hover:scale-105 duration-300 shadow-sm shrink-0",
+          "flex shrink-0 items-center justify-center rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105",
           largeIcon ? "h-14 w-14" : "h-12 w-12",
-          ghostIcon ? "bg-accent/50 border border-border" : gradient
+          ghostIcon ? "border border-border bg-accent/50" : gradient
         )}
       >
         <Icon className={cn(largeIcon ? "h-7 w-7" : "h-6 w-6", iconColor)} />
       </div>
-      <div className="flex flex-col flex-1 min-w-0">
-        <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+      <div className="flex min-w-0 flex-1 flex-col">
+        <span className="font-bold text-foreground text-sm transition-colors group-hover:text-primary">
           {title}
         </span>
-        <span className="text-xs text-muted-foreground leading-relaxed">
+        <span className="text-muted-foreground text-xs leading-relaxed">
           {description}
         </span>
       </div>
-      <ChevronRight className="size-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
+      <ChevronRight className="-translate-x-2 size-4 shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
     </a>
   );
 }
 
-interface LinkItem {
+type LinkItem = {
   title: string;
   href: string;
   description: string;
-}
+};
 
 interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
   title: string;
@@ -375,15 +369,15 @@ function ListItem({
     <li>
       <NavigationMenuLink asChild>
         <a
-          href={href}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
+          href={href}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="font-medium text-sm leading-none">{title}</div>
+          <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
             {children}
           </p>
         </a>

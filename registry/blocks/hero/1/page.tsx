@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
+import { DemoLayout } from "@/components/demo-layout";
 import { AiWorkAnnouncement } from "./announcement";
 import { AiWorkHeader } from "./header";
 import { AiWorkHero } from "./hero";
 import { AiWorkWrapper } from "./wrapper";
-import { DemoLayout } from "@/components/demo-layout";
 
 /**
  * AI-WORK BLOCK (Page Entry)
@@ -16,7 +16,7 @@ export default function AiWorkPage() {
     React.useState(true);
 
   return (
-    <div className="w-full bg-accent text-foreground selection:bg-background selection:text-background font-sans">
+    <div className="w-full bg-accent font-sans text-foreground selection:bg-background selection:text-background">
       {/* 1. Announcement Bar */}
       <AiWorkAnnouncement
         isVisible={isAnnouncementVisible}
@@ -26,7 +26,7 @@ export default function AiWorkPage() {
       {/* 2. Master Content Wrapper (Handles Cinematic Layering) */}
       <AiWorkWrapper isAnnouncementVisible={isAnnouncementVisible}>
         {/* 3. Navigation Header */}
-        <AiWorkHeader isScrolled={false} isFullWidth={false} />
+        <AiWorkHeader isFullWidth={false} isScrolled={false} />
 
         {/* 4. Hero Landing Section */}
         <AiWorkHero />

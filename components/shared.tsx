@@ -77,10 +77,10 @@ export function GridPattern({
     >
       <defs>
         <pattern
-          id={id}
-          width={width}
           height={height}
+          id={id}
           patternUnits="userSpaceOnUse"
+          width={width}
           x={x}
           y={y}
         >
@@ -91,7 +91,7 @@ export function GridPattern({
           />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+      <rect fill={`url(#${id})`} height="100%" strokeWidth={0} width="100%" />
     </svg>
   );
 }
@@ -102,7 +102,7 @@ export function GlassCard({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("glass-card p-6 rounded-xl", className)} {...props}>
+    <div className={cn("glass-card rounded-xl p-6", className)} {...props}>
       {children}
     </div>
   );

@@ -5,7 +5,7 @@ export function Plus({ className }: { className?: string }) {
   return (
     <PlusIcon
       className={cn(
-        "absolute size-3.5 -top-[7px] -left-[7px] text-border",
+        "-top-[7px] -left-[7px] absolute size-3.5 text-border",
         className
       )}
       strokeWidth={1}

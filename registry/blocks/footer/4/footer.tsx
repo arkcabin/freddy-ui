@@ -92,10 +92,10 @@ export function Footer() {
         {/* Social Buttons + App Links */}
         <div className="flex flex-wrap items-center justify-between gap-4 py-5">
           <div className="flex items-center gap-2">
-            {socialLinks.map(({ icon: Icon, href }, index) => (
+            {socialLinks.map(({ icon: Icon, href }, _index) => (
               <Button
                 asChild
-                key={`social-${href}-${index}`} // More descriptive prefix
+                key={`social-${Icon.name}-${href}`}
                 size="icon-sm"
                 variant="outline"
               >

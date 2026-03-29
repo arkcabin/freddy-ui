@@ -42,16 +42,22 @@ export function HomePageWrapper({
         "relative z-20 bg-background transition-all duration-300",
         activeFullWidth
           ? "mx-0 rounded-none border-none"
-          : "mx-2 rounded-t-2xl border-t border-dashed border-border/20"
+          : "mx-2 rounded-t-2xl border-border/20 border-t border-dashed"
       )}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === MainHeader) {
           // Pass states only after mounting to prevent mismatch
-          return React.cloneElement(child as React.ReactElement<any>, {
-            isScrolled: mounted ? isScrolled : false,
-            isFullWidth: activeFullWidth,
-          });
+          return React.cloneElement(
+            child as React.ReactElement<{
+              isScrolled: boolean;
+              isFullWidth: boolean;
+            }>,
+            {
+              isScrolled: mounted ? isScrolled : false,
+              isFullWidth: activeFullWidth,
+            }
+          );
         }
         return child;
       })}

@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_DESCRIPTION, SITE_HOME_URL } from "@/config/site";
+import { SITE_DESCRIPTION, SITE_HOME_URL, SITE_NAME } from "@/config/site";
 
 export function JsonLd() {
   const organizationData = {
@@ -28,14 +28,16 @@ export function JsonLd() {
   return (
     <>
       <script
-        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Standard practice for JSON-LD injection
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
+        type="application/ld+json"
       />
       <script
-        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Standard practice for JSON-LD injection
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(softwareApplicationData),
         }}
+        type="application/ld+json"
       />
     </>
   );

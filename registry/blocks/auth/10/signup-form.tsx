@@ -7,7 +7,6 @@ import { LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
 
 export function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,10 +14,10 @@ export function SignupForm() {
   return (
     <div className="grid min-h-screen w-full lg:grid-cols-2">
       {/* Left Side: Marketing/Benefits Panel */}
-      <div className="relative hidden flex-col justify-between bg-zinc-950 p-12 text-white lg:flex border-r border-white/5">
+      <div className="relative hidden flex-col justify-between border-white/5 border-r bg-zinc-950 p-12 text-white lg:flex">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute -top-1/4 -left-1/4 h-full w-full rounded-full bg-blue-500/10 blur-[160px] animate-pulse" />
-          <div className="absolute -bottom-1/4 -right-1/4 h-full w-full rounded-full bg-purple-500/10 blur-[160px] animate-pulse [animation-delay:2s]" />
+          <div className="-top-1/4 -left-1/4 absolute h-full w-full animate-pulse rounded-full bg-blue-500/10 blur-[160px]" />
+          <div className="-bottom-1/4 -right-1/4 absolute h-full w-full animate-pulse rounded-full bg-purple-500/10 blur-[160px] [animation-delay:2s]" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150" />
         </div>
 
@@ -29,12 +28,12 @@ export function SignupForm() {
           </div>
 
           <div className="mt-24 space-y-8">
-            <h1 className="text-5xl font-bold tracking-tightest leading-[1.1] xl:text-6xl">
+            <h1 className="font-bold text-5xl leading-[1.1] tracking-tightest xl:text-6xl">
               Elevate your <br />
               <span className="text-blue-400">development</span> <br />
               workflow.
             </h1>
-            <p className="max-w-md text-lg text-zinc-400 font-medium">
+            <p className="max-w-md font-medium text-lg text-zinc-400">
               Join 10,000+ developers building faster with our premium shadcn/ui
               blocks.
             </p>
@@ -47,8 +46,8 @@ export function SignupForm() {
                 "Component-level accessibility",
               ].map((benefit) => (
                 <li
+                  className="flex items-center gap-4 font-medium text-sm text-zinc-300"
                   key={benefit}
-                  className="flex items-center gap-4 text-sm font-medium text-zinc-300"
                 >
                   <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
                     <CheckIcon className="size-3" strokeWidth={3} />
@@ -60,19 +59,19 @@ export function SignupForm() {
           </div>
         </div>
 
-        <div className="relative z-10 border-t border-white/10 pt-10">
+        <div className="relative z-10 border-white/10 border-t pt-10">
           <blockquote className="space-y-4">
-            <p className="text-base font-medium leading-relaxed text-zinc-300 italic">
+            <p className="font-medium text-base text-zinc-300 italic leading-relaxed">
               "The best component library I've used. It saved us months of work
               on our latest SaaS project."
             </p>
             <footer className="flex items-center gap-3">
-              <div className="size-8 rounded-full bg-zinc-800 border border-zinc-700" />
+              <div className="size-8 rounded-full border border-zinc-700 bg-zinc-800" />
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-white">
+                <p className="font-bold text-white text-xs uppercase tracking-widest">
                   Sarah Chen
                 </p>
-                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-semibold mt-0.5">
+                <p className="mt-0.5 font-semibold text-[10px] text-zinc-500 uppercase tracking-widest">
                   CTO at TechFlow
                 </p>
               </div>
@@ -86,10 +85,10 @@ export function SignupForm() {
         <div className="w-full max-w-[420px] space-y-10">
           <div className="flex flex-col space-y-3 text-center lg:text-left">
             <LogoIcon className="mx-auto size-8 lg:mx-0 lg:hidden" />
-            <h2 className="text-4xl font-bold tracking-tightest">
+            <h2 className="font-bold text-4xl tracking-tightest">
               Create account
             </h2>
-            <p className="text-base text-muted-foreground font-medium">
+            <p className="font-medium text-base text-muted-foreground">
               Join the future of UI development.
             </p>
           </div>
@@ -103,10 +102,10 @@ export function SignupForm() {
               { label: "Discord", icon: DiscordIcon },
             ].map((social) => (
               <Button
+                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 font-bold text-xs uppercase tracking-widest transition-all hover:border-zinc-300 hover:bg-background hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                 key={social.label}
-                variant="outline"
-                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 font-bold text-xs uppercase tracking-widest transition-all hover:bg-background hover:border-zinc-300 hover:shadow-sm dark:bg-zinc-900/50 dark:border-zinc-800 dark:hover:border-zinc-700"
                 type="button"
+                variant="outline"
               >
                 <social.icon className="mr-2.5 size-4" />
                 {social.label}
@@ -116,9 +115,9 @@ export function SignupForm() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-zinc-100 dark:border-zinc-800" />
+              <span className="w-full border-zinc-100 border-t dark:border-zinc-800" />
             </div>
-            <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-[0.2em]">
+            <div className="relative flex justify-center font-bold text-[10px] uppercase tracking-[0.2em]">
               <span className="bg-background px-4 text-muted-foreground/60">
                 Or email signup
               </span>
@@ -128,84 +127,84 @@ export function SignupForm() {
           <form className="grid gap-6" onSubmit={(e) => e.preventDefault()}>
             <div className="grid gap-2.5">
               <Label
+                className="ml-1 font-bold text-[10px] text-muted-foreground/80 uppercase tracking-widest"
                 htmlFor="full-name"
-                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
               >
                 Full Name
               </Label>
               <Input
+                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 px-4 transition-all focus:bg-background dark:border-zinc-800 dark:bg-zinc-900/50"
                 id="full-name"
                 placeholder="John Doe"
-                className="h-12 px-4 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
               />
             </div>
             <div className="grid gap-2.5">
               <Label
+                className="ml-1 font-bold text-[10px] text-muted-foreground/80 uppercase tracking-widest"
                 htmlFor="email"
-                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
               >
                 Email Address
               </Label>
               <Input
+                className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 px-4 transition-all focus:bg-background dark:border-zinc-800 dark:bg-zinc-900/50"
                 id="email"
                 placeholder="name@example.com"
-                className="h-12 px-4 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
               />
             </div>
             <div className="grid gap-2.5">
               <Label
+                className="ml-1 font-bold text-[10px] text-muted-foreground/80 uppercase tracking-widest"
                 htmlFor="password"
                 title="password"
-                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 ml-1"
               >
                 Password
               </Label>
               <div className="relative">
                 <Input
+                  className="h-12 rounded-xl border-zinc-200 bg-zinc-50/50 pr-12 pl-4 transition-all focus:bg-background dark:border-zinc-800 dark:bg-zinc-900/50"
                   id="password"
-                  type={showPassword ? "text" : "password"}
                   placeholder="Create a password"
-                  className="h-12 pl-4 pr-12 rounded-xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background transition-all"
+                  type={showPassword ? "text" : "password"}
                 />
                 <button
-                  type="button"
+                  className="-translate-y-1/2 absolute top-1/2 right-4 text-muted-foreground/60 transition-colors hover:text-foreground"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/60 hover:text-foreground transition-colors"
+                  type="button"
                 >
                   <EyeIcon className="size-4" />
                 </button>
               </div>
             </div>
             <Button
-              className="mt-4 h-12 rounded-xl text-sm font-bold tracking-tight shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="mt-4 h-12 rounded-xl font-bold text-sm tracking-tight shadow-primary/20 shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
               size="lg"
             >
               Get Started Free
             </Button>
           </form>
 
-          <p className="text-center text-sm font-medium text-muted-foreground">
+          <p className="text-center font-medium text-muted-foreground text-sm">
             Already have an account?{" "}
             <a
+              className="font-bold text-primary underline-offset-4 transition-all hover:underline"
               href="#"
-              className="font-bold text-primary hover:underline underline-offset-4 transition-all"
             >
               Sign In
             </a>
           </p>
 
-          <footer className="text-center text-[10px] font-medium text-muted-foreground/50 leading-relaxed px-6">
+          <footer className="px-6 text-center font-medium text-[10px] text-muted-foreground/50 leading-relaxed">
             By signing up, you agree to our{" "}
             <a
-              href="#"
               className="underline-offset-4 hover:text-primary hover:underline"
+              href="#"
             >
               Terms of Service
             </a>{" "}
             and{" "}
             <a
-              href="#"
               className="underline-offset-4 hover:text-primary hover:underline"
+              href="#"
             >
               Privacy Policy
             </a>

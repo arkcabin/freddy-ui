@@ -10,8 +10,8 @@ export function DemoLayout() {
         <div className="h-3 w-12 rounded-md border bg-accent" />
       </div>
 
-      {Array.from({ length: 7 }).map((_, i) => (
-        <div className="mb-8 space-y-2" key={i}>
+      {[0, 1, 2, 3, 4, 5, 6].map((id) => (
+        <div className="mb-8 space-y-2" key={id}>
           <div className="h-4 w-full rounded-md border bg-accent" />
           <div className="h-4 w-full rounded-md border bg-accent" />
           <div className="h-4 w-full rounded-md border bg-accent" />

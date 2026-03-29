@@ -1,11 +1,11 @@
-import { Box, Layers, LayoutGrid, Server, type LucideIcon } from "lucide-react";
+import { Box, Layers, LayoutGrid, type LucideIcon, Server } from "lucide-react";
 
-export interface Feature {
+export type Feature = {
   title: string;
   description: string;
   icon: LucideIcon;
   isDynamic?: boolean;
-}
+};
 
 export const features: Feature[] = [
   {

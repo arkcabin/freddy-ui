@@ -1,26 +1,28 @@
 "use client";
 
 import {
+  AlertCircle,
   ArrowRight,
+  Box,
+  Cloud,
+  CreditCard,
   FileText,
+  GalleryVertical,
   Github,
+  HelpCircle,
   Mail,
+  Monitor,
   MousePointer2,
+  Quote,
   Sparkles,
   Star,
   X,
-  CreditCard,
-  HelpCircle,
   Zap,
-  Box,
-  Monitor,
-  GalleryVertical,
-  Cloud,
-  AlertCircle,
-  Quote,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import React from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { LogoIcon } from "@/components/logo";
+import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -30,10 +32,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
-import { LogoIcon } from "@/components/logo";
-import { MenuToggleIcon } from "@/components/menu-toggle-icon";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const scrolled = useScroll(20);
@@ -49,10 +49,10 @@ export function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             className="fixed inset-0 z-60 bg-background/80 backdrop-blur-xl md:hidden"
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
@@ -64,23 +64,23 @@ export function Header() {
             ? { scale: 0.95, y: 10, borderRadius: "2rem" }
             : { scale: 1, y: 0, borderRadius: "0" }
         }
-        transition={{ type: "spring", damping: 25, stiffness: 300 }}
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300",
           scrolled || isMobileMenuOpen
-            ? "border-b bg-background/80 backdrop-blur-xl shadow-sm"
+            ? "border-b bg-background/80 shadow-sm backdrop-blur-xl"
             : "bg-transparent"
         )}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
       >
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo */}
           <div className="flex items-center gap-8">
             <a
+              className="group flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-accent"
               href="/"
-              className="flex items-center gap-2 group p-2 rounded-md hover:bg-accent transition-colors"
             >
               <LogoIcon className="size-7 transition-transform group-hover:scale-110" />
-              <span className="font-bold text-lg hidden sm:inline-block tracking-tight">
+              <span className="hidden font-bold text-lg tracking-tight sm:inline-block">
                 Freddy
               </span>
             </a>
@@ -89,22 +89,22 @@ export function Header() {
             <NavigationMenu className="hidden md:flex">
               <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent h-9 px-4 text-sm font-medium hover:bg-accent transition-colors data-[state=open]:bg-accent">
+                  <NavigationMenuTrigger className="h-9 bg-transparent px-4 font-medium text-sm transition-colors hover:bg-accent data-[state=open]:bg-accent">
                     Blocks
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-[900px] border bg-card rounded-3xl shadow-2xl overflow-hidden flex flex-row">
+                    <div className="flex w-[900px] flex-row overflow-hidden rounded-3xl border bg-card shadow-2xl">
                       {/* Sidebar */}
-                      <div className="w-[320px] bg-muted/30 p-8 flex flex-col justify-between border-r">
+                      <div className="flex w-[320px] flex-col justify-between border-r bg-muted/30 p-8">
                         <div className="space-y-6">
-                          <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground border">
+                          <div className="inline-flex items-center rounded-full border bg-secondary px-2.5 py-0.5 font-medium text-secondary-foreground text-xs">
                             Registry
                           </div>
                           <div className="space-y-4">
-                            <h2 className="text-3xl font-bold tracking-tight">
+                            <h2 className="font-bold text-3xl tracking-tight">
                               Modern Blocks
                             </h2>
-                            <p className="text-muted-foreground leading-relaxed text-sm">
+                            <p className="text-muted-foreground text-sm leading-relaxed">
                               A curated collection of high-fidelity components
                               built with Tailwind CSS and Radix UI. Perfectly
                               crafted for your next big idea.
@@ -113,32 +113,32 @@ export function Header() {
                         </div>
 
                         <div className="mt-12 space-y-4">
-                          <div className="p-4 rounded-2xl bg-card border shadow-sm relative overflow-hidden group/card">
+                          <div className="group/card relative overflow-hidden rounded-2xl border bg-card p-4 shadow-sm">
                             <div className="absolute top-0 right-0 p-3 opacity-10 transition-opacity group-hover/card:opacity-20">
                               <Star className="h-12 w-12" />
                             </div>
-                            <div className="flex items-center gap-3 mb-1">
-                              <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <div className="mb-1 flex items-center gap-3">
+                              <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
                                 <Sparkles
-                                  className="h-4 w-4 text-primary"
                                   aria-hidden="true"
+                                  className="h-4 w-4 text-primary"
                                 />
                               </div>
-                              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                              <span className="font-bold text-[10px] text-muted-foreground uppercase tracking-widest">
                                 Flash Update
                               </span>
                             </div>
-                            <p className="text-sm font-bold">New Auth Blocks</p>
+                            <p className="font-bold text-sm">New Auth Blocks</p>
                           </div>
 
                           <Button
-                            className="w-full rounded-2xl h-12 gap-2 text-sm font-semibold group/btn"
+                            className="group/btn h-12 w-full gap-2 rounded-2xl font-semibold text-sm"
                             type="button"
                           >
                             Explore Library
                             <ArrowRight
-                              className="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
                               aria-hidden="true"
+                              className="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
                             />
                           </Button>
                         </div>
@@ -146,49 +146,49 @@ export function Header() {
 
                       {/* Main Content */}
                       <div className="flex-1 p-8 md:p-10">
-                        <div className="flex items-center justify-between mb-8">
-                          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                        <div className="mb-8 flex items-center justify-between">
+                          <h3 className="font-bold text-muted-foreground text-xs uppercase tracking-[0.2em]">
                             Component Categories
                           </h3>
                           <div className="flex items-center gap-2">
                             <span
-                              className="text-xs font-medium text-muted-foreground"
+                              className="font-medium text-muted-foreground text-xs"
                               id="view-counts-label"
                             >
                               View counts
                             </span>
                             <button
-                              type="button"
-                              role="switch"
                               aria-checked="true"
                               aria-labelledby="view-counts-label"
-                              className="h-5 w-9 rounded-full bg-primary border border-primary p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                              className="h-5 w-9 rounded-full border border-primary bg-primary p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                              role="switch"
+                              type="button"
                             >
-                              <div className="h-full aspect-square rounded-full bg-primary-foreground shadow-sm ml-auto" />
+                              <div className="ml-auto aspect-square h-full rounded-full bg-primary-foreground shadow-sm" />
                             </button>
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-y-10 gap-x-8">
+                        <div className="grid grid-cols-3 gap-x-8 gap-y-10">
                           {categories.map((cat) => (
                             <a
-                              key={cat.name}
+                              className="group/item hover:-translate-y-1.5 flex flex-col items-center gap-4 transition-all"
                               href="#"
-                              className="group/item flex flex-col items-center gap-4 transition-all hover:-translate-y-1.5"
+                              key={cat.name}
                             >
-                              <div className="size-14 rounded-2xl bg-muted/40 backdrop-blur-sm border shadow-sm flex items-center justify-center text-muted-foreground group-hover/item:text-primary group-hover/item:bg-primary/5 group-hover/item:border-primary/20 transition-all duration-300 relative overflow-hidden">
+                              <div className="relative flex size-14 items-center justify-center overflow-hidden rounded-2xl border bg-muted/40 text-muted-foreground shadow-sm backdrop-blur-sm transition-all duration-300 group-hover/item:border-primary/20 group-hover/item:bg-primary/5 group-hover/item:text-primary">
                                 <cat.icon
-                                  className="h-6 w-6 relative z-10"
                                   aria-hidden="true"
+                                  className="relative z-10 h-6 w-6"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                                <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent opacity-0 transition-opacity group-hover/item:opacity-100" />
+                                <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 transition-opacity group-hover/item:opacity-100" />
                               </div>
                               <div className="text-center">
-                                <p className="text-sm font-bold text-foreground mb-0.5 group-hover/item:text-primary transition-colors">
+                                <p className="mb-0.5 font-bold text-foreground text-sm transition-colors group-hover/item:text-primary">
                                   {cat.name}
                                 </p>
-                                <p className="text-[10px] font-medium text-muted-foreground tracking-wide">
+                                <p className="font-medium text-[10px] text-muted-foreground tracking-wide">
                                   {cat.count} blocks
                                 </p>
                               </div>
@@ -201,16 +201,16 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink
+                    className="flex h-9 items-center px-4 font-medium text-sm transition-colors hover:text-primary"
                     href="#"
-                    className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors"
                   >
                     Components
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink
+                    className="flex h-9 items-center px-4 font-medium text-sm transition-colors hover:text-primary"
                     href="#"
-                    className="flex h-9 items-center px-4 text-sm font-medium hover:text-primary transition-colors"
                   >
                     Pricing
                   </NavigationMenuLink>
@@ -221,26 +221,26 @@ export function Header() {
 
           {/* Right Side */}
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="hidden items-center gap-3 sm:flex">
               <Button
-                variant="ghost"
-                size="icon"
                 className="rounded-full text-muted-foreground hover:text-foreground"
+                size="icon"
                 type="button"
+                variant="ghost"
               >
-                <Github className="h-5 w-5" aria-hidden="true" />
+                <Github aria-hidden="true" className="h-5 w-5" />
               </Button>
-              <div className="h-4 w-px bg-border mx-2" />
+              <div className="mx-2 h-4 w-px bg-border" />
               <Button
-                variant="outline"
-                className="rounded-full px-4 h-9 text-xs font-semibold"
+                className="h-9 rounded-full px-4 font-semibold text-xs"
                 type="button"
+                variant="outline"
               >
                 Sign In
               </Button>
             </div>
             <Button
-              className="rounded-full px-5 h-9 text-xs font-semibold shadow-lg shadow-primary/20"
+              className="h-9 rounded-full px-5 font-semibold text-xs shadow-lg shadow-primary/20"
               type="button"
             >
               Get Started
@@ -248,16 +248,16 @@ export function Header() {
 
             {/* Mobile Menu Toggle */}
             <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden rounded-full ml-1"
+              className="ml-1 rounded-full md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              size="icon"
               type="button"
+              variant="ghost"
             >
               <MenuToggleIcon
-                open={isMobileMenuOpen}
                 className="size-5"
                 duration={300}
+                open={isMobileMenuOpen}
               />
             </Button>
           </div>
@@ -268,20 +268,20 @@ export function Header() {
       <AnimatePresence mode="wait">
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ x: "100%" }}
             animate={{ x: 0 }}
+            className="fixed inset-y-0 right-0 z-70 w-full max-w-sm overflow-y-auto border-l bg-background shadow-2xl md:hidden"
             exit={{ x: "100%" }}
+            initial={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 z-70 w-full max-w-sm bg-background border-l shadow-2xl md:hidden overflow-y-auto"
           >
-            <div className="p-6 space-y-8">
+            <div className="space-y-8 p-6">
               <div className="flex items-center justify-between">
                 <LogoIcon className="size-8" />
                 <Button
-                  variant="ghost"
-                  size="icon"
                   className="rounded-full"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  size="icon"
+                  variant="ghost"
                 >
                   <X className="size-6" />
                 </Button>
@@ -289,25 +289,25 @@ export function Header() {
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 px-2">
+                  <h4 className="mb-4 px-2 font-bold text-muted-foreground text-xs uppercase tracking-widest">
                     Navigation
                   </h4>
                   <div className="grid gap-1">
                     <a
+                      className="flex h-12 items-center rounded-xl px-4 font-medium text-lg transition-colors hover:bg-muted"
                       href="#"
-                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
                     >
                       Home
                     </a>
                     <a
+                      className="flex h-12 items-center rounded-xl px-4 font-medium text-lg transition-colors hover:bg-muted"
                       href="#"
-                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
                     >
                       Components
                     </a>
                     <a
+                      className="flex h-12 items-center rounded-xl px-4 font-medium text-lg transition-colors hover:bg-muted"
                       href="#"
-                      className="flex items-center h-12 px-4 rounded-xl text-lg font-medium hover:bg-muted transition-colors"
                     >
                       Pricing
                     </a>
@@ -315,37 +315,37 @@ export function Header() {
                 </div>
 
                 <div>
-                  <div className="flex items-center justify-between mb-4 px-2">
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <div className="mb-4 flex items-center justify-between px-2">
+                    <h4 className="font-bold text-muted-foreground text-xs uppercase tracking-widest">
                       Blocks Registry
                     </h4>
-                    <span className="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-tighter">
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 font-bold text-[10px] text-primary uppercase tracking-tighter">
                       13 categories
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {categories.map((cat) => (
                       <a
-                        key={cat.name}
+                        className="group/m-item flex flex-col gap-2 rounded-2xl border bg-muted/40 p-4 transition-colors hover:bg-muted"
                         href="#"
-                        className="flex flex-col gap-2 p-4 rounded-2xl bg-muted/40 border hover:bg-muted transition-colors group/m-item"
+                        key={cat.name}
                       >
-                        <cat.icon className="size-5 text-muted-foreground group-hover/m-item:text-primary transition-colors" />
-                        <span className="text-sm font-bold">{cat.name}</span>
+                        <cat.icon className="size-5 text-muted-foreground transition-colors group-hover/m-item:text-primary" />
+                        <span className="font-bold text-sm">{cat.name}</span>
                       </a>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="pt-6 border-t space-y-3">
+              <div className="space-y-3 border-t pt-6">
                 <Button
+                  className="h-12 w-full rounded-2xl font-bold text-sm"
                   variant="outline"
-                  className="w-full rounded-2xl h-12 text-sm font-bold"
                 >
                   Sign In
                 </Button>
-                <Button className="w-full rounded-2xl h-12 text-sm font-bold shadow-lg shadow-primary/20">
+                <Button className="h-12 w-full rounded-2xl font-bold text-sm shadow-lg shadow-primary/20">
                   Get Started
                 </Button>
               </div>

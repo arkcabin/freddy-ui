@@ -73,8 +73,8 @@ export default function Page() {
         </PricingCard.Header>
         <PricingCard.Body>
           <PricingCard.List>
-            {features.map((item, i) => (
-              <PricingCard.ListItem key={`feature-${i}`}>
+            {features.map((item, _i) => (
+              <PricingCard.ListItem key={item}>
                 <span className="mt-0.5">
                   <CheckCircle2
                     aria-hidden="true"
@@ -87,8 +87,8 @@ export default function Page() {
           </PricingCard.List>
           <PricingCard.Separator>Pro features</PricingCard.Separator>
           <PricingCard.List>
-            {lockedFeatures.map((item, i) => (
-              <PricingCard.ListItem className="opacity-75" key={i}>
+            {lockedFeatures.map((item, _i) => (
+              <PricingCard.ListItem className="opacity-75" key={item}>
                 <span className="mt-0.5">
                   <XCircleIcon
                     aria-hidden="true"

@@ -5,9 +5,9 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-interface LogoProps {
+type LogoProps = {
   className?: string;
-}
+};
 
 export const LogoIcon = ({ className }: LogoProps) => {
   const { theme, systemTheme } = useTheme();
@@ -21,7 +21,7 @@ export const LogoIcon = ({ className }: LogoProps) => {
     return (
       <span
         className={cn(
-          "size-6 animate-pulse bg-muted rounded-full inline-block",
+          "inline-block size-6 animate-pulse rounded-full bg-muted",
           className
         )}
       />
@@ -36,12 +36,12 @@ export const LogoIcon = ({ className }: LogoProps) => {
 
   return (
     <Image
-      src={src}
       alt="Freddy UI Icon"
-      width={250}
+      className={cn("size-6 object-contain", className)}
       height={250}
       priority
-      className={cn("size-6 object-contain", className)}
+      src={src}
+      width={250}
     />
   );
 };
@@ -58,7 +58,7 @@ export const Logo = ({ className }: LogoProps) => {
     return (
       <span
         className={cn(
-          "h-6 w-24 animate-pulse bg-muted rounded inline-block",
+          "inline-block h-6 w-24 animate-pulse rounded bg-muted",
           className
         )}
       />
@@ -73,12 +73,12 @@ export const Logo = ({ className }: LogoProps) => {
 
   return (
     <Image
-      src={src}
       alt="Freddy UI Logo"
-      width={344}
+      className={cn("h-6 w-auto object-contain", className)}
       height={106}
       priority
-      className={cn("h-6 w-auto object-contain", className)}
+      src={src}
+      width={344}
     />
   );
 };

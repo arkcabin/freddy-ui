@@ -1,32 +1,39 @@
 "use client";
 
 import {
-  Layout,
-  Zap,
-  Palette,
-  Search,
   Check,
   Code2,
-  MousePointer2,
-  Sparkles,
-  Layers,
   Cpu,
   Fingerprint,
+  Layers,
+  Layout,
+  MousePointer2,
+  Palette,
+  Search,
+  Sparkles,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const icons = [
-  { icon: Layout, rotate: "-10deg", y: 0, zIndex: 10 },
-  { icon: Zap, rotate: "-8deg", y: -10, zIndex: 11 },
-  { icon: Palette, rotate: "-6deg", y: -20, zIndex: 12 },
-  { icon: Search, rotate: "-4deg", y: -10, zIndex: 13 },
-  { icon: Code2, rotate: "-2deg", y: 0, zIndex: 14 },
-  { icon: Check, rotate: "0deg", y: 15, zIndex: 20, isCenter: true },
-  { icon: MousePointer2, rotate: "2deg", y: 0, zIndex: 14 },
-  { icon: Sparkles, rotate: "4deg", y: -10, zIndex: 13 },
-  { icon: Layers, rotate: "6deg", y: -20, zIndex: 12 },
-  { icon: Cpu, rotate: "8deg", y: -10, zIndex: 11 },
-  { icon: Fingerprint, rotate: "10deg", y: 0, zIndex: 10 },
+  { id: "layout", icon: Layout, rotate: "-10deg", y: 0, zIndex: 10 },
+  { id: "zap", icon: Zap, rotate: "-8deg", y: -10, zIndex: 11 },
+  { id: "palette", icon: Palette, rotate: "-6deg", y: -20, zIndex: 12 },
+  { id: "search", icon: Search, rotate: "-4deg", y: -10, zIndex: 13 },
+  { id: "code", icon: Code2, rotate: "-2deg", y: 0, zIndex: 14 },
+  {
+    id: "check",
+    icon: Check,
+    rotate: "0deg",
+    y: 15,
+    zIndex: 20,
+    isCenter: true,
+  },
+  { id: "mouse", icon: MousePointer2, rotate: "2deg", y: 0, zIndex: 14 },
+  { id: "sparkles", icon: Sparkles, rotate: "4deg", y: -10, zIndex: 13 },
+  { id: "layers", icon: Layers, rotate: "6deg", y: -20, zIndex: 12 },
+  { id: "cpu", icon: Cpu, rotate: "8deg", y: -10, zIndex: 11 },
+  { id: "fingerprint", icon: Fingerprint, rotate: "10deg", y: 0, zIndex: 10 },
 ];
 
 export function FeaturedIcons({ className }: { className?: string }) {
@@ -37,15 +44,15 @@ export function FeaturedIcons({ className }: { className?: string }) {
         className
       )}
     >
-      {icons.map((item, i) => (
+      {icons.map((item, _i) => (
         <div
-          key={i}
           className={cn(
             "relative flex items-center justify-center border border-border shadow-xl transition-all duration-300",
             item.isCenter
-              ? "size-24 sm:size-28 z-20 shadow-black/30 dark:shadow-white/20 rounded-[32px] bg-foreground text-background"
-              : "size-16 sm:size-20 rounded-[20px] bg-card text-muted-foreground"
+              ? "z-20 size-24 rounded-[32px] bg-foreground text-background shadow-black/30 sm:size-28 dark:shadow-white/20"
+              : "size-16 rounded-[20px] bg-card text-muted-foreground sm:size-20"
           )}
+          key={item.id}
           style={{
             zIndex: item.zIndex,
             transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? "scale(0.9)" : ""}`,

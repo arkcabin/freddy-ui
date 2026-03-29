@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import type * as React from "react";
 
 /**
  * Suppress the React 19 warning for next-themes script tag in development.
@@ -9,6 +9,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
  */
 if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   const origError = console.error;
+  // biome-ignore lint/suspicious/noExplicitAny: Suppressing React 19 warning requires overriding console.error
   console.error = (...args: any[]) => {
     if (
       typeof args[0] === "string" &&

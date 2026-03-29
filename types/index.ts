@@ -29,10 +29,10 @@ export type Category = {
   isNew: boolean;
 };
 
-export interface TweetData {
+export type TweetData = {
   id: string;
   name: string;
   handle: string;
   content: string;
   avatar: string;
-}
+};

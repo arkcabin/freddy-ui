@@ -5,7 +5,8 @@ export function ImageGallery() {
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-10">
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
         {Array.from({ length: 4 }).map((_, col) => (
-          <div className="grid gap-4" key={col}>
+          // biome-ignore lint/suspicious/noArrayIndexKey: fixed gallery layout
+          <div className="grid gap-4" key={`col-${col}`}>
             {/* biome-ignore lint/nursery/noShadow: false positive */}
             {Array.from({ length: 8 }).map((_, index) => {
               const isPortrait = Math.random() > 0.5;
@@ -18,7 +19,8 @@ export function ImageGallery() {
                   alt={`Image ${col}-${index}`}
                   fallback={`https://placehold.co/${width}x${height}/`}
                   inView={true}
-                  key={`${col}-${index}`}
+                  // biome-ignore lint/suspicious/noArrayIndexKey: fixed gallery image seed
+                  key={`img-${col}-${index}`}
                   ratio={ratio}
                   src={`https://picsum.photos/seed/${col}-${index}/${width}/${height}`}
                 />

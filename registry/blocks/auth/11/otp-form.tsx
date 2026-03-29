@@ -2,26 +2,32 @@
 
 import { ArrowLeft, MailIcon } from "lucide-react";
 import type React from "react";
-import { useState, useRef, useEffect } from "react";
-import { LogoIcon } from "@/components/logo";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+
+const DIGIT_REGEX = /^\d*$/;
+const OTP_FIELDS = [0, 1, 2, 3, 4, 5];
 
 export function OtpForm() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (index: number, value: string) => {
-    if (value.length > 1) value = value.slice(-1);
-    if (!/^\d*$/.test(value)) return;
+    let newValue = value;
+    if (newValue.length > 1) {
+      newValue = newValue.slice(-1);
+    }
+    if (!DIGIT_REGEX.test(newValue)) {
+      return;
+    }
 
     const newOtp = [...otp];
-    newOtp[index] = value;
+    newOtp[index] = newValue;
     setOtp(newOtp);
 
     // Move to next input if value is entered
-    if (value && index < 5) {
+    if (newValue && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
   };
@@ -40,21 +46,21 @@ export function OtpForm() {
       <div className="w-full max-w-[440px] space-y-12 text-center">
         <div className="flex flex-col items-center space-y-8">
           <div className="relative">
-            <div className="flex size-20 items-center justify-center rounded-[2.5rem] bg-primary/5 text-primary ring-1 ring-primary/10 shadow-sm transition-transform hover:scale-105 duration-500">
+            <div className="flex size-20 items-center justify-center rounded-[2.5rem] bg-primary/5 text-primary shadow-sm ring-1 ring-primary/10 transition-transform duration-500 hover:scale-105">
               <MailIcon className="size-10" />
             </div>
-            <div className="absolute -right-1 -top-1 flex size-6 items-center justify-center rounded-full border-4 border-background bg-primary shadow-lg shadow-primary/20">
-              <span className="size-1.5 rounded-full bg-white animate-pulse" />
+            <div className="-right-1 -top-1 absolute flex size-6 items-center justify-center rounded-full border-4 border-background bg-primary shadow-lg shadow-primary/20">
+              <span className="size-1.5 animate-pulse rounded-full bg-white" />
             </div>
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tightest sm:text-5xl">
+            <h1 className="font-bold text-4xl tracking-tightest sm:text-5xl">
               Verify email
             </h1>
-            <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-sm mx-auto">
+            <p className="mx-auto max-w-sm font-medium text-lg text-muted-foreground leading-relaxed">
               We've sent a 6-digit verification code to
-              <span className="block font-bold text-foreground mt-1">
+              <span className="mt-1 block font-bold text-foreground">
                 v***k@example.com
               </span>
             </p>
@@ -63,42 +69,48 @@ export function OtpForm() {
 
         <div className="space-y-10">
           <div className="flex justify-between gap-3 sm:gap-4">
-            {otp.map((digit, index) => (
+            {OTP_FIELDS.map((index) => (
               <Input
-                key={index}
+                className="h-14 w-full rounded-2xl border-zinc-200 bg-zinc-50/50 text-center font-bold text-2xl outline-none transition-all focus:bg-background focus:ring-4 focus:ring-primary/5 dark:border-zinc-800 dark:bg-zinc-900/50"
+                inputMode="numeric"
+                key={`otp-digit-${index}`}
+                maxLength={1}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                pattern="\d*"
                 ref={(el) => {
                   inputRefs.current[index] = el;
                 }}
                 type="text"
-                inputMode="numeric"
-                pattern="\d*"
-                maxLength={1}
-                value={digit}
-                onChange={(e) => handleChange(index, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
-                className="h-14 w-full text-center text-2xl font-bold rounded-2xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background focus:ring-4 focus:ring-primary/5 transition-all outline-none"
+                value={otp[index]}
               />
             ))}
           </div>
 
           <div className="space-y-4">
             <Button
-              className="w-full h-14 rounded-2xl font-bold text-base shadow-2xl shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99]"
+              className="h-14 w-full rounded-2xl font-bold text-base shadow-2xl shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99]"
               size="lg"
             >
               Verify Account
             </Button>
 
-            <p className="text-sm text-muted-foreground font-medium">
+            <p className="font-medium text-muted-foreground text-sm">
               Didn't receive the code?{" "}
-              <button className="font-bold text-primary hover:underline underline-offset-4 transition-all">
+              <button
+                className="font-bold text-primary underline-offset-4 transition-all hover:underline"
+                type="button"
+              >
                 Resend code
               </button>
             </p>
           </div>
         </div>
 
-        <button className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-muted-foreground/60 transition-all hover:text-foreground">
+        <button
+          className="inline-flex items-center gap-2.5 font-bold text-muted-foreground/60 text-xs uppercase tracking-widest transition-all hover:text-foreground"
+          type="button"
+        >
           <ArrowLeft className="size-4" />
           Back to sign in
         </button>

@@ -33,9 +33,9 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
       />
       <PanelGroup direction="horizontal" id="block-preview-group">
         <Panel
-          id="main-panel"
           className="h-[var(--block-height)] lg:border-r lg:border-dashed"
           defaultSize={DEFAULTSIZE}
+          id="main-panel"
           minSize={30}
           order={1}
         >
@@ -48,9 +48,9 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
               <div className="absolute inset-0 m-auto h-20 w-1 rounded-full bg-foreground/20 transition-[height,background] hover:h-24 hover:bg-foreground/30" />
             </PanelResizeHandle>
             <Panel
-              id="resize-panel"
               className="-mr-[0.5px] ml-px"
               defaultSize={100 - DEFAULTSIZE}
+              id="resize-panel"
               order={2}
             />
           </>

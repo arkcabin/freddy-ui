@@ -1,30 +1,28 @@
 "use client";
 
-import { MailIcon, ArrowLeft } from "lucide-react";
-import { LogoIcon } from "@/components/logo";
+import { ArrowLeft, MailIcon } from "lucide-react";
+import { Plus } from "@/components/plus";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus } from "@/components/plus";
-import React from "react";
 
 export function ForgotPasswordForm() {
   return (
-    <div className="relative w-full max-w-md bg-background p-8 rounded-2xl border shadow-lg overflow-hidden group">
+    <div className="group relative w-full max-w-md overflow-hidden rounded-2xl border bg-background p-8 shadow-lg">
       <Plus className="-top-px -left-px" />
       <Plus className="-top-px -right-px rotate-90" />
       <Plus className="-bottom-px -left-px -rotate-90" />
       <Plus className="-bottom-px -right-px rotate-180" />
 
-      <div className="flex flex-col items-center gap-4 mb-8">
-        <div className="size-12 rounded-full bg-primary/5 flex items-center justify-center mb-2">
+      <div className="mb-8 flex flex-col items-center gap-4">
+        <div className="mb-2 flex size-12 items-center justify-center rounded-full bg-primary/5">
           <MailIcon className="size-6 text-primary/60" />
         </div>
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="font-bold text-2xl tracking-tight">
             Forgot Password?
           </h2>
-          <p className="text-sm text-muted-foreground max-w-[280px]">
+          <p className="max-w-[280px] text-muted-foreground text-sm">
             No worries, we&apos;ll send you reset instructions via email.
           </p>
         </div>
@@ -34,23 +32,23 @@ export function ForgotPasswordForm() {
         <div className="grid gap-2 text-start">
           <Label htmlFor="email">Email Address</Label>
           <Input
-            id="email"
-            type="email"
-            placeholder="name@example.com"
             className="h-10"
+            id="email"
+            placeholder="name@example.com"
+            type="email"
           />
         </div>
 
         <Button
-          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm mt-2"
+          className="mt-2 h-11 w-full font-semibold shadow-sm transition-all active:scale-[0.98]"
           type="submit"
         >
           Send Reset Link
         </Button>
 
         <a
+          className="mt-6 flex items-center justify-center gap-2 font-medium text-muted-foreground text-xs transition-colors hover:text-primary"
           href="#"
-          className="flex items-center justify-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors mt-6 font-medium"
         >
           <ArrowLeft className="size-3" />
           Back to Sign In

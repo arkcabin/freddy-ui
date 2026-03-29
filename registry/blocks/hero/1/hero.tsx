@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { Asterisk, Check, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Asterisk, Check } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 /**
  * AI-Work Hero
@@ -24,8 +23,8 @@ export function AiWorkHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-6 pt-24 pb-20 md:px-10 md:pt-32">
         {/* Badge */}
         <Badge
+          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border-border/60 bg-accent/40 px-3 py-1 font-semibold text-[11px] text-muted-foreground uppercase tracking-widest"
           variant="outline"
-          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border-border/60 bg-accent/40 px-3 py-1 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase"
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
@@ -35,16 +34,16 @@ export function AiWorkHero() {
         </Badge>
 
         {/* Headline */}
-        <h1 className="mb-6 max-w-4xl text-[clamp(3.5rem,6vw,5.5rem)] font-bold leading-[1] tracking-tighter text-foreground">
+        <h1 className="mb-6 max-w-4xl font-bold text-[clamp(3.5rem,6vw,5.5rem)] text-foreground leading-[1] tracking-tighter">
           Introducing Freddy.
           <br />
-          <span className="text-muted-foreground/60 font-medium italic tracking-tight text-[clamp(2.5rem,4.5vw,4.5rem)]">
+          <span className="font-medium text-[clamp(2.5rem,4.5vw,4.5rem)] text-muted-foreground/60 italic tracking-tight">
             The first AI Worker for IT
           </span>
         </h1>
 
         {/* Description */}
-        <p className="mb-10 max-w-xl text-[16px] leading-relaxed text-muted-foreground/90">
+        <p className="mb-10 max-w-xl text-[16px] text-muted-foreground/90 leading-relaxed">
           Freddy handles the repetitive work your team shouldn't — freeing your
           department to move 5× faster, starting week one.
         </p>
@@ -52,16 +51,16 @@ export function AiWorkHero() {
         {/* CTAs */}
         <div className="flex flex-wrap items-center gap-4">
           <Button
+            className="rounded-full px-8 font-semibold text-[15px] shadow-sm transition-all hover:shadow-md"
             size="lg"
-            className="rounded-full px-8 text-[15px] font-semibold shadow-sm hover:shadow-md transition-all"
           >
             Request a Demo
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Button
-            variant="ghost"
+            className="rounded-full px-8 font-semibold text-[15px] text-muted-foreground transition-all hover:text-foreground"
             size="lg"
-            className="rounded-full px-8 text-[15px] font-semibold text-muted-foreground hover:text-foreground transition-all"
+            variant="ghost"
           >
             See how it works
           </Button>
@@ -77,17 +76,17 @@ export function AiWorkHero() {
       <div className="relative z-10 mx-auto w-full max-w-2xl flex-shrink-0 px-6 pb-16 md:px-10">
         <div className="flex flex-col gap-4">
           {/* Ticket card */}
-          <Card className="flex flex-row w-full items-center justify-between gap-0 rounded-2xl border-border/50 p-2 py-4 px-4 shadow-md animate-in fade-in slide-in-from-bottom-3 duration-500">
+          <Card className="fade-in slide-in-from-bottom-3 flex w-full animate-in flex-row items-center justify-between gap-0 rounded-2xl border-border/50 p-2 px-4 py-4 shadow-md duration-500">
             <div className="flex items-center gap-3">
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src="https://ui-avatars.com/api/?name=arkdev&background=2563eb&color=fff"
                   alt="arkdev"
+                  src="https://ui-avatars.com/api/?name=arkdev&background=2563eb&color=fff"
                 />
                 <AvatarFallback className="rounded-lg">AD</AvatarFallback>
               </Avatar>
               <div>
-                <p className="text-[12.5px] font-semibold text-foreground">
+                <p className="font-semibold text-[12.5px] text-foreground">
                   Figma dev seat required
                 </p>
                 <p className="text-[11px] text-muted-foreground">
@@ -101,7 +100,7 @@ export function AiWorkHero() {
           </Card>
 
           {/* Policy card */}
-          <Card className="flex flex-row w-full items-center gap-4 p-4 py-4 rounded-2xl border-border/50 shadow-md animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <Card className="fade-in slide-in-from-bottom-4 flex w-full animate-in flex-row items-center gap-4 rounded-2xl border-border/50 p-4 py-4 shadow-md duration-700">
             <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md bg-blue-500/15 text-blue-500">
               <Check className="h-3 w-3" strokeWidth={3} />
             </div>
@@ -116,11 +115,11 @@ export function AiWorkHero() {
           </Card>
 
           {/* Executing card */}
-          <Card className="flex flex-row w-full items-center gap-4 p-4 py-4 rounded-2xl border-border/50 shadow-md animate-in fade-in slide-in-from-bottom-5 duration-900">
-            <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center text-blue-500 animate-[spin_3s_linear_infinite]">
+          <Card className="fade-in slide-in-from-bottom-5 flex w-full animate-in flex-row items-center gap-4 rounded-2xl border-border/50 p-4 py-4 shadow-md duration-900">
+            <div className="flex h-5 w-5 flex-shrink-0 animate-[spin_3s_linear_infinite] items-center justify-center text-blue-500">
               <Asterisk className="h-4 w-4" />
             </div>
-            <p className="text-[12.5px] font-medium text-foreground">
+            <p className="font-medium text-[12.5px] text-foreground">
               Executing tasks
             </p>
             <div className="ml-auto h-1.5 w-24 overflow-hidden rounded-full bg-border/30">

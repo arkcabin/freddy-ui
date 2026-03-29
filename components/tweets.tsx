@@ -2,7 +2,6 @@
 
 import { SITE_NAME } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 import type { TweetData } from "@/types";
 
@@ -83,7 +82,7 @@ export const Tweets = () => (
           <DummyTweet key={tweet.id} {...tweet} />
         ))}
       </Marquee>
-      <Marquee reverse className="[--duration:35s]">
+      <Marquee className="[--duration:35s]" reverse>
         {secondRow.map((tweet) => (
           <DummyTweet key={tweet.id} {...tweet} />
         ))}
@@ -91,8 +90,8 @@ export const Tweets = () => (
     </div>
 
     {/* Gradient masks for smooth edges */}
-    <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-background"></div>
-    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-background"></div>
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-background" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-background" />
   </div>
 );
 
@@ -112,13 +111,13 @@ function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden p-2 [--gap:1rem] gap-(--gap) flex-row",
+        "group flex flex-row gap-(--gap) overflow-hidden p-2 [--gap:1rem]",
         className
       )}
     >
       <div
         className={cn(
-          "flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row",
+          "flex shrink-0 animate-marquee flex-row justify-around gap-(--gap)",
           {
             "animate-marquee-reverse": reverse,
             "group-hover:paused": pauseOnHover,
@@ -139,18 +138,20 @@ function DummyTweet({ name, handle, content, avatar }: TweetData) {
     <div className="relative w-72 cursor-default overflow-hidden rounded-xl border border-border bg-muted/20 p-3 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-muted/40">
       <div className="flex flex-row items-center gap-2">
         <img
-          className="size-8 rounded-full border border-border bg-muted/30"
           alt={name}
+          className="size-8 rounded-full border border-border bg-muted/30"
+          height={32}
           src={avatar}
+          width={32}
         />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-bold text-foreground leading-tight">
+          <figcaption className="font-bold text-foreground text-sm leading-tight">
             {name}
           </figcaption>
           <p className="text-[10px] text-muted-foreground">{handle}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-xs leading-relaxed text-muted-foreground">
+      <blockquote className="mt-2 text-muted-foreground text-xs leading-relaxed">
         {content}
       </blockquote>
     </div>

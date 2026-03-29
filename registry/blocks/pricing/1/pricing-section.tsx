@@ -141,8 +141,8 @@ export function PricingCard({
           plan.highlighted && "bg-muted/10"
         )}
       >
-        {plan.features.map((feature, index) => (
-          <div className="flex items-center gap-2" key={index}>
+        {plan.features.map((feature, _index) => (
+          <div className="flex items-center gap-2" key={feature.text}>
             <CheckCircleIcon className="h-4 w-4 text-foreground" />
             <TooltipProvider>
               <Tooltip delayDuration={0}>

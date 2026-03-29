@@ -12,7 +12,7 @@ export function SiteHeader() {
       <div className="cpx container flex h-14 items-center justify-between py-2">
         <div className="flex items-center">
           <Link
-            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+            className="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80"
             href="/"
           >
             <Logo />

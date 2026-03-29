@@ -2,9 +2,10 @@
 
 import React from "react";
 import { CodeView } from "@/components/block/code-view";
-import { cn } from "@/lib/utils";
 import { BorderSeparator } from "@/components/shared";
+import { Badge } from "@/components/ui/badge";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
+import { cn } from "@/lib/utils";
 import type { Block, PreviewMode } from "@/types";
 import { BlockLoader } from "./block-loader";
 import { BlockPreview } from "./block-preview";
@@ -14,8 +15,6 @@ import { OpenInNewTabButton } from "./open-in-new-tab-button";
 import { OpenInV0Button } from "./open-in-v0";
 import { RefreshButton } from "./refresh-button";
 import { TogglePreviewMode } from "./toggle-preview-mode";
-
-import { Badge } from "@/components/ui/badge";
 
 type BlockPreviewProps = {
   block: Block;
@@ -31,7 +30,9 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const previewLink = `/view/${name}`;
 
   const isPinned = React.useMemo(() => {
-    if (!pinnedUntil) return false;
+    if (!pinnedUntil) {
+      return false;
+    }
     return new Date(pinnedUntil).getTime() > Date.now();
   }, [pinnedUntil]);
 
@@ -66,8 +67,8 @@ export function BlockBox({ block }: BlockPreviewProps) {
           />
           {isPinned && (
             <Badge
+              className="h-5 animate-pulse border-primary/20 bg-primary/10 px-1.5 font-bold text-[10px] text-primary uppercase tracking-wider"
               variant="secondary"
-              className="h-5 px-1.5 text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 animate-pulse"
             >
               New
             </Badge>
@@ -92,26 +93,26 @@ export function BlockBox({ block }: BlockPreviewProps) {
       {/* Preview */}
       <BlockPreview previewMode={previewMode}>
         <div
-          className="relative h-full bg-background overflow-hidden"
+          className="relative h-full overflow-hidden bg-background"
           ref={iframeContainerRef}
         >
           {shouldLoadIframe && (
             <IframeRenderer
               ariaLabel={`${name}-block-preview`}
-              iframeRef={iframeRef}
-              name={name}
-              src={previewLink}
-              onLoad={() => setIsLoaded(true)}
               className={cn(
                 "transition-opacity duration-500 ease-in-out",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
+              iframeRef={iframeRef}
+              name={name}
+              onLoad={() => setIsLoaded(true)}
+              src={previewLink}
             />
           )}
 
           <div
             className={cn(
-              "absolute inset-0 flex items-center justify-center bg-background transition-opacity duration-300 pointer-events-none",
+              "pointer-events-none absolute inset-0 flex items-center justify-center bg-background transition-opacity duration-300",
               isLoaded ? "opacity-0" : "opacity-100"
             )}
           >

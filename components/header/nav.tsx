@@ -1,6 +1,26 @@
 "use client";
 
+import {
+  AlertTriangle,
+  ArrowRight,
+  ChevronRight,
+  Cloud,
+  CreditCard,
+  FileText,
+  HelpCircle,
+  Image as ImageIcon,
+  Layout,
+  Lock,
+  Mail,
+  Megaphone,
+  Menu,
+  MessageSquare,
+  MousePointer2,
+  Star,
+} from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,28 +30,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { getAllCategories } from "@/lib/utils/blocks-data";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  AlertTriangle,
-  Cloud,
-  CreditCard,
-  FileText,
-  HelpCircle,
-  Image as ImageIcon,
-  Layout,
-  Lock,
-  Mail,
-  Menu,
-  MessageSquare,
-  MousePointer2,
-  Star,
-  ChevronRight,
-  ArrowRight,
-  Megaphone,
-} from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getAllCategories } from "@/lib/utils/blocks-data";
 
 const categories = getAllCategories();
 
@@ -80,31 +80,31 @@ const NAV_LINKS = [
 export function SiteNav() {
   return (
     <NavigationMenu
+      aria-label="Main Navigation"
       className="flex"
       viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
-      aria-label="Main Navigation"
     >
-      <NavigationMenuList className="gap-1 flex-row">
+      <NavigationMenuList className="flex-row gap-1">
         {/* 1. Blocks dropdown */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-muted-foreground shadow-none hover:text-foreground data-[state=open]:bg-transparent data-[state=open]:text-foreground rounded-full px-5 h-9 text-[14px] font-bold transition-all hover:bg-white/5 active:bg-white/10">
+          <NavigationMenuTrigger className="h-9 rounded-full bg-transparent px-5 font-bold text-[14px] text-muted-foreground shadow-none transition-all hover:bg-white/5 hover:text-foreground active:bg-white/10 data-[state=open]:bg-transparent data-[state=open]:text-foreground">
             Blocks
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="flex w-[800px] overflow-hidden rounded-2xl border border-border/50 bg-card/95 text-card-foreground shadow-2xl backdrop-blur-xl">
               {/* Left Highlight Section */}
-              <div className="flex w-[270px] shrink-0 flex-col justify-between bg-muted/40 p-6 border-r border-border/40">
+              <div className="flex w-[270px] shrink-0 flex-col justify-between border-border/40 border-r bg-muted/40 p-6">
                 <div>
                   <Badge
+                    className="mb-4 rounded-full border-none bg-secondary/80 px-2.5 py-0.5 font-bold text-[10px] text-secondary-foreground uppercase tracking-wider shadow-sm"
                     variant="secondary"
-                    className="mb-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border-none bg-secondary/80 text-secondary-foreground shadow-sm"
                   >
                     Blocks
                   </Badge>
-                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                  <h3 className="font-bold text-foreground text-xl tracking-tight">
                     Modern Blocks
                   </h3>
-                  <p className="mt-2 text-[12.5px] text-muted-foreground/60 leading-relaxed font-normal max-w-[200px]">
+                  <p className="mt-2 max-w-[200px] font-normal text-[12.5px] text-muted-foreground/60 leading-relaxed">
                     Elite UI components, meticulously crafted for modern web
                     experiences.
                   </p>
@@ -117,18 +117,18 @@ export function SiteNav() {
                         <Star className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-muted-foreground/70">
+                        <p className="font-bold text-[9px] text-muted-foreground/70 uppercase tracking-[0.1em]">
                           FLASH UPDATE
                         </p>
-                        <p className="text-sm font-bold">New Auth Blocks</p>
+                        <p className="font-bold text-sm">New Auth Blocks</p>
                       </div>
                     </div>
                   </div>
 
                   <Button
                     asChild
+                    className="group/btn h-11 w-full rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99]"
                     variant="default"
-                    className="w-full rounded-xl h-11 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99] group/btn"
                   >
                     <Link href="/blocks">
                       Explore Library
@@ -141,12 +141,12 @@ export function SiteNav() {
               {/* Main Categories Grid - 2 Columns with Side-by-Side Items */}
               <div className="flex-1 p-6">
                 <div className="mb-4 flex items-center justify-between px-1">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
+                  <span className="font-bold text-[10px] text-muted-foreground/40 uppercase tracking-[0.2em]">
                     Components
                   </span>
                   <Link
+                    className="group flex items-center gap-1 font-bold text-[11px] text-primary transition-all hover:underline"
                     href="/blocks"
-                    className="group flex items-center gap-1 text-[11px] font-bold text-primary hover:underline transition-all"
                   >
                     View all
                     <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
@@ -156,33 +156,33 @@ export function SiteNav() {
                   {categories.slice(0, 10).map((cat) => (
                     <NavigationMenuLink asChild key={cat.id}>
                       <Link
+                        className="group flex flex-row items-center gap-3.5 rounded-xl p-3 transition-all duration-300 hover:bg-muted/50"
                         href={`/blocks/${cat.id}`}
-                        className="group flex flex-row items-center gap-3.5 p-3 rounded-xl transition-all duration-300 hover:bg-muted/50"
                       >
-                        <div className="flex size-11 grow-0 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-background/5 transition-all group-hover:border-primary/50 group-hover:bg-primary/10 group-hover:shadow-inner">
-                          <div className="transition-transform group-hover:scale-110 duration-300 text-muted-foreground group-hover:text-primary">
+                        <div className="flex size-11 shrink-0 grow-0 items-center justify-center rounded-xl border border-border/50 bg-background/5 transition-all group-hover:border-primary/50 group-hover:bg-primary/10 group-hover:shadow-inner">
+                          <div className="text-muted-foreground transition-transform duration-300 group-hover:scale-110 group-hover:text-primary">
                             {getCategoryIcon(cat.id, "size-5")}
                           </div>
                         </div>
-                        <div className="flex flex-col min-w-0">
-                          <div className="flex items-center gap-2 mb-0.5">
-                            <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                        <div className="flex min-w-0 flex-col">
+                          <div className="mb-0.5 flex items-center gap-2">
+                            <span className="font-bold text-foreground text-sm leading-tight transition-colors group-hover:text-primary">
                               {cat.name}
                             </span>
                             {cat.isNew && (
                               <div className="flex items-center gap-1.5">
-                                <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse shrink-0" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-primary leading-none">
+                                <span className="flex h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-primary" />
+                                <span className="font-bold text-[10px] text-primary uppercase leading-none tracking-wider">
                                   New
                                 </span>
                               </div>
                             )}
                           </div>
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/40 leading-none group-hover:text-primary/50 transition-colors">
+                          <span className="font-bold text-[11px] text-muted-foreground/40 uppercase leading-none tracking-wider transition-colors group-hover:text-primary/50">
                             {cat.blocksCount} Blocks
                           </span>
                         </div>
-                        <ChevronRight className="size-3.5 text-muted-foreground/30 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-auto shrink-0" />
+                        <ChevronRight className="-translate-x-2 ml-auto size-3.5 shrink-0 text-muted-foreground/30 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                       </Link>
                     </NavigationMenuLink>
                   ))}
@@ -198,8 +198,8 @@ export function SiteNav() {
             <NavigationMenuLink asChild>
               <Link href={item.href || "#"}>
                 <Button
+                  className="h-9 rounded-full bg-transparent px-5 font-bold text-[14px] text-muted-foreground shadow-none transition-all hover:bg-white/5 hover:text-foreground active:bg-white/10"
                   variant="default"
-                  className="bg-transparent text-muted-foreground shadow-none hover:text-foreground hover:bg-white/5 active:bg-white/10 rounded-full px-5 h-9 text-[14px] font-bold transition-all"
                 >
                   {item.name}
                 </Button>

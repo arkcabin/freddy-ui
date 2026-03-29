@@ -133,7 +133,6 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --grid-color: rgba(255, 255, 255, 0.03);
   --beam-color: rgba(255, 255, 255, 0.15);
-  --beam-color: rgba(255, 255, 255, 0.15);
 
   /* Featured Cards (Premium Dark) */
   --featured-card-bg: oklch(0.2 0 0 / 80%);
