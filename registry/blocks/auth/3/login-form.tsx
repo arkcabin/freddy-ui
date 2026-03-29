@@ -1,12 +1,12 @@
 "use client";
 
 import { EyeIcon } from "lucide-react";
+import type React from "react";
 import { LogoIcon } from "@/components/logo";
+import { Plus } from "@/components/plus";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus } from "@/components/plus";
-import type React from "react";
 
 const GoogleIcon = (props: React.ComponentProps<"svg">) => (
   <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -19,87 +19,100 @@ const GoogleIcon = (props: React.ComponentProps<"svg">) => (
 
 export function LoginForm() {
   return (
-    <div className="relative w-full max-w-md bg-background p-8 rounded-2xl border shadow-lg overflow-hidden group">
+    <div className="group relative w-full max-w-md overflow-hidden rounded-2xl border bg-background p-8 shadow-lg">
       <Plus className="-top-px -left-px" />
       <Plus className="-top-px -right-px rotate-90" />
       <Plus className="-bottom-px -left-px -rotate-90" />
       <Plus className="-bottom-px -right-px rotate-180" />
 
-      <div className="flex flex-col items-center gap-4 mb-8">
+      <div className="mb-8 flex flex-col items-center gap-4">
         <LogoIcon className="size-8" />
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Sign In to Freddy</h2>
-          <p className="text-sm text-muted-foreground">Welcome back! Sign in to your account</p>
+          <h2 className="font-bold text-2xl tracking-tight">
+            Sign In to Freddy
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Welcome back! Sign in to your account
+          </p>
         </div>
       </div>
 
       <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-        <Button 
-          variant="outline" 
-          className="w-full h-11 transition-all hover:bg-muted font-medium" 
+        <Button
+          className="h-11 w-full font-medium transition-all hover:bg-muted"
           type="button"
+          variant="outline"
         >
-          <GoogleIcon className="size-4 mr-2" />
+          <GoogleIcon className="mr-2 size-4" />
           Continue with Google
         </Button>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-muted-foreground/20" />
+            <span className="w-full border-muted-foreground/20 border-t" />
           </div>
-          <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-wider">
-            <span className="bg-background px-2 text-muted-foreground">OR CONTINUE WITH</span>
+          <div className="relative flex justify-center font-bold text-[10px] uppercase tracking-wider">
+            <span className="bg-background px-2 text-muted-foreground">
+              OR CONTINUE WITH
+            </span>
           </div>
         </div>
 
         <div className="grid gap-4">
           <div className="grid gap-2 text-start">
             <Label htmlFor="email">Email or Username</Label>
-            <Input 
-              id="email" 
-              type="text" 
-              placeholder="Enter your email or username" 
-              className="h-10" 
+            <Input
+              className="h-10"
+              id="email"
+              placeholder="Enter your email or username"
+              type="text"
             />
           </div>
           <div className="grid gap-2 text-start">
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
-              <a href="#" className="text-xs text-primary/80 hover:underline">Forgot password?</a>
+              <a className="text-primary/80 text-xs hover:underline" href="#">
+                Forgot password?
+              </a>
             </div>
             <div className="relative">
-              <Input 
-                id="password" 
-                type="password" 
-                placeholder="Enter your password" 
-                className="h-10 pr-10" 
+              <Input
+                className="h-10 pr-10"
+                id="password"
+                placeholder="Enter your password"
+                type="password"
               />
-              <button 
-                type="button" 
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors" 
+              <button
+                className="-translate-y-1/2 absolute top-1/2 right-3 text-muted-foreground transition-colors hover:text-foreground"
                 title="Toggle password visibility"
+                type="button"
               >
                 <EyeIcon className="size-4" />
               </button>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="size-4 rounded border border-muted-foreground/30 flex items-center justify-center bg-card">
-              <div className="size-1.5 rounded-sm bg-primary opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div className="flex size-4 items-center justify-center rounded border border-muted-foreground/30 bg-card">
+              <div className="size-1.5 rounded-sm bg-primary opacity-0 transition-opacity group-hover:opacity-20" />
             </div>
-            <span className="text-xs text-muted-foreground cursor-default">Remember me</span>
+            <span className="cursor-default text-muted-foreground text-xs">
+              Remember me
+            </span>
           </div>
         </div>
 
-        <Button 
-          className="w-full h-11 font-semibold transition-all active:scale-[0.98] shadow-sm" 
+        <Button
+          className="h-11 w-full font-semibold shadow-sm transition-all active:scale-[0.98]"
           type="submit"
         >
           Continue
         </Button>
 
-        <p className="text-center text-xs text-muted-foreground mt-6">
-          Don&apos;t have an account? <a href="#" className="text-primary hover:underline font-medium">Sign up</a>
+        <p className="mt-6 text-center text-muted-foreground text-xs">
+          Don&apos;t have an account?{" "}
+          <a className="font-medium text-primary hover:underline" href="#">
+            Sign up
+          </a>
         </p>
       </form>
     </div>

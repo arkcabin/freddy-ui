@@ -1,141 +1,151 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Github, SquareCode } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
-import { SITE_NAME, SITE_VERSION } from "@/config/site";
+import { ShadcnIcon } from "@/components/icons";
 import { LogoIcon } from "@/components/logo";
-import { GridPattern } from "./sheard";
+import { GridPattern } from "@/components/shared";
+import { Button } from "@/components/ui/button";
+import { SITE_VERSION } from "@/config/site";
+import { FeaturedIcons } from "./featured-icons";
+import { SectionGrid } from "./section-grid";
 
+/**
+ * Hero component for the Freddy UI landing page.
+ * Uses the SectionGrid HOC for the "Boxed" architectural layout.
+ * Reverted to standard centered layout as requested.
+ */
 export function Hero() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
-    <div className="relative isolate flex flex-col items-center justify-center pt-24 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 -z-10 h-full w-full">
-        <GridPattern className="opacity-[0.03]" />
+    <SectionGrid
+      allowOverflow={true}
+      aria-label="Hero Section"
+      className="flex min-h-[calc(100vh-3rem)] flex-col bg-background pt-12"
+      containerClassName="flex flex-1 flex-col justify-center py-20 md:py-32"
+      markerOffset="top-0"
+      markerType="plus"
+      showDoubleBorders={true}
+      zIndex="z-[55]"
+    >
+      {/* Neutral High-Contrast Grid with Pro Mask */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <GridPattern
+          className="mask-[radial-gradient(ellipse_at_center,white,transparent_80%)] opacity-15"
+          strokeDasharray="4 4"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--foreground),0.02)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_60%)]" />
       </div>
 
-      {/* Background Glow */}
-      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-white/20 to-white/5 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
-      </div>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 mx-auto max-w-5xl px-6 text-center"
-      >
+      {/* Content wrapper */}
+      <div className="relative z-10 px-6 md:px-10">
+        {/* Badge */}
         <motion.div
-          variants={itemVariants}
-          className="mx-auto mb-8 flex max-w-fit items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1.5 pl-3 pr-4 text-[11px] font-medium backdrop-blur-md"
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md"
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-2">
-            <LogoIcon className="size-3.5" />
-            <span className="text-white font-semibold">{SITE_NAME}</span>
-          </div>
-          <span className="h-3 w-px bg-white/20" />
-          <span className="text-white/80">Introducing V-{SITE_VERSION}</span>
-          <span className="h-3 w-px bg-white/10" />
-          <Link href="/changelog" className="flex items-center gap-1 text-white/50 transition-colors hover:text-white">
-            View Changelog
-            <ChevronRight className="size-3" />
+          <LogoIcon className="size-3 opacity-60" />
+          <span>Introducing V-{SITE_VERSION}</span>
+          <span className="mx-1 h-2 w-px bg-border/50" />
+          <Link
+            className="group relative flex items-center gap-1.5 overflow-hidden rounded-sm px-2 py-0.5"
+            href="/changelog"
+          >
+            {/* Premium Left-to-Right Fill */}
+            <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
+
+            {/* Inverted Content Layer */}
+            <span className="relative z-10 flex items-center gap-1.5 text-white mix-blend-difference">
+              Changelog
+              <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
+            </span>
           </Link>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
-          variants={itemVariants}
-          className="relative font-heading text-4xl font-bold tracking-tighter text-white sm:text-6xl lg:text-7xl"
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl"
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Beautiful ✨ <span className="font-extrabold">shadcn/ui</span> Blocks <br />
-          for the <span className="font-extrabold text-glow">Modern Developer.</span>
+          Beautiful{" "}
+          <ShadcnIcon className="mr-1 inline size-[0.9em] translate-y-[-0.05em]" />{" "}
+          <span className="font-medium text-muted-foreground/40">
+            shadcn/ui
+          </span>{" "}
+          Blocks <br />
+          for{" "}
+          <span className="font-semibold text-primary/90 italic">
+            Busy & Smart devs.
+          </span>
         </motion.h1>
 
-        <motion.p
-          variants={itemVariants}
-          className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/50 sm:text-lg"
-        >
-          Save hours of design time with clean, ready-to-use shadcn blocks <br className="hidden sm:block" />
-          that just work — modern, responsive, and built for speed.
-        </motion.p>
+        {/* Advanced Word-Stagger Description */}
+        <div className="mb-10 max-w-2xl overflow-hidden">
+          <motion.p
+            animate="visible"
+            className="text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg"
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.04,
+                  delayChildren: 0.4,
+                },
+              },
+            }}
+          >
+            {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
+              .split(" ")
+              .map((word, i) => (
+                <motion.span
+                  className="mr-[0.25em] inline-block last:mr-0"
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Static sentence with word-index combination is appropriate for this stagger animation.
+                  key={`${word}-${i}`}
+                  transition={{ duration: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+                  variants={{
+                    hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+                    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+          </motion.p>
+        </div>
 
+        {/* CTAs */}
         <motion.div
-          variants={itemVariants}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-wrap items-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <Button asChild size="lg" variant="outline" className="h-12 rounded-full border-white/10 bg-white/5 px-8 text-sm font-medium backdrop-blur-md transition-all hover:bg-white/10 focus:ring-2 focus:ring-white/20">
-            <Link href="#blocks">
-              Explore
-            </Link>
+          <Button
+            className="shadow-lg shadow-primary/5 transition-all hover:opacity-90 active:scale-95"
+            rounded="full"
+            size="hero"
+          >
+            Explore
+            <ArrowRight className="ml-2 h-3.5 w-3.5" />
           </Button>
-          <Button asChild size="lg" className="h-12 rounded-full bg-white px-8 text-sm font-bold text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all hover:bg-white/90 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] focus:ring-2 focus:ring-white">
-            <Link href="/get-access">
-              Get full Access
-            </Link>
+          <Button
+            className="text-muted-foreground/60 transition-all hover:text-foreground"
+            rounded="full"
+            size="hero"
+            variant="ghost"
+          >
+            Get full Access
           </Button>
         </motion.div>
+      </div>
 
-        {/* Floating Mockup Preview */}
-        <motion.div
-          variants={itemVariants}
-          className="relative mt-20"
-        >
-          <div className="absolute inset-0 -z-10 bg-linear-to-b from-white/10 to-transparent blur-2xl font-mono"></div>
-          <div className="mx-auto max-w-5xl rounded-2xl border border-white/10 bg-black/50 p-2 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20">
-            <div className="flex items-center justify-between rounded-t-xl bg-white/5 px-4 py-2 border-b border-white/5">
-              <div className="flex gap-1.5">
-                <div className="size-2.5 rounded-full bg-white/10"></div>
-                <div className="size-2.5 rounded-full bg-white/10"></div>
-                <div className="size-2.5 rounded-full bg-white/10"></div>
-              </div>
-              <div className="flex items-center gap-2 text-[10px] font-mono text-white/30">
-                <SquareCode className="size-3" />
-                <span>Components.tsx</span>
-              </div>
-            </div>
-            <div className="h-48 sm:h-64 lg:h-80 overflow-hidden bg-dot-white/[0.05] relative">
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="max-w-md w-full space-y-4 opacity-50">
-                   <div className="h-8 w-3/4 rounded-lg bg-white/10 animate-pulse"></div>
-                   <div className="h-4 w-full rounded-lg bg-white/5 animate-pulse"></div>
-                   <div className="h-4 w-5/6 rounded-lg bg-white/5 animate-pulse"></div>
-                   <div className="flex gap-4">
-                     <div className="h-10 w-24 rounded-lg bg-white/10 animate-pulse"></div>
-                     <div className="h-10 w-24 rounded-lg bg-white/10 animate-pulse"></div>
-                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Background Decorative Beam */}
-      <div className="beam-effect opacity-50" />
-    </div>
+      <FeaturedIcons />
+    </SectionGrid>
   );
 }

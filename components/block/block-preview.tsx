@@ -27,14 +27,15 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
         aria-hidden="true"
         className={cn(
           "absolute inset-0 size-full bg-muted/50 dark:bg-muted/20",
-          "bg-[radial-gradient(color-mix(in_oklab,--theme(--color-foreground/.4)30%,transparent)_1px,transparent_1px)]",
+          "bg-[radial-gradient(theme(colors.foreground/12%)_1px,transparent_1px)]",
           "bg-[size:24px_24px]"
         )}
       />
-      <PanelGroup direction="horizontal">
+      <PanelGroup direction="horizontal" id="block-preview-group">
         <Panel
           className="h-[var(--block-height)] lg:border-r lg:border-dashed"
           defaultSize={DEFAULTSIZE}
+          id="main-panel"
           minSize={30}
           order={1}
         >
@@ -49,6 +50,7 @@ export function BlockPreview({ previewMode, children }: BlockPreviewProps) {
             <Panel
               className="-mr-[0.5px] ml-px"
               defaultSize={100 - DEFAULTSIZE}
+              id="resize-panel"
               order={2}
             />
           </>

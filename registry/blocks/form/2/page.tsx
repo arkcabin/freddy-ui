@@ -9,7 +9,7 @@ export default function Page() {
         aria-hidden="true"
         className={cn(
           "-top-1/2 -translate-x-1/2 pointer-events-none absolute left-1/2 h-[120vmin] w-[120vmin] rounded-full",
-          "bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]",
+          "bg-[radial-gradient(ellipse_at_center,theme(colors.foreground/10%),transparent_50%)]",
           "blur-[30px]"
         )}
       />

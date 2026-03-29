@@ -20,6 +20,7 @@ export function IframeRenderer({
   onLoad,
 }: IframeRendererProps) {
   return (
+    // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad is standard and necessary for iframe lifecycle management
     <iframe
       allowFullScreen={true}
       aria-label={ariaLabel || `${name}-preview`}

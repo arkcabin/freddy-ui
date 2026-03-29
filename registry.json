@@ -73,6 +73,171 @@
       "tier": "free"
     },
     {
+      "name": "announcement-1",
+      "description": "Animated announcement bar with call-to-action and close button.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/announcement/1/announcement.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2024-03-27"
+      },
+      "categories": [
+        "announcement"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "announcement-2",
+      "description": "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/announcement/2/marquee-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2026-03-28"
+      },
+      "categories": [
+        "announcement",
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "announcement-3",
+      "description": "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/announcement/3/daytona-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2026-03-28"
+      },
+      "categories": [
+        "announcement",
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "hero-1",
+      "description": "Freddy style by Arkcabin.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge",
+        "card",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/hero/1/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/1/announcement.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/1/header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/1/hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/1/wrapper.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-03-28",
+        "activeForDays": 120
+      },
+      "categories": [
+        "hero",
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "hero-2",
+      "description": "Modern Hero with grid pattern and featured icons.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/hero/2/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/featured-icons.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/2/shared.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": false,
+        "createdAt": "2026-03-28"
+      },
+      "categories": [
+        "hero"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "contact-1",
       "description": "Elegant contact page with office info, email, phone, and social links.",
       "files": [
@@ -684,6 +849,80 @@
       "tier": "free"
     },
     {
+      "name": "auth-10",
+      "description": "Modern split layout sign-up form with social authentication options.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/10/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "800px",
+        "isPinned": true,
+        "createdAt": "2024-03-27"
+      },
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-11",
+      "description": "Multi-input OTP/Magic Link verification form.",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/11/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "800px",
+        "isPinned": true,
+        "createdAt": "2024-03-26"
+      },
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-12",
+      "description": "Multi-step split layout onboarding form.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/12/onboarding-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "800px",
+        "isPinned": true,
+        "createdAt": "2024-03-27"
+      },
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
       "name": "header-1",
       "description": "Responsive sticky header with scroll blur effect, animated mobile menu, and adaptive navigation links.",
       "registryDependencies": [
@@ -708,7 +947,9 @@
         }
       ],
       "meta": {
-        "height": "50vh"
+        "height": "50vh",
+        "isPinned": true,
+        "createdAt": "2024-03-28"
       },
       "categories": [
         "header"
@@ -776,6 +1017,66 @@
       ],
       "meta": {
         "height": "60vh"
+      },
+      "categories": [
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "header-4",
+      "description": "Premium mega menu header with card-style items, vibrant gradients, and smooth motion animations.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header/4/header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-scroll.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "meta": {
+        "height": "400px",
+        "isPinned": true,
+        "createdAt": "2024-03-25"
+      },
+      "categories": [
+        "header"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "header-5",
+      "description": "Premium header with a 'Blocks' registry modal featuring a dual-panel layout and category grid.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header/5/header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-scroll.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "meta": {
+        "height": "80vh",
+        "pinnedUntil": "2026-04-15T00:00:00Z"
       },
       "categories": [
         "header"

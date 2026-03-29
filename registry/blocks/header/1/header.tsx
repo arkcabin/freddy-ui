@@ -49,11 +49,11 @@ export function Header() {
           <LogoIcon className="size-6" />
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          {links.map((link, i) => (
+          {links.map((link, _i) => (
             <a
               className={buttonVariants({ variant: "ghost" })}
               href={link.href}
-              key={i}
+              key={link.label}
             >
               {link.label}
             </a>

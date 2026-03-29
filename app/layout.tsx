@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { JsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { constructMetadata } from "@/lib/metadata";
@@ -9,12 +10,16 @@ export const metadata = constructMetadata({
   canonicalUrl: "/",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
       <body
-        suppressHydrationWarning
         className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none bg-background font-sans text-foreground antialiased`}
+        suppressHydrationWarning
       >
         {process.env.GOOGLE_ANALYTICS && (
           <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
@@ -24,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          <JsonLd />
           {children}
         </ThemeProvider>
       </body>

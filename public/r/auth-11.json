@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth-11",
+  "description": "Multi-input OTP/Magic Link verification form.",
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/auth/11/otp-form.tsx",
+      "content": "\"use client\";\r\n\r\nimport { ArrowLeft, MailIcon } from \"lucide-react\";\r\nimport type React from \"react\";\r\nimport { useState, useRef, useEffect } from \"react\";\r\nimport { LogoIcon } from \"@/components/logo\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Input } from \"@/components/ui/input\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function OtpForm() {\r\n  const [otp, setOtp] = useState([\"\", \"\", \"\", \"\", \"\", \"\"]);\r\n  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);\r\n\r\n  const handleChange = (index: number, value: string) => {\r\n    if (value.length > 1) value = value.slice(-1);\r\n    if (!/^\\d*$/.test(value)) return;\r\n\r\n    const newOtp = [...otp];\r\n    newOtp[index] = value;\r\n    setOtp(newOtp);\r\n\r\n    // Move to next input if value is entered\r\n    if (value && index < 5) {\r\n      inputRefs.current[index + 1]?.focus();\r\n    }\r\n  };\r\n\r\n  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {\r\n    if (e.key === \"Backspace\" && !otp[index] && index > 0) {\r\n      inputRefs.current[index - 1]?.focus();\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex h-screen w-full items-center justify-center bg-background px-6 py-12\">\r\n      <div className=\"w-full max-w-[440px] space-y-12 text-center\">\r\n        <div className=\"flex flex-col items-center space-y-8\">\r\n          <div className=\"relative\">\r\n            <div className=\"flex size-20 items-center justify-center rounded-[2.5rem] bg-primary/5 text-primary ring-1 ring-primary/10 shadow-sm transition-transform hover:scale-105 duration-500\">\r\n              <MailIcon className=\"size-10\" />\r\n            </div>\r\n            <div className=\"absolute -right-1 -top-1 flex size-6 items-center justify-center rounded-full border-4 border-background bg-primary shadow-lg shadow-primary/20\">\r\n              <span className=\"size-1.5 rounded-full bg-white animate-pulse\" />\r\n            </div>\r\n          </div>\r\n          \r\n          <div className=\"space-y-4\">\r\n            <h1 className=\"text-4xl font-bold tracking-tightest sm:text-5xl\">Verify email</h1>\r\n            <p className=\"text-lg text-muted-foreground font-medium leading-relaxed max-w-sm mx-auto\">\r\n              We've sent a 6-digit verification code to\r\n              <span className=\"block font-bold text-foreground mt-1\">v***k@example.com</span>\r\n            </p>\r\n          </div>\r\n        </div>\r\n\r\n        <div className=\"space-y-10\">\r\n          <div className=\"flex justify-between gap-3 sm:gap-4\">\r\n            {otp.map((digit, index) => (\r\n              <Input\r\n                key={index}\r\n                ref={(el) => {\r\n                  inputRefs.current[index] = el;\r\n                }}\r\n                type=\"text\"\r\n                inputMode=\"numeric\"\r\n                pattern=\"\\d*\"\r\n                maxLength={1}\r\n                value={digit}\r\n                onChange={(e) => handleChange(index, e.target.value)}\r\n                onKeyDown={(e) => handleKeyDown(index, e)}\r\n                className=\"h-14 w-full text-center text-2xl font-bold rounded-2xl border-zinc-200 bg-zinc-50/50 dark:bg-zinc-900/50 dark:border-zinc-800 focus:bg-background focus:ring-4 focus:ring-primary/5 transition-all outline-none\"\r\n              />\r\n            ))}\r\n          </div>\r\n\r\n          <div className=\"space-y-4\">\r\n            <Button className=\"w-full h-14 rounded-2xl font-bold text-base shadow-2xl shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99]\" size=\"lg\">\r\n              Verify Account\r\n            </Button>\r\n\r\n            <p className=\"text-sm text-muted-foreground font-medium\">\r\n              Didn't receive the code?{\" \"}\r\n              <button className=\"font-bold text-primary hover:underline underline-offset-4 transition-all\">\r\n                Resend code\r\n              </button>\r\n            </p>\r\n          </div>\r\n        </div>\r\n\r\n        <button className=\"inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-muted-foreground/60 transition-all hover:text-foreground\">\r\n          <ArrowLeft className=\"size-4\" />\r\n          Back to sign in\r\n        </button>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "height": "800px",
+    "isPinned": true,
+    "createdAt": "2024-03-26"
+  },
+  "categories": [
+    "auth"
+  ],
+  "type": "registry:block"
+}

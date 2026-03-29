@@ -1,11 +1,15 @@
 import type { RegistryItem } from "shadcn/schema";
 
-/**
- * Freddy UI Blocks Registry
- * To mark a block as Pro, add `tier: "pro"` to its object.
- * By default, all blocks are "free".
- */
-export const blocks: RegistryItem[] = [
+// Extend RegistryItem to support 'tier' and custom metadata
+type FreddyRegistryItem = RegistryItem & {
+  tier?: "free" | "pro";
+  meta?: RegistryItem["meta"] & {
+    activeForDays?: number;
+    createdAt?: string;
+  };
+};
+
+export const blocks: FreddyRegistryItem[] = [
   {
     name: "auth-1",
     type: "registry:block",
@@ -46,6 +50,137 @@ export const blocks: RegistryItem[] = [
       },
     ],
     categories: ["auth"],
+  },
+  {
+    name: "announcement-1",
+    type: "registry:block",
+    description:
+      "Animated announcement bar with call-to-action and close button.",
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/1/announcement.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement"],
+    meta: {
+      height: "50vh",
+
+      isPinned: true,
+      createdAt: "2024-03-27",
+    },
+  },
+  {
+    name: "announcement-2",
+    type: "registry:block",
+    description:
+      "High-fidelity Freddy UI header with integrated scrolling marquee announcement bar.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/2/marquee-header.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement", "header"],
+    meta: {
+      height: "50vh",
+
+      isPinned: true,
+      createdAt: "2026-03-28",
+    },
+  },
+  {
+    name: "announcement-3",
+    type: "registry:block",
+    description:
+      "Minimalist, technical Daytona-style header with top bar and GitHub stats.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/announcement/3/daytona-header.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["announcement", "header"],
+    meta: {
+      height: "50vh",
+      isPinned: true,
+      createdAt: "2026-03-28",
+    },
+  },
+  {
+    name: "hero-1",
+    type: "registry:block",
+    description: "Freddy style by Arkcabin.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "badge", "card", "avatar"],
+    files: [
+      {
+        path: "blocks/hero/1/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/1/announcement.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/1/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/1/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/1/wrapper.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero", "header"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-03-28",
+      activeForDays: 120,
+    },
+  },
+  {
+    name: "hero-2",
+    type: "registry:block",
+    description: "Modern Hero with grid pattern and featured icons.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/hero/2/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/featured-icons.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/2/shared.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: false,
+      createdAt: "2026-03-28",
+    },
   },
   {
     name: "contact-1",
@@ -414,7 +549,8 @@ export const blocks: RegistryItem[] = [
   {
     name: "auth-3",
     type: "registry:block",
-    description: "Premium login form with high-contrast design, social login, and branded elements.",
+    description:
+      "Premium login form with high-contrast design, social login, and branded elements.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
@@ -431,7 +567,8 @@ export const blocks: RegistryItem[] = [
   {
     name: "auth-4",
     type: "registry:block",
-    description: "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
+    description:
+      "Premium signup form with side-by-side name fields, high-contrast design, and social login.",
     registryDependencies: ["button", "input", "label"],
     files: [
       {
@@ -531,6 +668,61 @@ export const blocks: RegistryItem[] = [
     categories: ["auth"],
   },
   {
+    name: "auth-10",
+    type: "registry:block",
+    description:
+      "Modern split layout sign-up form with social authentication options.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/10/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-27",
+    },
+  },
+  {
+    name: "auth-11",
+    type: "registry:block",
+    description: "Multi-input OTP/Magic Link verification form.",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/auth/11/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-26",
+    },
+  },
+  {
+    name: "auth-12",
+    type: "registry:block",
+    description: "Multi-step split layout onboarding form.",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/12/onboarding-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "800px",
+      isPinned: true,
+      createdAt: "2024-03-27",
+    },
+  },
+  {
     name: "header-1",
     type: "registry:block",
     description:
@@ -557,6 +749,8 @@ export const blocks: RegistryItem[] = [
     categories: ["header"],
     meta: {
       height: "50vh",
+      isPinned: true,
+      createdAt: "2024-03-28",
     },
   },
   {
@@ -615,6 +809,53 @@ export const blocks: RegistryItem[] = [
     categories: ["header"],
     meta: {
       height: "60vh",
+    },
+  },
+  {
+    name: "header-4",
+    type: "registry:block",
+    description:
+      "Premium mega menu header with card-style items, vibrant gradients, and smooth motion animations.",
+    dependencies: ["motion"],
+    registryDependencies: ["button", "navigation-menu"],
+    files: [
+      {
+        path: "blocks/header/4/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/hooks/use-scroll.ts",
+        type: "registry:hook",
+      },
+    ],
+    categories: ["header"],
+    meta: {
+      height: "400px",
+      isPinned: true,
+      createdAt: "2024-03-25",
+    },
+  },
+  {
+    name: "header-5",
+    type: "registry:block",
+    description:
+      "Premium header with a 'Blocks' registry modal featuring a dual-panel layout and category grid.",
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/header/5/header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/hooks/use-scroll.ts",
+        type: "registry:hook",
+      },
+    ],
+    categories: ["header"],
+    meta: {
+      height: "80vh",
+      pinnedUntil: "2026-04-15T00:00:00Z",
     },
   },
   {

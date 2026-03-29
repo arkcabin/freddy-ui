@@ -1,0 +1,48 @@
+import Link from "next/link";
+import { GithubIcon, XIcon } from "@/components/icons";
+import { Logo } from "@/components/logo";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { MY_HANDLE, SITE_NAME } from "@/config/site";
+import { SiteNav } from "./nav";
+
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-dashed bg-card/80 backdrop-blur-md dark:bg-card/50">
+      <div className="cpx container flex h-14 items-center justify-between py-2">
+        <div className="flex items-center">
+          <Link
+            className="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80"
+            href="/"
+          >
+            <Logo />
+            <span className="sr-only">{SITE_NAME}</span>
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <SiteNav />
+          <Button asChild size="icon-sm" variant="dashed">
+            <Link
+              aria-label="x/twitter"
+              href={`https://x.com/${MY_HANDLE}`}
+              target="_blank"
+            >
+              <XIcon />
+            </Link>
+          </Button>
+          <Button asChild size="icon-sm" variant="dashed">
+            <Link
+              aria-label="github"
+              href={`https://github.com/${MY_HANDLE}/freddy-ui`}
+              target="_blank"
+            >
+              <GithubIcon />
+            </Link>
+          </Button>
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+  );
+}

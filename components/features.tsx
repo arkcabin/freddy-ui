@@ -26,34 +26,33 @@ const itemVariants: Variants = {
 };
 
 export function Features({ totalBlocks }: { totalBlocks: number }) {
-
   return (
-    <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <div className="relative z-10">
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        initial="hidden"
+        variants={containerVariants}
+        viewport={{ once: true, margin: "-100px" }}
+        whileInView="visible"
       >
-        {features.map((feature, index) => {
-          const title = feature.isDynamic 
+        {features.map((feature, _index) => {
+          const title = feature.isDynamic
             ? `${totalBlocks}+ ${feature.title}`
             : feature.title;
 
           return (
             <motion.div
-              key={index}
+              className="group relative rounded-2xl border border-border bg-muted/20 p-6 transition-colors hover:bg-muted/40"
+              key={feature.title}
               variants={itemVariants}
-              className="group relative rounded-2xl border border-white/10 bg-white/2 p-6 transition-colors hover:bg-white/5"
             >
-              <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/70 transition-colors group-hover:text-white">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-muted/30 text-muted-foreground transition-colors group-hover:text-primary">
                 <feature.icon className="size-5" />
               </div>
-              <h3 className="font-heading text-sm font-bold text-white">
+              <h3 className="font-bold font-heading text-foreground text-sm">
                 {title}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-white/40">
+              <p className="mt-2 text-muted-foreground text-xs leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

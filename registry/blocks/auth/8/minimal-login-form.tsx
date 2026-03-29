@@ -5,44 +5,60 @@ import { LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
 
 export function MinimalLoginForm() {
   return (
-    <div className="w-full max-w-sm bg-transparent p-4 group">
-      <div className="flex flex-col gap-2 mb-8">
-        <LogoIcon className="size-8 mb-2" />
-        <h2 className="text-3xl font-bold tracking-tighter">Sign In</h2>
-        <p className="text-sm text-muted-foreground">Enter your credentials to access your account</p>
+    <div className="group w-full max-w-sm bg-transparent p-4">
+      <div className="mb-8 flex flex-col gap-2">
+        <LogoIcon className="mb-2 size-8" />
+        <h2 className="font-bold text-3xl tracking-tighter">Sign In</h2>
+        <p className="text-muted-foreground text-sm">
+          Enter your credentials to access your account
+        </p>
       </div>
 
       <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
         <div className="grid gap-4">
           <div className="grid gap-1.5 text-start">
-            <Label htmlFor="email-minimal" className="text-[11px] uppercase font-bold tracking-widest text-muted-foreground/70">Identifier</Label>
-            <Input 
-              id="email-minimal" 
-              type="text" 
-              placeholder="Username or Email" 
-              className="h-12 bg-white/5 border-white/10 rounded-xl focus:bg-white/10 transition-all" 
+            <Label
+              className="font-bold text-[11px] text-muted-foreground/70 uppercase tracking-widest"
+              htmlFor="email-minimal"
+            >
+              Identifier
+            </Label>
+            <Input
+              className="h-12 rounded-xl border-white/10 bg-white/5 transition-all focus:bg-white/10"
+              id="email-minimal"
+              placeholder="Username or Email"
+              type="text"
             />
           </div>
           <div className="grid gap-1.5 text-start">
-             <div className="flex items-center justify-between">
-                <Label htmlFor="password-minimal" className="text-[11px] uppercase font-bold tracking-widest text-muted-foreground/70">Security</Label>
-                <a href="#" className="text-[10px] text-primary/60 hover:text-primary transition-colors">Forgot?</a>
-             </div>
+            <div className="flex items-center justify-between">
+              <Label
+                className="font-bold text-[11px] text-muted-foreground/70 uppercase tracking-widest"
+                htmlFor="password-minimal"
+              >
+                Security
+              </Label>
+              <a
+                className="text-[10px] text-primary/60 transition-colors hover:text-primary"
+                href="#"
+              >
+                Forgot?
+              </a>
+            </div>
             <div className="relative">
-              <Input 
-                id="password-minimal" 
-                type="password" 
-                placeholder="Password" 
-                className="h-12 bg-white/5 border-white/10 rounded-xl focus:bg-white/10 transition-all pr-12" 
+              <Input
+                className="h-12 rounded-xl border-white/10 bg-white/5 pr-12 transition-all focus:bg-white/10"
+                id="password-minimal"
+                placeholder="Password"
+                type="password"
               />
-              <button 
-                type="button" 
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/40 hover:text-foreground transition-colors"
+              <button
+                className="-translate-y-1/2 absolute top-1/2 right-4 text-muted-foreground/40 transition-colors hover:text-foreground"
                 title="Toggle visibility"
+                type="button"
               >
                 <EyeIcon className="size-4" />
               </button>
@@ -50,16 +66,19 @@ export function MinimalLoginForm() {
           </div>
         </div>
 
-        <Button 
-          className="w-full h-12 rounded-xl font-bold text-base transition-all active:scale-[0.98] bg-primary text-primary-foreground hover:opacity-90 shadow-xl" 
+        <Button
+          className="h-12 w-full rounded-xl bg-primary font-bold text-base text-primary-foreground shadow-xl transition-all hover:opacity-90 active:scale-[0.98]"
           type="submit"
         >
           Continue
         </Button>
 
-        <div className="mt-8 pt-8 border-t border-white/5 flex flex-col items-center gap-4">
-          <p className="text-xs text-muted-foreground">
-            New here? <a href="#" className="text-white hover:underline font-bold">Create an account</a>
+        <div className="mt-8 flex flex-col items-center gap-4 border-white/5 border-t pt-8">
+          <p className="text-muted-foreground text-xs">
+            New here?{" "}
+            <a className="font-bold text-white hover:underline" href="#">
+              Create an account
+            </a>
           </p>
         </div>
       </form>

@@ -74,8 +74,8 @@ export function Header() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-muted/50 p-1 pr-1.5 dark:bg-background">
                   <ul className="grid w-lg grid-cols-2 gap-2 rounded-md border bg-popover p-2 shadow">
-                    {productLinks.map((item, i) => (
-                      <li key={i}>
+                    {productLinks.map((item, _i) => (
+                      <li key={item.title}>
                         <ListItem {...item} />
                       </li>
                     ))}
@@ -100,15 +100,15 @@ export function Header() {
                 <NavigationMenuContent className="bg-muted/50 p-1 pr-1.5 pb-1.5 dark:bg-background">
                   <div className="grid w-lg grid-cols-2 gap-2">
                     <ul className="space-y-2 rounded-md border bg-popover p-2 shadow">
-                      {companyLinks.map((item, i) => (
-                        <li key={i}>
+                      {companyLinks.map((item, _i) => (
+                        <li key={item.title}>
                           <ListItem {...item} />
                         </li>
                       ))}
                     </ul>
                     <ul className="space-y-2 p-3">
-                      {companyLinks2.map((item, i) => (
-                        <li key={i}>
+                      {companyLinks2.map((item, _i) => (
+                        <li key={item.title}>
                           <NavigationMenuLink
                             className="flex-row items-center gap-x-2"
                             href={item.href}

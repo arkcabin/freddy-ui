@@ -17,6 +17,10 @@ export type Block = {
   files: BlockFile[];
   height: string;
   tier?: "free" | "pro";
+  isPinned?: boolean;
+  pinnedUntil?: string;
+  activeForDays?: number;
+  createdAt?: string;
 };
 
 export type Category = {
@@ -26,10 +30,10 @@ export type Category = {
   isNew: boolean;
 };
 
-export interface TweetData {
+export type TweetData = {
   id: string;
   name: string;
   handle: string;
   content: string;
   avatar: string;
-}
+};

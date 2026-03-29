@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import process from "node:process";
 import { rimraf } from "rimraf";
 import { loadCode } from "../lib/utils/code";
 import { registry } from "../registry/index";
@@ -15,7 +16,7 @@ async function buildBlocksData() {
         category: cat,
         height: item.meta?.height || "100vh",
         description: item.description ?? "",
-        tier: (item as any).tier ?? "free",
+        tier: (item as { tier?: string }).tier ?? "free",
         block_number: item.name.split("-").pop(),
         files: [
           {
@@ -80,7 +81,7 @@ async function buildRegistryJsonFile() {
 
       return {
         ...item,
-        tier: (item as any).tier ?? "free",
+        tier: (item as { tier?: string }).tier ?? "free",
         files,
       };
     }),

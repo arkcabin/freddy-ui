@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement-1",
+  "description": "Animated announcement bar with call-to-action and close button.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/announcement/1/announcement.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { X, ArrowRight } from \"lucide-react\";\r\nimport { motion, AnimatePresence } from \"motion/react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\nexport const Announcement = () => {\r\n  const [isVisible, setIsVisible] = React.useState(true);\r\n\r\n  const handleClose = React.useCallback(() => {\r\n    setIsVisible(false);\r\n  }, []);\r\n\r\n  const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {\r\n    if (e.key === \"Enter\" || e.key === \" \") {\r\n      handleClose();\r\n    }\r\n  }, [handleClose]);\r\n\r\n  if (!isVisible) return null;\r\n\r\n  return (\r\n    <AnimatePresence>\r\n      {isVisible && (\r\n        <motion.div\r\n          initial={{ height: 0, opacity: 0 }}\r\n          animate={{ height: \"auto\", opacity: 1 }}\r\n          exit={{ height: 0, opacity: 0 }}\r\n          transition={{ duration: 0.3, ease: \"easeInOut\" }}\r\n          className=\"relative w-full overflow-hidden border-b border-border bg-foreground text-background\"\r\n        >\r\n          <div className=\"container mx-auto flex h-10 items-center justify-between px-4 sm:px-6\">\r\n            <div className=\"flex flex-1 items-center justify-center gap-x-3 text-center text-[13px] font-medium leading-none tracking-tight\">\r\n              <span className=\"hidden sm:inline-flex items-center rounded-full bg-background/20 px-2 py-0.5 text-[10px] uppercase tracking-wider text-background ring-1 ring-inset ring-background/30\">\r\n                New\r\n              </span>\r\n              <p className=\"flex items-center gap-1.5 opacity-90 transition-opacity hover:opacity-100\">\r\n                <span>Unlock premium components with Freddy UI Pro.</span>\r\n                <a\r\n                  href=\"#\"\r\n                  className=\"group inline-flex items-center font-bold text-primary-foreground hover:underline\"\r\n                >\r\n                  Get Started\r\n                  <ArrowRight className=\"ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5\" />\r\n                </a>\r\n              </p>\r\n            </div>\r\n            \r\n            <button\r\n              type=\"button\"\r\n              onClick={handleClose}\r\n              onKeyDown={handleKeyDown}\r\n              className=\"ml-auto inline-flex items-center justify-center rounded-md p-1 opacity-50 transition-all hover:bg-background/10 hover:opacity-100 focus:outline-hidden\"\r\n              aria-label=\"Close announcement\"\r\n            >\r\n              <X className=\"h-3.5 w-3.5\" />\r\n            </button>\r\n          </div>\r\n\r\n          {/* Decorative gradient blur */}\r\n          <div className=\"absolute top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 bg-radial from-background/20 to-transparent\" />\r\n        </motion.div>\r\n      )}\r\n    </AnimatePresence>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "height": "50vh",
+    "isPinned": true,
+    "createdAt": "2024-03-27"
+  },
+  "categories": [
+    "announcement"
+  ],
+  "type": "registry:block"
+}
