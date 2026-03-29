@@ -59,6 +59,7 @@ function getPaddingFromOffset(offset: string): string {
 export function SectionGrid({
   children,
   showTopMarkers = true,
+  showBottomMarkers = true,
   markerType = "plus",
   markerOffset = "top-32",
   className,
@@ -67,7 +68,7 @@ export function SectionGrid({
   showDoubleBorders = false,
   doubleBorderGap = "40px",
   zIndex = "z-20",
-}: Omit<SectionGridProps, "showBottomMarkers">) {
+}: SectionGridProps) {
   const isTailwindGap =
     doubleBorderGap.startsWith("h-") ||
     doubleBorderGap.startsWith("top-") ||
@@ -104,6 +105,24 @@ export function SectionGrid({
                   isTailwindGap
                     ? {}
                     : { transform: `translateY(${doubleBorderGap})` }
+                }
+              />
+            )}
+          </>
+        )}
+        {showBottomMarkers && (
+          <>
+            <div className="absolute right-0 bottom-0 left-0 border-border border-t border-dashed" />
+            {showDoubleBorders && (
+              <div
+                className={cn(
+                  "absolute right-0 left-0 border-border border-t border-dashed",
+                  isTailwindGap ? `-${doubleBorderGap}` : ""
+                )}
+                style={
+                  isTailwindGap
+                    ? {}
+                    : { bottom: doubleBorderGap, transform: "translateY(0)" }
                 }
               />
             )}
@@ -209,6 +228,40 @@ export function SectionGrid({
             <div className={cn("absolute right-0 left-0", markerOffset)}>
               <div className="-left-[2.5px] -top-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
               <div className="-right-[2.5px] -top-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
+            </div>
+          )}
+          {showBottomMarkers && markerType === "plus" && (
+            <div className="absolute right-0 bottom-0 left-0">
+              <PulseMarker />
+              <PulseMarker className="-right-[7px] left-auto" />
+              {showDoubleBorders && (
+                <>
+                  <div
+                    className="absolute z-50"
+                    style={{
+                      left: `-${doubleBorderGap}`,
+                      bottom: doubleBorderGap,
+                    }}
+                  >
+                    <PulseMarker />
+                  </div>
+                  <div
+                    className="absolute z-50"
+                    style={{
+                      right: `-${doubleBorderGap}`,
+                      bottom: doubleBorderGap,
+                    }}
+                  >
+                    <PulseMarker />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+          {showBottomMarkers && markerType === "dot" && (
+            <div className="absolute right-0 bottom-0 left-0">
+              <div className="-bottom-[2.5px] -left-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
+              <div className="-bottom-[2.5px] -right-[2.5px] absolute size-[5px] rounded-full bg-border/60" />
             </div>
           )}
         </div>

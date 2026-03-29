@@ -18,6 +18,7 @@ export type Block = {
   height: string;
   tier?: "free" | "pro";
   isPinned?: boolean;
+  pinnedUntil?: string;
   activeForDays?: number;
   createdAt?: string;
 };
