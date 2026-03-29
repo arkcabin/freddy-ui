@@ -211,7 +211,7 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
                               </div>
                             )}
                           </div>
-                          <span className="font-bold text-[11px] text-muted-foreground/40 uppercase leading-none tracking-wider transition-colors group-hover:text-primary/50">
+                          <span className="font-bold text-[11px] text-muted-foreground/40 uppercase leading-none tracking-widest transition-colors group-hover:text-primary/50">
                             {cat.blocksCount} Blocks
                           </span>
                         </div>
