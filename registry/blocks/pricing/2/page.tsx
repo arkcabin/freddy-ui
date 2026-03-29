@@ -38,14 +38,7 @@ export default function Page() {
       />
 
       {/* Radial spotlight */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "-top-1/2 -translate-x-1/2 pointer-events-none absolute left-1/2 h-[120vmin] w-[120vmin] rounded-full",
-          "bg-[radial-gradient(ellipse_at_center,theme(colors.foreground/10%),transparent_50%)]",
-          "blur-[30px]"
-        )}
-      />
+      <div className="bg-[radial-gradient(ellipse_at_center,var(--color-foreground),transparent_50%)]/10 pointer-events-none absolute inset-0 -z-10" />
       <PricingCard.Card>
         <PricingCard.Header>
           <PricingCard.Plan>
@@ -65,7 +58,7 @@ export default function Page() {
           <Button
             className={cn(
               "w-full font-semibold text-white",
-              "bg-gradient-to-b from-orange-500 to-orange-600 shadow-[0_10px_25px_rgba(255,115,0,0.3)]"
+              "bg-linear-to-b from-orange-500 to-orange-600 shadow-[0_10px_25px_rgba(255,115,0,0.3)]"
             )}
           >
             Get Started

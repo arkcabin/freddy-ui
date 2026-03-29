@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Asterisk } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -23,17 +24,17 @@ export function AnnouncementBar({
       <div className="flex items-center gap-2">
         <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
         <p>
-          Announcing <span className="text-foreground">$10M</span> Seed Funding
+          Launching <span className="text-foreground">Freddy UI v0.0.1</span> Beta
         </p>
       </div>
       <div className="flex items-center gap-4">
-        <a
+        <Link
           className="flex items-center gap-1 transition-colors hover:text-foreground"
-          href="#"
+          href="/changelog"
         >
           Read More
           <ArrowUpRight className="h-2.5 w-2.5" />
-        </a>
+        </Link>
         <Button
           className="ml-2 transition-all hover:scale-110"
           onClick={onClose}
