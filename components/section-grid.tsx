@@ -270,7 +270,7 @@ export function SectionGrid({
       {/* Content Container - Standardizing mx-auto and syncing top-padding with markerOffset to ensure content sits INSIDE the frame with a premium "breathing room" gap */}
       <div
         className={cn(
-          "relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10",
+          "relative z-10 mx-auto w-full max-w-6xl px-4 md:px-10",
           showTopMarkers && getPaddingFromOffset(markerOffset),
           containerClassName
         )}

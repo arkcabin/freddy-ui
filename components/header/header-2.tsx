@@ -1,6 +1,6 @@
 "use client";
 
-import { Asterisk } from "lucide-react";
+import { Asterisk, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
 import { Logo } from "@/components/logo";
@@ -16,6 +16,7 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
@@ -67,8 +68,8 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md">
+        <div className="flex items-center gap-2 md:gap-6">
+          <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
             <SiteNav />
           </div>
 
@@ -83,9 +84,38 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
               <Asterisk className="h-5 w-5 animate-[spin_15s_linear_infinite] text-muted-foreground transition-all duration-500 group-hover:rotate-180 group-hover:text-primary" />
               <span className="absolute inset-0 rounded-full bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
             </Button>
+
+            {/* Mobile Menu Toggle */}
+            <Button
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              size="icon"
+              variant="ghost"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 top-16 z-40 bg-background/95 p-6 backdrop-blur-xl md:hidden">
+          <div className="flex flex-col gap-6">
+            <SiteNav isMobile />
+            <div className="h-px w-full bg-border/50 border-dashed" />
+            <div className="flex flex-col gap-4">
+              <Button className="w-full rounded-xl" size="lg">
+                Get full Access
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

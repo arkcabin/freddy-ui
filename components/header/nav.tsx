@@ -77,7 +77,40 @@ const NAV_LINKS = [
   { name: "Pricing", href: "/pricing" },
 ];
 
-export function SiteNav() {
+export function SiteNav({ isMobile }: { isMobile?: boolean }) {
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="mb-2 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+          Menu
+        </div>
+        <Link
+          className="flex items-center gap-3 rounded-lg py-2.5 font-bold text-base transition-colors hover:text-primary"
+          href="/blocks"
+        >
+          <Layout className="size-5" />
+          Blocks
+        </Link>
+        {NAV_LINKS.map((item) => (
+          <Link
+            className="flex items-center gap-3 rounded-lg py-2.5 font-bold text-base transition-colors hover:text-primary"
+            href={item.href}
+            key={item.name}
+          >
+            {item.name === "Docs" ? (
+              <FileText className="size-5" />
+            ) : item.name === "Changelog" ? (
+              <Megaphone className="size-5" />
+            ) : (
+              <CreditCard className="size-5" />
+            )}
+            {item.name}
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <NavigationMenu
       aria-label="Main Navigation"

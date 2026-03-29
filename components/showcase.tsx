@@ -28,7 +28,7 @@ export function Showcase() {
         title="Real Components. Real Performance."
       />
 
-      <div className="relative h-[600px] md:h-[700px] lg:h-[800px]">
+      <div className="relative flex min-h-[500px] flex-col items-center justify-center gap-12 md:h-[700px] lg:h-[800px] lg:gap-0">
         {/* Background Decorative Rings */}
         <div className="-z-10 -translate-y-1/2 pointer-events-none absolute inset-x-0 top-1/2 flex justify-center opacity-20">
           <div className="h-[600px] w-[600px] animate-[spin_60s_linear_infinite] rounded-full border border-primary/30 border-dashed" />
@@ -37,7 +37,7 @@ export function Showcase() {
 
         {/* 1. Auth Block (The Centerpiece) */}
         <motion.div
-          className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-30 w-full max-w-[400px] rounded-3xl bg-linear-to-b from-border/50 via-border/10 to-transparent p-1 px-6 shadow-2xl backdrop-blur-sm md:px-0"
+          className="relative z-30 w-full max-w-[400px] rounded-3xl bg-linear-to-b from-border/50 via-border/10 to-transparent p-1 px-6 shadow-2xl backdrop-blur-sm md:px-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
           initial={{ opacity: 0, y: 40, scale: 0.9, rotateX: 10 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
@@ -91,7 +91,7 @@ export function Showcase() {
 
         {/* 2. Pricing Card (Overlapping Right) */}
         <motion.div
-          className="absolute top-[10%] right-[5%] z-20 hidden w-[300px] rounded-2xl bg-linear-to-tr from-primary/20 to-transparent p-1 shadow-xl backdrop-blur-md lg:block"
+          className="relative z-20 w-full max-w-[300px] rounded-2xl bg-linear-to-tr from-primary/20 to-transparent p-1 shadow-xl backdrop-blur-md lg:absolute lg:top-[10%] lg:right-[5%]"
           initial={{ opacity: 0, x: 100, rotate: "5deg" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
@@ -137,7 +137,7 @@ export function Showcase() {
 
         {/* 3. Feature/Stats Card (Overlapping Left) */}
         <motion.div
-          className="absolute top-[40%] left-[5%] z-20 hidden w-[280px] rounded-2xl border border-border bg-muted/30 p-4 shadow-lg backdrop-blur-md md:block"
+          className="relative z-20 w-full max-w-[280px] rounded-2xl border border-border bg-muted/30 p-4 shadow-lg backdrop-blur-md lg:absolute lg:top-[40%] lg:left-[5%]"
           initial={{ opacity: 0, x: -100, rotate: "-5deg" }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           viewport={{ once: true }}
@@ -182,7 +182,7 @@ export function Showcase() {
 
         {/* 4. Small Overlapping Elements (Peeking in) */}
         <motion.div
-          className="absolute right-[15%] bottom-[10%] z-40 flex items-center gap-3 rounded-xl bg-primary p-3 text-primary-foreground shadow-2xl"
+          className="relative z-40 flex items-center gap-3 rounded-xl bg-primary p-3 text-primary-foreground shadow-2xl lg:absolute lg:right-[15%] lg:bottom-[10%]"
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true }}
