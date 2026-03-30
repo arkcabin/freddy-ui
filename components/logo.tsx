@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 type LogoProps = {
   className?: string;
@@ -36,17 +35,14 @@ export const LogoIcon = ({ className }: LogoProps) => {
       : "/logo/freddy-logo-icon-dark.png";
 
   return (
-    <Link href="/">
-
-      <Image
-        alt="Freddy UI Icon"
-        className={cn("size-6 object-contain", className)}
-        height={250}
-        priority
-        src={src}
-        width={250}
-      />
-    </Link>
+    <Image
+      alt="Freddy UI Icon"
+      className={cn("size-6 object-contain", className)}
+      height={250}
+      priority
+      src={src}
+      width={250}
+    />
   );
 };
 
@@ -76,16 +72,13 @@ export const Logo = ({ className }: LogoProps) => {
       : "/logo/freddy-logo-dark.png";
 
   return (
-    <Link href="/">
-
-      <Image
-        alt="Freddy UI Logo"
-        className={cn("h-6 w-auto object-contain", className)}
-        height={106}
-        priority
-        src={src}
-        width={344}
-      />
-    </Link>
+    <Image
+      alt="Freddy UI Logo"
+      className={cn("h-6 w-auto object-contain", className)}
+      height={106}
+      priority
+      src={src}
+      width={344}
+    />
   );
 };

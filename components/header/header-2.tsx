@@ -7,12 +7,19 @@ import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SiteNav } from "./nav";
+import Link from "next/link";
 
 /**
  * Header
  * Sticky, minimalist navigation with glassmorphism and theme toggle.
  */
-export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
+export function MainHeader({
+  isFullWidth,
+  isScrolled: propIsScrolled,
+}: {
+  isFullWidth: boolean;
+  isScrolled?: boolean;
+}) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
@@ -25,23 +32,22 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Avoid hydration mismatch by waiting for mount
-  const activeScrolled = mounted ? scrolled : false;
-  const _activeFullWidth = mounted ? isFullWidth : false;
+  // Sync scroll state with prop if provided, else use local
+  const activeScrolled = mounted ? propIsScrolled ?? scrolled : false;
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
         activeScrolled
-          ? "bg-transparent"
-          : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.08),transparent)]"
+          ? "bg-background/80 backdrop-blur-xl border-b border-border/40"
+          : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
       )}
     >
       {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
       <div
         className={cn(
-          "relative mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-all duration-300 md:px-6",
+          "relative mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:px-6",
           activeScrolled ? "border-transparent" : "border-border border-x"
         )}
       >
@@ -53,20 +59,25 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
           </>
         )}
 
-        {/* Logo */}
-        <div className="flex flex-1 items-center gap-2">
-          <div
-            className={cn(
-              "flex items-center gap-1 rounded-full px-5",
-              activeScrolled ? "bg-secondary/30 p-1 backdrop-blur-md" : ""
-            )}
-          >
-            <Logo className="h-6" />
-            <span className="inline-flex h-3.5 items-center justify-center rounded-full bg-accent/10 px-1.5 py-px font-black text-[7px] text-foreground uppercase leading-none tracking-widest ring-1 ring-foreground/20 ring-inset">
-              Beta
-            </span>
-          </div>
+        {/* Logo & Branding */}
+        {/* <Link
+          className="group flex flex-1 items-center gap-2 outline-none"
+          href="/"
+        > */}
+        <div
+          className={cn(
+            "flex items-center gap-1.5 rounded-full transition-all duration-300",
+            activeScrolled
+              ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
+              : "px-2"
+          )}
+        >
+          <Logo className="h-6 transition-transform group-hover:scale-105" />
+          <span className="inline-flex h-4 items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+            Beta
+          </span>
         </div>
+        {/* </Link> */}
 
         <div className="flex items-center gap-2 md:gap-6">
           <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
@@ -87,15 +98,15 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
 
             {/* Mobile Menu Toggle */}
             <Button
-              className="md:hidden"
+              className="group md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               size="icon"
               variant="ghost"
             >
               {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 transition-transform group-hover:rotate-90" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 transition-transform group-hover:scale-110" />
               )}
             </Button>
           </div>
@@ -104,12 +115,12 @@ export function MainHeader({ isFullWidth }: { isFullWidth: boolean }) {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-background/95 p-6 backdrop-blur-xl md:hidden">
+        <div className="fixed inset-0 top-16 z-40 bg-background/98 p-6 backdrop-blur-2xl md:hidden">
           <div className="flex flex-col gap-6">
             <SiteNav isMobile />
             <div className="h-px w-full bg-border/50 border-dashed" />
             <div className="flex flex-col gap-4">
-              <Button className="w-full rounded-xl" size="lg">
+              <Button className="w-full rounded-xl shadow-lg" size="lg">
                 Get full Access
               </Button>
             </div>

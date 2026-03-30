@@ -8,7 +8,7 @@ import { SiteNav } from "./nav";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-dashed bg-card/80 backdrop-blur-md dark:bg-card/50">
+    <header className="sticky top-0 z-100 w-full border-b border-dashed bg-card/80 backdrop-blur-md dark:bg-card/50">
       <div className="cpx container flex h-14 items-center justify-between py-2">
         <div className="flex items-center">
           <Link
