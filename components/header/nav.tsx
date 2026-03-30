@@ -72,9 +72,9 @@ function getCategoryIcon(id: string, className?: string) {
 }
 
 const NAV_LINKS = [
-  { name: "Docs", href: "/docs" },
+  // { name: "Docs", href: "/docs" },
   { name: "Changelog", href: "/changelog" },
-  { name: "Pricing", href: "/pricing" },
+  // { name: "Pricing", href: "/pricing" },
 ];
 
 export function SiteNav({ isMobile }: { isMobile?: boolean }) {

@@ -104,14 +104,14 @@ export function MainHeader({
         >
           <div
             className={cn(
-              "flex items-center gap-1.5 rounded-full transition-all duration-300",
+              "flex items-center gap-1 rounded-full transition-all duration-300",
               activeScrolled
                 ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
                 : "px-2"
             )}
           >
             <Logo className="h-6 transition-transform group-hover:scale-105" />
-            <span className="inline-flex h-4 animate-pulse items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+            <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
               Beta
             </span>
           </div>
