@@ -3,8 +3,8 @@ export const SITE_DESCRIPTION =
   "The ultimate library of high-fidelity shadcn/ui blocks. Copy-paste 100+ beautifully crafted, responsive, and production-ready components designed for modern SaaS and web applications.";
 export const siteConfig = {
   name: "Freddy UI",
-  url: "https://freddyui.com",
-  ogImage: "https://freddyui.com/og.jpg",
+  url: "https://ui.arkcabin.com",
+  ogImage: "https://ui.arkcabin.com/og.jpg",
   description:
     "The ultimate library of high-fidelity shadcn/ui blocks. Copy-paste 100+ beautifully crafted components for modern web apps.",
   links: {

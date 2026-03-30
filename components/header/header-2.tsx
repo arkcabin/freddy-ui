@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SiteNav } from "./nav";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { SITE_HOME_URL, SITE_NAME } from "@/config/site";
 
 /**
  * Header
@@ -16,14 +18,44 @@ import Link from "next/link";
 export function MainHeader({
   isFullWidth,
   isScrolled: propIsScrolled,
+  isAnnouncementVisible,
 }: {
   isFullWidth: boolean;
   isScrolled?: boolean;
+  isAnnouncementVisible?: boolean;
 }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  const breadcrumbs = pathname
+    .split("/")
+    .filter(Boolean)
+    .map((path, index, array) => ({
+      name: path.charAt(0).toUpperCase() + path.slice(1),
+      item: `${SITE_HOME_URL}/${array.slice(0, index + 1).join("/")}`,
+    }));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_HOME_URL,
+      },
+      ...breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: crumb.name,
+        item: crumb.item,
+      })),
+    ],
+  };
 
   React.useEffect(() => {
     setMounted(true);
@@ -38,16 +70,21 @@ export function MainHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
+        "sticky z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
+        isAnnouncementVisible ? "top-8" : "top-0",
         activeScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/40"
+          ? "bg-transparent"
           : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
       )}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
       <div
         className={cn(
-          "relative mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:px-6",
+          "relative mx-auto flex min-h-12 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:min-h-14 md:px-6",
           activeScrolled ? "border-transparent" : "border-border border-x"
         )}
       >
@@ -60,24 +97,25 @@ export function MainHeader({
         )}
 
         {/* Logo & Branding */}
-        {/* <Link
-          className="group flex flex-1 items-center gap-2 outline-none"
+        <Link
+          className="group flex items-center outline-none"
           href="/"
-        > */}
-        <div
-          className={cn(
-            "flex items-center gap-1.5 rounded-full transition-all duration-300",
-            activeScrolled
-              ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
-              : "px-2"
-          )}
+          prefetch={false}
         >
-          <Logo className="h-6 transition-transform group-hover:scale-105" />
-          <span className="inline-flex h-4 items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
-            Beta
-          </span>
-        </div>
-        {/* </Link> */}
+          <div
+            className={cn(
+              "flex items-center gap-1 rounded-full transition-all duration-300",
+              activeScrolled
+                ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
+                : "px-2"
+            )}
+          >
+            <Logo />
+            <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+              Beta
+            </span>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-2 md:gap-6">
           <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
@@ -115,7 +153,12 @@ export function MainHeader({
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-background/98 p-6 backdrop-blur-2xl md:hidden">
+        <div
+          className={cn(
+            "fixed inset-x-0 bottom-0 z-40 bg-background/98 p-4 backdrop-blur-2xl md:hidden",
+            isAnnouncementVisible ? "top-[88px]" : "top-14"
+          )}
+        >
           <div className="flex flex-col gap-6">
             <SiteNav isMobile />
             <div className="h-px w-full bg-border/50 border-dashed" />

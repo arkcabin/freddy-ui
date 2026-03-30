@@ -48,18 +48,27 @@ export function constructMetadata({
       ...(keywords || []),
     ],
     openGraph: {
-      title,
+      title: title || SITE_NAME,
       description,
+      siteName: SITE_NAME,
       ...(image && {
-        images: image,
+        images: [
+          {
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: title || SITE_NAME,
+          },
+        ],
       }),
       url,
+      type: "website",
       ...(video && {
         videos: video,
       }),
     },
     twitter: {
-      title,
+      title: title || SITE_NAME,
       description,
       ...(image && {
         card: "summary_large_image",
@@ -69,7 +78,15 @@ export function constructMetadata({
         player: video,
       }),
       creator: `@${MY_HANDLE}`,
+      site: `@${MY_HANDLE}`,
     },
+    authors: [
+      {
+        name: MY_HANDLE,
+        url: `https://x.com/${MY_HANDLE}`,
+      },
+    ],
+    category: "technology",
     metadataBase: new URL(SITE_HOME_URL),
     ...((url || canonicalUrl) && {
       alternates: {
