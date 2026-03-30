@@ -15,5 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: date,
   }));
 
-  return [...catRoutes, ...blockRoutes];
+  const staticRoutes = ["", "/docs", "/changelog", "/pricing"].map((route) => ({
+    url: `${SITE_HOME_URL}${route}`,
+    lastModified: date,
+  }));
+
+  return [...staticRoutes, ...catRoutes, ...blockRoutes];
 }

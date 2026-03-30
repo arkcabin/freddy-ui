@@ -10,6 +10,7 @@ import { SectionHeader } from "@/components/section-header";
 import { GridPattern } from "@/components/shared";
 import { Showcase } from "@/components/showcase";
 import { Tweets } from "@/components/tweets";
+import { FAQ } from "@/components/faq";
 import { HomePageWrapper } from "@/components/wrapper";
 import { getAllCategories } from "@/lib/utils/blocks-data";
 
@@ -99,6 +100,21 @@ export default function Page() {
                     </svg>
                   </Link>
                 </div>
+              </SectionGrid>
+
+              {/* FAQ Section (GEO Optimization) */}
+              <SectionGrid
+                className="pb-16 lg:pb-24"
+                markerType="plus"
+                showBottomMarkers={true}
+                showDoubleBorders={true}
+                showTopMarkers={true}
+              >
+                <SectionHeader
+                  subtitle="Frequently asked questions about Freddy UI blocks and components."
+                  title="Common Questions"
+                />
+                <FAQ />
               </SectionGrid>
 
               {/* Social Proof / Tweets */}

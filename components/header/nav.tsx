@@ -80,7 +80,7 @@ const NAV_LINKS = [
 export function SiteNav({ isMobile }: { isMobile?: boolean }) {
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-2">
+      <nav className="flex flex-col gap-2">
         <div className="mb-2 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
           Menu
         </div>
@@ -107,16 +107,16 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
             {item.name}
           </Link>
         ))}
-      </div>
+      </nav>
     );
   }
 
   return (
-    <NavigationMenu
-      aria-label="Main Navigation"
-      className="flex"
-      viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
-    >
+    <nav aria-label="Main Navigation">
+      <NavigationMenu
+        className="flex"
+        viewportContainerClassName="md:left-auto md:right-0 md:translate-x-0"
+      >
       <NavigationMenuList className="flex-row gap-1">
         {/* 1. Blocks dropdown */}
         <NavigationMenuItem>
@@ -150,7 +150,7 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
                         <Star className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="font-bold text-[9px] text-muted-foreground/70 uppercase tracking-[0.1em]">
+                        <p className="font-bold text-[9px] text-muted-foreground/70 uppercase tracking-widest">
                           FLASH UPDATE
                         </p>
                         <p className="font-bold text-sm">New Auth Blocks</p>
@@ -243,5 +243,6 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
       </NavigationMenuList>
       <NavigationMenuIndicator />
     </NavigationMenu>
+    </nav>
   );
 }

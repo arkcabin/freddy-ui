@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SiteNav } from "./nav";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { SITE_HOME_URL, SITE_NAME } from "@/config/site";
 
 /**
  * Header
@@ -24,6 +26,34 @@ export function MainHeader({
   const [mounted, setMounted] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  const breadcrumbs = pathname
+    .split("/")
+    .filter(Boolean)
+    .map((path, index, array) => ({
+      name: path.charAt(0).toUpperCase() + path.slice(1),
+      item: `${SITE_HOME_URL}/${array.slice(0, index + 1).join("/")}`,
+    }));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_HOME_URL,
+      },
+      ...breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: crumb.name,
+        item: crumb.item,
+      })),
+    ],
+  };
 
   React.useEffect(() => {
     setMounted(true);
@@ -44,6 +74,10 @@ export function MainHeader({
           : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
       )}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
       <div
         className={cn(
@@ -74,7 +108,7 @@ export function MainHeader({
             )}
           >
             <Logo className="h-6 transition-transform group-hover:scale-105" />
-            <span className="inline-flex h-4 items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+            <span className="inline-flex h-4 animate-pulse items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
               Beta
             </span>
           </div>
