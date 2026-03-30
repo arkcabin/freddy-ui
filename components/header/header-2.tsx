@@ -60,24 +60,25 @@ export function MainHeader({
         )}
 
         {/* Logo & Branding */}
-        {/* <Link
-          className="group flex flex-1 items-center gap-2 outline-none"
+        <Link
+          className="group flex items-center outline-none"
           href="/"
-        > */}
-        <div
-          className={cn(
-            "flex items-center gap-1.5 rounded-full transition-all duration-300",
-            activeScrolled
-              ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
-              : "px-2"
-          )}
+          prefetch={false}
         >
-          <Logo className="h-6 transition-transform group-hover:scale-105" />
-          <span className="inline-flex h-4 items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
-            Beta
-          </span>
-        </div>
-        {/* </Link> */}
+          <div
+            className={cn(
+              "flex items-center gap-1.5 rounded-full transition-all duration-300",
+              activeScrolled
+                ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
+                : "px-2"
+            )}
+          >
+            <Logo className="h-6 transition-transform group-hover:scale-105" />
+            <span className="inline-flex h-4 items-center justify-center rounded-full bg-primary/10 px-1.5 py-px font-black text-[7.5px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+              Beta
+            </span>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-2 md:gap-6">
           <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
