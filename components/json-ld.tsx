@@ -23,6 +23,13 @@ export function JsonLd() {
       priceCurrency: "USD",
     },
     description: SITE_DESCRIPTION,
+    featureList: [
+      "100+ High-fidelity shadcn/ui blocks",
+      "Next.js 16 & React 19 Ready",
+      "Tailwind CSS v4 support",
+      "Copy-paste production-ready components",
+    ],
+    screenshot: `${SITE_HOME_URL}/og.jpeg`,
   };
 
   const faqData = {

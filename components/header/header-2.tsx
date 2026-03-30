@@ -73,7 +73,7 @@ export function MainHeader({
         "sticky z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
         isAnnouncementVisible ? "top-8" : "top-0",
         activeScrolled
-          ? "bg-transparent border-b border-border/40"
+          ? "bg-transparent"
           : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
       )}
     >
@@ -84,7 +84,7 @@ export function MainHeader({
       {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
       <div
         className={cn(
-          "relative mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:px-6",
+          "relative mx-auto flex min-h-12 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:min-h-14 md:px-6",
           activeScrolled ? "border-transparent" : "border-border border-x"
         )}
       >
@@ -110,7 +110,7 @@ export function MainHeader({
                 : "px-2"
             )}
           >
-            <Logo className="h-6 transition-transform group-hover:scale-105" />
+            <Logo />
             <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
               Beta
             </span>
@@ -153,7 +153,12 @@ export function MainHeader({
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-background/98 p-6 backdrop-blur-2xl md:hidden">
+        <div
+          className={cn(
+            "fixed inset-x-0 bottom-0 z-40 bg-background/98 p-4 backdrop-blur-2xl md:hidden",
+            isAnnouncementVisible ? "top-[88px]" : "top-14"
+          )}
+        >
           <div className="flex flex-col gap-6">
             <SiteNav isMobile />
             <div className="h-px w-full bg-border/50 border-dashed" />
