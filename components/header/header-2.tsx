@@ -18,9 +18,11 @@ import { SITE_HOME_URL, SITE_NAME } from "@/config/site";
 export function MainHeader({
   isFullWidth,
   isScrolled: propIsScrolled,
+  isAnnouncementVisible,
 }: {
   isFullWidth: boolean;
   isScrolled?: boolean;
+  isAnnouncementVisible?: boolean;
 }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
@@ -68,9 +70,10 @@ export function MainHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
+        "sticky z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
+        isAnnouncementVisible ? "top-8" : "top-0",
         activeScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/40"
+          ? "bg-transparent border-b border-border/40"
           : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
       )}
     >

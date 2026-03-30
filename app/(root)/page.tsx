@@ -33,7 +33,10 @@ export default function Page() {
 
         <HomePageWrapper isAnnouncementVisible={isAnnouncementVisible}>
           {/* Navigation Header */}
-          <MainHeader isFullWidth={false} />
+          <MainHeader
+            isAnnouncementVisible={isAnnouncementVisible}
+            isFullWidth={false}
+          />
 
           {/* 2. Hero Landing Section */}
           <Hero />
