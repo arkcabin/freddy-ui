@@ -237,6 +237,35 @@ export const blocks: FreddyRegistryItem[] = [
     },
   },
   {
+    name: "hero-6",
+    type: "registry:block",
+    description:
+      "High-fidelity Slate SaaS Hero with floating dashboard mockups, SVG path tracing, and a premium emerald color palette.",
+    dependencies: ["motion", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/hero/6/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/6/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/6/cards.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-04-02",
+    },
+  },
+  {
     name: "contact-1",
     type: "registry:block",
     description:
@@ -893,7 +922,7 @@ export const blocks: FreddyRegistryItem[] = [
     name: "header-5",
     type: "registry:block",
     description:
-      "Premium header with a 'Blocks' registry modal featuring a dual-panel layout and category grid.",
+      "High-fidelity Neural Glass header with centered floating design, backdrop blur, and spring-animated navigation.",
     dependencies: ["motion"],
     registryDependencies: ["button"],
     files: [
@@ -908,8 +937,9 @@ export const blocks: FreddyRegistryItem[] = [
     ],
     categories: ["header"],
     meta: {
-      height: "80vh",
-      pinnedUntil: "2026-04-15T00:00:00Z",
+      height: "400px",
+      isPinned: true,
+      createdAt: "2026-04-02",
     },
   },
   {

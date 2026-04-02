@@ -1,10 +1,10 @@
 import { DemoLayout } from "@/components/demo-layout";
-import { Header } from "./header";
+import { Header5 } from "./header";
 
 export default function Header5Page() {
   return (
     <div className="min-h-screen bg-muted/10">
-      <Header />
+      <Header5 />
       <DemoLayout />
     </div>
   );
