@@ -1,9 +1,6 @@
-"use client";
 import Link from "next/link";
-import { useState } from "react";
-import { AnnouncementBar } from "@/components/announcement";
+import { Suspense } from "react";
 import { CategoryCard } from "@/components/category-card";
-import { MainHeader } from "@/components/header/header-2";
 import { Hero } from "@/components/hero";
 import { SectionGrid } from "@/components/section-grid";
 import { SectionHeader } from "@/components/section-header";
@@ -11,50 +8,42 @@ import { GridPattern } from "@/components/shared";
 import { Showcase } from "@/components/showcase";
 import { Tweets } from "@/components/tweets";
 import { FAQ } from "@/components/faq";
-import { HomePageWrapper } from "@/components/wrapper";
+import { ClientPageWrapper } from "@/components/layout/client-page-wrapper";
+import { GridSkeleton, HeroSkeleton, ShowcaseSkeleton } from "@/components/skeletons";
 import { getAllCategories } from "@/lib/utils/blocks-data";
 
 /**
  * Page component for the Freddy UI homepage.
- * Reverted to standard layout while preserving the dynamic SectionGrid animations.
+ * Optimized for performance using Server Components and Streaming.
  */
 export default function Page() {
   const categories = getAllCategories();
-  const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(true);
 
   return (
-    <main>
-      <div className="bg-accent">
-        {/* 1. Announcement Bar */}
-        <AnnouncementBar
-          isVisible={isAnnouncementVisible}
-          onClose={() => setIsAnnouncementVisible(false)}
-        />
-
-        <HomePageWrapper isAnnouncementVisible={isAnnouncementVisible}>
-          {/* Navigation Header */}
-          <MainHeader
-            isAnnouncementVisible={isAnnouncementVisible}
-            isFullWidth={false}
-          />
-
-          {/* 2. Hero Landing Section */}
+    <ClientPageWrapper>
+      <main>
+        {/* 2. Hero Landing Section */}
+        <Suspense fallback={<HeroSkeleton />}>
           <Hero />
+        </Suspense>
 
-          <div className="relative grow">
-            <div className="relative min-h-screen overflow-hidden">
-              {/* Background Grid Pattern */}
-              <GridPattern
-                className="mask-[radial-gradient(100%_100%_at_top_right,var(--foreground),transparent)] opacity-20"
-                height={40}
-                strokeDasharray="2 2"
-                width={40}
-              />
+        <div className="relative grow">
+          <div className="relative min-h-screen overflow-hidden">
+            {/* Background Grid Pattern */}
+            <GridPattern
+              className="mask-[radial-gradient(100%_100%_at_top_right,var(--foreground),transparent)] opacity-20"
+              height={40}
+              strokeDasharray="2 2"
+              width={40}
+            />
 
-              {/* Showcase Section */}
+            {/* Showcase Section */}
+            <Suspense fallback={<ShowcaseSkeleton />}>
               <Showcase />
+            </Suspense>
 
-              {/* Categories Grid Section */}
+            {/* Categories Grid Section */}
+            <Suspense fallback={<GridSkeleton />}>
               <SectionGrid
                 className="pb-16 lg:pb-24"
                 markerType="plus"
@@ -78,7 +67,7 @@ export default function Page() {
                   </div>
 
                   {/* Bottom Fade Mask */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background via-background/20 to-transparent" />
+                  <div className="bottom-fade-mask" />
                 </div>
 
                 {/* View All Button */}
@@ -104,8 +93,10 @@ export default function Page() {
                   </Link>
                 </div>
               </SectionGrid>
+            </Suspense>
 
-              {/* FAQ Section (GEO Optimization) */}
+            {/* FAQ Section (GEO Optimization) */}
+            <Suspense fallback={<GridSkeleton />}>
               <SectionGrid
                 className="pb-16 lg:pb-24"
                 markerType="plus"
@@ -119,8 +110,10 @@ export default function Page() {
                 />
                 <FAQ />
               </SectionGrid>
+            </Suspense>
 
-              {/* Social Proof / Tweets */}
+            {/* Social Proof / Tweets */}
+            <Suspense fallback={<GridSkeleton />}>
               <SectionGrid
                 className="pb-16 lg:pb-24"
                 markerType="plus"
@@ -134,10 +127,10 @@ export default function Page() {
                 />
                 <Tweets />
               </SectionGrid>
-            </div>
+            </Suspense>
           </div>
-        </HomePageWrapper>
-      </div>
-    </main>
+        </div>
+      </main>
+    </ClientPageWrapper>
   );
 }

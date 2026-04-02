@@ -19,7 +19,7 @@ export default function BlocksPage() {
       {/* Background Ambience */}
       <div className="-top-24 -z-10 pointer-events-none absolute inset-x-0 flex justify-center overflow-hidden">
         <div className="w-[80rem] flex-none justify-end">
-          <div className="h-[40rem] w-[80rem] flex-none bg-[radial-gradient(35%_50%_at_50%_50%,theme(colors.primary/5%),transparent)]" />
+          <div className="h-[40rem] w-[80rem] flex-none bg-[radial-gradient(35%_50%_at_50%_50%,var(--hero-ambience-color),transparent)]" />
         </div>
       </div>
 
