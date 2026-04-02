@@ -71,3 +71,26 @@ export function GridSkeleton() {
     </SectionGrid>
   );
 }
+
+export function CategorySkeletonGrid() {
+  return (
+    <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {Array.from({ length: 12 }).map((_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: Purely visual skeleton
+        <div
+          key={i}
+          className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card/20 p-6 md:h-40"
+        >
+          <div className="space-y-3">
+            <div className="relative h-6 w-3/4 overflow-hidden bg-muted/20">
+              <Shimmer />
+            </div>
+            <div className="relative h-4 w-1/4 overflow-hidden bg-muted/10">
+              <Shimmer />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

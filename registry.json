@@ -1,6 +1,6 @@
 {
   "name": "freddy",
-  "homepage": "https://freddyui.com",
+  "homepage": "https://ui.arkcabin.com",
   "items": [
     {
       "name": "index",
@@ -230,6 +230,72 @@
         "height": "100vh",
         "isPinned": false,
         "createdAt": "2026-03-28"
+      },
+      "categories": [
+        "hero"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "hero-3",
+      "description": "Cinematic minimalist hero with staggered typography animations and premium spotlight effects.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/hero/3/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/3/hero.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-04-02"
+      },
+      "categories": [
+        "hero"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "hero-4",
+      "description": "Boxed structural hero with dashed borders, interactive feature grid, and 3D parallax cards.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/hero/4/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/4/hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/blocks/hero/4/cards.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-04-02"
       },
       "categories": [
         "hero"

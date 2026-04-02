@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { blocks } from "@/config/blocks";
 import { capitalize, unslugify } from "@/lib/utils";
 import type { Block, Category } from "@/types";
@@ -22,7 +23,7 @@ function sortBlocks(a: Block, b: Block, now: number): number {
 }
 
 export const BLOCKS_DIR = "registry/blocks";
-export function getAllCategories(): Category[] {
+export const getAllCategories = cache((): Category[] => {
   const categoryMap = new Map<string, number>();
   const newCategories = new Set<string>();
   const now = Date.now();
@@ -58,23 +59,23 @@ export function getAllCategories(): Category[] {
     isNew: newCategories.has(id),
     blocksCount: count,
   }));
-}
+});
 
-export function getBlocksByCategory(category: string): Block[] {
+export const getBlocksByCategory = cache((category: string): Block[] => {
   const now = Date.now();
   return blocks
     .filter((block) => block.category === category)
     .sort((a, b) => sortBlocks(a, b, now));
-}
+});
 
-export function findBlockByName(name: string) {
+export const findBlockByName = cache((name: string) => {
   return blocks.find((item) => item.name === name) ?? null;
-}
+});
 
 export function importBlockIndex(category: string, blockNumber: string) {
   return () => import(`@/${BLOCKS_DIR}/${category}/${blockNumber}/page`);
 }
 
-export function getTotalBlocksCount(): number {
+export const getTotalBlocksCount = cache((): number => {
   return blocks.length;
-}
+});
