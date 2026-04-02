@@ -86,6 +86,7 @@
   --glass-bg: rgba(255, 255, 255, 0.4);
   --grid-color: rgba(0, 0, 0, 0.05);
   --beam-color: rgba(0, 0, 0, 0.1);
+  --hero-ambience-color: oklch(0.25 0 0 / 2%);
 
   /* Featured Cards */
   --featured-card-bg: rgba(255, 255, 255, 0.9);
@@ -133,6 +134,7 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --grid-color: rgba(255, 255, 255, 0.03);
   --beam-color: rgba(255, 255, 255, 0.15);
+  --hero-ambience-color: oklch(0.95 0 0 / 5%);
 
   /* Featured Cards (Premium Dark) */
   --featured-card-bg: oklch(0.2 0 0 / 80%);
@@ -338,6 +340,11 @@
     animation: breathing 4s ease-in-out infinite;
   }
 
+  .bottom-fade-mask {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-32;
+    background: linear-gradient(to top, var(--background) 0%, oklch(from var(--background) l c h / 0.5) 50%, transparent 100%);
+  }
+
   @keyframes breathing {
     0%,
     100% {
@@ -347,6 +354,12 @@
     50% {
       opacity: 0.3;
       transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
     }
   }
 }
