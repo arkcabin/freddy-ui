@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-3",
+  "description": "Cinematic minimalist hero with staggered typography animations and premium spotlight effects.",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/hero/3/page.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { Hero3 } from \"./hero\";\n\n/**\n * HERO 3 BLOCK (Page Entry)\n * Cinematic, minimalist typography hero for premium SaaS introductions.\n */\nexport default function Hero3Page() {\n  return (\n    <div className=\"w-full bg-background font-sans text-foreground selection:bg-foreground selection:text-background\">\n      <Hero3 />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/blocks/hero/3/hero.tsx",
+      "content": "\"use client\";\n\nimport { motion } from \"motion/react\";\nimport { Button } from \"@/components/ui/button\";\nimport { ArrowRight, Sparkles } from \"lucide-react\";\nimport Link from \"next/link\";\n\n/**\n * HERO 3: CINEMATIC MINIMALIST\n * High-fidelity, typography-focused hero with staggered word reveal.\n */\nexport function Hero3() {\n  const words = \"Engineered for High-Performance Teams.\".split(\" \");\n\n  return (\n    <section className=\"relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-20 md:px-10 md:pt-32\">\n      \n      {/* 1. Background Ambience (No Violet/Purple) */}\n      <div className=\"absolute inset-0 z-[-1]\">\n        <div className=\"absolute inset-0 bg-background\" />\n        {/* Subtle, premium neutral glow */}\n        <div className=\"absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-foreground),transparent_70%)]/4\" />\n        <div className=\"absolute top-0 h-px w-full bg-linear-to-r from-transparent via-border to-transparent opacity-50\" />\n      </div>\n\n      <div className=\"relative z-10 mx-auto max-w-5xl text-center\">\n        \n        {/* 2. Badge Wrapper */}\n        <motion.div\n          initial={{ opacity: 0, scale: 0.95 }}\n          animate={{ opacity: 1, scale: 1 }}\n          transition={{ duration: 0.5 }}\n          className=\"mx-auto mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/60 bg-muted/30 py-1 pl-3 pr-3.5 text-[11px] font-bold uppercase tracking-widest text-muted-foreground backdrop-blur-md\"\n        >\n          <Sparkles className=\"size-3 text-primary/80\" />\n          <span>New Release: Arkcabin v1.2</span>\n          <span className=\"h-3 w-px bg-border\" />\n          <Link href=\"#\" className=\"flex items-center gap-1 transition-colors hover:text-foreground\">\n            Explore <ArrowRight className=\"size-2.5\" />\n          </Link>\n        </motion.div>\n\n        {/* 3. Staggered Headline */}\n        <h1 className=\"mb-8 font-heading text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-foreground\">\n          {words.map((word, i) => (\n            <motion.span\n              key={i}\n              className=\"inline-block\"\n              initial={{ opacity: 0, y: 20, filter: \"blur(4px)\" }}\n              animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n              transition={{\n                duration: 0.8,\n                delay: i * 0.1,\n                ease: [0.21, 0.47, 0.32, 0.98],\n              }}\n            >\n              {word}&nbsp;\n            </motion.span>\n          ))}\n        </h1>\n\n        {/* 4. Sub-description with balanced text */}\n        <motion.p\n          initial={{ opacity: 0, y: 20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 1, delay: 1, ease: \"easeOut\" }}\n          className=\"mx-auto mt-6 max-w-2xl text-balance text-[17px] leading-relaxed text-muted-foreground/80 md:text-xl\"\n        >\n          Build, ship, and scale your SaaS with the absolute cleanest <br className=\"hidden md:block\" /> \n          shadcn/ui blocks ever created. Minimalist by design, <br className=\"hidden md:block\" />\n          premium by default.\n        </motion.p>\n\n        {/* 5. CTAs with high-fidelity micro-interactions */}\n        <motion.div\n          initial={{ opacity: 0, y: 20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 1, delay: 1.2, ease: \"easeOut\" }}\n          className=\"mt-12 flex flex-wrap items-center justify-center gap-4\"\n        >\n          <Button\n            size=\"lg\"\n            className=\"group h-12 rounded-full px-8 text-[15px] font-bold shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-95\"\n          >\n            Get Full Access\n            <div className=\"ml-2 flex size-5 items-center justify-center rounded-full bg-background/20 transition-transform group-hover:rotate-45\">\n              <ArrowRight className=\"size-3\" />\n            </div>\n          </Button>\n          <Button\n            variant=\"ghost\"\n            size=\"lg\"\n            className=\"h-12 rounded-full px-8 text-[15px] font-bold text-muted-foreground transition-all hover:bg-foreground/5 hover:text-foreground active:scale-95\"\n          >\n            View Demo Sections\n          </Button>\n        </motion.div>\n      </div>\n\n      {/* 6. Decorative Elements — Neutral Spotlight Beams */}\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-linear-to-t from-background via-background/40 to-transparent\" />\n      <div className=\"pointer-events-none absolute top-1/4 left-1/2 z-0 h-[500px] w-full -translate-x-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,var(--color-foreground)_0%,transparent_100%)]/3 blur-3xl\" />\n      <div className=\"pointer-events-none absolute -bottom-1/2 left-1/2 z-0 h-[600px] w-full -translate-x-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,var(--color-foreground)_0%,transparent_100%)]/5 blur-3xl\" />\n    </section>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "height": "100vh",
+    "isPinned": true,
+    "createdAt": "2026-04-02"
+  },
+  "categories": [
+    "hero"
+  ],
+  "type": "registry:block"
+}

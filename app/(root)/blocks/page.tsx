@@ -1,7 +1,12 @@
+import { Suspense } from "react";
 import { CategoryCard } from "@/components/category-card";
 import { DashedLines } from "@/components/shared";
+import { CategorySkeletonGrid } from "@/components/skeletons";
 import { constructMetadata } from "@/lib/metadata";
-import { getAllCategories, getTotalBlocksCount } from "@/lib/utils/blocks-data";
+import {
+  getAllCategories,
+  getTotalBlocksCount,
+} from "@/lib/utils/blocks-data";
 
 export const metadata = constructMetadata({
   title: "Browse All Blocks",
@@ -10,16 +15,27 @@ export const metadata = constructMetadata({
   canonicalUrl: "/blocks",
 });
 
-export default function BlocksPage() {
+async function CategoryGrid() {
   const categories = getAllCategories();
+
+  return (
+    <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {categories.map((category, index) => (
+        <CategoryCard index={index} key={category.id} {...category} />
+      ))}
+    </div>
+  );
+}
+
+export default function BlocksPage() {
   const totalBlocks = getTotalBlocksCount();
 
   return (
     <div className="relative">
       {/* Background Ambience */}
       <div className="-top-24 -z-10 pointer-events-none absolute inset-x-0 flex justify-center overflow-hidden">
-        <div className="w-[80rem] flex-none justify-end">
-          <div className="h-[40rem] w-[80rem] flex-none bg-[radial-gradient(35%_50%_at_50%_50%,var(--hero-ambience-color),transparent)]" />
+        <div className="w-7xl flex-none justify-end">
+          <div className="h-160 w-7xl flex-none bg-[radial-gradient(35%_50%_at_50%_50%,var(--hero-ambience-color),transparent)]" />
         </div>
       </div>
 
@@ -36,20 +52,18 @@ export default function BlocksPage() {
           Browse All Blocks
         </h1>
         <p className="max-w-xl font-medium text-lg text-muted-foreground leading-relaxed">
-          Explore {categories.length} categories and {totalBlocks}+ premium
-          components. Ready to copy, customize, and ship.
+          Explore {getAllCategories().length} categories and {totalBlocks}+
+          premium components. Ready to copy, customize, and ship.
         </p>
       </div>
 
-      <DashedLines className="h-8 [mask-image:linear-gradient(to_bottom,transparent,var(--background),var(--background))]" />
+      <DashedLines className="h-8 mask-[linear-gradient(to_bottom,transparent,var(--background),var(--background))]" />
 
       {/* Category grid */}
       <div className="cpx border-zinc-100 border-t pb-24 dark:border-zinc-800">
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {categories.map((category, index) => (
-            <CategoryCard index={index} key={category.id} {...category} />
-          ))}
-        </div>
+        <Suspense fallback={<CategorySkeletonGrid />}>
+          <CategoryGrid />
+        </Suspense>
       </div>
     </div>
   );

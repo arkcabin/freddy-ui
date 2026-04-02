@@ -183,6 +183,60 @@ export const blocks: FreddyRegistryItem[] = [
     },
   },
   {
+    name: "hero-3",
+    type: "registry:block",
+    description:
+      "Cinematic minimalist hero with staggered typography animations and premium spotlight effects.",
+    dependencies: ["motion", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/hero/3/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/3/hero.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-04-02",
+    },
+  },
+  {
+    name: "hero-4",
+    type: "registry:block",
+    description:
+      "Boxed structural hero with dashed borders, interactive feature grid, and 3D parallax cards.",
+    dependencies: ["motion", "lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/hero/4/page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/4/hero.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/hero/4/cards.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["hero"],
+    tier: "pro",
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-04-02",
+    },
+  },
+  {
     name: "contact-1",
     type: "registry:block",
     description:
