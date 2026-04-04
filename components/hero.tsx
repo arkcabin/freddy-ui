@@ -54,7 +54,7 @@ export function Hero() {
               <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
 
               {/* Text Layer - Explicitly themed for high visibility */}
-              <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background dark:group-hover:text-foreground">
+              <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background">
                 Changelog
                 <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
               </span>
