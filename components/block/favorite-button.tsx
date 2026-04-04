@@ -122,28 +122,31 @@ export function FavoriteButton({ name }: { name: string }) {
             disabled={!fingerprint || isPending}
             variant="outline"
             className={cn(
-              "h-8 gap-2 rounded-full border-border/40 bg-muted/20 backdrop-blur-md px-3 transition-all hover:bg-muted/40 active:scale-95",
-              isFavorited && "border-yellow-500/50 bg-yellow-500/10 text-yellow-500"
+              "group h-8 gap-1.5 rounded-full border-border/40 bg-muted/20 backdrop-blur-md px-3",
+              "transition-all duration-200 hover:bg-muted/40 active:scale-95",
+              isFavorited
+                ? "border-amber-500/50 bg-amber-500/10"
+                : "hover:border-border/70"
             )}
           >
             {isPending ? (
-              <Loader2 className="size-3.5 animate-spin" />
+              <Loader2 className="size-3.5 animate-spin text-muted-foreground/60" />
             ) : (
               <Star
                 className={cn(
-                  "size-3.5 transition-all duration-300",
+                  "size-3.5 transition-all duration-200",
                   isFavorited
-                    ? "fill-yellow-500 scale-110"
-                    : "text-muted-foreground/50"
+                    ? "fill-amber-400 text-amber-400 [animation:star-pop_0.25s_ease-out]"
+                    : "text-muted-foreground/40 group-hover:text-muted-foreground/70"
                 )}
               />
             )}
             <span
               className={cn(
-                "text-[11px] font-bold tabular-nums tracking-tight",
+                "text-[11px] font-semibold tabular-nums tracking-tight transition-colors duration-200",
                 isFavorited
-                  ? "text-yellow-600 dark:text-yellow-500"
-                  : "text-muted-foreground/70"
+                  ? "text-amber-500 dark:text-amber-400"
+                  : "text-muted-foreground/60 group-hover:text-muted-foreground/80"
               )}
             >
               {count}
@@ -151,11 +154,23 @@ export function FavoriteButton({ name }: { name: string }) {
           </Button>
         </TooltipTrigger>
         <TooltipContent side="top" align="center" sideOffset={8}>
-          <p className="font-bold">
-            {isFavorited ? "Remove from library" : "Add to library"}
-          </p>
+          {isFavorited ? (
+            <p className="text-xs">
+              <span className="font-semibold">Saved to library</span>
+              <span className="ml-1 text-muted-foreground">· click to unsave</span>
+            </p>
+          ) : (
+            <p className="text-xs font-semibold">Save to library</p>
+          )}
         </TooltipContent>
       </Tooltip>
+      <style>{`
+        @keyframes star-pop {
+          0%   { transform: scale(0.7) rotate(-15deg); opacity: 0.4; }
+          60%  { transform: scale(1.25) rotate(5deg);  opacity: 1;   }
+          100% { transform: scale(1)   rotate(0deg);   opacity: 1;   }
+        }
+      `}</style>
     </TooltipProvider>
   );
 }
