@@ -33,7 +33,7 @@ export function AnnouncementBar({
           className="flex items-center gap-1 transition-colors hover:text-foreground"
           href="/changelog"
         >
-          Read More
+          View Changelog
           <ArrowUpRight className="h-2.5 w-2.5" />
         </Link>
         <Button

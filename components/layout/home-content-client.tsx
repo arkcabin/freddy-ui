@@ -89,7 +89,7 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
                   className="group flex items-center gap-2 font-bold font-heading text-muted-foreground text-sm transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
                   href="/blocks"
                 >
-                  <span>View All</span>
+                  <span>View All Blocks</span>
                   <svg
                     aria-hidden="true"
                     className="size-4 transition-transform group-hover:translate-x-1"
