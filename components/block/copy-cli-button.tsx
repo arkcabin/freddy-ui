@@ -80,7 +80,7 @@ export function CopyCliButton({ name }: CopyCliButtonProps) {
   };
 
   return (
-    <ButtonGroup className="h-[34px] rounded-full border border-border/40 bg-muted/40 backdrop-blur-md p-[2px] shadow-sm transition-all duration-300">
+    <ButtonGroup className="h-[34px] rounded-full border border-border/40 bg-muted/40 backdrop-blur-md p-[2px] transition-all duration-300">
       {/* Left: Branding & Command Area */}
       <button
         onClick={() => handleCopy()}

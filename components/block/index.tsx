@@ -70,7 +70,7 @@ export function BlockBox({ block }: BlockPreviewProps) {
             <Badge
               className={cn(
                 "inline-flex items-center rounded-md border border-yellow-500/10 px-1.5 py-0.5 font-bold font-mono text-[10px] uppercase tracking-widest transition-all",
-                "bg-yellow-500/10 text-yellow-600 shadow-[0_0_15px_rgba(234,179,8,0.08)] dark:border-yellow-500/20 dark:bg-yellow-500/15 dark:text-yellow-500"
+                "bg-yellow-500/10 text-yellow-600 dark:border-yellow-500/20 dark:bg-yellow-500/15 dark:text-yellow-500"
               )}
             >
               {tier}

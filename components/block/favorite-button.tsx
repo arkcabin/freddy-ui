@@ -38,7 +38,7 @@ export function FavoriteButton({ name }: { name: string }) {
             variant="outline"
             className={cn(
               "h-8 gap-2 rounded-full border-border/40 bg-muted/20 backdrop-blur-md px-3 transition-all hover:bg-muted/40 active:scale-95",
-              isFavorited && "border-yellow-500/50 bg-yellow-500/10 text-yellow-500 shadow-[0_0_12px_rgba(234,179,8,0.15)]"
+              isFavorited && "border-yellow-500/50 bg-yellow-500/10 text-yellow-500"
             )}
           >
             <Star
@@ -55,8 +55,8 @@ export function FavoriteButton({ name }: { name: string }) {
             </span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="bottom" align="center" className="bg-background/95 backdrop-blur-md border-border/40">
-          <p className="text-[11px] font-medium">{isFavorited ? "Unstar block" : "Star block"}</p>
+        <TooltipContent side="top" align="center" sideOffset={8}>
+          <p className="font-bold">{isFavorited ? "Remove from library" : "Add to library"}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

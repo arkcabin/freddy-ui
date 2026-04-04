@@ -1,6 +1,12 @@
 import { RotateCwIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type RefreshButtonProps = {
   handleRefresh: () => void;
@@ -12,19 +18,28 @@ export function RefreshButton({
   isRefreshing,
 }: RefreshButtonProps) {
   return (
-    <Button 
-      type="button"
-      onClick={handleRefresh} 
-      size="icon-sm" 
-      variant="outline"
-      className="group size-8 rounded-full border-border/40 bg-muted/20 backdrop-blur-md transition-all hover:bg-muted/40 active:scale-95 shadow-sm"
-    >
-      <RotateCwIcon
-        className={cn(
-          "size-3.5 opacity-60 transition-all duration-300 ease-[cubic-bezier(0.12,0,0.39,0)] will-change-transform group-hover:opacity-100",
-          isRefreshing ? "rotate-90" : "rotate-0"
-        )}
-      />
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button 
+            type="button"
+            onClick={handleRefresh} 
+            size="icon-sm" 
+            variant="outline"
+            className="group size-8 rounded-full border-border/40 bg-muted/20 backdrop-blur-md transition-all hover:bg-muted/40 active:scale-95"
+          >
+            <RotateCwIcon
+              className={cn(
+                "size-3.5 opacity-60 transition-all duration-300 ease-[cubic-bezier(0.12,0,0.39,0)] will-change-transform group-hover:opacity-100",
+                isRefreshing ? "rotate-90" : "rotate-0"
+              )}
+            />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="top" align="center" sideOffset={8}>
+          <p className="font-bold">Refresh preview</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

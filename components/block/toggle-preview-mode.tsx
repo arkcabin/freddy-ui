@@ -20,14 +20,14 @@ export function TogglePreviewMode({
   setPreviewMode,
 }: TogglePreviewModeProps) {
   return (
-    <div className="flex items-center bg-muted/20 backdrop-blur-md rounded-full p-1 border border-border/40 shadow-sm" role="radiogroup">
+    <div className="flex items-center bg-muted/20 backdrop-blur-md rounded-full p-1 border border-border/40" role="radiogroup">
       {MODE_OPTIONS.map((option) => (
         <button
           aria-label={`Switch to ${option.value} mode`}
           className={cn(
             "relative flex h-7 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[11px] font-bold tracking-tight transition-all duration-300",
             previewMode === option.value
-              ? "text-primary-foreground shadow-sm"
+              ? "text-primary-foreground"
               : "text-muted-foreground/70 hover:text-foreground"
           )}
           key={option.value}
@@ -36,7 +36,7 @@ export function TogglePreviewMode({
         >
           {previewMode === option.value && (
             <motion.div
-              className="absolute inset-0 rounded-full bg-primary shadow-[0_0_12px_rgba(var(--primary),0.2)]"
+              className="absolute inset-0 rounded-full bg-primary"
               layoutId={`${name}-current-preview-mode`}
               transition={{
                 type: "spring",
