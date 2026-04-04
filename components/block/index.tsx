@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CodeView } from "@/components/block/code-view";
-import { BorderSeparator } from "@/components/shared";
+import { BorderSeparator, DashedLines } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
 import { cn } from "@/lib/utils";
@@ -12,8 +12,8 @@ import { BlockPreview } from "./block-preview";
 import { CopyCliButton } from "./copy-cli-button";
 import { IframeRenderer } from "./iframe-renderer";
 import { OpenInNewTabButton } from "./open-in-new-tab-button";
-import { OpenInV0Button } from "./open-in-v0";
 import { RefreshButton } from "./refresh-button";
+import { FavoriteButton } from "./favorite-button";
 import { TogglePreviewMode } from "./toggle-preview-mode";
 
 type BlockPreviewProps = {
@@ -26,7 +26,7 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const [registryUrl, setRegistryUrl] = React.useState<string>("");
   const [isLoaded, setIsLoaded] = React.useState(false);
 
-  const { name, files, height, pinnedUntil } = block;
+  const { name, files, height, pinnedUntil, description, tier } = block;
   const previewLink = `/view/${name}`;
 
   const isPinned = React.useMemo(() => {
@@ -55,6 +55,34 @@ export function BlockBox({ block }: BlockPreviewProps) {
       id={name}
       style={{ "--block-height": height } as React.CSSProperties}
     >
+      {/* Block Header */}
+      <div className="relative px-5 py-5 flex flex-col gap-1.5 select-none border-t border-dashed bg-card/20 overflow-hidden">
+        <DashedLines className="absolute inset-0 z-0 h-full w-full opacity-60 stroke-border/40 mask-[linear-gradient(to_bottom,black,transparent)]" />
+        <BorderSeparator className="-top-px z-1" />
+        <div className="relative z-10 flex items-center gap-3">
+          <h2 className="font-extrabold text-lg capitalize tracking-tight text-foreground/90 sm:text-xl">
+            {name.replace(/-/g, " ")}
+          </h2>
+          {tier && (
+            <Badge
+              className={cn(
+                "rounded-md border-0 px-2 py-0.5 font-bold font-mono text-[9px] uppercase tracking-widest transition-all",
+                tier.toLowerCase() === "pro"
+                  ? "bg-yellow-500/10 text-yellow-600 shadow-[0_0_10px_rgba(234,179,8,0.1)] dark:bg-yellow-500/20 dark:text-yellow-500"
+                  : "bg-secondary/80 text-secondary-foreground"
+              )}
+            >
+              {tier}
+            </Badge>
+          )}
+        </div>
+        {description && (
+          <p className="max-w-[600px] text-xs leading-relaxed text-muted-foreground/50 sm:text-[13px]">
+            {description}
+          </p>
+        )}
+      </div>
+
       {/* Toolbar */}
       <div className="relative flex items-center justify-between bg-card px-4 py-1.5">
         <BorderSeparator className="-top-px z-1" />
@@ -83,7 +111,7 @@ export function BlockBox({ block }: BlockPreviewProps) {
         <div className="flex items-center gap-3">
           <CopyCliButton name={name} />
           <div className="h-5 border-r border-dashed" />
-          <OpenInV0Button name={name} registryUrl={registryUrl} />
+          <FavoriteButton name={name} />
           <OpenInNewTabButton previewLink={previewLink} />
         </div>
 

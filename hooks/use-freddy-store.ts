@@ -9,6 +9,8 @@ export type PackageManager = "npx" | "npm" | "pnpm" | "bun";
 interface FreddyStore {
   packageManager: PackageManager;
   setPackageManager: (pm: PackageManager) => void;
+  favorites: string[];
+  toggleFavorite: (name: string) => void;
 }
 
 /**
@@ -20,6 +22,13 @@ export const useFreddyStore = create<FreddyStore>()(
     (set) => ({
       packageManager: "pnpm",
       setPackageManager: (pm) => set({ packageManager: pm }),
+      favorites: [],
+      toggleFavorite: (name) =>
+        set((state) => ({
+          favorites: state.favorites.includes(name)
+            ? state.favorites.filter((f) => f !== name)
+            : [...state.favorites, name],
+        })),
     }),
     {
       name: "freddy-ui-store",
