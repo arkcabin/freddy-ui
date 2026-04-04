@@ -82,7 +82,7 @@ export function Hero() {
           {/* Headline */}
           <motion.h1
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl"
+            className="text-wrap-balance mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 20 }}
             transition={{
               duration: 0.8,
@@ -120,7 +120,7 @@ export function Hero() {
                 },
               }}
             >
-              {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
+              {"100+\u00A0high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
                 .split(" ")
                 .map((word, i) => (
                   <motion.span
@@ -156,7 +156,7 @@ export function Hero() {
               rounded="full"
               size="hero"
             >
-              Explore
+              Explore Blocks
               <ArrowRight className="ml-2 h-3.5 w-3.5" />
             </Button>
             <Button
@@ -165,7 +165,7 @@ export function Hero() {
               size="hero"
               variant="ghost"
             >
-              Get full Access
+              Get Full Access
             </Button>
           </motion.div>
         </motion.div>

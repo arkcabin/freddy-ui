@@ -36,7 +36,7 @@ export const LogoIcon = ({ className }: LogoProps) => {
 
   return (
     <Image
-      alt="Freddy UI Icon"
+      alt="Freddy UI"
       className={cn("size-6 object-contain", className)}
       height={250}
       priority
@@ -73,7 +73,7 @@ export const Logo = ({ className }: LogoProps) => {
 
   return (
     <Image
-      alt="Freddy UI Logo"
+      alt="Freddy UI"
       className={cn("h-6 w-auto object-contain", className)}
       height={106}
       priority

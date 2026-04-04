@@ -84,7 +84,10 @@ export function SectionGrid({
       )}
     >
       {/* Boxed Grid Layer (Vertical & Horizontal Borders) - Elevated to z-[60] to ensure priority over masks / sticky header (z-50) */}
-      <div className="pointer-events-none absolute inset-x-0 inset-y-0 z-[60]">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 inset-y-0 z-[60]"
+      >
         {/* Full-width marker lines (outside boxed container) */}
         {showTopMarkers && (
           <>

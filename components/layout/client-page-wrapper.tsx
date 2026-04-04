@@ -18,7 +18,7 @@ export function ClientPageWrapper({ children }: { children: ReactNode }) {
   const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(true);
 
   return (
-    <div className="bg-accent">
+    <div className="relative bg-accent">
       <AnnouncementBar
         isVisible={isAnnouncementVisible}
         onClose={() => setIsAnnouncementVisible(false)}

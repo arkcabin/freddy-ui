@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <ClientPageWrapper>
-      <main>
+      <main className="relative">
         {/* 2. Hero Landing Section */}
         <Suspense fallback={<HeroSkeleton />}>
           <Hero />
@@ -52,7 +52,7 @@ export default function Page() {
                 showTopMarkers={true}
               >
                 <SectionHeader
-                  subtitle="Explore our library of 13+ categories and find the perfect beautifully crafted blocks for your project."
+                  subtitle="Explore our library of 13+&nbsp;categories and find the perfect beautifully crafted blocks for your project."
                   title="Browse Premium Blocks"
                 />
                 <div className="relative">
@@ -73,7 +73,7 @@ export default function Page() {
                 {/* View All Button */}
                 <div className="mt-12 flex justify-center">
                   <Link
-                    className="group flex items-center gap-2 font-bold font-heading text-muted-foreground text-sm transition-colors hover:text-foreground"
+                    className="group flex items-center gap-2 font-bold font-heading text-muted-foreground text-sm transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
                     href="/blocks"
                   >
                     <span>View All</span>
@@ -105,7 +105,7 @@ export default function Page() {
                 showTopMarkers={true}
               >
                 <SectionHeader
-                  subtitle="Frequently asked questions about Freddy UI blocks and components."
+                  subtitle="Frequently Asked Questions about Freddy UI blocks and components."
                   title="Common Questions"
                 />
                 <FAQ />

@@ -11,7 +11,10 @@ import { Plus } from "./plus";
  */
 export function PulseMarker({ className }: { className?: string }) {
   return (
-    <div className={cn("-top-[7px] -left-[7px] absolute z-50", className)}>
+    <div
+      aria-hidden="true"
+      className={cn("-top-[7px] -left-[7px] absolute z-50", className)}
+    >
       {/* Outer Glow Ring */}
       <motion.div
         animate={{

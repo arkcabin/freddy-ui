@@ -29,7 +29,7 @@ export function CategoryCard({
     >
       <Link
         className={cn(
-          "group relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card/30 text-center backdrop-blur-sm transition-all hover:border-border/80 hover:bg-card/50 hover:shadow-xl dark:shadow-black/20"
+          "group relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card/30 text-center backdrop-blur-sm transition-all hover:border-border/80 hover:bg-card/50 hover:shadow-xl focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:outline-none dark:shadow-black/20"
         )}
         href={`/blocks/${id}`}
       >
