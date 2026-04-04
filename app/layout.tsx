@@ -1,4 +1,5 @@
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/json-ld";
@@ -33,6 +34,12 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="var(--foreground)"
+            height={2}
+            shadow="none"
+            showSpinner={false}
+          />
           <JsonLd />
           {children}
         </ThemeProvider>
