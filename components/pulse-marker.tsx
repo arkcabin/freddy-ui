@@ -15,34 +15,10 @@ export function PulseMarker({ className }: { className?: string }) {
       aria-hidden="true"
       className={cn("-top-[7px] -left-[7px] absolute z-50", className)}
     >
-      {/* Outer Glow Ring */}
-      <motion.div
-        animate={{
-          scale: [1, 2, 1],
-          opacity: [0.1, 0.5, 0.1],
-        }}
-        className="pointer-events-none absolute inset-x-0 inset-y-0 rounded-full bg-primary/30 blur-md"
-        transition={{
-          duration: 3,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Primary Icon with subtle scale pulse */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-        }}
-        className="relative z-10"
-        transition={{
-          duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      >
+      {/* Primary Icon - Static for Minimal Look */}
+      <div className="relative z-10">
         <Plus className="static size-3.5 text-muted-foreground/80" />
-      </motion.div>
+      </div>
     </div>
   );
 }

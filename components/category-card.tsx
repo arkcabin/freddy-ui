@@ -17,14 +17,11 @@ export function CategoryCard({
   index,
 }: Category & { index: number }) {
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 20 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: index * 0.05,
+    <div
+      className="animate-in fade-in slide-in-from-bottom-4 fill-mode-both"
+      style={{
+        animationDelay: `${index * 40}ms`,
+        animationDuration: "600ms",
       }}
     >
       <Link
@@ -59,6 +56,6 @@ export function CategoryCard({
         {/* Subtle glow effect on hover */}
         <div className="-z-10 absolute inset-0 translate-y-full bg-linear-to-t from-primary/5 to-transparent transition-transform duration-500 group-hover:translate-y-0" />
       </Link>
-    </motion.div>
+    </div>
   );
 }

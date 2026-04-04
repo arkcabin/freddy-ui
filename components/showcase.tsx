@@ -28,20 +28,16 @@ export function Showcase() {
         title="Real Components. Real Performance."
       />
 
-      <div className="relative flex min-h-[500px] flex-col items-center justify-center gap-12 md:h-[700px] lg:h-[800px] lg:gap-0">
-        {/* Background Decorative Rings */}
-        <div className="-z-10 -translate-y-1/2 pointer-events-none absolute inset-x-0 top-1/2 flex justify-center opacity-20">
-          <div className="h-[600px] w-[600px] animate-[spin_60s_linear_infinite] rounded-full border border-primary/30 border-dashed" />
-          <div className="absolute h-[400px] w-[400px] animate-[spin_40s_linear_infinite_reverse] rounded-full border border-primary/20 border-dashed" />
-        </div>
+      <div className="relative flex min-h-fit flex-col items-center justify-center gap-12 py-12 md:gap-16 lg:min-h-[800px] lg:gap-0 lg:py-0">
+
 
         {/* 1. Auth Block (The Centerpiece) */}
         <motion.div
-          className="relative z-30 w-full max-w-[400px] rounded-3xl bg-linear-to-b from-border/50 via-border/10 to-transparent p-1 px-6 shadow-2xl backdrop-blur-sm md:px-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
-          initial={{ opacity: 0, y: 40, scale: 0.9, rotateX: 10 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-30 w-full max-w-[400px] transform-gpu rounded-3xl bg-linear-to-b from-border/50 via-border/10 to-transparent p-1 px-6 shadow-2xl backdrop-blur-[2px] will-change-transform md:px-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           <div className="rounded-[22px] border border-border/50 bg-card/90 p-8">
             <div className="mb-6 flex justify-center">
@@ -91,11 +87,11 @@ export function Showcase() {
 
         {/* 2. Pricing Card (Overlapping Right) */}
         <motion.div
-          className="relative z-20 w-full max-w-[300px] rounded-2xl bg-linear-to-tr from-primary/20 to-transparent p-1 shadow-xl backdrop-blur-md lg:absolute lg:top-[10%] lg:right-[5%]"
-          initial={{ opacity: 0, x: 100, rotate: "5deg" }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="relative z-20 w-full max-w-[300px] transform-gpu rounded-2xl bg-linear-to-tr from-primary/20 to-transparent p-1 shadow-xl backdrop-blur-[4px] will-change-transform lg:absolute lg:top-[10%] lg:right-[5%]"
+          initial={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           viewport={{ once: true }}
-          whileInView={{ opacity: 1, x: 0, rotate: "2deg" }}
+          whileInView={{ opacity: 1, x: 0 }}
         >
           <div className="rounded-xl border border-primary/20 bg-card/85 p-6">
             <div className="mb-4 flex items-center justify-between">
@@ -137,11 +133,11 @@ export function Showcase() {
 
         {/* 3. Feature/Stats Card (Overlapping Left) */}
         <motion.div
-          className="relative z-20 w-full max-w-[280px] rounded-2xl border border-border bg-muted/30 p-4 shadow-lg backdrop-blur-md lg:absolute lg:top-[40%] lg:left-[5%]"
-          initial={{ opacity: 0, x: -100, rotate: "-5deg" }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="relative z-20 w-full max-w-[280px] transform-gpu rounded-2xl border border-border bg-muted/90 p-4 shadow-lg backdrop-blur-[4px] will-change-transform lg:absolute lg:top-[40%] lg:left-[5%]"
+          initial={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
-          whileInView={{ opacity: 1, x: 0, rotate: "-3deg" }}
+          whileInView={{ opacity: 1, x: 0 }}
         >
           <div className="mb-4 flex items-center gap-3">
             <div className="flex size-8 items-center justify-center rounded-lg bg-green-500/10">
@@ -199,41 +195,10 @@ export function Showcase() {
           </div>
         </motion.div>
 
-        {/* Floating Accent Icons */}
-        <div className="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
-          <FloatingIcon delay={1} x="10%" y="15%" />
-          <FloatingIcon delay={1.5} x="85%" y="60%" />
-          <FloatingIcon delay={2} x="20%" y="80%" />
-        </div>
+
       </div>
     </SectionGrid>
   );
 }
 
-function FloatingIcon({
-  delay,
-  x,
-  y,
-}: {
-  delay: number;
-  x: string;
-  y: string;
-}) {
-  return (
-    <motion.div
-      animate={{
-        opacity: [0, 0.4, 0],
-        y: [0, -40, 0],
-      }}
-      className="absolute size-2 rounded-full bg-primary"
-      initial={{ opacity: 0, y: 0 }}
-      style={{ left: x, top: y }}
-      transition={{
-        duration: 4,
-        delay,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
-      }}
-    />
-  );
-}
+

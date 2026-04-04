@@ -148,10 +148,11 @@
   }
 
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth relative h-full;
   }
 
   body {
+    @apply relative min-h-full bg-background font-sans text-foreground antialiased;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;

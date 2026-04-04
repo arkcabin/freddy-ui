@@ -82,7 +82,7 @@ export function Hero() {
           {/* Headline */}
           <motion.h1
             animate={{ opacity: 1, y: 0 }}
-            className="text-wrap-balance mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl"
+            className="text-wrap-balance mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl will-change-transform"
             initial={{ opacity: 0, y: 20 }}
             transition={{
               duration: 0.8,
@@ -103,46 +103,16 @@ export function Hero() {
             </span>
           </motion.h1>
 
-          {/* Advanced Word-Stagger Description */}
-          <div className="mb-10 max-w-2xl overflow-hidden">
-            <motion.p
-              animate="visible"
-              className="text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg"
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.04,
-                    delayChildren: 0.4,
-                  },
-                },
-              }}
-            >
-              {"100+\u00A0high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
-                .split(" ")
-                .map((word, i) => (
-                  <motion.span
-                    className="mr-[0.25em] inline-block last:mr-0"
-                    // biome-ignore lint/suspicious/noArrayIndexKey: Static sentence with word-index combination is appropriate for this stagger animation.
-                    key={`${word}-${i}`}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.2, 0.65, 0.3, 0.9],
-                      type: "spring",
-                      stiffness: 80,
-                    }}
-                    variants={{
-                      hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
-                      visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-                    }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-            </motion.p>
-          </div>
+          {/* Simplified Description */}
+          <motion.p
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-10 max-w-2xl text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg will-change-transform"
+            initial={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            100+&nbsp;high-fidelity shadcn/ui blocks for React 19 & Next.js 16.
+            Copy, paste, and ship your next big idea today.
+          </motion.p>
 
           {/* CTAs */}
           <motion.div

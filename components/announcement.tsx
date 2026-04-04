@@ -29,6 +29,7 @@ export function AnnouncementBar({
       </div>
       <div className="flex items-center gap-4">
         <Link
+          aria-label="Read more about Freddy UI v-0.0.1 Beta launching"
           className="flex items-center gap-1 transition-colors hover:text-foreground"
           href="/changelog"
         >
@@ -36,6 +37,7 @@ export function AnnouncementBar({
           <ArrowUpRight className="h-2.5 w-2.5" />
         </Link>
         <Button
+          aria-label="Close announcement"
           className="ml-2 transition-all hover:scale-110"
           onClick={onClose}
           size="icon-sm"

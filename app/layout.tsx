@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none bg-background font-sans text-foreground antialiased`}
+        className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none`}
         suppressHydrationWarning
       >
         {/* Google Tag Manager (noscript) */}
@@ -32,10 +32,6 @@ export default function RootLayout({
             width="0"
           />
         </noscript>
-        <GoogleTagManager gtmId="GTM-T4M45MP6" />
-        {process.env.GOOGLE_ANALYTICS && (
-          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
-        )}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -46,6 +42,12 @@ export default function RootLayout({
             {children}
           </LenisProvider>
         </ThemeProvider>
+
+        {/* Third-Party Scripts: Deferred to end of body to minimize initial TBT */}
+        <GoogleTagManager gtmId="GTM-T4M45MP6" />
+        {process.env.GOOGLE_ANALYTICS && (
+          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
+        )}
       </body>
     </html>
   );

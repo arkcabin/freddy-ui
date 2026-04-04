@@ -19,24 +19,7 @@ type SectionGridProps = {
   zIndex?: string;
 };
 
-function LightBeam({ delay = 0 }: { delay?: number }) {
-  return (
-    <motion.div
-      animate={{
-        top: ["-20%", "120%"],
-        opacity: [0, 0.8, 0],
-      }}
-      className="-left-px pointer-events-none absolute z-40 h-[150px] w-[2px] bg-linear-to-b from-transparent via-primary/50 to-transparent"
-      initial={{ top: "-20%", opacity: 0 }}
-      transition={{
-        duration: 5,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "linear",
-        delay,
-      }}
-    />
-  );
-}
+
 
 function getPaddingFromOffset(offset: string): string {
   switch (offset) {
@@ -77,7 +60,7 @@ export function SectionGrid({
   return (
     <section
       className={cn(
-        "relative bg-background",
+        "relative bg-background transform-gpu will-change-transform",
         zIndex,
         allowOverflow ? "overflow-visible" : "overflow-hidden",
         className
@@ -138,13 +121,7 @@ export function SectionGrid({
             "relative mx-auto h-full w-full max-w-6xl border-border border-r border-l border-dashed"
           )}
         >
-          {/* Vertical Light Beams */}
-          <div className="absolute inset-y-0 left-0">
-            <LightBeam />
-          </div>
-          <div className="absolute inset-y-0 right-0">
-            <LightBeam delay={2} />
-          </div>
+
 
           {/* Vertical Double Borders (Left & Right) */}
           {showDoubleBorders && (

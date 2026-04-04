@@ -1,5 +1,6 @@
 "use client";
 
+import { useMotionValueEvent, useScroll } from "motion/react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { MainHeader } from "./header/header-2";
@@ -19,20 +20,21 @@ export function HomePageWrapper({
   const [isFullWidth, setIsFullWidth] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
 
+  const { scrollY } = useScroll();
+
+  // Optimized: Only trigger React state updates when scroll crosses specific thresholds
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const nextFullWidth = latest > 32 || !isAnnouncementVisible;
+    const nextScrolled = latest > 72;
+
+    // Manual identity check to prevent unnecessary re-render triggers
+    setIsFullWidth((prev) => (prev !== nextFullWidth ? nextFullWidth : prev));
+    setIsScrolled((prev) => (prev !== nextScrolled ? nextScrolled : prev));
+  });
+
   React.useEffect(() => {
     setMounted(true);
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Stage 1: Full-width snap once past announcement (32px)
-      setIsFullWidth(scrollY > 32 || !isAnnouncementVisible);
-
-      // Stage 2: Transparency snap once Hero reaches middle of Header (32 + 40 = 72px)
-      setIsScrolled(scrollY > 72);
-    };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isAnnouncementVisible]);
+  }, []);
 
   const activeFullWidth = mounted ? isFullWidth : false;
 
