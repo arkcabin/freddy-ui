@@ -56,20 +56,21 @@ export function BlockBox({ block }: BlockPreviewProps) {
       style={{ "--block-height": height } as React.CSSProperties}
     >
       {/* Block Header */}
-      <div className="relative px-5 py-5 flex flex-col gap-1.5 select-none border-t border-dashed bg-card/20 overflow-hidden">
-        <DashedLines className="absolute inset-0 z-0 h-full w-full opacity-60 stroke-border/40 mask-[linear-gradient(to_bottom,black,transparent)]" />
+      <div className="relative overflow-hidden border-t border-dashed bg-card/10 px-5 py-2 select-none dark:bg-card/20">
+        <DashedLines 
+          className="absolute inset-0 z-0 h-full w-full opacity-50 stroke-foreground/25 mask-[linear-gradient(to_bottom,black,transparent)]" 
+          x="50%"
+        />
         <BorderSeparator className="-top-px z-1" />
-        <div className="relative z-10 flex items-center gap-3">
+        <div className="relative z-10 flex items-baseline gap-3">
           <h2 className="font-extrabold text-lg capitalize tracking-tight text-foreground/90 sm:text-xl">
             {name.replace(/-/g, " ")}
           </h2>
-          {tier && (
+          {tier?.toLowerCase() === "pro" && (
             <Badge
               className={cn(
-                "rounded-md border-0 px-2 py-0.5 font-bold font-mono text-[9px] uppercase tracking-widest transition-all",
-                tier.toLowerCase() === "pro"
-                  ? "bg-yellow-500/10 text-yellow-600 shadow-[0_0_10px_rgba(234,179,8,0.1)] dark:bg-yellow-500/20 dark:text-yellow-500"
-                  : "bg-secondary/80 text-secondary-foreground"
+                "inline-flex items-center rounded-md border border-yellow-500/10 px-1.5 py-0.5 font-bold font-mono text-[10px] uppercase tracking-widest transition-all",
+                "bg-yellow-500/10 text-yellow-600 shadow-[0_0_15px_rgba(234,179,8,0.08)] dark:border-yellow-500/20 dark:bg-yellow-500/15 dark:text-yellow-500"
               )}
             >
               {tier}

@@ -15,6 +15,7 @@ export function BorderSeparator({
       )}
       {...props}
     >
+      <div className="absolute top-0 left-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-foreground/20 dark:bg-foreground/40" />
       {children}
     </div>
   );
@@ -35,6 +36,7 @@ export function DashedLines({
       className={cn("pointer-events-none size-full stroke-border", className)}
       {...props}
     >
+      <title>Dashed Background Grid</title>
       <pattern
         height={height}
         id={id}
@@ -75,6 +77,7 @@ export function GridPattern({
       )}
       {...props}
     >
+      <title>Grid Pattern Overlay</title>
       <defs>
         <pattern
           height={height}

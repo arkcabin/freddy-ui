@@ -29,6 +29,7 @@ export function FavoriteButton({ name }: { name: string }) {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

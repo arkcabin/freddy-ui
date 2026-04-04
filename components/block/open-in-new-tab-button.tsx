@@ -20,7 +20,7 @@ export function OpenInNewTabButton({ previewLink }: { previewLink: string }) {
             variant="outline"
             className="group size-8 rounded-full border-border/40 bg-muted/20 backdrop-blur-md transition-all hover:bg-muted/40 hover:border-primary/20 shadow-sm"
           >
-            <Link href={previewLink} target="_blank">
+            <Link href={previewLink} target="_blank" rel="noopener noreferrer">
               <ExternalLinkIcon className="size-3.5 opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
             </Link>
           </Button>

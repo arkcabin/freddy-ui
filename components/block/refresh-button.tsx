@@ -13,6 +13,7 @@ export function RefreshButton({
 }: RefreshButtonProps) {
   return (
     <Button 
+      type="button"
       onClick={handleRefresh} 
       size="icon-sm" 
       variant="outline"

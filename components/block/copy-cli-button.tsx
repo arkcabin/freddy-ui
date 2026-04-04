@@ -18,6 +18,7 @@ import { ButtonGroup, ButtonGroupSeparator } from "../ui/button-group";
 /** Oficial NPMLogo in SVG */
 const NpmIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 780 250" className={className} xmlns="http://www.w3.org/2000/svg">
+    <title>NPM Package Manager Icon</title>
     <path fill="#CB3837" d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z M0,200h100V50h50v150h50V0H0V200z" />
   </svg>
 );
@@ -25,6 +26,7 @@ const NpmIcon = ({ className }: { className?: string }) => (
 /** Official PNPM Logo in SVG */
 const PnpmIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+    <title>PNPM Package Manager Icon</title>
     <path fill="#F9AD00" d="M0 0h30v30H0zM35 0h30v30H35zM70 0h30v30H70zM0 35h30v30H0zM35 35h30v30H35zM70 35h30v30H70zM0 70h30v30H0zM35 70h30v30H35z" />
   </svg>
 );
@@ -32,6 +34,7 @@ const PnpmIcon = ({ className }: { className?: string }) => (
 /** Official Bun Logo in SVG */
 const BunIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+    <title>Bun Runtime Icon</title>
     <path fill="#fbf0e3" d="M50 10c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40z" />
     <path fill="#ffddbe" d="M50 85c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z" />
     <path fill="#000" d="M45 45c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm10 0c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z" />
