@@ -7,7 +7,7 @@ import { CategoryCard } from "@/components/category-card";
 import { SectionGrid } from "@/components/section-grid";
 import { SectionHeader } from "@/components/section-header";
 import { GridPattern } from "@/components/shared";
-import { SafeSkeleton } from "@/components/safe-skeleton";
+import { Bone } from "@/components/bone";
 import { LazyHydrate } from "./lazy-hydrate";
 
 /**
@@ -16,17 +16,17 @@ import { LazyHydrate } from "./lazy-hydrate";
  */
 const Showcase = dynamic(() => import("@/components/showcase").then((mod) => mod.Showcase), {
   ssr: false,
-  loading: () => <SafeSkeleton loading name="showcase" />,
+  loading: () => <Bone loading name="showcase" />,
 });
 
 const FAQ = dynamic(() => import("@/components/faq").then((mod) => mod.FAQ), {
   ssr: false,
-  loading: () => <SafeSkeleton loading name="faq" />,
+  loading: () => <Bone loading name="faq" />,
 });
 
 const Tweets = dynamic(() => import("@/components/tweets").then((mod) => mod.Tweets), {
   ssr: false,
-  loading: () => <SafeSkeleton loading name="tweets" />,
+  loading: () => <Bone loading name="tweets" />,
 });
 
 /**
@@ -49,12 +49,12 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
         />
 
         {/* Showcase Section */}
-        <LazyHydrate fallback={<SafeSkeleton loading name="showcase" />}>
+        <LazyHydrate fallback={<Bone loading name="showcase" />}>
           <Showcase />
         </LazyHydrate>
 
         {/* Categories Grid Section: Wrapped in LazyHydrate to eliminate 2s+ main-thread hydration task */}
-        <LazyHydrate fallback={<SafeSkeleton loading name="categories" />}>
+        <LazyHydrate fallback={<Bone loading name="categories" />}>
           <SectionGrid
             className="pb-16 lg:pb-24"
             markerType="plus"
@@ -66,7 +66,7 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
               subtitle="Explore our library of 13+&nbsp;categories and find the perfect beautifully crafted blocks for your project."
               title="Browse Premium Blocks"
             />
-            <SafeSkeleton loading={false} name="categories">
+            <Bone loading={false} name="categories">
               <div className="relative">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                   {categories.slice(0, 12).map((category, index) => (
@@ -81,7 +81,7 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
                 {/* Bottom Fade Mask */}
                 <div className="bottom-fade-mask" />
               </div>
-            </SafeSkeleton>
+            </Bone>
 
             {/* View All Button ... */}
             <div className="mt-12 flex justify-center">
@@ -111,7 +111,7 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
         </LazyHydrate>
 
         {/* FAQ Section (GEO Optimization) */}
-        <LazyHydrate fallback={<SafeSkeleton loading name="faq" />}>
+        <LazyHydrate fallback={<Bone loading name="faq" />}>
           <SectionGrid
             className="pb-16 lg:pb-24"
             markerType="plus"
@@ -128,7 +128,7 @@ export function HomeContentClient({ categories }: { categories: any[] }) {
         </LazyHydrate>
 
         {/* Social Proof / Tweets */}
-        <LazyHydrate fallback={<SafeSkeleton loading name="tweets" />}>
+        <LazyHydrate fallback={<Bone loading name="tweets" />}>
           <SectionGrid
             className="pb-16 lg:pb-24"
             markerType="plus"

@@ -1,6 +1,6 @@
 "use client";
 
-import { SafeSkeleton } from "./safe-skeleton";
+import { Bone } from "./bone";
 import { Check, Mail, Shield, User, Zap } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ export function Showcase() {
         title="Real Components. Real Performance."
       />
 
-      <SafeSkeleton loading={false} name="showcase">
+      <Bone loading={false} name="showcase">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {/* 1. Auth Block (Tall Centerpiece) */}
           <motion.div
@@ -238,7 +238,7 @@ export function Showcase() {
             </div>
           </motion.div>
         </div>
-      </SafeSkeleton>
+      </Bone>
     </SectionGrid>
   );
 }

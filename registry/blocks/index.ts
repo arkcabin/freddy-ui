@@ -19,10 +19,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/1/auth-page.tsx",
+        target: "components/freddy-ui/auth-1/auth-page.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-1/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -38,14 +40,17 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/2/auth-page.tsx",
+        target: "components/freddy-ui/auth-2/auth-page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/auth/2/floating-paths.tsx",
+        target: "components/freddy-ui/auth-2/floating-paths.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-2/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -61,6 +66,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/announcement/1/announcement.tsx",
+        target: "components/freddy-ui/announcement-1/announcement.tsx",
         type: "registry:component",
       },
     ],
@@ -82,6 +88,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/announcement/2/marquee-header.tsx",
+        target: "components/freddy-ui/announcement-2/marquee-header.tsx",
         type: "registry:component",
       },
     ],
@@ -103,6 +110,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/announcement/3/daytona-header.tsx",
+        target: "components/freddy-ui/announcement-3/daytona-header.tsx",
         type: "registry:component",
       },
     ],
@@ -122,22 +130,27 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/hero/1/page.tsx",
+        target: "components/freddy-ui/hero-1/page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/1/announcement.tsx",
+        target: "components/freddy-ui/hero-1/announcement.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/1/header.tsx",
+        target: "components/freddy-ui/hero-1/header.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/1/hero.tsx",
+        target: "components/freddy-ui/hero-1/hero.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/1/wrapper.tsx",
+        target: "components/freddy-ui/hero-1/wrapper.tsx",
         type: "registry:component",
       },
     ],
@@ -159,18 +172,22 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/hero/2/page.tsx",
+        target: "components/freddy-ui/hero-2/page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/2/hero.tsx",
+        target: "components/freddy-ui/hero-2/hero.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/2/featured-icons.tsx",
+        target: "components/freddy-ui/hero-2/featured-icons.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/2/shared.tsx",
+        target: "components/freddy-ui/hero-2/shared.tsx",
         type: "registry:component",
       },
     ],
@@ -192,10 +209,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/hero/3/page.tsx",
+        target: "components/freddy-ui/hero-3/page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/3/hero.tsx",
+        target: "components/freddy-ui/hero-3/hero.tsx",
         type: "registry:component",
       },
     ],
@@ -217,14 +236,17 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/hero/4/page.tsx",
+        target: "components/freddy-ui/hero-4/page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/4/hero.tsx",
+        target: "components/freddy-ui/hero-4/hero.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/4/cards.tsx",
+        target: "components/freddy-ui/hero-4/cards.tsx",
         type: "registry:component",
       },
     ],
@@ -246,14 +268,17 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/hero/6/page.tsx",
+        target: "components/freddy-ui/hero-6/page.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/6/hero.tsx",
+        target: "components/freddy-ui/hero-6/hero.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/hero/6/cards.tsx",
+        target: "components/freddy-ui/hero-6/cards.tsx",
         type: "registry:component",
       },
     ],
@@ -273,6 +298,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/contact/1/contact.tsx",
+        target: "components/freddy-ui/contact-1/contact.tsx",
         type: "registry:component",
       },
     ],
@@ -286,6 +312,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/contact/2/contact-card.tsx",
+        target: "components/freddy-ui/contact-2/contact-card.tsx",
         type: "registry:component",
       },
     ],
@@ -303,6 +330,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/cta/1/cta.tsx",
+        target: "components/freddy-ui/cta-1/cta.tsx",
         type: "registry:component",
       },
     ],
@@ -320,6 +348,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/cta/2/cta.tsx",
+        target: "components/freddy-ui/cta-2/cta.tsx",
         type: "registry:component",
       },
     ],
@@ -337,6 +366,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/cta/3/cta.tsx",
+        target: "components/freddy-ui/cta-3/cta.tsx",
         type: "registry:component",
       },
     ],
@@ -354,6 +384,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/cta/4/cta.tsx",
+        target: "components/freddy-ui/cta-4/cta.tsx",
         type: "registry:component",
       },
     ],
@@ -371,6 +402,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/cta/5/cta.tsx",
+        target: "components/freddy-ui/cta-5/cta.tsx",
         type: "registry:component",
       },
     ],
@@ -389,6 +421,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/feature/1/feature-card.tsx",
+        target: "components/freddy-ui/feature-1/feature-card.tsx",
         type: "registry:component",
       },
     ],
@@ -406,6 +439,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/faqs/1/faqs-section.tsx",
+        target: "components/freddy-ui/faqs-1/faqs-section.tsx",
         type: "registry:component",
       },
     ],
@@ -420,6 +454,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/faqs/2/faqs-section.tsx",
+        target: "components/freddy-ui/faqs-2/faqs-section.tsx",
         type: "registry:component",
       },
     ],
@@ -434,6 +469,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/faqs/3/faqs-section.tsx",
+        target: "components/freddy-ui/faqs-3/faqs-section.tsx",
         type: "registry:component",
       },
     ],
@@ -448,6 +484,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/faqs/4/faqs-section.tsx",
+        target: "components/freddy-ui/faqs-4/faqs-section.tsx",
         type: "registry:component",
       },
     ],
@@ -462,6 +499,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/faqs/5/faqs-section.tsx",
+        target: "components/freddy-ui/faqs-5/faqs-section.tsx",
         type: "registry:component",
       },
     ],
@@ -476,10 +514,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/footer/1/footer.tsx",
+        target: "components/freddy-ui/footer-1/footer.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/footer-1/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -497,10 +537,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/footer/2/footer.tsx",
+        target: "components/freddy-ui/footer-2/footer.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/footer-2/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -517,6 +559,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/footer/3/footer.tsx",
+        target: "components/freddy-ui/footer-3/footer.tsx",
         type: "registry:component",
       },
     ],
@@ -534,6 +577,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/footer/4/footer.tsx",
+        target: "components/freddy-ui/footer-4/footer.tsx",
         type: "registry:component",
       },
     ],
@@ -552,10 +596,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/footer/5/sticky-footer.tsx",
+        target: "components/freddy-ui/footer-5/sticky-footer.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/footer-5/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -577,10 +623,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/form/1/create-workspace-form.tsx",
+        target: "components/freddy-ui/form-1/create-workspace-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/form-1/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -604,6 +652,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/form/2/submit-project-form.tsx",
+        target: "components/freddy-ui/form-2/submit-project-form.tsx",
         type: "registry:component",
       },
     ],
@@ -624,6 +673,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/form/3/settings-form.tsx",
+        target: "components/freddy-ui/form-3/settings-form.tsx",
         type: "registry:component",
       },
     ],
@@ -638,10 +688,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/3/login-form.tsx",
+        target: "components/freddy-ui/auth-3/login-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-3/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -656,10 +708,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/4/signup-form.tsx",
+        target: "components/freddy-ui/auth-4/signup-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-4/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -673,10 +727,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/5/reset-password-form.tsx",
+        target: "components/freddy-ui/auth-5/reset-password-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-5/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -690,10 +746,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/6/forgot-password-form.tsx",
+        target: "components/freddy-ui/auth-6/forgot-password-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-6/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -707,10 +765,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/7/check-email-block.tsx",
+        target: "components/freddy-ui/auth-7/check-email-block.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-7/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -724,10 +784,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/8/minimal-login-form.tsx",
+        target: "components/freddy-ui/auth-8/minimal-login-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-8/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -741,10 +803,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/9/compact-signup-form.tsx",
+        target: "components/freddy-ui/auth-9/compact-signup-form.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-9/logo.tsx",
         type: "registry:component",
       },
     ],
@@ -759,6 +823,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/10/signup-form.tsx",
+        target: "components/freddy-ui/auth-10/signup-form.tsx",
         type: "registry:component",
       },
     ],
@@ -777,6 +842,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/11/otp-form.tsx",
+        target: "components/freddy-ui/auth-11/otp-form.tsx",
         type: "registry:component",
       },
     ],
@@ -795,6 +861,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/auth/12/onboarding-form.tsx",
+        target: "components/freddy-ui/auth-12/onboarding-form.tsx",
         type: "registry:component",
       },
     ],
@@ -814,18 +881,22 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/header/1/header.tsx",
+        target: "components/freddy-ui/header-1/header.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/header-1/logo.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/menu-toggle-icon.tsx",
+        target: "components/freddy-ui/header-1/menu-toggle-icon.tsx",
         type: "registry:component",
       },
       {
         path: "@/hooks/use-scroll.ts",
+        target: "components/freddy-ui/header-1/use-scroll.ts",
         type: "registry:hook",
       },
     ],
@@ -845,18 +916,22 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/header/2/header.tsx",
+        target: "components/freddy-ui/header-2/header.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/header-2/logo.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/menu-toggle-icon.tsx",
+        target: "components/freddy-ui/header-2/menu-toggle-icon.tsx",
         type: "registry:component",
       },
       {
         path: "@/hooks/use-scroll.ts",
+        target: "components/freddy-ui/header-2/use-scroll.ts",
         type: "registry:hook",
       },
     ],
@@ -874,18 +949,22 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/header/3/header.tsx",
+        target: "components/freddy-ui/header-3/header.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/logo.tsx",
+        target: "components/freddy-ui/header-3/logo.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/menu-toggle-icon.tsx",
+        target: "components/freddy-ui/header-3/menu-toggle-icon.tsx",
         type: "registry:component",
       },
       {
         path: "@/hooks/use-scroll.ts",
+        target: "components/freddy-ui/header-3/use-scroll.ts",
         type: "registry:hook",
       },
     ],
@@ -904,10 +983,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/header/4/header.tsx",
+        target: "components/freddy-ui/header-4/header.tsx",
         type: "registry:component",
       },
       {
         path: "@/hooks/use-scroll.ts",
+        target: "components/freddy-ui/header-4/use-scroll.ts",
         type: "registry:hook",
       },
     ],
@@ -928,10 +1009,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/header/5/header.tsx",
+        target: "components/freddy-ui/header-5/header.tsx",
         type: "registry:component",
       },
       {
         path: "@/hooks/use-scroll.ts",
+        target: "components/freddy-ui/header-5/use-scroll.ts",
         type: "registry:hook",
       },
     ],
@@ -952,10 +1035,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/image-gallery/1/image-gallery.tsx",
+        target: "components/freddy-ui/image-gallery-1/image-gallery.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/image-gallery/1/lazy-image.tsx",
+        target: "components/freddy-ui/image-gallery-1/lazy-image.tsx",
         type: "registry:component",
       },
     ],
@@ -969,6 +1054,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/logo-cloud/1/logo-cloud.tsx",
+        target: "components/freddy-ui/logo-cloud-1/logo-cloud.tsx",
         type: "registry:component",
       },
     ],
@@ -985,6 +1071,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/logo-cloud/2/logo-cloud.tsx",
+        target: "components/freddy-ui/logo-cloud-2/logo-cloud.tsx",
         type: "registry:component",
       },
     ],
@@ -1004,6 +1091,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/logo-cloud/3/logo-cloud.tsx",
+        target: "components/freddy-ui/logo-cloud-3/logo-cloud.tsx",
         type: "registry:component",
       },
     ],
@@ -1024,6 +1112,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/logo-cloud/4/logo-cloud.tsx",
+        target: "components/freddy-ui/logo-cloud-4/logo-cloud.tsx",
         type: "registry:component",
       },
     ],
@@ -1041,6 +1130,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/not-found/1/not-found.tsx",
+        target: "components/freddy-ui/not-found-1/not-found.tsx",
         type: "registry:component",
       },
     ],
@@ -1056,6 +1146,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/not-found/2/not-found.tsx",
+        target: "components/freddy-ui/not-found-2/not-found.tsx",
         type: "registry:component",
       },
     ],
@@ -1071,10 +1162,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/pricing/1/pricing-section.tsx",
+        target: "components/freddy-ui/pricing-1/pricing-section.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/pricing/1/frequency-toggle.tsx",
+        target: "components/freddy-ui/pricing-1/frequency-toggle.tsx",
         type: "registry:component",
       },
     ],
@@ -1088,6 +1181,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "@/components/pricing-card.tsx",
+        target: "components/freddy-ui/pricing-2/pricing-card.tsx",
         type: "registry:component",
       },
     ],
@@ -1105,10 +1199,12 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/pricing/3/pricing-section.tsx",
+        target: "components/freddy-ui/pricing-3/pricing-section.tsx",
         type: "registry:component",
       },
       {
         path: "@/components/pricing-card.tsx",
+        target: "components/freddy-ui/pricing-3/pricing-card.tsx",
         type: "registry:component",
       },
     ],
@@ -1124,6 +1220,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/pricing/4/pricing-section.tsx",
+        target: "components/freddy-ui/pricing-4/pricing-section.tsx",
         type: "registry:component",
       },
     ],
@@ -1141,6 +1238,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/testimonials/1/testimonials-columns.tsx",
+        target: "components/freddy-ui/testimonials-1/testimonials-columns.tsx",
         type: "registry:component",
       },
     ],
@@ -1156,6 +1254,7 @@ export const blocks: FreddyRegistryItem[] = [
     files: [
       {
         path: "blocks/testimonials/2/testimonials-section.tsx",
+        target: "components/freddy-ui/testimonials-2/testimonials-section.tsx",
         type: "registry:component",
       },
     ],
