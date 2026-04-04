@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Like {
+  id          String   @id @default(cuid())
+  blockName   String
+  fingerprint String
+  createdAt   DateTime @default(now())
+
+  @@unique([blockName, fingerprint])
+  @@index([blockName])
+}
