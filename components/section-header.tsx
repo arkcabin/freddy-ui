@@ -14,7 +14,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "-mx-4 sticky top-14 z-20 mb-8 bg-background/80 px-4 py-4 text-left backdrop-blur-md",
+        "mb-8 text-left",
         className
       )}
     >
