@@ -21,40 +21,69 @@ export class LikesService {
   }
 
   /**
-   * Toggles a like for a block and fingerprint.
-   * Atomically creates or deletes the like record.
+   * Fetches the like count AND whether a specific fingerprint has liked the block.
+   * Used to derive true liked state server-side, avoiding stale localStorage.
+   */
+  async getCountAndStatus(
+    blockName: string,
+    fingerprint: string
+  ): Promise<{ count: number; liked: boolean }> {
+    try {
+      const [count, existing] = await Promise.all([
+        prisma.like.count({ where: { blockName } }),
+        fingerprint
+          ? prisma.like.findUnique({
+              where: {
+                blockName_fingerprint: { blockName, fingerprint },
+              },
+              select: { id: true },
+            })
+          : Promise.resolve(null),
+      ]);
+
+      return { count, liked: existing !== null };
+    } catch (error) {
+      console.error(`[LikesService] Error in getCountAndStatus for ${blockName}:`, error);
+      return { count: 0, liked: false };
+    }
+  }
+
+  /**
+   * Atomically toggles a like using a Prisma transaction.
+   * Prevents race conditions from concurrent requests.
    */
   async toggle(
     blockName: string,
     fingerprint: string
   ): Promise<{ action: "liked" | "unliked"; count: number }> {
+    // Defence-in-depth: guard even if API layer validation passes
+    if (!blockName || !fingerprint || blockName.length > 64 || fingerprint.length > 64) {
+      throw new Error("Invalid input.");
+    }
+
     try {
-      const existing = await prisma.like.findUnique({
-        where: {
-          blockName_fingerprint: {
-            blockName,
-            fingerprint,
+      let action: "liked" | "unliked" = "liked";
+
+      await prisma.$transaction(async (tx) => {
+        const existing = await tx.like.findUnique({
+          where: {
+            blockName_fingerprint: { blockName, fingerprint },
           },
-        },
+        });
+
+        if (existing) {
+          await tx.like.delete({ where: { id: existing.id } });
+          action = "unliked";
+        } else {
+          await tx.like.create({ data: { blockName, fingerprint } });
+          action = "liked";
+        }
       });
 
-      if (existing) {
-        await prisma.like.delete({
-          where: { id: existing.id },
-        });
-      } else {
-        await prisma.like.create({
-          data: { blockName, fingerprint },
-        });
-      }
-
       const count = await this.getCount(blockName);
-      return {
-        action: existing ? "unliked" : "liked",
-        count,
-      };
+      return { action, count };
     } catch (error) {
-      console.error(`[LikesService] Error toggling like for ${blockName}:`, error);
+      console.error(`[LikesService] Toggle failed for "${blockName}":`, error);
       throw new Error("Could not process like action.");
     }
   }

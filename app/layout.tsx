@@ -4,10 +4,11 @@ import "./bones/registry";
 
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/json-ld";
-import { LenisProvider } from "@/components/providers/lenis-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { constructMetadata } from "@/lib/metadata";
+
 
 export const metadata = constructMetadata({
   canonicalUrl: "/",
@@ -35,14 +36,16 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <NextTopLoader
-            color="var(--foreground)"
-            height={2}
-            shadow="none"
-            showSpinner={false}
-          />
-          <JsonLd />
-          {children}
+          <QueryProvider>
+            <NextTopLoader
+              color="var(--foreground)"
+              height={2}
+              shadow="none"
+              showSpinner={false}
+            />
+            <JsonLd />
+            {children}
+          </QueryProvider>
         </ThemeProvider>
 
         {/* Third-Party Scripts: Re-enabled by user request. Using Next.js @next/third-parties optimized delivery. */}
