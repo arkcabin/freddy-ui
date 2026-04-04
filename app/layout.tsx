@@ -18,32 +18,26 @@ export default function RootLayout({
 }) {
   return (
     <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      </head>
       <body
         className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} overscroll-none`}
         suppressHydrationWarning
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            height="0"
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T4M45MP6"
-            style={{ display: "none", visibility: "hidden" }}
-            title="gtm-noscript"
-            width="0"
-          />
-        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <LenisProvider>
-            <JsonLd />
-            {children}
-          </LenisProvider>
+          <JsonLd />
+          {children}
         </ThemeProvider>
 
-        {/* Third-Party Scripts: Deferred to end of body to minimize initial TBT */}
+        {/* Third-Party Scripts: Re-enabled by user request. Using Next.js @next/third-parties optimized delivery. */}
         <GoogleTagManager gtmId="GTM-T4M45MP6" />
         {process.env.GOOGLE_ANALYTICS && (
           <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />

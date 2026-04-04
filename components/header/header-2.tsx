@@ -95,6 +95,7 @@ export const MainHeader = React.memo(
 
           {/* Logo & Branding */}
           <Link
+            aria-label="Freddy UI Home"
             className="group flex items-center outline-none"
             href="/"
             prefetch={false}

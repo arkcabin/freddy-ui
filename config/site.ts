@@ -1,6 +1,6 @@
 export const SITE_NAME = "Freddy UI";
 export const SITE_DESCRIPTION =
-  "The ultimate library of high-fidelity shadcn/ui blocks. Copy-paste 100+ beautifully crafted, responsive, and production-ready components designed for modern SaaS and web applications.";
+  "The ultimate library of 100+ high-fidelity shadcn/ui blocks for React 19, Next.js 16, and Tailwind CSS 4. Copy-paste beautifully crafted, responsive, and production-ready components designed for modern SaaS and enterprise web applications.";
 export const siteConfig = {
   name: "Freddy UI",
   url: "https://ui.arkcabin.com",

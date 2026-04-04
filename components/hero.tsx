@@ -1,7 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useScroll, useTransform, motion } from "motion/react";
 import Link from "next/link";
 import { ShadcnIcon } from "@/components/icons";
 import { LogoIcon } from "@/components/logo";
@@ -10,26 +10,16 @@ import { Button } from "@/components/ui/button";
 import { SITE_VERSION } from "@/config/site";
 import { FeaturedIcons } from "./featured-icons";
 import { SectionGrid } from "./section-grid";
-import { useRef } from "react";
 
 /**
  * Hero component for the Freddy UI landing page.
  * Uses the SectionGrid HOC for the "Boxed" architectural layout.
- * Enhanced with Apple-style scroll-linked scale effects.
+ * Optimized for maximum performance by leveraging native CSS animations
+ * instead of JavaScript-based Framer Motion for the initial fold.
  */
 export function Hero() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
   return (
-    <div className="relative" ref={targetRef}>
+    <div className="relative">
       <SectionGrid
         allowOverflow={true}
         aria-label="Hero Section"
@@ -50,17 +40,9 @@ export function Hero() {
         </div>
 
         {/* Content wrapper */}
-        <motion.div
-          className="relative z-10 px-6 md:px-10"
-          style={{ scale, opacity, y }}
-        >
+        <div className="relative z-10 px-6 md:px-10">
           {/* Badge */}
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="animate-in fade-in slide-in-from-bottom-4 mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md duration-500 fill-mode-both">
             <LogoIcon className="size-3 opacity-60" />
             <span>Introducing V-{SITE_VERSION}</span>
             <span className="mx-1 h-2 w-px bg-border/50" />
@@ -77,20 +59,10 @@ export function Hero() {
                 <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
               </span>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            animate={{ opacity: 1, y: 0 }}
-            className="text-wrap-balance mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl will-change-transform"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-              type: "spring",
-              stiffness: 100,
-            }}
-          >
+          <h1 className="text-wrap-balance animate-in fade-in slide-in-from-bottom-6 mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl duration-1000 delay-200 fill-mode-both will-change-transform">
             Beautiful{" "}
             <ShadcnIcon className="mr-1 inline size-[0.9em] translate-y-[-0.05em]" />{" "}
             <span className="font-medium text-muted-foreground/40">
@@ -101,44 +73,38 @@ export function Hero() {
             <span className="font-semibold text-primary/90 italic">
               Busy & Smart devs.
             </span>
-          </motion.h1>
+          </h1>
 
           {/* Simplified Description */}
-          <motion.p
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-10 max-w-2xl text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg will-change-transform"
-            initial={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <p className="animate-in fade-in slide-in-from-bottom-4 mb-10 max-w-2xl text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg duration-1000 delay-400 fill-mode-both will-change-transform">
             100+&nbsp;high-fidelity shadcn/ui blocks for React 19 & Next.js 16.
             Copy, paste, and ship your next big idea today.
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-wrap items-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
+          <div className="animate-in fade-in slide-in-from-bottom-8 flex flex-wrap items-center gap-3 duration-1000 delay-600 fill-mode-both">
             <Button
+              asChild
               className="shadow-lg shadow-primary/5 transition-all hover:opacity-90 active:scale-95"
               rounded="full"
               size="hero"
             >
-              Explore Blocks
-              <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              <Link href="/blocks">
+                Explore Blocks
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Link>
             </Button>
             <Button
+              asChild
               className="text-muted-foreground/60 transition-all hover:text-foreground"
               rounded="full"
               size="hero"
               variant="ghost"
             >
-              Get Full Access
+              <Link href="/pricing">Get Full Access</Link>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         <div className="z-10 mt-12 w-full">
           <FeaturedIcons />
