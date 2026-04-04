@@ -1,5 +1,6 @@
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import "./bones/registry";
 
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/json-ld";
