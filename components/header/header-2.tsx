@@ -67,11 +67,10 @@ export const MainHeader = React.memo(
     return (
       <header
         className={cn(
-          "sticky z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500 will-change-[transform,opacity]",
-          isAnnouncementVisible ? "top-8" : "top-0",
+          "sticky top-0 z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500 will-change-[transform,opacity]",
           activeScrolled
             ? "bg-transparent"
-            : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
+            : "border-transparent bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
         )}
       >
         <script
