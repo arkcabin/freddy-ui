@@ -22,7 +22,7 @@ export default function SignInPage() {
     try {
       await authClient.signIn.social({
         provider,
-        callbackURL: "/library",
+        callbackURL: "/dashboard",
       });
     } catch (error) {
       console.error("[Auth] Sign in failed:", error);

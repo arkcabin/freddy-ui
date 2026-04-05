@@ -18,10 +18,9 @@ import { cn } from "@/lib/utils";
 import { authClient } from "@/lib/auth-client";
 
 const sidebarItems = [
-  { name: "My Library", href: "/library", icon: BookMarked },
-  { name: "Pro Blocks", href: "/library/pro", icon: Zap, pro: true },
-  { name: "Analytics", href: "/library/analytics", icon: BarChart3 },
-  { name: "Settings", href: "/library/settings", icon: Settings },
+  { name: "My Dashboard", href: "/dashboard", icon: BookMarked },
+  { name: "Components", href: "/blocks", icon: Layers },
+  { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 export function DashboardSidebar() {
@@ -30,9 +29,9 @@ export function DashboardSidebar() {
 
   return (
     <div className="flex h-screen w-64 flex-col border-r border-white/10 bg-black/40 backdrop-blur-xl">
-      <div className="flex h-16 items-center border-b border-white/10 px-6 font-bold tracking-tight text-white">
-        <Layout className="mr-2 h-5 w-5 text-sky-400" />
-        Freddy <span className="text-sky-400">Library</span>
+      <div className="flex h-16 items-center border-b border-white/5 px-6 font-bold text-white uppercase text-[11px] tracking-widest">
+        <Layout className="mr-2 h-4 w-4 text-primary" />
+        Freddy <span className="text-muted-foreground ml-1">Dashboard</span>
       </div>
       
       <div className="flex-1 space-y-1 p-4">
@@ -52,11 +51,6 @@ export function DashboardSidebar() {
               pathname === item.href ? "text-sky-400" : "text-zinc-500 group-hover:text-sky-400"
             )} />
             {item.name}
-            {item.pro && (
-              <span className="ml-auto rounded-full bg-sky-500/10 px-1.5 py-0.5 text-[10px] font-bold text-sky-400 ring-1 ring-inset ring-sky-500/20">
-                PRO
-              </span>
-            )}
           </Link>
         ))}
       </div>

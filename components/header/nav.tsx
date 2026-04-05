@@ -24,6 +24,7 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { UserAccountNav } from "./user-account-nav";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -244,22 +245,7 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {!isPending && (
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild>
-              <Link href={session ? "/dashboard" : "/auth/sign-in"}>
-                <Button
-                  className="h-9 rounded-full bg-transparent px-5 font-bold text-[14px] text-muted-foreground shadow-none transition-all hover:bg-white/5 hover:text-foreground active:bg-white/10"
-                  variant="default"
-                >
-                  {session ? "Dashboard" : "Sign In"}
-                </Button>
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        )}
-
-        {/* Regular Links */}
+        {/* Regular Links (e.g. Changelog) */}
         {NAV_LINKS.map((item) => (
           <NavigationMenuItem key={item.name}>
             <NavigationMenuLink asChild>
@@ -274,6 +260,28 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
             </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
+
+        {/* User Account / Sign In - Moved after Changelog */}
+        {!isPending && (
+          <NavigationMenuItem className="flex items-center">
+            {session ? (
+              <div className="ml-2 flex items-center">
+                <UserAccountNav user={session.user} />
+              </div>
+            ) : (
+              <NavigationMenuLink asChild>
+                <Link href="/auth/sign-in">
+                  <Button
+                    className="h-9 rounded-full bg-foreground px-5 font-bold text-[14px] text-background shadow-none transition-all hover:opacity-90 active:scale-95"
+                    variant="default"
+                  >
+                    Sign In
+                  </Button>
+                </Link>
+              </NavigationMenuLink>
+            )}
+          </NavigationMenuItem>
+        )}
       </NavigationMenuList>
       <NavigationMenuIndicator />
     </NavigationMenu>
