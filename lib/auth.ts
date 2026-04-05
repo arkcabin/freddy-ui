@@ -11,6 +11,11 @@ const polarClient = new Polar({
   server: process.env.NODE_ENV === "production" ? "production" : "sandbox",
 });
 
+const isPolarConfigured = !!(
+  process.env.POLAR_ACCESS_TOKEN &&
+  process.env.POLAR_ACCESS_TOKEN !== "your_access_token_here"
+);
+
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
@@ -20,7 +25,7 @@ export const auth = betterAuth({
     multiSession(),
     polar({
       client: polarClient,
-      createCustomerOnSignUp: true,
+      createCustomerOnSignUp: isPolarConfigured,
       use: [
         checkout({
           products: [
