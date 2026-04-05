@@ -64,21 +64,25 @@ export class LikesService {
     try {
       let action: "liked" | "unliked" = "liked";
 
-      await prisma.$transaction(async (tx) => {
-        const existing = await tx.like.findUnique({
-          where: {
-            blockName_fingerprint: { blockName, fingerprint },
-          },
+      try {
+        // Optimistic create: Rely on unique constraint to detect existing likes
+        await prisma.like.create({
+          data: { blockName, fingerprint },
         });
-
-        if (existing) {
-          await tx.like.delete({ where: { id: existing.id } });
+        action = "liked";
+      } catch (error: any) {
+        // P2002 is the Prisma error code for Unique Constraint violation
+        if (error.code === "P2002") {
+          await prisma.like.delete({
+            where: {
+              blockName_fingerprint: { blockName, fingerprint },
+            },
+          });
           action = "unliked";
         } else {
-          await tx.like.create({ data: { blockName, fingerprint } });
-          action = "liked";
+          throw error;
         }
-      });
+      }
 
       const count = await this.getCount(blockName);
       return { action, count };

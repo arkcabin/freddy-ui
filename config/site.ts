@@ -18,4 +18,4 @@ export const SITE_SHORT_DESCRIPTION =
   "100+ production-ready shadcn/ui blocks for modern web applications.";
 export const SITE_HOME_URL = siteConfig.url;
 export const MY_HANDLE = "arkcabin";
-export const SITE_VERSION = "0.0.1";
+export const SITE_VERSION = "0.1.0";

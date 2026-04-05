@@ -3,7 +3,7 @@ import { likesService } from "@/lib/services/likes.service";
 import { z } from "zod";
 
 // ─── Security Constants ───────────────────────────────────────────────────────
-const RATE_LIMIT_MAX = 5; // Max 5 POSTs per window per IP
+const RATE_LIMIT_MAX = 30; // Max 30 POSTs per window per IP
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute window
 
 // In-memory store for rate limiting (resets on serverless cold start — sufficient for anonymous abuse prevention)
