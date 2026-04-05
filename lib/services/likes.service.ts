@@ -1,4 +1,6 @@
 import { prisma } from "@/lib/db";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 /**
  * LikesService (NestJS Pattern)
@@ -29,16 +31,26 @@ export class LikesService {
     fingerprint: string
   ): Promise<{ count: number; liked: boolean }> {
     try {
+      const session = await auth.api.getSession({
+        headers: await headers(),
+      });
+      const userId = session?.user?.id;
+
       const [count, existing] = await Promise.all([
         prisma.like.count({ where: { blockName } }),
-        fingerprint
-          ? prisma.like.findUnique({
-              where: {
-                blockName_fingerprint: { blockName, fingerprint },
-              },
+        userId
+          ? prisma.like.findFirst({
+              where: { blockName, userId },
               select: { id: true },
             })
-          : Promise.resolve(null),
+          : fingerprint
+            ? prisma.like.findUnique({
+                where: {
+                  blockName_fingerprint: { blockName, fingerprint },
+                },
+                select: { id: true },
+              })
+            : Promise.resolve(null),
       ]);
 
       return { count, liked: existing !== null };
@@ -62,12 +74,17 @@ export class LikesService {
     }
 
     try {
+      const session = await auth.api.getSession({
+        headers: await headers(),
+      });
+      const userId = session?.user?.id;
+
       let action: "liked" | "unliked" = "liked";
 
       try {
         // Optimistic create: Rely on unique constraint to detect existing likes
         await prisma.like.create({
-          data: { blockName, fingerprint },
+          data: { blockName, fingerprint, userId },
         });
         action = "liked";
       } catch (error: any) {
@@ -111,6 +128,29 @@ export class LikesService {
     } catch (error) {
       console.error("[LikesService] Error fetching all counts:", error);
       return {};
+    }
+  }
+
+  /**
+   * Transitions anonymous likes (fingerprint-only) to a user account.
+   * Called typically on the first visit to the dashboard after login.
+   */
+  async claimLikes(userId: string, fingerprint: string) {
+    if (!userId || !fingerprint) return;
+
+    try {
+      // Find all likes by this fingerprint that are NOT already claimed
+      await prisma.like.updateMany({
+        where: {
+          fingerprint,
+          userId: null,
+        },
+        data: {
+          userId,
+        },
+      });
+    } catch (error) {
+      console.error(`[LikesService] Failed to claim likes for ${userId}:`, error);
     }
   }
 }

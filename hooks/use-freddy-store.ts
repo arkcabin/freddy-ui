@@ -11,6 +11,8 @@ interface FreddyStore {
   setPackageManager: (pm: PackageManager) => void;
   favorites: string[];
   toggleFavorite: (name: string) => void;
+  lastAuthProvider: "google" | "github" | null;
+  setLastAuthProvider: (provider: "google" | "github" | null) => void;
 }
 
 /**
@@ -29,6 +31,8 @@ export const useFreddyStore = create<FreddyStore>()(
             ? state.favorites.filter((f) => f !== name)
             : [...state.favorites, name],
         })),
+      lastAuthProvider: null,
+      setLastAuthProvider: (provider) => set({ lastAuthProvider: provider }),
     }),
     {
       name: "freddy-ui-store",

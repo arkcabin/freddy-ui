@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ShadcnIcon } from "@/components/icons";
@@ -41,24 +40,23 @@ export function Hero() {
 
         {/* Content wrapper */}
         <div className="relative z-10 px-6 md:px-10">
-          {/* Badge */}
-          <div className="animate-in fade-in slide-in-from-bottom-4 mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md duration-500 fill-mode-both">
-            <LogoIcon className="size-3 opacity-60" />
-            <span>Introducing V-{SITE_VERSION}</span>
-            <span className="mx-1 h-2 w-px bg-border/50" />
-            <Link
-              className="group relative flex items-center gap-1.5 overflow-hidden rounded-sm px-2 py-0.5"
-              href="/changelog"
-            >
-              {/* Premium Left-to-Right Fill */}
-              <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
-
-              {/* Text Layer - Explicitly themed for high visibility */}
-              <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background">
-                Changelog
-                <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
-              </span>
-            </Link>
+          {/* Badge & Auth Row */}
+           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md duration-500 fill-mode-both">
+              <LogoIcon className="size-3 opacity-60" />
+              <span>Introducing V-{SITE_VERSION}</span>
+              <span className="mx-1 h-2 w-px bg-border/50" />
+              <Link
+                className="group relative flex items-center gap-1.5 overflow-hidden rounded-sm px-2 py-0.5"
+                href="/changelog"
+              >
+                <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background text-[10px]">
+                  Changelog
+                  <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
+                </span>
+              </Link>
+            </div>
           </div>
 
           {/* Headline */}

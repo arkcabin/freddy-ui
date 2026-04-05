@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { useMediaQuery } from "@/hooks/use-media-query";

@@ -276,7 +276,7 @@
         "hero"
       ],
       "type": "registry:block",
-      "tier": "free"
+      "tier": "pro"
     },
     {
       "name": "hero-4",
@@ -311,7 +311,7 @@
         "hero"
       ],
       "type": "registry:block",
-      "tier": "free"
+      "tier": "pro"
     },
     {
       "name": "hero-6",
@@ -1099,7 +1099,7 @@
         "header"
       ],
       "type": "registry:block",
-      "tier": "free"
+      "tier": "pro"
     },
     {
       "name": "header-3",

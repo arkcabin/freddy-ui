@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import { authClient } from "@/lib/auth-client";
 import { CodeView } from "@/components/block/code-view";
 import { BorderSeparator, DashedLines } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
 import { cn } from "@/lib/utils";
 import type { Block, PreviewMode } from "@/types";
+import { Lock, Zap } from "lucide-react";
 import { BlockLoader } from "./block-loader";
 import { BlockPreview } from "./block-preview";
 import { CopyCliButton } from "./copy-cli-button";
@@ -15,6 +17,7 @@ import { OpenInNewTabButton } from "./open-in-new-tab-button";
 import { RefreshButton } from "./refresh-button";
 import { FavoriteButton } from "./favorite-button";
 import { TogglePreviewMode } from "./toggle-preview-mode";
+import { GlassLock } from "./glass-lock";
 
 type BlockPreviewProps = {
   block: Block;
@@ -26,7 +29,12 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const [registryUrl, setRegistryUrl] = React.useState<string>("");
   const [isLoaded, setIsLoaded] = React.useState(false);
 
+  const { data: session } = authClient.useSession();
+  const user = session?.user as any;
+  const isPro = user?.isPro;
+
   const { name, files, height, pinnedUntil, description, tier } = block;
+  const isLocked = tier?.toLowerCase() === "pro" && !isPro;
   const previewLink = `/view/${name}`;
 
   const isPinned = React.useMemo(() => {
@@ -69,10 +77,11 @@ export function BlockBox({ block }: BlockPreviewProps) {
           {tier?.toLowerCase() === "pro" && (
             <Badge
               className={cn(
-                "inline-flex items-center rounded-md border border-yellow-500/10 px-1.5 py-0.5 font-bold font-mono text-[10px] uppercase tracking-widest transition-all",
-                "bg-yellow-500/10 text-yellow-600 dark:border-yellow-500/20 dark:bg-yellow-500/15 dark:text-yellow-500"
+                "inline-flex items-center rounded-md border border-sky-500/10 px-1.5 py-0.5 font-bold font-mono text-[10px] uppercase tracking-widest transition-all",
+                "bg-sky-500/10 text-sky-600 dark:border-sky-500/20 dark:bg-sky-500/15 dark:text-sky-500"
               )}
             >
+              <Zap className="mr-1 h-3 w-3 fill-current" />
               {tier}
             </Badge>
           )}
@@ -110,7 +119,14 @@ export function BlockBox({ block }: BlockPreviewProps) {
         </div>
 
         <div className="flex items-center gap-3">
-          <CopyCliButton name={name} />
+          {isLocked ? (
+            <div className="flex items-center gap-2 rounded-full bg-sky-500/10 px-3 py-1 text-[10px] font-bold text-sky-400 ring-1 ring-sky-500/20">
+              <Lock className="h-3 w-3" />
+              PRO CONTENT
+            </div>
+          ) : (
+            <CopyCliButton name={name} />
+          )}
           <div className="h-5 border-r border-dashed" />
           <FavoriteButton name={name} />
           <OpenInNewTabButton previewLink={previewLink} />
@@ -151,7 +167,12 @@ export function BlockBox({ block }: BlockPreviewProps) {
       </BlockPreview>
 
       {/* Code View */}
-      {previewMode === "code" && <CodeView files={files} name={name} />}
+      {previewMode === "code" && (
+        <div className="relative">
+          {isLocked && <GlassLock />}
+          <CodeView files={files} name={name} />
+        </div>
+      )}
     </div>
   );
 }

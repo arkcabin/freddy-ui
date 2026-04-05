@@ -17,8 +17,11 @@ import {
   MessageSquare,
   MousePointer2,
   Star,
+  User,
+  LayoutDashboard,
 } from "lucide-react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,6 +81,7 @@ const NAV_LINKS = [
 ];
 
 export function SiteNav({ isMobile }: { isMobile?: boolean }) {
+  const { data: session, isPending } = authClient.useSession();
   if (isMobile) {
     return (
       <nav className="flex flex-col gap-2">
@@ -107,6 +111,24 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
             {item.name}
           </Link>
         ))}
+        {!isPending && (
+          <Link
+            className="flex items-center gap-3 rounded-lg py-2.5 font-bold text-base transition-colors hover:text-primary border-t border-dashed mt-2 pt-4"
+            href={session ? "/dashboard" : "/auth/sign-in"}
+          >
+            {session ? (
+              <>
+                <LayoutDashboard className="size-5 text-sky-400" />
+                Dashboard
+              </>
+            ) : (
+              <>
+                <User className="size-5" />
+                Sign In
+              </>
+            )}
+          </Link>
+        )}
       </nav>
     );
   }
@@ -221,6 +243,21 @@ export function SiteNav({ isMobile }: { isMobile?: boolean }) {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {!isPending && (
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href={session ? "/dashboard" : "/auth/sign-in"}>
+                <Button
+                  className="h-9 rounded-full bg-transparent px-5 font-bold text-[14px] text-muted-foreground shadow-none transition-all hover:bg-white/5 hover:text-foreground active:bg-white/10"
+                  variant="default"
+                >
+                  {session ? "Dashboard" : "Sign In"}
+                </Button>
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        )}
 
         {/* Regular Links */}
         {NAV_LINKS.map((item) => (
