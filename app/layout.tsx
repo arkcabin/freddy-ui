@@ -8,6 +8,7 @@ import { QueryProvider } from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { constructMetadata } from "@/lib/metadata";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 
 export const metadata = constructMetadata({
@@ -37,14 +38,16 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryProvider>
-            <NextTopLoader
-              color="var(--foreground)"
-              height={2}
-              shadow="none"
-              showSpinner={false}
-            />
-            <JsonLd />
-            {children}
+            <TooltipProvider>
+              <NextTopLoader
+                color="var(--foreground)"
+                height={2}
+                shadow="none"
+                showSpinner={false}
+              />
+              <JsonLd />
+              {children}
+            </TooltipProvider>
           </QueryProvider>
         </ThemeProvider>
 
