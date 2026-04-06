@@ -58,17 +58,17 @@ const data = {
 export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sidebar> & { user: any }) {
   return (
     <Sidebar variant="inset" className="border-r border-border/10" {...props}>
-      <SidebarHeader className="h-14 flex items-center px-4 border-b border-border/10">
+      <SidebarHeader className="h-12 flex items-center px-4 border-b border-border/10">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild className="hover:bg-transparent px-0">
               <a href="/">
-                <div className="flex aspect-square size-7 items-center justify-center rounded-lg bg-foreground text-background">
-                  <Command className="size-4" strokeWidth={2.5} />
+                <div className="flex aspect-square size-6 items-center justify-center rounded-lg bg-foreground text-background">
+                  <Command className="size-3.5" strokeWidth={2.5} />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight ml-2">
-                  <span className="truncate font-bold tracking-tighter text-foreground">Freddy UI</span>
-                  <span className="truncate text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/40 -mt-0.5">Architectural</span>
+                <div className="grid flex-1 text-left leading-tight ml-2">
+                  <span className="truncate font-bold tracking-tighter text-foreground text-xs">Freddy UI</span>
+                  <span className="truncate text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground/30 -mt-1">Architectural</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -78,17 +78,24 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
       <SidebarContent className="p-2">
         <NavMain items={data.navMain} />
         <div className="mt-auto px-2 py-4">
-          <div className="rounded-xl border border-border/20 bg-secondary/10 p-4 space-y-3">
-             <div className="size-8 rounded-lg bg-primary/20 flex items-center justify-center">
-               <Sparkles className="size-4 text-primary" />
+          <div className="relative rounded-2xl border border-border/50 bg-secondary/5 p-5 shadow-2xl backdrop-blur-md overflow-hidden group">
+             {/* Subtle aesthetic gradient */}
+             <div className="absolute -right-8 -top-8 size-24 bg-primary/10 blur-2xl rounded-full" />
+             
+             <div className="relative space-y-4">
+                <div className="size-9 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_15px_rgba(var(--primary),0.05)]">
+                  <Sparkles className="size-4.5 text-primary" />
+                </div>
+                <div className="space-y-1.5">
+                  <p className="text-xs font-black text-foreground tracking-tight uppercase">Unlock Pro Features</p>
+                  <p className="text-[11px] text-muted-foreground/60 font-medium leading-relaxed">
+                    Get access to premium elite components and production-ready source code.
+                  </p>
+                </div>
+                <button className="w-full rounded-xl bg-foreground text-background py-2.5 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground/90 transition-all shadow-xl active:scale-[0.98]">
+                  Upgrade Now
+                </button>
              </div>
-             <div className="space-y-1">
-               <p className="text-[11px] font-bold text-foreground">Unlock Pro Features</p>
-               <p className="text-[10px] text-muted-foreground/60 font-medium leading-tight">Get access to premium elite components.</p>
-             </div>
-             <button className="w-full rounded-lg bg-foreground text-background py-1.5 text-[10px] font-bold uppercase tracking-wider hover:opacity-90 transition-all">
-               Upgrade
-             </button>
           </div>
         </div>
       </SidebarContent>
