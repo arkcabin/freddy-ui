@@ -17,15 +17,16 @@ export function OpenInNewTabButton({ previewLink }: { previewLink: string }) {
             aria-label="Open in new tab"
             asChild
             size="icon-sm"
-            variant="dashed"
+            variant="outline"
+            className="group size-8 rounded-full border-border/40 bg-muted/20 backdrop-blur-md transition-all hover:bg-muted/40 hover:border-primary/20"
           >
-            <Link href={previewLink} target="_blank">
-              <ExternalLinkIcon className="size-3.5" />
+            <Link href={previewLink} target="_blank" rel="noopener noreferrer">
+              <ExternalLinkIcon className="size-3.5 opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
             </Link>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>
-          <p>Open In New Tab</p>
+        <TooltipContent side="top" align="center" sideOffset={8}>
+          <p className="font-bold">Open in new tab</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

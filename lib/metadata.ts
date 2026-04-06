@@ -97,6 +97,16 @@ export function constructMetadata({
       index: !noIndex,
       follow: !noIndex,
     },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", media: "(prefers-color-scheme: dark)" },
+        { url: "/favicon-light.ico", media: "(prefers-color-scheme: light)" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", media: "(prefers-color-scheme: dark)" },
+        { url: "/apple-touch-light-icon.png", media: "(prefers-color-scheme: light)" },
+      ],
+    },
     ...(manifest && {
       manifest,
     }),

@@ -18,10 +18,36 @@ export type ChangelogEntry = {
 
 export const CHANGELOG_DATA: ChangelogEntry[] = [
   {
+    version: "0.1.0",
+    title: "The Social Sync Update",
+    date: "April 5, 2026",
+    status: "Latest",
+    description:
+      "Elite engagement tracking. Native Social Sync is now integrated across the entire library.",
+    groups: [
+      {
+        category: "Major Features",
+        icon: <Rocket className="size-4 text-primary" />,
+        items: [
+          "Interactive 'Likes' for ALL library blocks.",
+          "Zero-latency optimistic UI for instant engagement.",
+        ],
+      },
+      {
+        category: "Infrastructure",
+        icon: <Zap className="size-4 text-blue-500" />,
+        items: [
+          "Prisma 7 & PostgreSQL Database Layer.",
+          "Automatic API-level Rate Limiting.",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.1",
     title: "Initial Beta Release",
     date: "March 29, 2026",
-    status: "Latest",
+    status: "Stable",
     description: "The official launch of Freddy UI - elite high-fidelity blocks for modern SaaS apps.",
     groups: [
       {

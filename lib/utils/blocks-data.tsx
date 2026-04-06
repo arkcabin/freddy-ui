@@ -5,23 +5,6 @@ import type { Block, Category } from "@/types";
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-function sortBlocks(a: Block, b: Block, now: number): number {
-  const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-  const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-
-  const aExpiration = aDate + (a.activeForDays ?? 90) * MS_PER_DAY;
-  const bExpiration = bDate + (b.activeForDays ?? 90) * MS_PER_DAY;
-
-  const aPinned = a.isPinned === true || now < aExpiration;
-  const bPinned = b.isPinned === true || now < bExpiration;
-
-  if (aPinned !== bPinned) {
-    return aPinned ? -1 : 1;
-  }
-
-  return bDate - aDate;
-}
-
 export const BLOCKS_DIR = "registry/blocks";
 export const getAllCategories = cache((): Category[] => {
   const categoryMap = new Map<string, number>();
@@ -50,8 +33,8 @@ export const getAllCategories = cache((): Category[] => {
     }
   }
 
-  // Sort blocks within categories (Smart Sorting)
-  blocks.sort((a, b) => sortBlocks(a, b, now));
+  // Sort blocks within categories (Smart Sorting - Now handled at Build Time)
+  // blocks.sort((a, b) => sortBlocks(a, b, now));
 
   return Array.from(categoryMap.entries()).map(([id, count]) => ({
     id,
@@ -64,8 +47,7 @@ export const getAllCategories = cache((): Category[] => {
 export const getBlocksByCategory = cache((category: string): Block[] => {
   const now = Date.now();
   return blocks
-    .filter((block) => block.category === category)
-    .sort((a, b) => sortBlocks(a, b, now));
+    .filter((block) => block.category === category);
 });
 
 export const findBlockByName = cache((name: string) => {

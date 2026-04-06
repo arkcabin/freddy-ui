@@ -22,6 +22,9 @@
         "API_KEY=\"706af7b65ae4ff240c627f19b2e33bb5ce657845d6a51291e7a3a2f10b29afc6\""
       ]
 
+    },
+    "better-auth": {
+      "url": "https://mcp.better-auth.com/mcp"
     }
   }
 }

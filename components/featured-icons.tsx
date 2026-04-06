@@ -49,19 +49,19 @@ export function FeaturedIcons({ className }: { className?: string }) {
           className={cn(
             "relative flex items-center justify-center transition-all duration-500",
             item.isCenter
-              ? "feature-card-active z-20 size-24 rounded-[32px] sm:size-28"
-              : "feature-card size-16 rounded-[20px] text-muted-foreground sm:size-20",
+              ? "feature-card-active z-20 size-18 rounded-3xl sm:size-22"
+              : "feature-card size-12 rounded-2xl text-muted-foreground sm:size-16",
             index % 2 !== 0 && "hidden sm:flex"
           )}
           key={item.id}
           style={{
             zIndex: item.zIndex,
-            transform: `translateY(${item.y}px) rotate(${item.rotate}) ${item.isCenter ? "scale(1.05)" : "scale(1)"}`,
+            transform: `translateY(${item.y * 0.7}px) rotate(${item.rotate})`,
           }}
         >
           <item.icon
             className={cn(
-              item.isCenter ? "size-8 sm:size-10" : "size-5 sm:size-6"
+              item.isCenter ? "size-6 sm:size-8" : "size-4 sm:size-5"
             )}
             strokeWidth={item.isCenter ? 2.5 : 2}
           />

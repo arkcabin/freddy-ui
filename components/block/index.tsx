@@ -1,20 +1,23 @@
 "use client";
 
 import React from "react";
+import { authClient } from "@/lib/auth-client";
 import { CodeView } from "@/components/block/code-view";
-import { BorderSeparator } from "@/components/shared";
+import { BorderSeparator, DashedLines } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { useOptimizedIframe } from "@/hooks/use-optimized-iframe";
 import { cn } from "@/lib/utils";
 import type { Block, PreviewMode } from "@/types";
+import { Lock, Zap } from "lucide-react";
 import { BlockLoader } from "./block-loader";
 import { BlockPreview } from "./block-preview";
 import { CopyCliButton } from "./copy-cli-button";
 import { IframeRenderer } from "./iframe-renderer";
 import { OpenInNewTabButton } from "./open-in-new-tab-button";
-import { OpenInV0Button } from "./open-in-v0";
 import { RefreshButton } from "./refresh-button";
+import { FavoriteButton } from "./favorite-button";
 import { TogglePreviewMode } from "./toggle-preview-mode";
+import { GlassLock } from "./glass-lock";
 
 type BlockPreviewProps = {
   block: Block;
@@ -26,7 +29,12 @@ export function BlockBox({ block }: BlockPreviewProps) {
   const [registryUrl, setRegistryUrl] = React.useState<string>("");
   const [isLoaded, setIsLoaded] = React.useState(false);
 
-  const { name, files, height, pinnedUntil } = block;
+  const { data: session } = authClient.useSession();
+  const user = session?.user as any;
+  const isPro = user?.isPro;
+
+  const { name, files, height, pinnedUntil, description, tier } = block;
+  const isLocked = tier?.toLowerCase() === "pro" && !isPro;
   const previewLink = `/view/${name}`;
 
   const isPinned = React.useMemo(() => {
@@ -55,6 +63,36 @@ export function BlockBox({ block }: BlockPreviewProps) {
       id={name}
       style={{ "--block-height": height } as React.CSSProperties}
     >
+      {/* Block Header */}
+      <div className="relative overflow-hidden border-t border-dashed bg-card/10 px-5 py-2 select-none dark:bg-card/20">
+        <DashedLines 
+          className="absolute inset-0 z-0 h-full w-full opacity-50 stroke-foreground/25 mask-[linear-gradient(to_bottom,black,transparent)]" 
+          x="50%"
+        />
+        <BorderSeparator className="-top-px z-1" />
+        <div className="relative z-10 flex items-baseline gap-3">
+          <h2 className="font-extrabold text-lg capitalize tracking-tight text-foreground/90 sm:text-xl">
+            {name.replace(/-/g, " ")}
+          </h2>
+          {tier?.toLowerCase() === "pro" && (
+            <Badge
+              className={cn(
+                "inline-flex items-center rounded-md border border-sky-500/10 px-1.5 py-0.5 font-bold font-mono text-[10px] uppercase tracking-widest transition-all",
+                "bg-sky-500/10 text-sky-600 dark:border-sky-500/20 dark:bg-sky-500/15 dark:text-sky-500"
+              )}
+            >
+              <Zap className="mr-1 h-3 w-3 fill-current" />
+              {tier}
+            </Badge>
+          )}
+        </div>
+        {description && (
+          <p className="max-w-[600px] text-xs leading-relaxed text-muted-foreground/50 sm:text-[13px]">
+            {description}
+          </p>
+        )}
+      </div>
+
       {/* Toolbar */}
       <div className="relative flex items-center justify-between bg-card px-4 py-1.5">
         <BorderSeparator className="-top-px z-1" />
@@ -81,9 +119,16 @@ export function BlockBox({ block }: BlockPreviewProps) {
         </div>
 
         <div className="flex items-center gap-3">
-          <CopyCliButton name={name} />
+          {isLocked ? (
+            <div className="flex items-center gap-2 rounded-full bg-sky-500/10 px-3 py-1 text-[10px] font-bold text-sky-400 ring-1 ring-sky-500/20">
+              <Lock className="h-3 w-3" />
+              PRO CONTENT
+            </div>
+          ) : (
+            <CopyCliButton name={name} />
+          )}
           <div className="h-5 border-r border-dashed" />
-          <OpenInV0Button name={name} registryUrl={registryUrl} />
+          <FavoriteButton name={name} />
           <OpenInNewTabButton previewLink={previewLink} />
         </div>
 
@@ -122,7 +167,12 @@ export function BlockBox({ block }: BlockPreviewProps) {
       </BlockPreview>
 
       {/* Code View */}
-      {previewMode === "code" && <CodeView files={files} name={name} />}
+      {previewMode === "code" && (
+        <div className="relative">
+          {isLocked && <GlassLock />}
+          <CodeView files={files} name={name} />
+        </div>
+      )}
     </div>
   );
 }

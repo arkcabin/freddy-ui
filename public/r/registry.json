@@ -167,23 +167,33 @@
       "files": [
         {
           "path": "registry/blocks/hero/1/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/page.tsx"
+        },
+        {
+          "path": "registry/blocks/hero/1/bones.json",
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/bones.json"
         },
         {
           "path": "registry/blocks/hero/1/announcement.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/announcement.tsx"
         },
         {
           "path": "registry/blocks/hero/1/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/header.tsx"
         },
         {
           "path": "registry/blocks/hero/1/hero.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/hero.tsx"
         },
         {
           "path": "registry/blocks/hero/1/wrapper.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy/hero-1/wrapper.tsx"
         }
       ],
       "meta": {

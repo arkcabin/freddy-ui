@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useScroll, useTransform, motion } from "motion/react";
 import Link from "next/link";
 import { ShadcnIcon } from "@/components/icons";
 import { LogoIcon } from "@/components/logo";
@@ -10,26 +9,16 @@ import { Button } from "@/components/ui/button";
 import { SITE_VERSION } from "@/config/site";
 import { FeaturedIcons } from "./featured-icons";
 import { SectionGrid } from "./section-grid";
-import { useRef } from "react";
 
 /**
  * Hero component for the Freddy UI landing page.
  * Uses the SectionGrid HOC for the "Boxed" architectural layout.
- * Enhanced with Apple-style scroll-linked scale effects.
+ * Optimized for maximum performance by leveraging native CSS animations
+ * instead of JavaScript-based Framer Motion for the initial fold.
  */
 export function Hero() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
   return (
-    <div className="relative" ref={targetRef}>
+    <div className="relative">
       <SectionGrid
         allowOverflow={true}
         aria-label="Hero Section"
@@ -50,47 +39,28 @@ export function Hero() {
         </div>
 
         {/* Content wrapper */}
-        <motion.div
-          className="relative z-10 px-6 md:px-10"
-          style={{ scale, opacity, y }}
-        >
-          {/* Badge */}
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
-            <LogoIcon className="size-3 opacity-60" />
-            <span>Introducing V-{SITE_VERSION}</span>
-            <span className="mx-1 h-2 w-px bg-border/50" />
-            <Link
-              className="group relative flex items-center gap-1.5 overflow-hidden rounded-sm px-2 py-0.5"
-              href="/changelog"
-            >
-              {/* Premium Left-to-Right Fill */}
-              <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
-
-              {/* Text Layer - Explicitly themed for high visibility */}
-              <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background dark:group-hover:text-foreground">
-                Changelog
-                <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
-              </span>
-            </Link>
-          </motion.div>
+        <div className="relative z-10 px-6 md:px-10">
+          {/* Badge & Auth Row */}
+           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/10 px-4 py-1.5 font-extrabold text-[10px] text-muted-foreground/80 uppercase tracking-widest backdrop-blur-md duration-500 fill-mode-both">
+              <LogoIcon className="size-3 opacity-60" />
+              <span>Introducing V-{SITE_VERSION}</span>
+              <span className="mx-1 h-2 w-px bg-border/50" />
+              <Link
+                className="group relative flex items-center gap-1.5 overflow-hidden rounded-sm px-2 py-0.5"
+                href="/changelog"
+              >
+                <span className="absolute inset-0 origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span className="relative z-10 flex items-center gap-1.5 text-foreground/80 transition-colors duration-300 group-hover:text-background text-[10px]">
+                  Changelog
+                  <ArrowUpRight className="size-[10px] stroke-[2.5px]" />
+                </span>
+              </Link>
+            </div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-              type: "spring",
-              stiffness: 100,
-            }}
-          >
+          <h1 className="text-wrap-balance animate-in fade-in slide-in-from-bottom-6 mb-4 max-w-4xl font-extrabold text-4xl text-foreground leading-[1.1] tracking-tightest sm:text-6xl lg:text-7xl duration-1000 delay-200 fill-mode-both will-change-transform">
             Beautiful{" "}
             <ShadcnIcon className="mr-1 inline size-[0.9em] translate-y-[-0.05em]" />{" "}
             <span className="font-medium text-muted-foreground/40">
@@ -101,74 +71,38 @@ export function Hero() {
             <span className="font-semibold text-primary/90 italic">
               Busy & Smart devs.
             </span>
-          </motion.h1>
+          </h1>
 
-          {/* Advanced Word-Stagger Description */}
-          <div className="mb-10 max-w-2xl overflow-hidden">
-            <motion.p
-              animate="visible"
-              className="text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg"
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.04,
-                    delayChildren: 0.4,
-                  },
-                },
-              }}
-            >
-              {"100+ high-fidelity shadcn/ui blocks for React 19 & Next.js 16. Copy, paste, and ship your next big idea today."
-                .split(" ")
-                .map((word, i) => (
-                  <motion.span
-                    className="mr-[0.25em] inline-block last:mr-0"
-                    // biome-ignore lint/suspicious/noArrayIndexKey: Static sentence with word-index combination is appropriate for this stagger animation.
-                    key={`${word}-${i}`}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.2, 0.65, 0.3, 0.9],
-                      type: "spring",
-                      stiffness: 80,
-                    }}
-                    variants={{
-                      hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
-                      visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-                    }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-            </motion.p>
-          </div>
+          {/* Simplified Description */}
+          <p className="animate-in fade-in slide-in-from-bottom-4 mb-10 max-w-2xl text-balance font-medium text-base text-muted-foreground/60 leading-relaxed tracking-tight sm:text-lg duration-1000 delay-400 fill-mode-both will-change-transform">
+            100+&nbsp;high-fidelity shadcn/ui blocks for React 19 & Next.js 16.
+            Copy, paste, and ship your next big idea today.
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-wrap items-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
+          <div className="animate-in fade-in slide-in-from-bottom-8 flex flex-wrap items-center gap-3 duration-1000 delay-600 fill-mode-both">
             <Button
+              asChild
               className="shadow-lg shadow-primary/5 transition-all hover:opacity-90 active:scale-95"
               rounded="full"
               size="hero"
             >
-              Explore
-              <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              <Link href="/blocks">
+                Explore Blocks
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Link>
             </Button>
             <Button
+              asChild
               className="text-muted-foreground/60 transition-all hover:text-foreground"
               rounded="full"
               size="hero"
               variant="ghost"
             >
-              Get full Access
+              <Link href="/pricing">Get Full Access</Link>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         <div className="z-10 mt-12 w-full">
           <FeaturedIcons />

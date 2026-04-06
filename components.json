@@ -19,6 +19,8 @@
     "hooks": "@/hooks"
   },
   "registries": {
+    "@freddy-ui": "http://localhost:3000/r/{name}.json",
+    "@freddy": "https://ui.arkcabin.com/r/{name}.json",
     "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}.json"
   }

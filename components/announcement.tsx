@@ -20,22 +20,24 @@ export function AnnouncementBar({
   }
 
   return (
-    <div className="sticky top-0 z-10 flex h-8 items-center justify-between bg-accent px-4 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.15em] md:px-6">
+    <div className="relative z-10 flex h-8 items-center justify-between bg-accent px-4 font-bold text-[10px] text-muted-foreground uppercase tracking-[0.15em] md:px-6">
       <div className="flex items-center gap-2">
         <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
         <p>
-          Launching <span className="text-foreground">Freddy UI v0.0.1</span> Beta
+          v0.1.0: <span className="text-foreground uppercase tracking-widest font-black">Social Sync</span> is Live
         </p>
       </div>
       <div className="flex items-center gap-4">
         <Link
+          aria-label="Read more about Freddy UI v0.1.0 Social Sync release"
           className="flex items-center gap-1 transition-colors hover:text-foreground"
           href="/changelog"
         >
-          Read More
+          View Changelog
           <ArrowUpRight className="h-2.5 w-2.5" />
         </Link>
         <Button
+          aria-label="Close announcement"
           className="ml-2 transition-all hover:scale-110"
           onClick={onClose}
           size="icon-sm"

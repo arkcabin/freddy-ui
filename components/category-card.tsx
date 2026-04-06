@@ -17,19 +17,16 @@ export function CategoryCard({
   index,
 }: Category & { index: number }) {
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 20 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: index * 0.05,
+    <div
+      className="animate-in fade-in slide-in-from-bottom-4 fill-mode-both"
+      style={{
+        animationDelay: `${index * 40}ms`,
+        animationDuration: "600ms",
       }}
     >
       <Link
         className={cn(
-          "group relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card/30 text-center backdrop-blur-sm transition-all hover:border-border/80 hover:bg-card/50 hover:shadow-xl dark:shadow-black/20"
+          "group relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card/30 text-center backdrop-blur-sm transition-all hover:border-border/80 hover:bg-card/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04),0_0_1px_rgba(0,0,0,0.1)] focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:outline-none dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
         )}
         href={`/blocks/${id}`}
       >
@@ -56,9 +53,9 @@ export function CategoryCard({
           </p>
         </div>
 
-        {/* Subtle glow effect on hover */}
-        <div className="-z-10 absolute inset-0 translate-y-full bg-linear-to-t from-primary/5 to-transparent transition-transform duration-500 group-hover:translate-y-0" />
+        {/* Subtle glow effect on hover: Optimized for Light & Dark mode identity */}
+        <div className="-z-10 absolute inset-0 translate-y-full bg-linear-to-t from-accent/50 to-transparent transition-transform duration-500 group-hover:translate-y-0 dark:from-primary/10" />
       </Link>
-    </motion.div>
+    </div>
   );
 }

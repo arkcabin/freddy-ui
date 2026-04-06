@@ -15,161 +15,161 @@ import { SITE_HOME_URL, SITE_NAME } from "@/config/site";
  * Header
  * Sticky, minimalist navigation with glassmorphism and theme toggle.
  */
-export function MainHeader({
-  isFullWidth,
-  isScrolled: propIsScrolled,
-  isAnnouncementVisible,
-}: {
-  isFullWidth: boolean;
-  isScrolled?: boolean;
-  isAnnouncementVisible?: boolean;
-}) {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const pathname = usePathname();
+export const MainHeader = React.memo(
+  ({
+    isFullWidth,
+    isScrolled: propIsScrolled,
+    isAnnouncementVisible,
+  }: {
+    isFullWidth: boolean;
+    isScrolled?: boolean;
+    isAnnouncementVisible?: boolean;
+  }) => {
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = React.useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+    const pathname = usePathname();
 
-  const breadcrumbs = pathname
-    .split("/")
-    .filter(Boolean)
-    .map((path, index, array) => ({
-      name: path.charAt(0).toUpperCase() + path.slice(1),
-      item: `${SITE_HOME_URL}/${array.slice(0, index + 1).join("/")}`,
-    }));
+    const breadcrumbs = pathname
+      .split("/")
+      .filter(Boolean)
+      .map((path, index, array) => ({
+        name: path.charAt(0).toUpperCase() + path.slice(1),
+        item: `${SITE_HOME_URL}/${array.slice(0, index + 1).join("/")}`,
+      }));
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_HOME_URL,
-      },
-      ...breadcrumbs.map((crumb, index) => ({
-        "@type": "ListItem",
-        position: index + 2,
-        name: crumb.name,
-        item: crumb.item,
-      })),
-    ],
-  };
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_HOME_URL,
+        },
+        ...breadcrumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 2,
+          name: crumb.name,
+          item: crumb.item,
+        })),
+      ],
+    };
 
-  React.useEffect(() => {
-    setMounted(true);
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    React.useEffect(() => {
+      setMounted(true);
+    }, []);
 
-  // Sync scroll state with prop if provided, else use local
-  const activeScrolled = mounted ? propIsScrolled ?? scrolled : false;
+    // Sync scroll state with prop (Optimized: No local scroll listener needed)
+    const activeScrolled = mounted ? propIsScrolled ?? false : false;
 
-  return (
-    <header
-      className={cn(
-        "sticky z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500",
-        isAnnouncementVisible ? "top-8" : "top-0",
-        activeScrolled
-          ? "bg-transparent"
-          : "bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
-      )}
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
-      <div
+    return (
+      <header
         className={cn(
-          "relative mx-auto flex min-h-12 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:min-h-14 md:px-6",
-          activeScrolled ? "border-transparent" : "border-border border-x"
+          "sticky top-0 z-100 w-full transition-[background-color,border-color,backdrop-filter] duration-500 will-change-[transform,opacity]",
+          activeScrolled
+            ? "bg-transparent"
+            : "border-transparent bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]"
         )}
       >
-        {!activeScrolled && (
-          <>
-            {/* Vertical Dual (Left/Right) - Added back as requested */}
-            <div className="-left-[40px] pointer-events-none absolute inset-y-0 border-border border-l border-dashed" />
-            <div className="-right-[40px] pointer-events-none absolute inset-y-0 border-border border-r border-dashed" />
-          </>
-        )}
-
-        {/* Logo & Branding */}
-        <Link
-          className="group flex items-center outline-none"
-          href="/"
-          prefetch={false}
-        >
-          <div
-            className={cn(
-              "flex items-center gap-1 rounded-full transition-all duration-300",
-              activeScrolled
-                ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
-                : "px-2"
-            )}
-          >
-            <Logo />
-            <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
-              Beta
-            </span>
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-2 md:gap-6">
-          <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
-            <SiteNav />
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Button
-              className="group relative rounded-full shadow-[0_0_0_rgba(var(--primary),0)] ring-1 ring-border/50 transition-all hover:bg-primary/5 hover:shadow-[0_0_20px_rgba(var(--primary),0.15)] hover:ring-primary/40 active:scale-95"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              size="icon"
-              title="Toggle Theme"
-              variant="ghost"
-            >
-              <Asterisk className="h-5 w-5 animate-[spin_15s_linear_infinite] text-muted-foreground transition-all duration-500 group-hover:rotate-180 group-hover:text-primary" />
-              <span className="absolute inset-0 rounded-full bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
-            </Button>
-
-            {/* Mobile Menu Toggle */}
-            <Button
-              className="group md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              size="icon"
-              variant="ghost"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5 transition-transform group-hover:rotate-90" />
-              ) : (
-                <Menu className="h-5 w-5 transition-transform group-hover:scale-110" />
-              )}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {/* Architectural Grid Frame - Integrated directly into the header for sticky support */}
         <div
           className={cn(
-            "fixed inset-x-0 bottom-0 z-40 bg-background/98 p-4 backdrop-blur-2xl md:hidden",
-            isAnnouncementVisible ? "top-[88px]" : "top-14"
+            "relative mx-auto flex min-h-12 w-full max-w-6xl items-center justify-between border-dashed px-4 transition-[border-color,padding] duration-500 md:min-h-14 md:px-6",
+            activeScrolled ? "border-transparent" : "border-border border-x"
           )}
         >
-          <div className="flex flex-col gap-6">
-            <SiteNav isMobile />
-            <div className="h-px w-full bg-border/50 border-dashed" />
-            <div className="flex flex-col gap-4">
-              <Button className="w-full rounded-xl shadow-lg" size="lg">
-                Get full Access
+          {!activeScrolled && (
+            <>
+              {/* Vertical Dual (Left/Right) - Added back as requested */}
+              <div className="-left-[40px] pointer-events-none absolute inset-y-0 border-border border-l border-dashed" />
+              <div className="-right-[40px] pointer-events-none absolute inset-y-0 border-border border-r border-dashed" />
+            </>
+          )}
+
+          {/* Logo & Branding */}
+          <Link
+            aria-label="Freddy UI Home"
+            className="group flex items-center outline-none"
+            href="/"
+            prefetch={false}
+          >
+            <div
+              className={cn(
+                "flex items-center gap-1 rounded-full transition-all duration-300",
+                activeScrolled
+                  ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
+                  : "px-2"
+              )}
+            >
+              <Logo />
+              <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+                Beta
+              </span>
+            </div>
+          </Link>
+
+          <div className="flex items-center gap-2 md:gap-6">
+            <div className="hidden rounded-full border border-border bg-secondary/30 p-1 backdrop-blur-md md:block">
+              <SiteNav />
+            </div>
+
+            <div className="flex items-center gap-4">
+              <Button
+                aria-label="Toggle Theme"
+                className="group relative rounded-full shadow-[0_0_0_rgba(var(--primary),0)] ring-1 ring-border/50 transition-all hover:bg-primary/5 hover:shadow-[0_0_20px_rgba(var(--primary),0.15)] hover:ring-primary/40 active:scale-95"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                size="icon"
+                title="Toggle Theme"
+                variant="ghost"
+              >
+                <Asterisk className="h-5 w-5 animate-[spin_15s_linear_infinite] text-muted-foreground transition-all duration-500 group-hover:rotate-180 group-hover:text-primary" />
+                <span className="absolute inset-0 rounded-full bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
+              </Button>
+
+              {/* Mobile Menu Toggle */}
+              <Button
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                className="group md:hidden"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                size="icon"
+                variant="ghost"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-5 w-5 transition-transform group-hover:rotate-90" />
+                ) : (
+                  <Menu className="h-5 w-5 transition-transform group-hover:scale-110" />
+                )}
               </Button>
             </div>
           </div>
         </div>
-      )}
-    </header>
-  );
-}
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div
+            className={cn(
+              "fixed inset-x-0 bottom-0 z-40 bg-background/98 p-4 backdrop-blur-2xl md:hidden",
+              isAnnouncementVisible ? "top-[88px]" : "top-14"
+            )}
+          >
+            <div className="flex flex-col gap-6">
+              <SiteNav isMobile />
+              <div className="h-px w-full bg-border/50 border-dashed" />
+              <div className="flex flex-col gap-4">
+                <Button className="w-full rounded-xl shadow-lg" size="lg">
+                  Get Full Access
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+    );
+  }
+);
