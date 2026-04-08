@@ -11,8 +11,8 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "npx prisma generate",
     "build": "next build --turbopack",
-    "postinstall": "npx prisma generate",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
