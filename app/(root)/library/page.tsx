@@ -27,7 +27,7 @@ export default async function LibraryPage() {
     select: { blockName: true },
   });
 
-  const likedBlockNames = userLikes.map((l) => l.blockName);
+  const likedBlockNames = userLikes.map((l: { blockName: string }) => l.blockName);
   
   // Cross-reference with our central registry
   const bookmarkedBlocks = (registry.items as Block[]).filter((b) => likedBlockNames.includes(b.name));
