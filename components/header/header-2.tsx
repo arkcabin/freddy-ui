@@ -182,8 +182,8 @@ export const MainHeader = React.memo(
 
               <div
                 className={cn(
-                  "absolute inset-x-3 overflow-hidden rounded-[28px] border border-border/70 bg-background/96 shadow-2xl shadow-black/20",
-                  isAnnouncementVisible ? "top-[88px] bottom-3" : "top-16 bottom-3"
+                  "absolute inset-x-0 overflow-hidden border-y border-border/70 bg-background/96 shadow-2xl shadow-black/20 md:inset-x-3 md:bottom-3 md:rounded-[28px] md:border md:top-auto",
+                  isAnnouncementVisible ? "top-[88px]" : "top-14"
                 )}
                 role="dialog"
                 aria-modal="true"
