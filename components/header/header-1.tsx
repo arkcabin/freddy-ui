@@ -3,12 +3,11 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { MY_HANDLE, SITE_NAME } from "@/config/site";
+import { SITE_NAME } from "@/config/site";
 import { SiteNav } from "./nav";
 import { usePathname } from "next/navigation";
 
@@ -49,16 +48,6 @@ export function SiteHeader() {
           <div className="hidden md:flex">
             <SiteNav />
           </div>
-
-          <Button asChild className="hidden md:inline-flex" size="icon-sm" variant="dashed">
-            <Link
-              aria-label="github"
-              href={`https://github.com/${MY_HANDLE}/freddy-ui`}
-              target="_blank"
-            >
-              <GithubIcon className="size-4.5" />
-            </Link>
-          </Button>
           <ThemeToggle />
           <Button
             aria-controls="mobile-menu"
@@ -114,18 +103,6 @@ export function SiteHeader() {
                 </div>
 
                 <SiteNav isMobile />
-
-                <div className="mt-auto flex items-center justify-between border-border/60 border-t pt-4">
-                  <Button asChild size="icon-sm" variant="dashed">
-                    <Link
-                      aria-label="github"
-                      href={`https://github.com/${MY_HANDLE}/freddy-ui`}
-                      target="_blank"
-                    >
-                      <GithubIcon className="size-4.5" />
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>,
