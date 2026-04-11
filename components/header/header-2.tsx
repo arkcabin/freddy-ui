@@ -113,23 +113,14 @@ export const MainHeader = React.memo(
           {/* Logo & Branding */}
           <Link
             aria-label="Freddy UI Home"
-            className="group flex items-center outline-none"
+            className="group inline-flex items-center gap-2 rounded-full border border-border/70 bg-secondary/30 px-3 py-1.5 shadow-sm outline-none transition-all duration-300 hover:bg-secondary/40 hover:shadow-md"
             href="/"
             prefetch={false}
           >
-            <div
-              className={cn(
-                "flex items-center gap-1 rounded-full transition-all duration-300",
-                activeScrolled
-                  ? "bg-secondary/40 p-1.5 ring-1 ring-border/20 backdrop-blur-md"
-                  : "px-2"
-              )}
-            >
-              <Logo />
-              <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
-                Beta
-              </span>
-            </div>
+            <Logo className="h-5 w-auto" />
+            <span className="inline-flex h-4 -translate-y-0.5 items-center justify-center rounded-full bg-primary/10 px-2 py-px font-black text-[6px] text-primary uppercase leading-none tracking-widest ring-1 ring-primary/20 ring-inset">
+              Beta
+            </span>
           </Link>
 
           <div className="flex items-center gap-2 md:gap-6">
