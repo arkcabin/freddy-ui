@@ -1,9 +1,11 @@
 "use client";
 
-import { Asterisk, Menu, X } from "lucide-react";
+import { Asterisk } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
+import { createPortal } from "react-dom";
 import { Logo } from "@/components/logo";
+import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SiteNav } from "./nav";
@@ -60,6 +62,22 @@ export const MainHeader = React.memo(
     React.useEffect(() => {
       setMounted(true);
     }, []);
+
+    React.useEffect(() => {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [mobileMenuOpen]);
+
+    React.useEffect(() => {
+      setMobileMenuOpen(false);
+    }, [pathname]);
 
     // Sync scroll state with prop (Optimized: No local scroll listener needed)
     const activeScrolled = mounted ? propIsScrolled ?? false : false;
@@ -135,40 +153,79 @@ export const MainHeader = React.memo(
               {/* Mobile Menu Toggle */}
               <Button
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-controls="mobile-menu"
+                aria-expanded={mobileMenuOpen}
                 className="group md:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 size="icon"
                 variant="ghost"
+                type="button"
               >
-                {mobileMenuOpen ? (
-                  <X className="h-5 w-5 transition-transform group-hover:rotate-90" />
-                ) : (
-                  <Menu className="h-5 w-5 transition-transform group-hover:scale-110" />
-                )}
+                <MenuToggleIcon className="size-5" duration={300} open={mobileMenuOpen} />
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        {mobileMenuOpen && (
-          <div
-            className={cn(
-              "fixed inset-x-0 bottom-0 z-40 bg-background/98 p-4 backdrop-blur-2xl md:hidden",
-              isAnnouncementVisible ? "top-[88px]" : "top-14"
-            )}
-          >
-            <div className="flex flex-col gap-6">
-              <SiteNav isMobile />
-              <div className="h-px w-full bg-border/50 border-dashed" />
-              <div className="flex flex-col gap-4">
-                <Button className="w-full rounded-xl shadow-lg" size="lg">
-                  Get Full Access
-                </Button>
+        {mobileMenuOpen && typeof window !== "undefined"
+          ? createPortal(
+            <div
+              className="fixed inset-0 z-[120] md:hidden"
+              id="mobile-menu"
+            >
+              <button
+                aria-label="Close menu"
+                className="absolute inset-0 cursor-default bg-background/72 backdrop-blur-sm"
+                onClick={() => setMobileMenuOpen(false)}
+                type="button"
+              />
+
+              <div
+                className={cn(
+                  "absolute inset-x-3 overflow-hidden rounded-[28px] border border-border/70 bg-background/96 shadow-2xl shadow-black/20",
+                  isAnnouncementVisible ? "top-[88px] bottom-3" : "top-16 bottom-3"
+                )}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Mobile navigation menu"
+              >
+                <div className="flex h-full flex-col">
+                  <div className="flex items-center justify-between border-border/60 border-b px-4 py-4">
+                    <div className="flex flex-col">
+                      <span className="font-black text-[10px] text-muted-foreground uppercase tracking-[0.24em]">
+                        Freddy UI
+                      </span>
+                      <span className="font-semibold text-sm text-foreground/80">
+                        Menu
+                      </span>
+                    </div>
+                    <Button
+                      aria-label="Close menu"
+                      className="h-9 w-9 rounded-full"
+                      onClick={() => setMobileMenuOpen(false)}
+                      size="icon"
+                      type="button"
+                      variant="ghost"
+                    >
+                      <MenuToggleIcon className="size-4" duration={300} open={true} />
+                    </Button>
+                  </div>
+
+                  <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 py-5">
+                    <SiteNav isMobile />
+
+                    <div className="mt-auto space-y-3 border-border/60 border-t pt-5">
+                      <Button className="h-11 w-full rounded-xl font-semibold shadow-lg shadow-primary/10" size="lg">
+                        Get Full Access
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </div>,
+            document.body
+          )
+          : null}
       </header>
     );
   }
