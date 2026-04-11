@@ -3,7 +3,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { GithubIcon, XIcon } from "@/components/icons";
+import { GithubIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -52,20 +52,11 @@ export function SiteHeader() {
 
           <Button asChild className="hidden md:inline-flex" size="icon-sm" variant="dashed">
             <Link
-              aria-label="x/twitter"
-              href={`https://x.com/${MY_HANDLE}`}
-              target="_blank"
-            >
-              <XIcon />
-            </Link>
-          </Button>
-          <Button asChild className="hidden md:inline-flex" size="icon-sm" variant="dashed">
-            <Link
               aria-label="github"
               href={`https://github.com/${MY_HANDLE}/freddy-ui`}
               target="_blank"
             >
-              <GithubIcon />
+              <GithubIcon className="size-4.5" />
             </Link>
           </Button>
           <ThemeToggle />
@@ -127,20 +118,11 @@ export function SiteHeader() {
                 <div className="mt-auto flex items-center justify-between border-border/60 border-t pt-4">
                   <Button asChild size="icon-sm" variant="dashed">
                     <Link
-                      aria-label="x/twitter"
-                      href={`https://x.com/${MY_HANDLE}`}
-                      target="_blank"
-                    >
-                      <XIcon />
-                    </Link>
-                  </Button>
-                  <Button asChild size="icon-sm" variant="dashed">
-                    <Link
                       aria-label="github"
                       href={`https://github.com/${MY_HANDLE}/freddy-ui`}
                       target="_blank"
                     >
-                      <GithubIcon />
+                      <GithubIcon className="size-4.5" />
                     </Link>
                   </Button>
                 </div>

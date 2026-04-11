@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/header/header-1";
+import { SiteFooter } from "@/components/footer";
 import { cn } from "@/lib/utils";
 
 export default function AppLayout({ children }: LayoutProps<"/">) {
@@ -14,6 +15,7 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
       >
         {children}
       </main>
+      <SiteFooter />
     </div>
   );
 }
