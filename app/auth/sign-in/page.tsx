@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+import Link from "next/link";
 import { Github, Chrome, Loader2 } from "lucide-react";
 import { Logo, LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
@@ -109,6 +110,15 @@ export default function SignInPage() {
                 Privacy Policy
               </a>
             </span>
+          </p>
+          <p className="mt-6 text-center text-muted-foreground text-sm">
+            Need an account?{" "}
+            <Link
+              className="font-semibold text-foreground hover:underline"
+              href="/auth/sign-up"
+            >
+              Create one
+            </Link>
           </p>
         </div>
       </div>
