@@ -29,6 +29,7 @@
     "@prisma/client": "7.6.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-hover-card": "^1.2.1",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-separator": "^1.1.8",

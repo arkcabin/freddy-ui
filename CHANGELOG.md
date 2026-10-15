@@ -14,6 +14,11 @@ All notable changes to **Freddy UI** will be documented in this file.
 * **db:** Prisma 7 & PostgreSQL database layer integration
 * **api:** automatic API-level rate limiting
 
+### Contributors
+
+* @arkcabin (Ark Cabin)
+* @VartikAnand (Vartik Anand)
+
 ## [0.0.1] - 2026-03-29
 
 ### Features
@@ -28,4 +33,9 @@ All notable changes to **Freddy UI** will be documented in this file.
 * **responsive:** full mobile-first responsive layout adaptation
 * **theme:** native dark mode and high-contrast styling
 * **build:** zero-delay Turbopack builds and Biome linting
+
+### Contributors
+
+* @arkcabin (Ark Cabin)
+
 

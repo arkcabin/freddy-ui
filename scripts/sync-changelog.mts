@@ -2,6 +2,13 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
+type ParsedContributor = {
+  name: string;
+  username: string;
+  avatarUrl: string;
+  profileUrl: string;
+};
+
 type ParsedGroup = {
   category: string;
   items: string[];
@@ -11,6 +18,7 @@ type ParsedRelease = {
   version: string;
   dateStr: string;
   groups: ParsedGroup[];
+  contributors: ParsedContributor[];
 };
 
 const VERSION_REGEX =
@@ -20,6 +28,7 @@ const LIST_BULLET_REGEX = /^[*-]\s+/;
 const COMMIT_HASH_REGEX = /\[([a-f0-9]{7,})\]\([^)]+\)/gi;
 const COMMIT_HASH_PAREN_REGEX = /\(\[[a-f0-9]{7,}\]\([^)]+\)\)/gi;
 const BOLD_REGEX = /\*\*(.*?)\*\*/g;
+const CONTRIBUTOR_HANDLE_REGEX = /@([a-zA-Z0-9_-]+)(?:\s*\(([^)]+)\))?/;
 
 function formatDate(isoDate: string): string {
   try {
@@ -51,60 +60,129 @@ function cleanItemText(line: string): string {
     .trim();
 }
 
+function parseContributorLine(line: string): ParsedContributor | null {
+  const match = line.match(CONTRIBUTOR_HANDLE_REGEX);
+  if (!match) {
+    return null;
+  }
+  const username = match[1];
+  const name = match[2] || username;
+  return {
+    name,
+    username,
+    avatarUrl: `https://github.com/${username}.png`,
+    profileUrl: `https://github.com/${username}`,
+  };
+}
+
+function parseVersionHeader(line: string): ParsedRelease | null {
+  const match = line.match(VERSION_REGEX);
+  if (!match) {
+    return null;
+  }
+  return {
+    version: match[1],
+    dateStr: formatDate(match[2]),
+    groups: [],
+    contributors: [],
+  };
+}
+
+type ParserState = {
+  isParsingContributors: boolean;
+  currentGroup: ParsedGroup | null;
+};
+
+function handleCategoryHeader(line: string, state: ParserState): void {
+  const cat = line.replace(CATEGORY_REGEX, "").trim();
+  if (cat.toLowerCase().includes("contributor")) {
+    state.isParsingContributors = true;
+    state.currentGroup = null;
+    return;
+  }
+  state.isParsingContributors = false;
+  state.currentGroup = {
+    category: cat,
+    items: [],
+  };
+}
+
+function handleBulletItem(
+  line: string,
+  release: ParsedRelease,
+  state: ParserState
+): void {
+  if (state.isParsingContributors) {
+    const contributor = parseContributorLine(line);
+    if (
+      contributor &&
+      !release.contributors.some(
+        (c) => c.username.toLowerCase() === contributor.username.toLowerCase()
+      )
+    ) {
+      release.contributors.push(contributor);
+    }
+    return;
+  }
+
+  if (state.currentGroup) {
+    const itemText = cleanItemText(line);
+    if (itemText) {
+      state.currentGroup.items.push(itemText);
+    }
+  }
+}
+
 function parseChangelog(markdown: string): ParsedRelease[] {
   const releases: ParsedRelease[] = [];
   const lines = markdown.split("\n");
 
   let currentRelease: ParsedRelease | null = null;
-  let currentGroup: ParsedGroup | null = null;
-
-  const flushGroup = () => {
-    if (currentGroup && currentRelease) {
-      currentRelease.groups.push(currentGroup);
-      currentGroup = null;
-    }
+  const state: ParserState = {
+    isParsingContributors: false,
+    currentGroup: null,
   };
 
-  const flushRelease = () => {
-    flushGroup();
-    if (currentRelease) {
-      releases.push(currentRelease);
-      currentRelease = null;
+  const flush = () => {
+    if (state.currentGroup && currentRelease) {
+      currentRelease.groups.push(state.currentGroup);
+      state.currentGroup = null;
     }
   };
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
-
-    const versionMatch = line.match(VERSION_REGEX);
-    if (versionMatch) {
-      flushRelease();
-      currentRelease = {
-        version: versionMatch[1],
-        dateStr: formatDate(versionMatch[2]),
-        groups: [],
-      };
-      continue;
-    }
-
-    if (currentRelease && line.startsWith("### ")) {
-      flushGroup();
-      currentGroup = {
-        category: line.replace(CATEGORY_REGEX, "").trim(),
-        items: [],
-      };
-      continue;
-    }
-
-    if (currentGroup && (line.startsWith("* ") || line.startsWith("- "))) {
-      const itemText = cleanItemText(line);
-      if (itemText) {
-        currentGroup.items.push(itemText);
+    const newRelease = parseVersionHeader(line);
+    if (newRelease) {
+      flush();
+      if (currentRelease) {
+        releases.push(currentRelease);
       }
+      currentRelease = newRelease;
+      state.isParsingContributors = false;
+      continue;
+    }
+
+    if (!currentRelease) {
+      continue;
+    }
+
+    if (line.startsWith("### ")) {
+      flush();
+      handleCategoryHeader(line, state);
+      continue;
+    }
+
+    if (line.startsWith("* ") || line.startsWith("- ")) {
+      handleBulletItem(line, currentRelease, state);
     }
   }
 
-  flushRelease();
+  flush();
+  if (currentRelease) {
+    releases.push(currentRelease);
+  }
+
   return releases;
 }
 
@@ -144,12 +222,17 @@ function generateReleaseEntryCode(rel: ParsedRelease, index: number): string {
     })
     .join(",\n");
 
+  const contributorsCode =
+    rel.contributors.length > 0
+      ? `\n    contributors: ${JSON.stringify(rel.contributors, null, 6)},`
+      : "";
+
   return `  {
     version: "${rel.version}",
     title: "${title}",
     date: "${rel.dateStr}",
     status: "${status}",
-    description: "${description}",
+    description: "${description}",${contributorsCode}
     groups: [
 ${groupsCode}
     ],
@@ -187,6 +270,13 @@ async function syncChangelog() {
 import { Rocket, Sparkles, Zap } from "lucide-react";
 import type { ReactNode } from "react";
 
+export type ChangelogContributor = {
+  name: string;
+  username: string;
+  avatarUrl: string;
+  profileUrl: string;
+};
+
 export type ChangelogGroup = {
   category: string;
   icon: ReactNode;
@@ -199,6 +289,7 @@ export type ChangelogEntry = {
   date: string;
   status: "Latest" | "Stable" | "Legacy";
   description: string;
+  contributors?: ChangelogContributor[];
   groups: ChangelogGroup[];
 };
 

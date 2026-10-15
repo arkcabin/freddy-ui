@@ -4,6 +4,13 @@
 import { Rocket, Sparkles, Zap } from "lucide-react";
 import type { ReactNode } from "react";
 
+export type ChangelogContributor = {
+  name: string;
+  username: string;
+  avatarUrl: string;
+  profileUrl: string;
+};
+
 export type ChangelogGroup = {
   category: string;
   icon: ReactNode;
@@ -16,6 +23,7 @@ export type ChangelogEntry = {
   date: string;
   status: "Latest" | "Stable" | "Legacy";
   description: string;
+  contributors?: ChangelogContributor[];
   groups: ChangelogGroup[];
 };
 
@@ -26,6 +34,20 @@ export const CHANGELOG_DATA: ChangelogEntry[] = [
     date: "April 5, 2026",
     status: "Latest",
     description: "Updates and improvements shipped in Freddy UI v0.1.0.",
+    contributors: [
+      {
+        name: "Ark Cabin",
+        username: "arkcabin",
+        avatarUrl: "https://github.com/arkcabin.png",
+        profileUrl: "https://github.com/arkcabin",
+      },
+      {
+        name: "Vartik Anand",
+        username: "VartikAnand",
+        avatarUrl: "https://github.com/VartikAnand.png",
+        profileUrl: "https://github.com/VartikAnand",
+      },
+    ],
     groups: [
       {
         category: "Features",
@@ -51,6 +73,14 @@ export const CHANGELOG_DATA: ChangelogEntry[] = [
     date: "March 29, 2026",
     status: "Stable",
     description: "Updates and improvements shipped in Freddy UI v0.0.1.",
+    contributors: [
+      {
+        name: "Ark Cabin",
+        username: "arkcabin",
+        avatarUrl: "https://github.com/arkcabin.png",
+        profileUrl: "https://github.com/arkcabin",
+      },
+    ],
     groups: [
       {
         category: "Features",
