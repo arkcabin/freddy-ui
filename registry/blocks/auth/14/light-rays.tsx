@@ -1,6 +1,12 @@
 "use client";
 
-import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import * as THREE from "three";
 
 type AnimationConfig = {
@@ -41,10 +47,7 @@ type RaysProps = {
 const RAY_Y_POSITION_1 = -0.4;
 const RAY_Y_POSITION_2 = -0.5;
 
-function scaleValue(
-  value: number,
-  targetMax: number
-): number {
+function scaleValue(value: number, targetMax: number): number {
   return (value / 100) * targetMax;
 }
 
@@ -112,7 +115,7 @@ export function LightRays({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container || !isMounted) {
+    if (!(container && isMounted)) {
       return;
     }
 
@@ -152,7 +155,7 @@ export function LightRays({
         u_intensity: { value: scaleValue(intensity, 0.5) },
         u_rays: { value: scaleValue(rays, 0.3) },
         u_reach: { value: scaleValue(reach, 0.5) },
-        u_time: { value: Math.random() * 10000 },
+        u_time: { value: Math.random() * 10_000 },
         u_mouse: { value: [0, 0] },
         u_resolution: {
           value: [container.clientWidth, container.clientHeight],
@@ -190,11 +193,8 @@ export function LightRays({
       const delta = time - lastTime;
       lastTime = time;
 
-      if (mesh.material instanceof THREE.ShaderMaterial) {
-        if (anim.animate) {
-          mesh.material.uniforms.u_time.value +=
-            (delta * anim.speed) / 1000 / 10;
-        }
+      if (mesh.material instanceof THREE.ShaderMaterial && anim.animate) {
+        mesh.material.uniforms.u_time.value += (delta * anim.speed) / 1000 / 10;
       }
 
       renderer.render(scene, camera);
@@ -204,10 +204,11 @@ export function LightRays({
     frameIdRef.current = requestAnimationFrame(animate);
 
     const handleResize = () => {
-      if (!container || !renderer || !camera) {
+      if (!(container && renderer && camera)) {
         return;
       }
-      camera.aspect = container.clientWidth / Math.max(container.clientHeight, 1);
+      camera.aspect =
+        container.clientWidth / Math.max(container.clientHeight, 1);
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
       if (mesh.material instanceof THREE.ShaderMaterial) {

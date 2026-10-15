@@ -1,7 +1,13 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 type PatternShape = "Checks" | "Stripes" | "Edge";
 
@@ -201,30 +207,30 @@ type AnimatedGradientProps = {
   className?: string;
 };
 
-function resolveGradientParams(
-  config: GradientConfig,
+function resolveCustomParams(config: CustomConfig): PresetParams {
+  return {
+    color1: config.color1,
+    color2: config.color2,
+    color3: config.color3,
+    rotation: config.rotation ?? 0,
+    proportion: config.proportion ?? 35,
+    scale: config.scale ?? 1,
+    speed: config.speed ?? 25,
+    distortion: config.distortion ?? 12,
+    swirl: config.swirl ?? 80,
+    swirlIterations: config.swirlIterations ?? 10,
+    softness: config.softness ?? 100,
+    offset: config.offset ?? 0,
+    shape: config.shape ?? "Checks",
+    shapeSize: config.shapeSize ?? 10,
+  };
+}
+
+function resolvePresetParams(
+  config: PresetConfig,
   isMounted: boolean,
   resolvedTheme?: string
 ): PresetParams {
-  if (config.preset === "custom") {
-    return {
-      color1: config.color1,
-      color2: config.color2,
-      color3: config.color3,
-      rotation: config.rotation ?? 0,
-      proportion: config.proportion ?? 35,
-      scale: config.scale ?? 1,
-      speed: config.speed ?? 25,
-      distortion: config.distortion ?? 12,
-      swirl: config.swirl ?? 80,
-      swirlIterations: config.swirlIterations ?? 10,
-      softness: config.softness ?? 100,
-      offset: config.offset ?? 0,
-      shape: config.shape ?? "Checks",
-      shapeSize: config.shapeSize ?? 10,
-    };
-  }
-
   const preset = presets[config.preset] || presets.Vortex;
   const useLight = isMounted && resolvedTheme === "light" && preset.lightColors;
   return {
@@ -232,6 +238,17 @@ function resolveGradientParams(
     ...(useLight ? preset.lightColors : null),
     speed: config.speed ?? preset.speed,
   };
+}
+
+function resolveGradientParams(
+  config: GradientConfig,
+  isMounted: boolean,
+  resolvedTheme?: string
+): PresetParams {
+  if (config.preset === "custom") {
+    return resolveCustomParams(config);
+  }
+  return resolvePresetParams(config, isMounted, resolvedTheme);
 }
 
 export function AnimatedGradient({
@@ -262,7 +279,7 @@ export function AnimatedGradient({
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
-    if (!canvas || !container || !isMounted) {
+    if (!(canvas && container && isMounted)) {
       return;
     }
 
@@ -302,7 +319,8 @@ export function AnimatedGradient({
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
-    gl["useProgram"](program);
+    const bindProgram = gl.useProgram;
+    bindProgram.call(gl, program);
 
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
