@@ -78,31 +78,6 @@
       "tier": "free"
     },
     {
-      "name": "auth-13",
-      "description": "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
-      "registryDependencies": [
-        "button",
-        "input"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/auth/13/auth-page.tsx",
-          "type": "registry:component",
-          "target": "components/freddy-ui/auth-13/auth-page.tsx"
-        }
-      ],
-      "meta": {
-        "height": "100vh",
-        "isPinned": true,
-        "createdAt": "2026-10-15"
-      },
-      "categories": [
-        "auth"
-      ],
-      "type": "registry:block",
-      "tier": "free"
-    },
-    {
       "name": "announcement-1",
       "description": "Animated announcement bar with call-to-action and close button.",
       "dependencies": [
@@ -1108,6 +1083,81 @@
         "height": "800px",
         "isPinned": true,
         "createdAt": "2024-03-27"
+      },
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-13",
+      "description": "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/13/auth-page.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-13/auth-page.tsx"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-13/logo.tsx"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-10-15"
+      },
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-14",
+      "description": "Vanguard double-bezel auth card with WebAuthn passkey scanning, magic link toggle, and enterprise SSO.",
+      "dependencies": [
+        "motion",
+        "three"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/14/auth-card.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-14/auth-card.tsx"
+        },
+        {
+          "path": "registry/blocks/auth/14/animated-gradient.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-14/animated-gradient.tsx"
+        },
+        {
+          "path": "registry/blocks/auth/14/light-rays.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-14/light-rays.tsx"
+        },
+        {
+          "path": "components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-14/logo.tsx"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-10-15"
       },
       "categories": [
         "auth"

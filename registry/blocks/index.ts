@@ -57,26 +57,6 @@ export const blocks: FreddyRegistryItem[] = [
     categories: ["auth"],
   },
   {
-    name: "auth-13",
-    type: "registry:block",
-    description:
-      "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
-    registryDependencies: ["button", "input"],
-    files: [
-      {
-        path: "blocks/auth/13/auth-page.tsx",
-        target: "components/freddy-ui/auth-13/auth-page.tsx",
-        type: "registry:component",
-      },
-    ],
-    categories: ["auth"],
-    meta: {
-      height: "100vh",
-      isPinned: true,
-      createdAt: "2026-10-15",
-    },
-  },
-  {
     name: "announcement-1",
     type: "registry:block",
     description:
@@ -890,6 +870,67 @@ export const blocks: FreddyRegistryItem[] = [
       height: "800px",
       isPinned: true,
       createdAt: "2024-03-27",
+    },
+  },
+  {
+    name: "auth-13",
+    type: "registry:block",
+    description:
+      "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/auth/13/auth-page.tsx",
+        target: "components/freddy-ui/auth-13/auth-page.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-13/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-10-15",
+    },
+  },
+  {
+    name: "auth-14",
+    type: "registry:block",
+    description:
+      "Vanguard double-bezel auth card with WebAuthn passkey scanning, magic link toggle, and enterprise SSO.",
+    dependencies: ["motion", "three"],
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth/14/auth-card.tsx",
+        target: "components/freddy-ui/auth-14/auth-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/auth/14/animated-gradient.tsx",
+        target: "components/freddy-ui/auth-14/animated-gradient.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/auth/14/light-rays.tsx",
+        target: "components/freddy-ui/auth-14/light-rays.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "@/components/logo.tsx",
+        target: "components/freddy-ui/auth-14/logo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-10-15",
     },
   },
   {

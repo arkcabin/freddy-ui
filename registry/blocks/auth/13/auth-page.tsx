@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, Eye, EyeOff, LockKeyhole, Sparkles } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, LockKeyhole } from "lucide-react";
 import { useState } from "react";
+import { LogoIcon } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,10 +18,8 @@ export function AuthPage() {
         <div className="absolute right-[8%] bottom-[8%] size-56 rounded-full border border-background/10" />
 
         <div className="relative z-10 flex items-center gap-3 font-semibold text-sm tracking-tight">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-background text-foreground">
-            <Sparkles className="size-4" />
-          </span>
-          Northstar
+          <LogoIcon className="size-8" />
+          <span className="font-bold font-heading text-base">Freddy UI</span>
         </div>
 
         <div className="relative z-10 max-w-xl space-y-8">
@@ -57,14 +56,14 @@ export function AuthPage() {
       <section className="flex min-h-screen items-center justify-center px-5 py-12 sm:px-8 lg:px-12">
         <div className="w-full max-w-md">
           <div className="mb-10 space-y-3">
-            <div className="mb-8 flex size-10 items-center justify-center rounded-xl bg-foreground text-background lg:hidden">
-              <Sparkles className="size-4" />
+            <div className="mb-8 flex lg:hidden">
+              <LogoIcon className="size-9" />
             </div>
             <p className="font-mono text-muted-foreground text-xs uppercase tracking-[0.2em]">
               Welcome back
             </p>
             <h2 className="font-heading text-3xl tracking-tight sm:text-4xl">
-              Sign in to Northstar
+              Sign in to Freddy UI
             </h2>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Enter your details to continue to your workspace.
@@ -142,7 +141,7 @@ export function AuthPage() {
             <span>Your information is encrypted and secure.</span>
           </div>
           <p className="mt-8 text-center text-muted-foreground text-sm">
-            New to Northstar?{" "}
+            New to Freddy UI?{" "}
             <a
               className="font-semibold text-foreground hover:underline"
               href="#"
