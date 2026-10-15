@@ -17,6 +17,7 @@
     "lint": "biome check",
     "format": "biome format --write",
     "b:r": "npx tsx ./scripts/build-registry.mts && npx shadcn build",
+    "sync:changelog": "npx tsx ./scripts/sync-changelog.mts",
     "boneyard": "npx boneyard-js build"
   },
   "dependencies": {
