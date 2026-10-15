@@ -29,11 +29,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/1/auth-page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-1/auth-page.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-1/logo.tsx"
         }
       ],
       "categories": [
@@ -55,17 +57,45 @@
       "files": [
         {
           "path": "registry/blocks/auth/2/auth-page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-2/auth-page.tsx"
         },
         {
           "path": "registry/blocks/auth/2/floating-paths.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-2/floating-paths.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-2/logo.tsx"
         }
       ],
+      "categories": [
+        "auth"
+      ],
+      "type": "registry:block",
+      "tier": "free"
+    },
+    {
+      "name": "auth-13",
+      "description": "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/13/auth-page.tsx",
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-13/auth-page.tsx"
+        }
+      ],
+      "meta": {
+        "height": "100vh",
+        "isPinned": true,
+        "createdAt": "2026-10-15"
+      },
       "categories": [
         "auth"
       ],
@@ -84,7 +114,8 @@
       "files": [
         {
           "path": "registry/blocks/announcement/1/announcement.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/announcement-1/announcement.tsx"
         }
       ],
       "meta": {
@@ -110,7 +141,8 @@
       "files": [
         {
           "path": "registry/blocks/announcement/2/marquee-header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/announcement-2/marquee-header.tsx"
         }
       ],
       "meta": {
@@ -137,7 +169,8 @@
       "files": [
         {
           "path": "registry/blocks/announcement/3/daytona-header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/announcement-3/daytona-header.tsx"
         }
       ],
       "meta": {
@@ -168,32 +201,27 @@
         {
           "path": "registry/blocks/hero/1/page.tsx",
           "type": "registry:component",
-          "target": "components/freddy/hero-1/page.tsx"
-        },
-        {
-          "path": "registry/blocks/hero/1/bones.json",
-          "type": "registry:component",
-          "target": "components/freddy/hero-1/bones.json"
+          "target": "components/freddy-ui/hero-1/page.tsx"
         },
         {
           "path": "registry/blocks/hero/1/announcement.tsx",
           "type": "registry:component",
-          "target": "components/freddy/hero-1/announcement.tsx"
+          "target": "components/freddy-ui/hero-1/announcement.tsx"
         },
         {
           "path": "registry/blocks/hero/1/header.tsx",
           "type": "registry:component",
-          "target": "components/freddy/hero-1/header.tsx"
+          "target": "components/freddy-ui/hero-1/header.tsx"
         },
         {
           "path": "registry/blocks/hero/1/hero.tsx",
           "type": "registry:component",
-          "target": "components/freddy/hero-1/hero.tsx"
+          "target": "components/freddy-ui/hero-1/hero.tsx"
         },
         {
           "path": "registry/blocks/hero/1/wrapper.tsx",
           "type": "registry:component",
-          "target": "components/freddy/hero-1/wrapper.tsx"
+          "target": "components/freddy-ui/hero-1/wrapper.tsx"
         }
       ],
       "meta": {
@@ -221,19 +249,23 @@
       "files": [
         {
           "path": "registry/blocks/hero/2/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-2/page.tsx"
         },
         {
           "path": "registry/blocks/hero/2/hero.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-2/hero.tsx"
         },
         {
           "path": "registry/blocks/hero/2/featured-icons.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-2/featured-icons.tsx"
         },
         {
           "path": "registry/blocks/hero/2/shared.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-2/shared.tsx"
         }
       ],
       "meta": {
@@ -260,11 +292,13 @@
       "files": [
         {
           "path": "registry/blocks/hero/3/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-3/page.tsx"
         },
         {
           "path": "registry/blocks/hero/3/hero.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-3/hero.tsx"
         }
       ],
       "meta": {
@@ -276,7 +310,7 @@
         "hero"
       ],
       "type": "registry:block",
-      "tier": "pro"
+      "tier": "free"
     },
     {
       "name": "hero-4",
@@ -291,15 +325,18 @@
       "files": [
         {
           "path": "registry/blocks/hero/4/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-4/page.tsx"
         },
         {
           "path": "registry/blocks/hero/4/hero.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-4/hero.tsx"
         },
         {
           "path": "registry/blocks/hero/4/cards.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-4/cards.tsx"
         }
       ],
       "meta": {
@@ -311,7 +348,7 @@
         "hero"
       ],
       "type": "registry:block",
-      "tier": "pro"
+      "tier": "free"
     },
     {
       "name": "hero-6",
@@ -326,15 +363,18 @@
       "files": [
         {
           "path": "registry/blocks/hero/6/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-6/page.tsx"
         },
         {
           "path": "registry/blocks/hero/6/hero.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-6/hero.tsx"
         },
         {
           "path": "registry/blocks/hero/6/cards.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/hero-6/cards.tsx"
         }
       ],
       "meta": {
@@ -354,7 +394,8 @@
       "files": [
         {
           "path": "registry/blocks/contact/1/contact.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/contact-1/contact.tsx"
         }
       ],
       "categories": [
@@ -369,7 +410,8 @@
       "files": [
         {
           "path": "registry/blocks/contact/2/contact-card.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/contact-2/contact-card.tsx"
         }
       ],
       "meta": {
@@ -390,7 +432,8 @@
       "files": [
         {
           "path": "registry/blocks/cta/1/cta.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/cta-1/cta.tsx"
         }
       ],
       "meta": {
@@ -411,7 +454,8 @@
       "files": [
         {
           "path": "registry/blocks/cta/2/cta.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/cta-2/cta.tsx"
         }
       ],
       "meta": {
@@ -432,7 +476,8 @@
       "files": [
         {
           "path": "registry/blocks/cta/3/cta.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/cta-3/cta.tsx"
         }
       ],
       "meta": {
@@ -453,7 +498,8 @@
       "files": [
         {
           "path": "registry/blocks/cta/4/cta.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/cta-4/cta.tsx"
         }
       ],
       "meta": {
@@ -475,7 +521,8 @@
       "files": [
         {
           "path": "registry/blocks/cta/5/cta.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/cta-5/cta.tsx"
         }
       ],
       "meta": {
@@ -499,7 +546,8 @@
       "files": [
         {
           "path": "registry/blocks/feature/1/feature-card.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/feature-1/feature-card.tsx"
         }
       ],
       "meta": {
@@ -520,7 +568,8 @@
       "files": [
         {
           "path": "registry/blocks/faqs/1/faqs-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/faqs-1/faqs-section.tsx"
         }
       ],
       "categories": [
@@ -538,7 +587,8 @@
       "files": [
         {
           "path": "registry/blocks/faqs/2/faqs-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/faqs-2/faqs-section.tsx"
         }
       ],
       "categories": [
@@ -556,7 +606,8 @@
       "files": [
         {
           "path": "registry/blocks/faqs/3/faqs-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/faqs-3/faqs-section.tsx"
         }
       ],
       "categories": [
@@ -575,7 +626,8 @@
       "files": [
         {
           "path": "registry/blocks/faqs/4/faqs-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/faqs-4/faqs-section.tsx"
         }
       ],
       "categories": [
@@ -596,7 +648,8 @@
       "files": [
         {
           "path": "registry/blocks/faqs/5/faqs-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/faqs-5/faqs-section.tsx"
         }
       ],
       "categories": [
@@ -614,11 +667,13 @@
       "files": [
         {
           "path": "registry/blocks/footer/1/footer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-1/footer.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-1/logo.tsx"
         }
       ],
       "meta": {
@@ -639,11 +694,13 @@
       "files": [
         {
           "path": "registry/blocks/footer/2/footer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-2/footer.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-2/logo.tsx"
         }
       ],
       "meta": {
@@ -661,7 +718,8 @@
       "files": [
         {
           "path": "registry/blocks/footer/3/footer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-3/footer.tsx"
         }
       ],
       "meta": {
@@ -682,7 +740,8 @@
       "files": [
         {
           "path": "registry/blocks/footer/4/footer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-4/footer.tsx"
         }
       ],
       "meta": {
@@ -706,11 +765,13 @@
       "files": [
         {
           "path": "registry/blocks/footer/5/sticky-footer.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-5/sticky-footer.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/footer-5/logo.tsx"
         }
       ],
       "categories": [
@@ -733,11 +794,13 @@
       "files": [
         {
           "path": "registry/blocks/form/1/create-workspace-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/form-1/create-workspace-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/form-1/logo.tsx"
         }
       ],
       "meta": {
@@ -762,7 +825,8 @@
       "files": [
         {
           "path": "registry/blocks/form/2/submit-project-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/form-2/submit-project-form.tsx"
         }
       ],
       "categories": [
@@ -784,7 +848,8 @@
       "files": [
         {
           "path": "registry/blocks/form/3/settings-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/form-3/settings-form.tsx"
         }
       ],
       "categories": [
@@ -804,11 +869,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/3/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-3/login-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-3/logo.tsx"
         }
       ],
       "categories": [
@@ -828,11 +895,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/4/signup-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-4/signup-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-4/logo.tsx"
         }
       ],
       "categories": [
@@ -852,11 +921,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/5/reset-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-5/reset-password-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-5/logo.tsx"
         }
       ],
       "categories": [
@@ -876,11 +947,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/6/forgot-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-6/forgot-password-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-6/logo.tsx"
         }
       ],
       "categories": [
@@ -898,11 +971,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/7/check-email-block.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-7/check-email-block.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-7/logo.tsx"
         }
       ],
       "categories": [
@@ -922,11 +997,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/8/minimal-login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-8/minimal-login-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-8/logo.tsx"
         }
       ],
       "categories": [
@@ -946,11 +1023,13 @@
       "files": [
         {
           "path": "registry/blocks/auth/9/compact-signup-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-9/compact-signup-form.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-9/logo.tsx"
         }
       ],
       "categories": [
@@ -970,7 +1049,8 @@
       "files": [
         {
           "path": "registry/blocks/auth/10/signup-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-10/signup-form.tsx"
         }
       ],
       "meta": {
@@ -994,7 +1074,8 @@
       "files": [
         {
           "path": "registry/blocks/auth/11/otp-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-11/otp-form.tsx"
         }
       ],
       "meta": {
@@ -1019,7 +1100,8 @@
       "files": [
         {
           "path": "registry/blocks/auth/12/onboarding-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/auth-12/onboarding-form.tsx"
         }
       ],
       "meta": {
@@ -1042,19 +1124,23 @@
       "files": [
         {
           "path": "registry/blocks/header/1/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-1/header.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-1/logo.tsx"
         },
         {
           "path": "components/menu-toggle-icon.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-1/menu-toggle-icon.tsx"
         },
         {
           "path": "hooks/use-scroll.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "components/freddy-ui/header-1/use-scroll.ts"
         }
       ],
       "meta": {
@@ -1077,19 +1163,23 @@
       "files": [
         {
           "path": "registry/blocks/header/2/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-2/header.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-2/logo.tsx"
         },
         {
           "path": "components/menu-toggle-icon.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-2/menu-toggle-icon.tsx"
         },
         {
           "path": "hooks/use-scroll.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "components/freddy-ui/header-2/use-scroll.ts"
         }
       ],
       "meta": {
@@ -1099,7 +1189,7 @@
         "header"
       ],
       "type": "registry:block",
-      "tier": "pro"
+      "tier": "free"
     },
     {
       "name": "header-3",
@@ -1111,19 +1201,23 @@
       "files": [
         {
           "path": "registry/blocks/header/3/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-3/header.tsx"
         },
         {
           "path": "components/logo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-3/logo.tsx"
         },
         {
           "path": "components/menu-toggle-icon.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-3/menu-toggle-icon.tsx"
         },
         {
           "path": "hooks/use-scroll.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "components/freddy-ui/header-3/use-scroll.ts"
         }
       ],
       "meta": {
@@ -1148,11 +1242,13 @@
       "files": [
         {
           "path": "registry/blocks/header/4/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-4/header.tsx"
         },
         {
           "path": "hooks/use-scroll.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "components/freddy-ui/header-4/use-scroll.ts"
         }
       ],
       "meta": {
@@ -1178,11 +1274,13 @@
       "files": [
         {
           "path": "registry/blocks/header/5/header.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/header-5/header.tsx"
         },
         {
           "path": "hooks/use-scroll.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "components/freddy-ui/header-5/use-scroll.ts"
         }
       ],
       "meta": {
@@ -1208,11 +1306,13 @@
       "files": [
         {
           "path": "registry/blocks/image-gallery/1/image-gallery.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/image-gallery-1/image-gallery.tsx"
         },
         {
           "path": "registry/blocks/image-gallery/1/lazy-image.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/image-gallery-1/lazy-image.tsx"
         }
       ],
       "categories": [
@@ -1227,7 +1327,8 @@
       "files": [
         {
           "path": "registry/blocks/logo-cloud/1/logo-cloud.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/logo-cloud-1/logo-cloud.tsx"
         }
       ],
       "meta": {
@@ -1245,7 +1346,8 @@
       "files": [
         {
           "path": "registry/blocks/logo-cloud/2/logo-cloud.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/logo-cloud-2/logo-cloud.tsx"
         }
       ],
       "meta": {
@@ -1266,7 +1368,8 @@
       "files": [
         {
           "path": "registry/blocks/logo-cloud/3/logo-cloud.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/logo-cloud-3/logo-cloud.tsx"
         }
       ],
       "meta": {
@@ -1288,7 +1391,8 @@
       "files": [
         {
           "path": "registry/blocks/logo-cloud/4/logo-cloud.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/logo-cloud-4/logo-cloud.tsx"
         }
       ],
       "meta": {
@@ -1310,7 +1414,8 @@
       "files": [
         {
           "path": "registry/blocks/not-found/1/not-found.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/not-found-1/not-found.tsx"
         }
       ],
       "categories": [
@@ -1332,7 +1437,8 @@
       "files": [
         {
           "path": "registry/blocks/not-found/2/not-found.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/not-found-2/not-found.tsx"
         }
       ],
       "categories": [
@@ -1354,11 +1460,13 @@
       "files": [
         {
           "path": "registry/blocks/pricing/1/pricing-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-1/pricing-section.tsx"
         },
         {
           "path": "registry/blocks/pricing/1/frequency-toggle.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-1/frequency-toggle.tsx"
         }
       ],
       "categories": [
@@ -1373,7 +1481,8 @@
       "files": [
         {
           "path": "components/pricing-card.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-2/pricing-card.tsx"
         }
       ],
       "meta": {
@@ -1394,11 +1503,13 @@
       "files": [
         {
           "path": "registry/blocks/pricing/3/pricing-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-3/pricing-section.tsx"
         },
         {
           "path": "components/pricing-card.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-3/pricing-card.tsx"
         }
       ],
       "categories": [
@@ -1420,7 +1531,8 @@
       "files": [
         {
           "path": "registry/blocks/pricing/4/pricing-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/pricing-4/pricing-section.tsx"
         }
       ],
       "meta": {
@@ -1441,7 +1553,8 @@
       "files": [
         {
           "path": "registry/blocks/testimonials/1/testimonials-columns.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/testimonials-1/testimonials-columns.tsx"
         }
       ],
       "categories": [
@@ -1462,7 +1575,8 @@
       "files": [
         {
           "path": "registry/blocks/testimonials/2/testimonials-section.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/freddy-ui/testimonials-2/testimonials-section.tsx"
         }
       ],
       "categories": [

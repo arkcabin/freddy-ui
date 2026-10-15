@@ -57,6 +57,26 @@ export const blocks: FreddyRegistryItem[] = [
     categories: ["auth"],
   },
   {
+    name: "auth-13",
+    type: "registry:block",
+    description:
+      "Editorial split-layout sign-in page with social login, password visibility, and secure workspace messaging.",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/auth/13/auth-page.tsx",
+        target: "components/freddy-ui/auth-13/auth-page.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["auth"],
+    meta: {
+      height: "100vh",
+      isPinned: true,
+      createdAt: "2026-10-15",
+    },
+  },
+  {
     name: "announcement-1",
     type: "registry:block",
     description:
