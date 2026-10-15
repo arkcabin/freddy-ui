@@ -16,8 +16,8 @@ All notable changes to **Freddy UI** will be documented in this file.
 
 ### Contributors
 
-* @arkcabin (Ark Cabin)
 * @VartikAnand (Vartik Anand)
+* @codeholic-vartik (Vartik Anand)
 
 ## [0.0.1] - 2026-03-29
 
@@ -36,6 +36,6 @@ All notable changes to **Freddy UI** will be documented in this file.
 
 ### Contributors
 
-* @arkcabin (Ark Cabin)
+* @VartikAnand (Vartik Anand)
 
 

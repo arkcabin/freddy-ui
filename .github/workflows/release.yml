@@ -9,41 +9,71 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Release Please
-        uses: google-github-actions/release-please-action@v4
-        id: release
+      # 1. Look at new commits. If anything is releasable, open/update the release PR.
+      - name: Prepare release (release-please)
+        uses: googleapis/release-please-action@v4
+        id: prepare
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      - name: Checkout repository
-        if: ${{ steps.release.outputs.releases_created }}
+      # 2. Merge the release PR automatically, so no manual click is needed.
+      - name: Auto-merge release PR
+        if: ${{ steps.prepare.outputs.prs_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge "${{ fromJSON(steps.prepare.outputs.pr).number }}" \
+            --repo "${{ github.repository }}" \
+            --squash \
+            --delete-branch
+
+      # 3. Run again so the merged release PR becomes a tag + GitHub Release.
+      #    (A merge made with GITHUB_TOKEN does not re-trigger this workflow.)
+      - name: Publish release (release-please)
+        uses: googleapis/release-please-action@v4
+        id: publish
+        if: ${{ steps.prepare.outputs.prs_created == 'true' }}
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      # 4. Sync the on-site /changelog page with CHANGELOG.md.
+      - name: Checkout latest main
+        if: ${{ steps.prepare.outputs.releases_created == 'true' || steps.publish.outputs.releases_created == 'true' }}
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Setup Node.js
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.prepare.outputs.releases_created == 'true' || steps.publish.outputs.releases_created == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
 
       - name: Install dependencies
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.prepare.outputs.releases_created == 'true' || steps.publish.outputs.releases_created == 'true' }}
         run: npm ci
 
-      - name: Sync web visual changelog
-        if: ${{ steps.release.outputs.releases_created }}
+      - name: Sync changelog (contributors + web page)
+        if: ${{ steps.prepare.outputs.releases_created == 'true' || steps.publish.outputs.releases_created == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           npx tsx ./scripts/sync-changelog.mts
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add lib/data/changelog-data.tsx
-          git commit -m "chore: sync web changelog for ${{ steps.release.outputs.tag_name }} [skip ci]" || echo "No changes to commit"
+          git add CHANGELOG.md lib/data/changelog-data.tsx
+          git commit -m "chore: sync changelog ${{ steps.publish.outputs.tag_name || steps.prepare.outputs.tag_name }} [skip ci]" || echo "No changes to commit"
           git push
-

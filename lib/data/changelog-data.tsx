@@ -36,16 +36,16 @@ export const CHANGELOG_DATA: ChangelogEntry[] = [
     description: "Updates and improvements shipped in Freddy UI v0.1.0.",
     contributors: [
       {
-        name: "Ark Cabin",
-        username: "arkcabin",
-        avatarUrl: "https://github.com/arkcabin.png",
-        profileUrl: "https://github.com/arkcabin",
-      },
-      {
         name: "Vartik Anand",
         username: "VartikAnand",
         avatarUrl: "https://github.com/VartikAnand.png",
         profileUrl: "https://github.com/VartikAnand",
+      },
+      {
+        name: "Vartik Anand",
+        username: "codeholic-vartik",
+        avatarUrl: "https://github.com/codeholic-vartik.png",
+        profileUrl: "https://github.com/codeholic-vartik",
       },
     ],
     groups: [
@@ -75,10 +75,10 @@ export const CHANGELOG_DATA: ChangelogEntry[] = [
     description: "Updates and improvements shipped in Freddy UI v0.0.1.",
     contributors: [
       {
-        name: "Ark Cabin",
-        username: "arkcabin",
-        avatarUrl: "https://github.com/arkcabin.png",
-        profileUrl: "https://github.com/arkcabin",
+        name: "Vartik Anand",
+        username: "VartikAnand",
+        avatarUrl: "https://github.com/VartikAnand.png",
+        profileUrl: "https://github.com/VartikAnand",
       },
     ],
     groups: [

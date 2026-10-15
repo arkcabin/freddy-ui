@@ -133,6 +133,137 @@ function handleBulletItem(
   }
 }
 
+const DEFAULT_REPO = "arkcabin/freddy-ui";
+const TAG_PREFIXES = ["freddy-ui-v", "v"] as const;
+const RELEASE_HEADING_REGEX = /^##\s+\[?v?(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?)/;
+
+type GithubCommit = { author: { login: string } | null };
+type GithubUser = { name: string | null };
+
+type ReleaseBlock = {
+  version: string;
+  start: number;
+  end: number;
+  hasContributors: boolean;
+};
+
+async function githubGet<T>(apiPath: string): Promise<T | null> {
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+  try {
+    const res = await fetch(`https://api.github.com${apiPath}`, { headers });
+    return res.ok ? ((await res.json()) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+function findReleaseBlocks(lines: string[]): ReleaseBlock[] {
+  const blocks: ReleaseBlock[] = [];
+  for (const [index, line] of lines.entries()) {
+    const match = line.match(RELEASE_HEADING_REGEX);
+    if (match) {
+      blocks.push({
+        version: match[1],
+        start: index,
+        end: lines.length,
+        hasContributors: false,
+      });
+    }
+  }
+  for (const [i, block] of blocks.entries()) {
+    block.end = blocks[i + 1]?.start ?? lines.length;
+    block.hasContributors = lines
+      .slice(block.start, block.end)
+      .some((l) => l.toLowerCase().startsWith("### contributors"));
+  }
+  return blocks;
+}
+
+function loginsFromCommits(commits: GithubCommit[]): string[] {
+  const logins = commits
+    .map((c) => c.author?.login)
+    .filter((l): l is string => Boolean(l) && !l?.endsWith("[bot]"));
+  return [...new Set(logins)];
+}
+
+async function fetchLoginsForTag(
+  repo: string,
+  prevVersion: string | undefined,
+  version: string
+): Promise<string[]> {
+  for (const prefix of TAG_PREFIXES) {
+    const head = `${prefix}${version}`;
+    const base = prevVersion ? `${prefix}${prevVersion}` : null;
+    const apiPath = base
+      ? `/repos/${repo}/compare/${base}...${head}?per_page=100`
+      : `/repos/${repo}/commits?sha=${head}&per_page=100`;
+    const data = await githubGet<{ commits?: GithubCommit[] } | GithubCommit[]>(
+      apiPath
+    );
+    const commits = Array.isArray(data) ? data : data?.commits;
+    if (commits) {
+      return loginsFromCommits(commits);
+    }
+  }
+  return [];
+}
+
+async function buildContributorLines(logins: string[]): Promise<string[]> {
+  return await Promise.all(
+    logins.map(async (login) => {
+      const user = await githubGet<GithubUser>(`/users/${login}`);
+      return user?.name ? `* @${login} (${user.name})` : `* @${login}`;
+    })
+  );
+}
+
+async function addMissingContributors(markdown: string): Promise<string> {
+  const repo = process.env.GITHUB_REPOSITORY ?? DEFAULT_REPO;
+  const lines = markdown.split("\n");
+  const blocks = findReleaseBlocks(lines);
+
+  const additions = await Promise.all(
+    blocks.map(async (block, i) => {
+      if (block.hasContributors) {
+        return null;
+      }
+      const logins = await fetchLoginsForTag(
+        repo,
+        blocks[i + 1]?.version,
+        block.version
+      );
+      return logins.length > 0
+        ? { block, entries: await buildContributorLines(logins) }
+        : null;
+    })
+  );
+
+  // Apply bottom-up so earlier line indexes stay valid
+  for (const item of additions.reverse()) {
+    if (item) {
+      let insertAt = item.block.end;
+      while (insertAt > item.block.start && lines[insertAt - 1].trim() === "") {
+        insertAt -= 1;
+      }
+      lines.splice(
+        insertAt,
+        0,
+        "",
+        "### Contributors",
+        "",
+        ...item.entries,
+        ""
+      );
+    }
+  }
+  return lines.join("\n");
+}
+
 function parseChangelog(markdown: string): ParsedRelease[] {
   const releases: ParsedRelease[] = [];
   const lines = markdown.split("\n");
@@ -253,7 +384,12 @@ async function syncChangelog() {
   }
 
   const rawContent = await fs.readFile(changelogPath, "utf8");
-  const releases = parseChangelog(rawContent);
+  const enrichedContent = await addMissingContributors(rawContent);
+  if (enrichedContent !== rawContent) {
+    await fs.writeFile(changelogPath, enrichedContent, "utf8");
+    console.log("👥 Added contributors to CHANGELOG.md from GitHub commits.");
+  }
+  const releases = parseChangelog(enrichedContent);
 
   if (releases.length === 0) {
     console.log("⚠️ No release entries found in CHANGELOG.md.");
